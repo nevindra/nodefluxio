@@ -12,7 +12,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import visionaireLogo from "@/public/nodeflux-logo-purple.png";
+import visionaireLogo from "@/public/nodeflux-primary-purple.png";
 import Image from "next/image";
 import MobileNavbar from "./navbar/MobileNavbar";
 
@@ -45,8 +45,8 @@ export default function NavigationBar() {
 							<Image
 								src={visionaireLogo}
 								alt="Visionaire Logo"
-								width={30}
-								height={32}
+								width={160}
+								height={100}
 							/>
 						</Link>
 					</div>

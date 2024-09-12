@@ -9,11 +9,9 @@ export default function Analytics() {
 			"Monitor and take action with your video analytics data in real-time to improve your business operations",
 		image: "/products-hero.webp",
 		features: [
-			"Monitor and take action with VisionAIre Dashboard",
-			"Gather data with VisionAIre Analytics",
-			"Stream data with VisionAIre Stream Compression",
-			"Integrate with VisionAIre Platform",
-			"Customize with VisionAIre Hardware",
+			"Customizable widgets for at-a-glance system status",
+			"Interactive data visualizations for deep insights",
+			"Real-time data streaming for continuous analysis",
 		],
 	};
 
