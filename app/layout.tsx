@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 	description:
 		"Nodeflux is a Indonesian company that provides cutting-edge solutions for computer vision.",
 	icons: {
-		icon: "/favicon.ico",
-		apple: "/apple-icon.png",
+		icon: "/public/favicon.ico",
+		apple: "/public/apple-icon.png",
 	},
 };
 

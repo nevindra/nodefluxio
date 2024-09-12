@@ -1,12 +1,12 @@
 import BusinessProcess from "@/components/BusinessProcess";
 import { Button } from "@/components/ui/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 export default function ContactUs() {
 	return (
 		<main className="flex flex-col items-center justify-between space-y-4 max-w-[85%] mx-auto">
-			<BusinessProcess />
+			<BusinessProcess isContactus={false} />
 			<div className="px-4 py-7 rounded-lg m-4 w-full">
 				<Card>
 					<CardHeader>
