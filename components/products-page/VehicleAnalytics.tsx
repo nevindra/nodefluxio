@@ -7,68 +7,56 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function PeopleAnalytics() {
-	const PeopleAnalytics = [
+export default function VehicleAnalytics() {
+	const VehicleAnalytics = [
 		{
-			title: "People Analytics",
+			title: "Vehicle Analytics",
 			descriptions:
-				"People Analytics by Nodeflux is an AI-driven solution designed to provide accurate detection, tracking, and analysis of people in video streams. It helps organizations monitor crowd behavior, track foot traffic, and gather insights for decision-making in real-time. This solution is useful in various environments, including smart cities, retail, and public spaces, enhancing both operational efficiency and security.",
+				"Nodeflux Vehicle Analytics offers a comprehensive analysis of vehicle movements, classifications, and behaviors captured through video feeds. It can detect and categorize vehicles based on type (e.g., cars, trucks, motorcycles, bus) and provide data that supports traffic management, parking systems, or law enforcement operations.",
 			features: [
-				"Enabler for Enrichment Attribute Data Insight",
-				"Rich People Analytics Applications",
+				"Multiclass Vehicle Classification",
+				"Rich Vehicle Analytics Applications to Support Multiple Scenario",
 				"Multiple Counter Line and Detection Area",
 			],
 			videosUrl:
-				"https://drive.google.com/file/d/1YTVcfuTqeYarTlZmSB4wl9aibCUZE56t/preview",
+				"https://drive.google.com/file/d/1L0r4z4_auKql1muPE107dP7SohAxKu-a/preview",
 			tags: ["New SKU", "Object Detection", "Multiple Logic"],
 		},
 		{
-			title: "Crowd Estimation",
+			title: "License Plate Recognition",
 			descriptions:
-				"Crowd Estimation by Nodeflux is an AI-powered solution designed to estimate the number of people in a specific area using video surveillance. This technology provides real-time data on crowd size and density, helping organizations manage large gatherings, optimize public safety, and make informed decisions in crowded environments.",
+				"License Plate Recognition (LPR) by Nodeflux uses sophisticated algorithms to identify and read vehicle license plates in real-time, even in challenging environments. It is optimized for Indonesian plate formats but can adapt to other plate types. LPR is essential for traffic enforcement, parking management, and vehicle access control.",
 			features: [
-				"Adjustable for Low and High Density Environment",
-				"Capable to Estimate More Than 1000 People in Crowd",
-				"Support with Multiple Point of View",
+				"Adaptive to Withstand in Real Environment",
+				"High Accuracy on Various Types of Indonesian Plates",
+				"Optimal Value for Different Traffic Scenarios",
 			],
 			videosUrl:
-				"https://drive.google.com/file/d/1yGDE5cKL4OnwuwVALSL2jTCvtEZ6uY29/preview",
-			tags: ["Object Estimation"],
-		},
-		{
-			title: "Personal Protective Equipment Detection",
-			descriptions:
-				"Nodeflux Personal Protective Equipment (PPE) Detection ensures workplace safety by automatically identifying whether individuals are wearing the required safety gear, such as helmets, glasses, and vests. It is ideal for construction sites, factories, or other hazardous work environments where compliance with safety regulations is critical.",
-			features: [
-				"Flexible with full frame and counting logics",
-				"Multiple Attribute Detection ",
-				"Optional with Face Recognition module",
-			],
-			videosUrl:
-				"https://drive.google.com/file/d/1mcr2_WqLtA4vPUAQHgw-jxCAL5ZqCRRF/preview",
-			tags: ["New SKU", "Object Detection"],
+				"https://drive.google.com/file/d/1L0r4z4_auKql1muPE107dP7SohAxKu-a/preview",
+			tags: ["Object Detection"],
 		},
 	];
+
 	return (
 		<>
-			<div className="mt-6">
+			<div className="px-4 mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
 					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
-						People Oriented Analytics
+						Vehicle Analytics
 					</h1>
 					<p className="text-center text-sm md:text-base">
-						People Oriented Analytics is a cutting-edge technology that enables
-						businesses to analyze human object detection in real-time.
+						Vehicle Oriented Analytics is a cutting-edge technology that enables
+						businesses to analyze vehicle object detection in real-time.
 					</p>
 				</div>
 				<Tabs
-					defaultValue={PeopleAnalytics[0].title
+					defaultValue={VehicleAnalytics[0].title
 						.toLowerCase()
 						.replace(/\s+/g, "-")}
 				>
 					<div className="overflow-x-auto">
 						<TabsList className="flex items-center mb-4 min-w-max">
-							{PeopleAnalytics.map((item, index) => (
+							{VehicleAnalytics.map((item, index) => (
 								<TabsTrigger
 									key={index}
 									value={item.title.toLowerCase().replace(/\s+/g, "-")}
@@ -79,7 +67,7 @@ export default function PeopleAnalytics() {
 							))}
 						</TabsList>
 					</div>
-					{PeopleAnalytics.map((item, index) => (
+					{VehicleAnalytics.map((item, index) => (
 						<TabsContent
 							key={index}
 							value={item.title.toLowerCase().replace(/\s+/g, "-")}

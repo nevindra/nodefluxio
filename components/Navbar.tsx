@@ -41,7 +41,7 @@ export default function NavigationBar() {
 				<div className="flex h-16 items-center justify-between">
 					<div className="flex items-center">
 						<Link href="/" className="flex-shrink-0">
-						{/* logo nodeflux lengkap */}
+							{/* logo nodeflux lengkap */}
 							<Image
 								src={visionaireLogo}
 								alt="Visionaire Logo"
@@ -51,23 +51,23 @@ export default function NavigationBar() {
 						</Link>
 					</div>
 					<div className="hidden md:block">
-						<div className="ml-10 flex items-baseline space-x-4">
+						<div className="ml-4 flex items-center space-x-2 md:space-x-4">
 							<NavigationMenu>
 								<NavigationMenuList>
 									<NavigationMenuItem>
 										<NavigationMenuTrigger>Products</NavigationMenuTrigger>
 										<NavigationMenuContent>
-											<ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+											<ul className="grid gap-2 p-4 md:w-[400px] lg:w-[450px] lg:grid-cols-[.75fr_1fr]">
 												<li className="row-span-3">
-													<NavigationMenuLink asChild>
+													<NavigationMenuLink asChild className="bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-primary hover:text-black">
 														<a
-															className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-primary hover:text-white"
+															className="flex h-full w-full select-none flex-col justify-end rounded-md "
 															href="/products"
 														>
 															<div className="mb-2 mt-4 text-lg font-medium">
 																Products Overview
 															</div>
-															<p className="text-sm leading-tight text-muted-foreground hover:text-black">
+															<p className="text-sm leading-tight">
 																Explore our full range of products and
 																solutions.
 															</p>
@@ -79,7 +79,7 @@ export default function NavigationBar() {
 														href={item.href}
 														key={item.href}
 														title={item.title}
-														className="hover:bg-primary"
+														className="bg-secondary hover:bg-black"
 													>
 														{item.description}
 													</ListItem>
@@ -138,9 +138,7 @@ export default function NavigationBar() {
 					</div>
 				</div>
 			</div>
-			{mobileMenuOpen && (
-				<MobileNavbar />
-			)}
+			{mobileMenuOpen && <MobileNavbar />}
 		</nav>
 	);
 }

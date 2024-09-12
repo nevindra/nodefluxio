@@ -15,12 +15,12 @@ export const faq = [
 			"No, VisionAIre is compatible with a wide range of camera types and models. You can use your existing camera infrastructure.",
 	},
 	{
-		question: "What are the minimum system requirements?",
+		question: "What are the minimum requirements?",
 		answer:
 			"System requirements vary depending on the AI model. For Face Recognition, People Analytics, and Vehicle Analytics, the minimum specifications are an Intel Core Ultra 5 series processor with 16 GB RAM. More complex models may require higher specifications.",
 	},
 	{
-		question: "Can VisionAIre integrate with existing systems?",
+		question: "Can I integrate with existing systems?",
 		answer:
 			"Yes, VisionAIre is designed with an API-first approach, allowing seamless integration with various third-party systems and existing infrastructure.",
 	},

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import visionAiredImage from "@/public/visionaire-core.png";
+import visionAiredImage from "@/public/landing-page/visionaire-core.webp";
 import Image from "next/image";
 
 export default function Features() {

@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 
 export default function MobileNavbar() {
 	const [mobileProductsOpen, setMobileProductsOpen] = React.useState(false);
-	const [analyticsOpen, setAnalyticsOpen] = React.useState(false);
-    const analytics = [
-        {href : "/analytics/face", title: "Face Analytics"},
-        {href : "/analytics/people", title: "People Oriented Analytics"},
-        {href : "/analytics/vehicle", title: "Vehicle Oriented Analytics"},
-        {href : "/analytics/environment", title: "Environment Oriented Analytics"},
-        {href : "/analytics/people", title: "Human Behavior Analytics"},
-        {href : "/analytics/people", title: "Crowd Anomaly Analytics"},
-    ]
+	const [solutionOpen, setSolutionOpen] = React.useState(false);
+
+	const solutions = [
+		{ title: "Massive Surveillance", href: "/solutions/massive-surveillance" },
+		{ title: "Retail Analytics", href: "/solutions/retail-analytics" },
+		{ title: "Smart Building", href: "/solutions/smart-building" },
+		{ title: "Smart City", href: "/solutions/smart-city" },
+	];
+
 	return (
 		<div className="md:hidden shadow-lg rounded-b-lg">
 			<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
@@ -22,7 +22,7 @@ export default function MobileNavbar() {
 					<button
 						onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
 						className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-                        type="button"
+						type="button"
 					>
 						Products
 						<ChevronDown
@@ -37,31 +37,12 @@ export default function MobileNavbar() {
 							>
 								Dashboard
 							</Link>
-							<div>
-								<button
-									onClick={() => setAnalyticsOpen(!analyticsOpen)}
-									className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-                                    type="button"
-								>
-									Analytics
-									<ChevronDown
-										className={`h-4 w-4 transition-transform ${analyticsOpen ? "rotate-180" : ""}`}
-									/>
-								</button>
-								{analyticsOpen && (
-									<div className="pl-4 space-y-2 mt-2">
-										{analytics.map((item, index) => (
-											<Link
-												href={item.href}
-												key={item.href}
-												className="block rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-											>
-												{item.title}
-											</Link>
-										))}
-									</div>
-								)}
-							</div>
+							<Link
+								href="/analytics"
+								className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+							>
+								Analytics
+							</Link>
 							<Link
 								href="/hardware"
 								className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
@@ -77,12 +58,31 @@ export default function MobileNavbar() {
 						</div>
 					)}
 				</div>
-				<Link
-					href="/solutions"
-					className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-				>
-					Solutions
-				</Link>
+				<div className="relative">
+					<button
+						onClick={() => setSolutionOpen(!solutionOpen)}
+						className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+						type="button"
+					>
+						Solutions
+						<ChevronDown
+							className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`}
+						/>
+					</button>
+					{solutionOpen && (
+						<div className="mt-2 space-y-2 pl-4">
+							{solutions.map((solution) => (
+								<Link
+									key={solution.title}
+									href={solution.href}
+									className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+								>
+									{solution.title}
+								</Link>
+							))}
+						</div>
+					)}
+				</div>
 				<Button variant="default" className="w-full justify-start">
 					<a href="/contact-us">Contact Us</a>
 				</Button>

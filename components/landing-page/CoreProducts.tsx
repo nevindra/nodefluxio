@@ -15,21 +15,21 @@ export default function CoreProducts() {
 			title: "Dashboard",
 			content:
 				"A comprehensive, user-friendly interface that provides real-time insights and seamless control over your VisionAIre ecosystem, empowering data-driven decision-making.",
-			image: "/landing-page/dashboard-main.png",
+			image: "/landing-page/dashboard-main.webp",
 			link: "/dashboard",
 		},
 		{
 			title: "Analytics",
 			content:
 				"Advanced AI-powered analytics tool that transforms raw visual data into actionable intelligence, unlocking hidden patterns and optimizing your computer vision operations.",
-			image: "/landing-page/analytics-main.png",
+			image: "/landing-page/analytics-main.webp",
 			link: "/analytics",
 		},
 		{
 			title: "Platform",
 			content:
 				"The robust foundation of the VisionAIre ecosystem, offering unparalleled flexibility and integration capabilities to power your computer vision applications across diverse industries.",
-			image: "/landing-page/platform-main.png",
+			image: "/landing-page/platform-main.webp",
 			link: "/platform",
 		},
 	];

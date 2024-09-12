@@ -12,7 +12,7 @@ export default function Home() {
 			<section
 				className="relative flex flex-col justify-center items-center space-y-4 py-16 w-full"
 				style={{
-					backgroundImage: "url('/landing-page/hero-main.png')",
+					backgroundImage: "url('/landing-page/hero-main.webp')",
 					backgroundSize: "cover",
 					backgroundPosition: "center",
 				}}

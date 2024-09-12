@@ -1,4 +1,4 @@
-import statistics from "@/public/landing-page/statistics.png";
+import statistics from "@/public/landing-page/statistics.webp";
 import Image from "next/image";
 
 const TrustedBy = () => {

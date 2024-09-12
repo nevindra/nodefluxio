@@ -1,11 +1,11 @@
 import BusinessProcess from "@/components/BusinessProcess";
 import { Button } from "@/components/ui/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
 } from "@/components/ui/card";
 import visionaire from "@/public/products-hero.webp";
 import topologi from "@/public/solutions/massive-surveillance.png";
@@ -109,7 +109,7 @@ export default function MassiveSurveillance() {
 							height={1080}
 							className="w-full mx-auto"
 						/>
-						<p className="text-sm  italic">
+						<p className="text-[8px] italic">
 							*Example topology for a massive surveillance use case
 						</p>
 					</div>
@@ -164,16 +164,16 @@ export default function MassiveSurveillance() {
 						<br />
 						<ul className="space-y-2">
 							<li className="flex items-center">
-								<CheckCircleIcon size={16} className="mr-1" />
+								<CheckCircleIcon size={16} className="text-green-500 mr-1" />
 								<span>Real-time data visualization</span>
 							</li>
 							<li className="flex items-center">
-								<CheckCircleIcon size={16} className="mr-1" />
+								<CheckCircleIcon size={16} className="text-green-500 mr-1" />
 								<span>Integrated alert system</span>
 							</li>
 							<li className="flex items-center">
-								<CheckCircleIcon size={16} className="mr-1" />
-								Playback and monitoring of video control
+								<CheckCircleIcon size={16} className="text-green-500 mr-1" />
+								<span>Integrated alert system</span>
 							</li>
 						</ul>
 					</CardContent>

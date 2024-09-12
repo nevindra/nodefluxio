@@ -1,6 +1,8 @@
 import Hero from "@/components/hero/Hero";
 import FaceAnalytics from "@/components/products-page/FaceAnalytics";
 import PeopleAnalytics from "@/components/products-page/PeopleAnalytics";
+import PeopleAnomaly from "@/components/products-page/PeopleAnomaly";
+import VehicleAnalytics from "@/components/products-page/VehicleAnalytics";
 
 export default function Analytics() {
 	const heroData = {
@@ -18,10 +20,12 @@ export default function Analytics() {
 	return (
 		<main>
 			<Hero data={heroData} />
-			<section className="mx-auto space-y-4 py-5 bg-[#dfdff2]">
+			<section className="mx-auto py-5 bg-[#dfdff2]">
 				<div className="container max-w-[85%] mx-auto">
 				<FaceAnalytics />
 				<PeopleAnalytics />
+				<PeopleAnomaly />
+				<VehicleAnalytics />
 				</div>
 			</section>
 		</main>

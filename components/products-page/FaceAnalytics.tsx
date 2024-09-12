@@ -9,7 +9,7 @@ import {
 export default function FaceAnalytics() {
 	return (
 		<>
-			<div className="container mx-auto px-4">
+			<div className="container mx-auto px-4 mt-2">
 				<div className="flex flex-col items-center justify-center py-4">
 					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						Face Analytics
