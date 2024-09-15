@@ -11,6 +11,9 @@ export default function Features() {
 	];
 	return (
 		<section className="py-12">
+			<h1 className="text-3xl font-bold text-center mb-12">
+				Complete <span className="text-primary">Video Analytics Surveillance</span> Platform
+			</h1>
 			<div className="flex flex-col lg:flex-row gap-8">
 				<div className="relative h-64 md:h-96 lg:h-auto lg:flex-1">
 					<Image
@@ -21,7 +24,7 @@ export default function Features() {
 					/>
 				</div>
 				<div className="flex flex-col gap-8 lg:flex-1">
-					<Card>
+					<Card className="bg-[#DEE1FE]">
 						<CardHeader>
 							<h3 className="text-xl font-semibold">
 								Vision AI Integration Platform
@@ -35,7 +38,7 @@ export default function Features() {
 							</p>
 						</CardContent>
 					</Card>
-					<Card>
+					<Card className="bg-[#DEE1FE]">
 						<CardHeader>
 							<h3 className="text-xl font-semibold">Key Features</h3>
 						</CardHeader>

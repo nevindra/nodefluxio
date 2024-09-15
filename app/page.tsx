@@ -1,42 +1,53 @@
 import Certifications from "@/components/landing-page/Certifications";
+import Consolutation from "@/components/landing-page/Consolutation";
 import CoreProducts from "@/components/landing-page/CoreProducts";
 import Features from "@/components/landing-page/Features";
 import TrustedBy from "@/components/landing-page/TrustedBy";
 import UseCases from "@/components/landing-page/UseCases";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
 	return (
 		<main className="flex flex-col items-center justify-between space-y-4">
-			<section
-				className="relative flex flex-col justify-center items-center space-y-4 py-16 w-full"
-				style={{
-					backgroundImage: "url('/landing-page/hero-main.webp')",
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-				}}
-			>
-				<div className="bg-black bg-opacity-80 p-4 sm:p-6 md:p-8 rounded-lg text-center text-white max-w-4xl mx-auto">
-					<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-						See Beyond the Horizon
-					</h1>
-					<h2 className="text-lg sm:text-xl md:text-2xl text-white mt-2 sm:mt-3 md:mt-4">
-						Advanced computer vision for real-time intelligence and threat
-						detection.
-					</h2>
-					<Button className="mt-4 sm:mt-5 md:mt-6 bg-primary text-white">
-						<Link href="/contact-us">Connect with us</Link>
-					</Button>
+			<section className="w-full bg-secondary py-12 md:py-16">
+				<div className="container mx-auto px-4">
+					<div className="flex flex-col md:flex-row items-center justify-between">
+						<div className="flex flex-col items-start text-primary mb-8 md:mb-0 md:w-2/5 lg:w-1/3">
+							<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+								Extending Vision Beyond Imagination
+							</h1>
+							<p className="text-lg mb-6">
+								We Are Helping You to Realized High Impact & Benefit Through
+								Vision AI Capability
+							</p>
+							<Button className="bg-primary text-white hover:bg-secondary hover:shadow-lg transition-colors px-8 py-4 text-xl">
+								<a href="/contact-us" className="text-lg font-semibold">
+									Schedule your consultation
+								</a>
+							</Button>
+						</div>
+						<div className="w-full md:w-3/5 lg:w-2/3 max-w-3xl">
+							<Image
+								src="/landing-page/hero-1.png"
+								alt="Smart Donkey"
+								className="w-full h-auto"
+								width={2000}
+								height={1200}
+								priority
+							/>
+						</div>
+					</div>
 				</div>
 			</section>
 			<div className="max-w-[85%] mx-auto">
 				<TrustedBy />
 				<Features />
+				<Certifications />
 				<CoreProducts />
 				<UseCases />
-				<Certifications />
 			</div>
+			<Consolutation />
 		</main>
 	);
 }

@@ -9,36 +9,68 @@ export default function Certifications() {
 		<section className="py-12">
 			<div className="container mx-auto px-4">
 				<h2 className="text-3xl font-bold text-center mb-12">
-					<span className="text-primary">Local Technology Principal</span> <br /> with <br />{" "}
+					<span className="text-primary">Local Technology Principal</span>{" "}
+					<br /> with <br />{" "}
 					<span className="text-primary">World Class Quality</span>
 				</h2>
 				<div className="grid md:grid-cols-2 gap-8">
-					<Card className="bg-white/10 backdrop-blur-lg">
-						<CardHeader>
-							<div className="mb-4">
-								<Image
-									src={tkdn}
-									alt="TKDN"
-									width={150}
-									height={150}
-									className="fixed-logo"
-								/>
-							</div>
-							<CardTitle className="text-xl font-semibold text-primary">
-								Nodeflux with High TKDN value (99.04%)
-							</CardTitle>
-						</CardHeader>
-						<CardContent className="text-justify">
-							<p className="mb-4 ">
-								Proud to be Indonesian, Nodeflux is Made in Indonesia, By
-								Indonesian, supported by Indonesian investor and consists of all
-								Indonesian talented engineers until today. Nodeflux Brand and
-								Product is also Registered as Indonesian Intellectual Property.
-							</p>
-							
-						</CardContent>
+					<Card
+						className="bg-white backdrop-blur-lg relative overflow-hidden"
+						style={{
+							backgroundColor: "#0000",
+						}}
+					>
+						<div
+							className="absolute inset-0 z-0"
+							style={{
+								backgroundImage: "url('/landing-page/bendera.webp')",
+								backgroundSize: "cover",
+								backgroundPosition: "center",
+							}}
+						/>
+						<div className="absolute inset-0 bg-white opacity-70 z-10" />
+						<div className="relative z-20">
+							<CardHeader>
+								<div className="mb-4">
+									<Image
+										src={tkdn}
+										alt="TKDN"
+										width={150}
+										height={150}
+										className="fixed-logo"
+									/>
+								</div>
+								<CardTitle className="text-xl font-semibold text-primary">
+									Nodeflux with High TKDN value (99.04%)
+								</CardTitle>
+							</CardHeader>
+							<CardContent className="text-justify">
+								<p className="mb-4 ">
+									Proud to be Indonesian, Nodeflux is Made in Indonesia, By
+									Indonesian, supported by Indonesian investor and consists of
+									all Indonesian talented engineers until today. Nodeflux Brand
+									and Product is also Registered as Indonesian Intellectual
+									Property.
+								</p>
+							</CardContent>
+						</div>
 					</Card>
-					<Card className="bg-white/10 backdrop-blur-lg">
+					<Card
+						className="bg-primary backdrop-blur-lg relative overflow-hidden"
+						style={{
+							backgroundColor: "#4c12a1",
+						}}
+					>
+						<div
+							className="absolute inset-0 z-0"
+							style={{
+								backgroundImage: "url('/landing-page/international.webp')",
+								backgroundSize: "cover",
+								backgroundPosition: "center",
+							}}
+						/>
+						<div className="absolute inset-0 bg-white opacity-75 z-10" />
+						<div className="relative z-20">
 						<CardHeader>
 							<Image src={nist} alt="NIST" width={100} height={100} />
 							<CardTitle className="text-xl font-semibold text-primary">
@@ -47,13 +79,13 @@ export default function Certifications() {
 						</CardHeader>
 						<CardContent className="text-justify">
 							<p>
-								 Nodeflux passed
-								NIST’s Face Recognition Vendor Test in 2019. Becoming the 1st
-								from Indonesia. Which only 4 from southeast asia 1 Indonesia, 3
-								singapore. Nodeflux ranked 25th world's best from ±90 Vision AI
-								company around the world.
+								Nodeflux passed NIST’s Face Recognition Vendor Test in 2019.
+								Becoming the 1st from Indonesia. Which only 4 from southeast
+								asia 1 Indonesia, 3 singapore. Nodeflux ranked 25th world's best
+								from ±90 Vision AI company around the world.
 							</p>
 						</CardContent>
+						</div>
 					</Card>
 				</div>
 			</div>

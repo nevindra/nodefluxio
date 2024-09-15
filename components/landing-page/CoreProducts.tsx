@@ -60,7 +60,7 @@ export default function CoreProducts() {
 							</CardContent>
 							<CardFooter className="flex justify-center">
 								<Button className="w-full sm:w-auto bg-primary text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base">
-									<Link href={product.link}>Learn More</Link>
+									<Link href={product.link} aria-label={product.title}>Learn More</Link>
 								</Button>
 							</CardFooter>
 						</Card>

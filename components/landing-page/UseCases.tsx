@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import commandCenter from "@/public/landing-page/command-center.png";
 import smartcity from "@/public/landing-page/smart-city.jpg";
-import Image from "next/image";
+import Link from "next/link";
 export default function UseCases() {
 	const useCases = [
 		{
@@ -15,24 +15,28 @@ export default function UseCases() {
 			description:
 				"Enhance public safety and security with our advanced large-scale surveillance solutions. Monitor vast areas efficiently, detect anomalies in real-time, and respond swiftly to potential threats.",
 			image: commandCenter,
+			href: "/solutions/massive-surveillance",
 		},
 		{
 			title: "Smart City Solution",
 			description:
 				"Revolutionize urban living with our intelligent city management systems. Optimize traffic flow, improve resource allocation, and enhance overall quality of life for citizens through data-driven insights.",
 			image: smartcity,
+			href: "/solutions/smart-city",
 		},
 		{
 			title: "Integrated Building Surveillance",
 			description:
 				"Secure your premises with our comprehensive building surveillance solutions. Monitor access points, track occupancy, and ensure safety protocols are followed, all through a single integrated platform.",
 			image: smartcity,
+			href: "/solutions/smart-building",
 		},
 		{
 			title: "Retail Store Optimization",
 			description:
 				"Elevate your retail operations with our cutting-edge analytics. Gain valuable insights into customer behavior, optimize store layouts, and enhance the shopping experience while improving operational efficiency.",
 			image: smartcity,
+			href: "/solutions/retail-analytics",
 		},
 	];
 	return (
@@ -44,9 +48,9 @@ export default function UseCases() {
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{useCases.map((useCase, index) => (
-						<Card key={index} className="flex flex-col h-full items-center justify-center text-center">
+						<Card key={index} className="flex flex-col h-full items-center justify-center text-center bg-[#DEE1FE]">
 							<CardHeader className="">
-								<div className="w-full flex items-center justify-center rounded-lg mb-4">
+								{/* <div className="w-full flex items-center justify-center rounded-lg mb-4">
 									<Image
 										src={useCase.image}
 										alt={useCase.title}
@@ -54,14 +58,16 @@ export default function UseCases() {
 										height={400}
 										className="rounded-lg fixed-size"
 									/>
-								</div>
+								</div> */}
 								<h3 className="text-xl font-semibold">{useCase.title}</h3>
 							</CardHeader>
 							<CardContent>
 								<p>{useCase.description}</p>
 							</CardContent>
 							<CardFooter>
-								<Button className="bg-primary text-white text-lg sm:text-sm">See more</Button>
+								<Button className="bg-primary text-white text-lg sm:text-sm">
+									<Link href={useCase.href}>See more</Link>
+								</Button>
 							</CardFooter>
 						</Card>
 					))}

@@ -7,9 +7,12 @@ import "./globals.css";
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Nodeflux | Computer Vision",
+	title: {
+		template: "Nodeflux | %s",
+		default: "Nodeflux | Computer Vision",
+	},
 	description:
-		"Nodeflux is a Indonesian company that provides cutting-edge solutions for computer vision.",
+		"Nodeflux is an Indonesian artificial intelligence company specializing in vision AI, providing solutions for various industries and government sectors, and recognized internationally for its technological advancements and security certifications.",
 	icons: {
 		icon: "favicon.ico",
 		apple: "apple-icon.png",
