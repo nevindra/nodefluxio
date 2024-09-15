@@ -19,13 +19,13 @@ export default function Hero({ data }: { data: HeroData }) {
 				strategy="beforeInteractive"
 			/>
 			<section
-				className="py-4 md:py-8 bg-primary bg-opacity-100 bg-blend-overlay bg-cover bg-center relative overflow-hidden"
+				className="py-4 md:py-8 bg-primary bg-opacity-100 bg-blend-overlay bg-cover bg-center overflow-hidden"
 				style={{
 					backgroundColor: "#4c12a1",
 				}}
 			>
 				<ParticlesBackground />
-				<div className="container px-4 flex flex-col md:flex-row items-center text-white">
+				<div className="container px-4 flex flex-col md:flex-row items-center relative text-white">
 					<div className="w-full md:w-1/2 px-4 md:px-8 mb-8 md:mb-0">
 						<h1 className="text-3xl md:text-4xl font-bold mb-4">
 							{data.title}
@@ -36,7 +36,6 @@ export default function Hero({ data }: { data: HeroData }) {
 						<ul className="mb-6">
 							{data.features.map((feature, index) => (
 								<li key={index} className="flex items-center mb-2">
-
 									<CheckCircle2 className="text-green-500 mr-2" />
 									{feature}
 								</li>

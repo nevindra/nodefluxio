@@ -1,11 +1,7 @@
 import { Badge } from "@/components/ui/badge";
-import {
-	Card,
-	CardContent,
-	CardHeader,
-	CardTitle
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import HeroVideoDialog from "../magicui/hero-video-dialog";
 
 export default function PeopleAnalytics() {
 	const PeopleAnalytics = [
@@ -84,7 +80,7 @@ export default function PeopleAnalytics() {
 							key={index}
 							value={item.title.toLowerCase().replace(/\s+/g, "-")}
 						>
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+							<div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
 								<div className="order-2 md:order-1">
 									<Card className="h-full">
 										<CardHeader>
@@ -119,13 +115,13 @@ export default function PeopleAnalytics() {
 									</Card>
 								</div>
 								{item.videosUrl && (
-									<div className="order-1 md:order-2">
-										<iframe
-											src={item.videosUrl}
-											className="w-full h-full min-h-[300px] rounded-lg"
-											allow="autoplay"
-											allowFullScreen
-											title={item.title}
+									<div className="relative h-full order-1 md:order-2">
+										<HeroVideoDialog
+											className="dark:hidden block"
+											animationStyle="top-in-bottom-out"
+											videoSrc={item.videosUrl}
+											thumbnailAlt={item.title}
+											thumbnailSrc="/products-page/people-oriented.webp"
 										/>
 									</div>
 								)}

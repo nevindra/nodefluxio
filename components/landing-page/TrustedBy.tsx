@@ -8,13 +8,16 @@ const TrustedBy = () => {
 		{ name: "Brimob", logo: "/landing-page/logos/brimob.png" },
 		{ name: "Polri", logo: "/landing-page/logos/polri.png" },
 		{ name: "Mabes", logo: "/landing-page/logos/mabes.png" },
+		{name: "BNPT", logo: "/landing-page/logos/bnpt.png"},
+		{name: "Baintelkam", logo: "/landing-page/logos/baintelkam.png"},
 		{ name: "Imigrasi", logo: "/landing-page/logos/imigrasi.png" },
 		{ name: "Beacukai", logo: "/landing-page/logos/beacukai.png" },
 		{ name: "jsc", logo: "/landing-page/logos/jsc.jpg" },
 		{ name: "Jabar", logo: "/landing-page/logos/diskom-jabar.png" },
-		{ name: "Jatim", logo: "/landing-page/logos/kominfo-jatim.png" },
-		{ name: "Telkom", logo: "/landing-page/logos/telkom.png" },
-		{ name: "Jasamarga", logo: "/landing-page/logos/jasamarga.png" },
+		{ name: "Jatim", logo: "/landing-page/logos/kominfo-jatim.png" }
+		
+		// { name: "Telkom", logo: "/landing-page/logos/telkom.png" },
+		// { name: "Jasamarga", logo: "/landing-page/logos/jasamarga.png" },
 	];
 	return (
 		<section className="w-full py-7">
@@ -32,12 +35,13 @@ const TrustedBy = () => {
 								fill
 								sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 14vw"
 								style={{ objectFit: "contain" }}
+								priority
 							/>
 						</div>
 					))}
 				</div>
 				<div className="flex justify-center px-4 sm:px-0">
-					<Image src={statistics} alt="Statistics" className="w-full h-auto" />
+					<Image src={statistics} alt="Statistics" className="w-full h-auto" priority/>
 				</div>
 			</div>
 		</section>

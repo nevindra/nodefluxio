@@ -30,9 +30,9 @@ export default function NavigationBar() {
 			description: "AI Analytics for your business",
 		},
 		{
-			href: "/streaming-compression",
-			title: "Streaming Compression",
-			description: "Streaming Compression",
+			href: "/platform",
+			title: "Platform",
+			description: "VisionAIre Platform to manage the system",
 		},
 	];
 	return (
@@ -41,7 +41,6 @@ export default function NavigationBar() {
 				<div className="flex h-16 items-center justify-between">
 					<div className="flex items-center">
 						<Link href="/" className="flex-shrink-0">
-							{/* logo nodeflux lengkap */}
 							<Image
 								src={visionaireLogo}
 								alt="Visionaire Logo"
