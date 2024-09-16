@@ -1,4 +1,4 @@
-import BusinessProcess from "@/components/BusinessProcess";
+import Consolutation from "@/components/landing-page/Consolutation";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -180,9 +180,7 @@ export default function MassiveSurveillance() {
 				</Card>
 			</section>
 			<section className="py-3">
-				<div className="container w-[85%] mx-auto px-4 space-y-4">
-					<BusinessProcess isContactus />
-				</div>
+				<Consolutation />
 			</section>
 		</main>
 	);

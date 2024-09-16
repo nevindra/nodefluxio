@@ -1,3 +1,6 @@
+"use client";
+import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
+import { BorderBeam } from "@/components/magicui/border-beam";
 import {
 	Card,
 	CardContent,
@@ -6,11 +9,11 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
 import Link from "next/link";
-import AnimatedGradientText from "../magicui/animated-gradient-text";
-import { BorderBeam } from "../magicui/border-beam";
 
 export default function CoreProducts() {
 	const Products = [
@@ -21,6 +24,7 @@ export default function CoreProducts() {
 			image: "/landing-page/dashboard-main.webp",
 			link: "/dashboard",
 			button: "Explore New Dashboard",
+			animationData: "/lottie/dashboard.lottie", // Use the path to the .lottie file
 		},
 		{
 			title: "Analytics",
@@ -29,6 +33,7 @@ export default function CoreProducts() {
 			image: "/landing-page/Analytics.png",
 			link: "/analytics",
 			button: "Introducing Vision LLM",
+			animationData: "/lottie/analytics.lottie", // Use the path to the .lottie file
 		},
 		{
 			title: "Platform",
@@ -37,8 +42,30 @@ export default function CoreProducts() {
 			image: "/landing-page/platform-main.webp",
 			link: "/platform",
 			button: "View Our Platform",
+			animationData: "/lottie/platform.lottie", // Use the path to the .lottie file
 		},
 	];
+	const [isVisible, setIsVisible] = useState(false);
+	const sectionRef = useRef(null);
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				setIsVisible(entry.isIntersecting);
+			},
+			{ threshold: 0.1 }, // Trigger when 10% of the section is visible
+		);
+
+		if (sectionRef.current) {
+			observer.observe(sectionRef.current);
+		}
+
+		return () => {
+			if (sectionRef.current) {
+				observer.unobserve(sectionRef.current);
+			}
+		};
+	}, []);
+
 	return (
 		<section className="py-8 sm:py-12">
 			<div className="container mx-auto px-4">
@@ -58,14 +85,12 @@ export default function CoreProducts() {
 								colorTo="#9c40ff"
 							/>
 							<CardHeader>
-								<div className="relative w-full aspect-[4/3] mb-4">
-									<Image
-										src={product.image}
-										alt={product.title}
-										fill
-										className="rounded-lg object-cover"
-									/>
-								</div>
+								<DotLottieReact
+									src={product.animationData}
+									loop
+									className="w-full h-auto"
+									autoplay
+								/>
 								<CardTitle className="text-xl sm:text-2xl sm:text-center">
 									{product.title}
 								</CardTitle>

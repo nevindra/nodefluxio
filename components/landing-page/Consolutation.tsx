@@ -26,13 +26,13 @@ export default function Consolutation() {
 							</a>
 						</Button>
 					</div>
-					<div className="w-full md:w-1/2 max-w-md">
+					<div className="w-full md:w-1/4 max-w-md">
 						<Image
 							src="/landing-page/smart-donkey.webp"
 							alt="Smart Donkey"
 							className="w-full h-auto sm:h-92"
-							width={400}
-							height={400}
+							width={300}
+							height={300}
 						/>
 					</div>
 				</div>

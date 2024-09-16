@@ -83,7 +83,7 @@ export default function Products() {
 	return (
 		<main>
 			<Hero data={heroData} />
-			<section className="py-8 w-[85%] mx-auto mt-4">
+			<section className="relative py-8 w-[85%] mx-auto mt-4">
 				<div className="container mx-auto px-4 space-y-4">
 					<h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
 						VisionAIre Products

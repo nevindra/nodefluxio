@@ -61,7 +61,7 @@ export default function Dashboard() {
 	return (
 		<main>
 			<Hero data={heroData} />
-			<section className="flex flex-col max-w-[85%] mx-auto my-4">
+			<section className="relative flex flex-col max-w-[85%] mx-auto my-4">
 				<div className="flex flex-col items-center justify-center my-4">
 					<h1 className="text-3xl font-bold text-center mb-4">
 						Reimagine the way you monitor and manage your business with

@@ -40,13 +40,13 @@ export default function Features() {
 				</div>
 				<div className="flex flex-col gap-8 lg:flex-1">
 					<ShineBorder color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}>
-						<Card className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+						<Card className="relative flex w-full flex-col overflow-hidden rounded-lg border bg-background md:shadow-xl">
 							<CardHeader>
 								<h3 className="text-xl font-semibold">
 									Vision AI Integration Platform
 								</h3>
 							</CardHeader>
-							<CardContent className="text-center">
+							<CardContent>
 								<p>
 									VisionAIre is a cutting-edge platform that acts as the core
 									and brain of computer vision systems, offering unparalleled
@@ -56,7 +56,7 @@ export default function Features() {
 						</Card>
 					</ShineBorder>
 					<ShineBorder color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}>
-						<Card className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+						<Card className="relative flex w-full flex-col overflow-hidden rounded-lg border bg-background md:shadow-xl">
 							<CardHeader>
 								<h3 className="text-xl font-semibold">
 									Vision AI Integration Platform
