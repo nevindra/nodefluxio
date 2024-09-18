@@ -120,7 +120,9 @@ export default function Footer() {
 										</Link>
 									</li>
 									<li>
-										<Button variant="default">Contact Us</Button>
+										<Button variant="default">
+											<Link href="/contact-us">Contact Us</Link>
+										</Button>
 									</li>
 								</ul>
 							</div>

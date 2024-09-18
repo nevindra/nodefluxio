@@ -49,6 +49,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<meta name="google-site-verification" content="YJevxjbOP3qnYa2wMu3sQaDoy7cxLdH3cdTnDwbcqQI" />
 			<body className={inter.className}>
 				<NavigationBar />
 				{children}

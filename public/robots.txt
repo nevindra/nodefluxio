@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nodeflux.io
+
+# Sitemaps
+Sitemap: https://nodeflux.io/sitemap.xml
