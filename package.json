@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@lottiefiles/dotlottie-react": "^0.8.12",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-icons": "^1.3.0",
@@ -16,6 +17,7 @@
     "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
@@ -25,9 +27,13 @@
     "particles.js": "^2.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "resend": "^4.0.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "valibot": "^0.42.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",

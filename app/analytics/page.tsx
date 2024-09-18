@@ -24,12 +24,12 @@ export default function Analytics() {
 			<Hero data={heroData} />
 			<section className="mx-auto py-5 bg-[#dfdff2]">
 				<div className="container max-w-[85%] mx-auto">
-				<FaceAnalytics />
-				<PeopleAnalytics />
-				<PeopleAnomaly />
-				<PeopleBehavior />
-				<VehicleAnalytics />
-				<Environments />
+					<FaceAnalytics />
+					<PeopleAnalytics />
+					<PeopleAnomaly />
+					<PeopleBehavior />
+					<VehicleAnalytics />
+					<Environments />
 				</div>
 			</section>
 		</main>

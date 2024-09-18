@@ -1,72 +1,71 @@
 import Consolutation from "@/components/landing-page/Consolutation";
 import { Button } from "@/components/ui/button";
 import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card";
 import visionaire from "@/public/products-hero.webp";
-import topologi from "@/public/solutions/massive-surveillance.png";
 import { CheckCircle2, CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 
-export default function MassiveSurveillance() {
+export default function SmartCity() {
 	const listUseCases = [
 		{
-			name: "Tactical Body Worn Surveillance",
+			name: "Citizen Monitoring",
 			description:
-				"Equip security personnel with body-worn cameras enhanced by real-time AI analytics, providing immediate situational awareness and threat detection capabilities.",
+				"Implement an AI-driven system to monitor public spaces for citizen safety, emergency detection, and public service optimization.",
 			relevantAnalytics: [
-				"Face Recognition",
 				"People Analytics",
 				"Anomaly Detection",
+				"Face Recognition",
 			],
 			benefits: [
-				"Enhanced real-time threat assessment and response",
-				"Improved evidence collection for post-incident analysis",
-				"Increased accountability and transparency in security operations",
+				"Enhanced public safety through rapid incident detection",
+				"Improved emergency response times",
+				"Data-driven optimization of public services",
 			],
 		},
 		{
-			name: "Mobile Drone Surveillance",
+			name: "Public Area Monitoring",
 			description:
-				"Deploy AI-powered drones for aerial surveillance, enabling wide-area monitoring and rapid response to security incidents in challenging terrains or large-scale events.",
+				"Deploy AI-powered surveillance in public areas to manage crowd safety, detect potential security threats, and ensure compliance with public regulations.",
 			relevantAnalytics: [
-				"People Analytics",
 				"Crowd Estimation",
-				"Anomaly Detection",
-			],
-			benefits: [
-				"Extended surveillance coverage in hard-to-reach areas",
-				"Rapid deployment for emergency situations",
-				"Bird's-eye view for comprehensive situational awareness",
-			],
-		},
-		{
-			name: "CCTVs Camera Surveillance",
-			description:
-				"Implement advanced AI analytics across existing CCTV infrastructure to enhance detection capabilities, automate monitoring processes, and provide proactive security alerts.",
-			relevantAnalytics: [
-				"Face Recognition",
-				"People Analytics",
 				"People Fighting",
 				"Anomaly Detection",
+				"Personal Protective Equipment",
 			],
 			benefits: [
-				"Automated 24/7 monitoring with reduced human error",
-				"Rapid incident detection and response",
-				"Scalable solution for large-scale surveillance operations",
+				"Proactive crowd management and safety enforcement",
+				"Rapid detection and response to public disturbances",
+				"Improved cleanliness and regulation compliance in public spaces",
+			],
+		},
+		{
+			name: "Traffic Monitoring",
+			description:
+				"Utilize AI analytics for comprehensive traffic monitoring, enabling real-time traffic management, incident detection, and long-term urban planning.",
+			relevantAnalytics: [
+				"Vehicle Analytics",
+				"License Plate Recognition",
+				"Anomaly Detection",
+			],
+			benefits: [
+				"Real-time traffic flow optimization and congestion reduction",
+				"Rapid incident detection and response on city roads",
+				"Data-driven urban planning for improved city infrastructure",
 			],
 		},
 	];
 
 	const benefits = [
-		"Comprehensive security coverage across diverse environments and scenarios",
-		"Significant reduction in human error and oversight in surveillance operations",
-		"Scalable and adaptable security infrastructure to meet evolving threats",
-		"Enhanced operational efficiency and cost-effectiveness in large-scale security management ",
+		"Enhanced public safety and security across the city",
+		"Improved quality of life through optimized urban services",
+		"Data-driven decision making for city management and development",
+		"Increased operational efficiency in managing city resources and infrastructure",
 	];
 
 	return (
@@ -75,14 +74,14 @@ export default function MassiveSurveillance() {
 				<div className="container mx-auto px-4 flex flex-col md:flex-row items-center text-white">
 					<div className="w-full md:w-1/2 md:pr-12 mb-8 md:mb-0">
 						<h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-							VisionAIre Massive Surveillance
+							VisionAIre Smart City Solution
 						</h1>
 						<p className="mb-8 text-lg leading-relaxed">
-							A comprehensive security system powered by Nodeflux VisionAIre,
-							utilizing advanced computer vision to monitor large-scale areas.
-							This solution provides real-time threat detection, crowd analysis,
-							and anomaly identification across multiple locations
-							simultaneously.
+							An advanced urban management system utilizing Nodeflux
+							VisionAIre's computer vision technology. It enables city-wide
+							surveillance, traffic monitoring, public safety analysis, and
+							infrastructure management, creating safer and more efficient urban
+							environments.
 						</p>
 						<ul className="mb-8 space-y-3">
 							{listUseCases.map((useCase, index) => (
@@ -115,19 +114,19 @@ export default function MassiveSurveillance() {
 					</h2>
 					<div className="mb-8">
 						<Image
-							src={topologi}
+							src="/solutions/smart-city.webp"
 							alt="VisionAIre Analytics Topology"
 							width={1920}
 							height={1080}
 							className="w-full mx-auto rounded-lg shadow-lg"
 						/>
 						<p className="text-xs italic text-center mt-2 text-gray-600">
-							*Example topology for a massive surveillance use case
+							*Example topology for a smart city solution use case
 						</p>
 					</div>
 					<div className="text-center mb-12">
 						<h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary">
-							VisionAIre Massive Surveillance Use Cases
+							VisionAIre Smart City Solution Use Cases
 						</h2>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Monitor and act on real-time video analytics to enhance your
@@ -185,12 +184,12 @@ export default function MassiveSurveillance() {
 					<Card className="shadow-xl">
 						<CardHeader>
 							<CardTitle className="text-2xl md:text-3xl font-bold text-primary">
-								Benefits of VisionAIre Massive Surveillance
+								Benefits of VisionAIre Smart City Solution
 							</CardTitle>
 						</CardHeader>
 						<CardContent>
 							<p className="text-lg mb-6 text-gray-700">
-								VisionAIre Massive Surveillance offers the following advantages:
+								VisionAIre Smart City Solution offers the following advantages:
 							</p>
 							<ul className="space-y-4">
 								{benefits.map((benefit, index) => (

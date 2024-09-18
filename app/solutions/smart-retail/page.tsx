@@ -8,65 +8,54 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import visionaire from "@/public/products-hero.webp";
-import topologi from "@/public/solutions/massive-surveillance.png";
 import { CheckCircle2, CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 
-export default function MassiveSurveillance() {
+export default function SmartRetail() {
 	const listUseCases = [
 		{
-			name: "Tactical Body Worn Surveillance",
+			name: "Customer Journey Mapping",
 			description:
-				"Equip security personnel with body-worn cameras enhanced by real-time AI analytics, providing immediate situational awareness and threat detection capabilities.",
-			relevantAnalytics: [
-				"Face Recognition",
-				"People Analytics",
-				"Anomaly Detection",
-			],
+				"Utilize advanced AI analytics to track and analyze customer movements, interactions, and behaviors within retail spaces for optimized store layouts and personalized experiences.",
+			relevantAnalytics: ["People Analytics", "Face Recognition"],
 			benefits: [
-				"Enhanced real-time threat assessment and response",
-				"Improved evidence collection for post-incident analysis",
-				"Increased accountability and transparency in security operations",
+				"Optimized store layouts based on customer behavior patterns",
+				"Personalized shopping experiences for returning customers",
+				"Data-driven merchandising and product placement strategies",
 			],
 		},
 		{
-			name: "Mobile Drone Surveillance",
+			name: "Queue Management",
 			description:
-				"Deploy AI-powered drones for aerial surveillance, enabling wide-area monitoring and rapid response to security incidents in challenging terrains or large-scale events.",
-			relevantAnalytics: [
-				"People Analytics",
-				"Crowd Estimation",
-				"Anomaly Detection",
-			],
+				"Implement an AI-powered system to monitor and manage queues, optimizing staffing and improving customer satisfaction.",
+			relevantAnalytics: ["People Analytics", "Crowd Estimation"],
 			benefits: [
-				"Extended surveillance coverage in hard-to-reach areas",
-				"Rapid deployment for emergency situations",
-				"Bird's-eye view for comprehensive situational awareness",
+				"Reduced wait times and improved customer satisfaction",
+				"Optimized staff allocation based on real-time demand",
+				"Enhanced operational efficiency during peak hours",
 			],
 		},
 		{
-			name: "CCTVs Camera Surveillance",
+			name: "VIP or Blacklisted Management",
 			description:
-				"Implement advanced AI analytics across existing CCTV infrastructure to enhance detection capabilities, automate monitoring processes, and provide proactive security alerts.",
+				"Deploy a facial recognition system to identify VIP customers for enhanced service or detect blacklisted individuals for security purposes.",
 			relevantAnalytics: [
 				"Face Recognition",
-				"People Analytics",
-				"People Fighting",
-				"Anomaly Detection",
+				"Face Searching and Matching API",
 			],
 			benefits: [
-				"Automated 24/7 monitoring with reduced human error",
-				"Rapid incident detection and response",
-				"Scalable solution for large-scale surveillance operations",
+				"Enhanced personalized service for VIP customers",
+				"Improved store security and loss prevention",
+				"Quick alert system for staff to respond appropriately to different customer types",
 			],
 		},
 	];
 
 	const benefits = [
-		"Comprehensive security coverage across diverse environments and scenarios",
-		"Significant reduction in human error and oversight in surveillance operations",
-		"Scalable and adaptable security infrastructure to meet evolving threats",
-		"Enhanced operational efficiency and cost-effectiveness in large-scale security management ",
+		"Data-driven decision making for retail strategy and operations",
+		"Enhanced customer experience leading to increased loyalty and sales",
+		"Improved operational efficiency and resource allocation",
+		"Competitive advantage through advanced retail analytics and insights",
 	];
 
 	return (
@@ -75,14 +64,14 @@ export default function MassiveSurveillance() {
 				<div className="container mx-auto px-4 flex flex-col md:flex-row items-center text-white">
 					<div className="w-full md:w-1/2 md:pr-12 mb-8 md:mb-0">
 						<h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-							VisionAIre Massive Surveillance
+							VisionAIre Smart Retail Solution
 						</h1>
 						<p className="mb-8 text-lg leading-relaxed">
-							A comprehensive security system powered by Nodeflux VisionAIre,
-							utilizing advanced computer vision to monitor large-scale areas.
-							This solution provides real-time threat detection, crowd analysis,
-							and anomaly identification across multiple locations
-							simultaneously.
+							A cutting-edge retail analytics and security platform built on
+							Nodeflux VisionAIre. This solution combines computer vision-based
+							theft prevention with customer behavior insights, queue
+							management, and foot traffic analysis to optimize store operations
+							and security.
 						</p>
 						<ul className="mb-8 space-y-3">
 							{listUseCases.map((useCase, index) => (
@@ -115,7 +104,7 @@ export default function MassiveSurveillance() {
 					</h2>
 					<div className="mb-8">
 						<Image
-							src={topologi}
+							src="/solutions/retail-solution.webp"
 							alt="VisionAIre Analytics Topology"
 							width={1920}
 							height={1080}
@@ -127,7 +116,7 @@ export default function MassiveSurveillance() {
 					</div>
 					<div className="text-center mb-12">
 						<h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary">
-							VisionAIre Massive Surveillance Use Cases
+							VisionAIre Smart Retail Solution Use Cases
 						</h2>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Monitor and act on real-time video analytics to enhance your
@@ -185,12 +174,12 @@ export default function MassiveSurveillance() {
 					<Card className="shadow-xl">
 						<CardHeader>
 							<CardTitle className="text-2xl md:text-3xl font-bold text-primary">
-								Benefits of VisionAIre Massive Surveillance
+								Benefits of VisionAIre Smart Retail Solution
 							</CardTitle>
 						</CardHeader>
 						<CardContent>
 							<p className="text-lg mb-6 text-gray-700">
-								VisionAIre Massive Surveillance offers the following advantages:
+								VisionAIre Smart Retail Solution offers the following advantages:
 							</p>
 							<ul className="space-y-4">
 								{benefits.map((benefit, index) => (

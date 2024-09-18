@@ -97,16 +97,16 @@ export default function NavigationBar() {
 													An AI-powered solution for massive surveillance
 												</ListItem>
 												<ListItem
-													href="/retail-analytics"
+													href="/solutions/smart-retail"
 													title="Retail Analytics"
 												>
 													An AI-powered solution for retail analytics
 												</ListItem>
-												<ListItem href="/smart-building" title="Smart Building">
+												<ListItem href="/solutions/smart-building" title="Smart Building">
 													An AI-powered solution for massive surveillance
 												</ListItem>
 												<ListItem
-													href="/smart-city"
+													href="/solutions/smart-city"
 													title="Smart City Solution"
 												>
 													An AI-powered solution for massive surveillance

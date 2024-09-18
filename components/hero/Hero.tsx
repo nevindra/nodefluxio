@@ -52,6 +52,7 @@ export default function Hero({ data }: { data: HeroData }) {
 							width={600}
 							height={400}
 							className="w-full h-auto"
+							priority
 						/>
 					</div>
 				</div>
