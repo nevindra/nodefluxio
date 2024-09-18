@@ -20,7 +20,7 @@ export default function Consolutation() {
 							Looking for another solution?
 						</h2>
 						<p className="text-lg mb-6">Contact us to learn more about our solutions.</p>
-						<Button variant="outline" className="text-primary ">
+						<Button variant="outline" className="text-primary bg-secondary ">
 							<a href="/contact-us" className="text-lg font-semibold">
 								Schedule your consultation
 							</a>

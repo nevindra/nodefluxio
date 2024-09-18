@@ -1,12 +1,25 @@
-import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import HeroVideoDialog from "../magicui/hero-video-dialog";
+
 export default function FaceAnalytics() {
+	const Biometrics = [
+		{
+			title: "Face Recognition",
+			descriptions:
+				"Face Recognition by Nodeflux is an AI-powered computer vision solution that accurately identifies and verifies individuals by analyzing facial features from video streams or images. It is designed for real-time applications, leveraging deep learning algorithms to detect and recognize faces in a wide range of environments. This solution can be used for access control, security monitoring, and identity verification.",
+			features: [
+				"Dynamic Watchlist Management",
+				"High Processing and Accuracy",
+				"Proven in Many International Events",
+			],
+			thumbnail: "/products-page/face-recognition.webp",
+			videosUrl:
+				"https://drive.google.com/file/d/1ZbXkMKnxze8Dj1fG-ZWeMkjlQ6dsw7EK/preview",
+			tags: ["Most Popular"],
+		},
+	];
 	return (
 		<>
 			<div className="container mx-auto px-4 mt-2">
@@ -14,71 +27,84 @@ export default function FaceAnalytics() {
 					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						Face Analytics
 					</h1>
-					<p className="text-center text-sm md:text-base">
-						Face Analytics is a cutting-edge technology that enables businesses
-						to analyze and understand human faces in real-time. By leveraging
-						the power of computer vision, this technology can provide valuable
-						insights into customer behavior, preferences, and sentiment.
+					<p className="text-center text-md md:text-lg">
+						Nodeflux VisionAIre Analytics presents a groundbreaking Face
+						Analytics solution, unlocking the power of advanced facial
+						recognition technology. This cutting-edge system offers unparalleled
+						accuracy and speed, revolutionizing security, customer service, and
+						personalized experiences across various industries.
 					</p>
 				</div>
-				<div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-8">
-					<Card className="w-full md:w-1/2 rounded-xl border-2">
-						<CardHeader>
-							<CardTitle className="text-xl md:text-2xl mx-5">
-								Face Recognition
-							</CardTitle>
-						</CardHeader>
-						<CardContent className="mx-5">
-							<p className="text-justify text-sm">
-								Visionaire Face Recognition Surveillance by Nodeflux is a Vision
-								Artiﬁcial Intelligence Analytics Software which provides
-								accurate searching and recognition with searching mechanism 1:N.
-								Using deep learning algorithms to enhance the accuracy of facial
-								inferencing, Nodeflux Face Recognition automatically detects
-								facial features and classifies them into recognized or
-								unrecognized persons.
-							</p>
-							<br />
-							<ul className="mb-6 text-sm">
-								<li className="flex items-center mb-2">
-									<span className="w-2 h-2 bg-primary rounded-full mr-2 flex-shrink-0"></span>
-									<span>
-										Proven Record with 200 Million Face Searching and Matching
-									</span>
-								</li>
-								<li className="flex items-center mb-2">
-									<span className="w-2 h-2 bg-primary rounded-full mr-2 flex-shrink-0"></span>
-									<span>Flexibility on Device Integration</span>
-								</li>
-								<li className="flex items-center mb-2">
-									<span className="w-2 h-2 bg-primary rounded-full mr-2 flex-shrink-0"></span>
-									<span>Adaptability for Any Needs</span>
-								</li>
-							</ul>
-						</CardContent>
-						<CardFooter>
-							<Button className="bg-primary text-white px-6 py-3 rounded-md mx-5">
-								Read more
-							</Button>
-						</CardFooter>
-					</Card>
-					<div className="w-full md:w-1/2 mt-3 md:mt-0">
-						<video className="w-full rounded-lg" controls>
-							<source
-								src="https://www.w3schools.com/html/mov_bbb.mp4"
-								type="video/mp4"
-							/>
-							<track
-								src="https://www.w3schools.com/html/mov_bbb.vtt"
-								kind="captions"
-								srcLang="en"
-								label="English"
-								default
-							/>
-							Your browser does not support the video tag.
-						</video>
+				<Tabs
+					defaultValue={Biometrics[0].title.toLowerCase().replace(/\s+/g, "-")}
+				>
+					<div className="overflow-x-auto">
+						<TabsList className="flex items-center mb-4 min-w-max">
+							{Biometrics.map((item, index) => (
+								<TabsTrigger
+									key={index}
+									value={item.title.toLowerCase().replace(/\s+/g, "-")}
+									className="whitespace-nowrap data-[state=active]:bg-primary data-[state=active]:text-white"
+								>
+									{item.title}
+								</TabsTrigger>
+							))}
+						</TabsList>
 					</div>
-				</div>
+					{Biometrics.map((item, index) => (
+						<TabsContent
+							key={index}
+							value={item.title.toLowerCase().replace(/\s+/g, "-")}
+						>
+							<div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
+								<div className="order-2 md:order-1">
+									<Card className="h-full">
+										<CardHeader>
+											<CardTitle className="text-xl md:text-2xl">
+												{item.title}
+											</CardTitle>
+											<div>
+												{item.tags.map((tag, tagIndex) => (
+													<Badge key={tagIndex} className="mr-2">
+														{tag}
+													</Badge>
+												))}
+											</div>
+										</CardHeader>
+										<CardContent>
+											<p className="text-justify text-sm">
+												{item.descriptions}
+											</p>
+											<br />
+											<ul className="mb-6 text-sm">
+												{item.features.map((feature, featureIndex) => (
+													<li
+														key={featureIndex}
+														className="flex items-center mb-2"
+													>
+														<span className="w-2 h-2 bg-primary rounded-full mr-2 flex-shrink-0" />
+														<span>{feature}</span>
+													</li>
+												))}
+											</ul>
+										</CardContent>
+									</Card>
+								</div>
+								{item.videosUrl && (
+									<div className="relative h-full order-1 md:order-2">
+										<HeroVideoDialog
+											className="dark:hidden block"
+											animationStyle="top-in-bottom-out"
+											videoSrc={item.videosUrl}
+											thumbnailAlt={item.title}
+											thumbnailSrc={item.thumbnail}
+										/>
+									</div>
+								)}
+							</div>
+						</TabsContent>
+					))}
+				</Tabs>
 			</div>
 		</>
 	);

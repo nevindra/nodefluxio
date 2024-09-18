@@ -17,6 +17,7 @@ export default function PeopleAnalytics() {
 			videosUrl:
 				"https://drive.google.com/file/d/1YTVcfuTqeYarTlZmSB4wl9aibCUZE56t/preview",
 			tags: ["New SKU", "Object Detection", "Multiple Logic"],
+			thumbnail: "/products-page/people-analytics.webp",
 		},
 		{
 			title: "Crowd Estimation",
@@ -30,6 +31,7 @@ export default function PeopleAnalytics() {
 			videosUrl:
 				"https://drive.google.com/file/d/1yGDE5cKL4OnwuwVALSL2jTCvtEZ6uY29/preview",
 			tags: ["Object Estimation"],
+			thumbnail: "/products-page/crowd-estimation.webp",
 		},
 		{
 			title: "Personal Protective Equipment Detection",
@@ -43,6 +45,7 @@ export default function PeopleAnalytics() {
 			videosUrl:
 				"https://drive.google.com/file/d/1mcr2_WqLtA4vPUAQHgw-jxCAL5ZqCRRF/preview",
 			tags: ["New SKU", "Object Detection"],
+			thumbnail: "/products-page/ppe-detection.webp",
 		},
 	];
 	return (
@@ -52,9 +55,12 @@ export default function PeopleAnalytics() {
 					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						People Oriented Analytics
 					</h1>
-					<p className="text-center text-sm md:text-base">
-						People Oriented Analytics is a cutting-edge technology that enables
-						businesses to analyze human object detection in real-time.
+					<p className="text-center text-md md:text-lg">
+						Transform your understanding of human behavior and movement patterns
+						with Nodeflux VisionAIre Analytics' comprehensive People Oriented
+						Analytics suite. This powerful collection of tools provides
+						invaluable insights for crowd management, safety compliance, and
+						operational optimization.
 					</p>
 				</div>
 				<Tabs
@@ -121,7 +127,7 @@ export default function PeopleAnalytics() {
 											animationStyle="top-in-bottom-out"
 											videoSrc={item.videosUrl}
 											thumbnailAlt={item.title}
-											thumbnailSrc="/products-page/people-oriented.webp"
+											thumbnailSrc={item.thumbnail}
 										/>
 									</div>
 								)}

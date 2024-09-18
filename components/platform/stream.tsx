@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import visionaireSVG from "@/public/platform/visionaire.svg";
-import { Cctv, Database, FileVideo, Webhook } from "lucide-react";
+import { Cctv, Database, Webhook } from "lucide-react";
 import Image from "next/image";
 import React, { forwardRef, useRef } from "react";
 import { AnimatedBeam } from "../magicui/animated-beam";
@@ -44,12 +44,17 @@ export default function Stream() {
 						<Cctv className="w-8 h-8" color="#4C12A1" />
 					</Circle>
 					<Circle ref={div5Ref} className="size-16">
-						<Webhook className="w-8 h-8" />
+						<Webhook className="w-8 h-8" color="#4C12A1" />
 					</Circle>
 				</div>
 				<div className="flex flex-row items-center justify-between">
 					<Circle ref={div2Ref} className="size-16">
-						<FileVideo className="w-8 h-8" />
+						<Image
+							src="/platform/cam.png"
+							alt="Body Worn"
+							width={200}
+							height={125}
+						/>
 					</Circle>
 					<Circle ref={div4Ref} className="size-24">
 						<Image
@@ -60,15 +65,25 @@ export default function Stream() {
 						/>
 					</Circle>
 					<Circle ref={div6Ref} className="size-16">
-						<Database className="w-8 h-8" />
+						<Database className="w-8 h-8" color="#4C12A1" />
 					</Circle>
 				</div>
 				<div className="flex flex-row items-center justify-between">
 					<Circle ref={div3Ref} className="size-16">
-						<Cctv className="w-8 h-8" />
+						<Image
+							src="/platform/camera-drone.png"
+							alt="Drone"
+							width={200}
+							height={125}
+						/>
 					</Circle>
 					<Circle ref={div7Ref} className="size-16">
-						<Cctv className="w-8 h-8" />
+						<Image
+							src="/platform/business.png"
+							alt="Dashboard"
+							width={200}
+							height={125}
+						/>
 					</Circle>
 				</div>
 			</div>
@@ -109,7 +124,7 @@ export default function Stream() {
 				fromRef={div6Ref}
 				toRef={div4Ref}
 				reverse
-                duration={3}
+				duration={3}
 			/>
 			<AnimatedBeam
 				containerRef={containerRef}
@@ -118,7 +133,7 @@ export default function Stream() {
 				curvature={75}
 				endYOffset={10}
 				reverse
-                duration={3}
+				duration={3}
 			/>
 		</div>
 	);

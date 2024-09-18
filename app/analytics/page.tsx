@@ -1,7 +1,9 @@
 import Hero from "@/components/hero/Hero";
+import Environments from "@/components/products-page/Environment";
 import FaceAnalytics from "@/components/products-page/FaceAnalytics";
 import PeopleAnalytics from "@/components/products-page/PeopleAnalytics";
 import PeopleAnomaly from "@/components/products-page/PeopleAnomaly";
+import PeopleBehavior from "@/components/products-page/PeopleBehavior";
 import VehicleAnalytics from "@/components/products-page/VehicleAnalytics";
 
 export default function Analytics() {
@@ -25,7 +27,9 @@ export default function Analytics() {
 				<FaceAnalytics />
 				<PeopleAnalytics />
 				<PeopleAnomaly />
+				<PeopleBehavior />
 				<VehicleAnalytics />
+				<Environments />
 				</div>
 			</section>
 		</main>

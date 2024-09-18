@@ -3,61 +3,60 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HeroVideoDialog from "../magicui/hero-video-dialog";
 
-export default function VehicleAnalytics() {
-	const VehicleAnalytics = [
+export default function PeopleBehavior() {
+	const PeopleBehavior = [
 		{
-			title: "Vehicle Analytics",
+			title: "Person Smoking Detection",
 			descriptions:
-				"Nodeflux Vehicle Analytics offers a comprehensive analysis of vehicle movements, classifications, and behaviors captured through video feeds. It can detect and categorize vehicles based on type (e.g., cars, trucks, motorcycles, bus) and provide data that supports traffic management, parking systems, or law enforcement operations.",
+				"Person Smoking Detection by Nodeflux detects individuals smoking in restricted or no-smoking areas. This solution helps organizations enforce smoking policies and ensure compliance in environments such as offices, public buildings, or transportation hubs.",
 			features: [
-				"Multiclass Vehicle Classification",
-				"Rich Vehicle Analytics Applications to Support Multiple Scenario",
-				"Multiple Counter Line and Detection Area",
+				"Real-time detection of prohibited smoking activities",
+				"Customizable Alerts for Prohibited Areas",
+				"Supports Integration with Existing Monitoring Systems",
 			],
+			thumbnail: "/products-page/person-smoking.webp",
+			tags: ["New SKU", "Object Detection"],
 			videosUrl:
-				"https://drive.google.com/file/d/1L0r4z4_auKql1muPE107dP7SohAxKu-a/preview",
-			tags: ["New SKU", "Object Detection", "Multiple Logic"],
-			thumbnail: "/products-page/vehicle-analytics.webp",
+				"https://drive.google.com/file/d/1MHk61R5ZAtaasOQix4uY3loLCm1rltPB/view?usp=drive_link",
 		},
 		{
-			title: "License Plate Recognition",
+			title: "Person Playing Handphone Detection",
 			descriptions:
-				"License Plate Recognition (LPR) by Nodeflux uses sophisticated algorithms to identify and read vehicle license plates in real-time, even in challenging environments. It is optimized for Indonesian plate formats but can adapt to other plate types. LPR is essential for traffic enforcement, parking management, and vehicle access control.",
+				"Nodeflux Person Playing Handphone Detection automatically monitors for mobile phone usage in restricted areas, enhancing safety in environments like industrial sites, driving scenarios, or secure zones where distractions are dangerous or prohibited.",
 			features: [
-				"Adaptive to Withstand in Real Environment",
-				"High Accuracy on Various Types of Indonesian Plates",
-				"Optimal Value for Different Traffic Scenarios",
+				"Accurate Detection of Phone Use",
+				"Real-Time Monitoring in Restricted Areas",
+				"Customizable Notifications and Alerts",
 			],
+			thumbnail: "/products-page/person-playing-handphone.webp",
+			tags: ["New SKU", "Object Detection"],
 			videosUrl:
-				"https://drive.google.com/file/d/1L0r4z4_auKql1muPE107dP7SohAxKu-a/preview",
-			tags: ["Object Detection"],
-			thumbnail: "/products-page/lpr.webp",
+				"https://drive.google.com/file/d/19KpTDiFxI2b7F0dBlfn88v2sZ4rs8uXX/view?usp=drive_link",
 		},
 	];
 
 	return (
 		<>
-			<div className="px-4 mt-6">
+			<div className="mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
 					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
-						Vehicle Analytics
+						People Behavior Analytics
 					</h1>
-					<p className="text-center text-md md:text-lg">
-						Revolutionize traffic management, parking operations, and
-						vehicle-related security with Nodeflux VisionAIre Analytics'
-						comprehensive Vehicle Analytics suite. Leverage AI-powered insights
-						to optimize traffic flow, enhance security, and improve overall
-						transportation infrastructure.
+					<p className="text-center text-base md:text-lg">
+						Elevate your understanding of human actions and interactions with
+						Nodeflux VisionAIre Analytics' innovative People Behavior Analytics.
+						This suite offers unprecedented insights into specific behaviors,
+						enabling proactive management and improved policy enforcement.
 					</p>
 				</div>
 				<Tabs
-					defaultValue={VehicleAnalytics[0].title
+					defaultValue={PeopleBehavior[0].title
 						.toLowerCase()
 						.replace(/\s+/g, "-")}
 				>
 					<div className="overflow-x-auto">
 						<TabsList className="flex items-center mb-4 min-w-max">
-							{VehicleAnalytics.map((item, index) => (
+							{PeopleBehavior.map((item, index) => (
 								<TabsTrigger
 									key={index}
 									value={item.title.toLowerCase().replace(/\s+/g, "-")}
@@ -68,12 +67,12 @@ export default function VehicleAnalytics() {
 							))}
 						</TabsList>
 					</div>
-					{VehicleAnalytics.map((item, index) => (
+					{PeopleBehavior.map((item, index) => (
 						<TabsContent
 							key={index}
 							value={item.title.toLowerCase().replace(/\s+/g, "-")}
 						>
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+							<div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
 								<div className="order-2 md:order-1">
 									<Card className="h-full">
 										<CardHeader>
@@ -108,7 +107,7 @@ export default function VehicleAnalytics() {
 									</Card>
 								</div>
 								{item.videosUrl && (
-									<div className="order-1 md:order-2">
+									<div className="relative h-full order-1 md:order-2">
 										<HeroVideoDialog
 											className="dark:hidden block"
 											animationStyle="top-in-bottom-out"

@@ -93,7 +93,7 @@ export default function BusinessProcess({
 				</Button>
 				{currentStep === steps.length - 1 && (
 					<Button
-						className="text-white font-bold py-2 px-4 rounded"
+						className="bg-secondaary text-primary font-bold py-2 px-4 rounded"
 						onClick={onScheduleConsultation}
 					>
 						Schedule your consultation

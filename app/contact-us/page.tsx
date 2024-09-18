@@ -1,5 +1,4 @@
 "use client";
-import BusinessProcess from "@/components/BusinessProcess";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -17,15 +16,14 @@ export default function ContactUs() {
 	const [showContactForm, setShowContactForm] = useState(false);
 	return (
 		<main className="flex flex-col items-center justify-between space-y-4 max-w-[85%] mx-auto">
-			<BusinessProcess
-				onScheduleConsultation={() => setShowContactForm(true)}
-			/>
-			{showContactForm && (
+			
 				<div className="mx-auto p-6 w-[85%] my-4">
 					<Card>
 						<CardHeader>
-							<CardTitle>Contact Us</CardTitle>
-							<CardDescription>
+							<CardTitle className="text-xl md:text-2xl text-center">
+								Contact Us
+							</CardTitle>
+							<CardDescription className="text-sm md:text-base text-center text-black">
 								Fill out the form below to get in touch with our team.
 							</CardDescription>
 						</CardHeader>
@@ -68,7 +66,7 @@ export default function ContactUs() {
 						</CardFooter>
 					</Card>
 				</div>
-			)}
+			
 		</main>
 	);
 }

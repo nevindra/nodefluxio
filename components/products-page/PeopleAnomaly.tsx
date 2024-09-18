@@ -1,70 +1,80 @@
 import { Badge } from "@/components/ui/badge";
-import {
-	Card,
-	CardContent,
-	CardHeader,
-	CardTitle
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import HeroVideoDialog from "../magicui/hero-video-dialog";
 
 export default function PeopleAnomaly() {
 	const PeopleAnomaly = [
-        {
-            title: "Person Shooting Detection",
-            descriptions: "Person Using Firearms Detection by Nodeflux enhances security in high-risk areas by detecting individuals holding or using firearms. This solution enables rapid response by security personnel and is particularly useful for critical infrastructures such as airports, government buildings, or public spaces.",
-            features: [
-                "Immediate Detection of Firearms",
-                "Customizable Alert System for Threat Response",
-                "Real-Time Integration with Security Systems"
-            ],
-			videosUrl:"https://drive.google.com/file/d/14HGrcmPyY_x8qPXecOqGzP4I19VDpOUl/preview",
-            tags: ["New SKU", "Object Detection"]
-        },
-        {
-            title: "People Fighting/Riots Detection",
-            descriptions: "Nodeflux People Fighting/Riots Recognition monitors for signs of physical confrontations or riots within crowds. By detecting aggressive behavior or sudden movements, it allows authorities to intervene quickly, preventing escalation and maintaining public safety.",
-            features: [
-                "Real-time analysis of violent or aggressive behavior",
-                "Scalable system for monitoring large crowds",
-                "Custom Alerts for Quick Response"
-            ],
-			videosUrl:"https://drive.google.com/file/d/1xb-gvFFhRPJPWj7gRZUrdlr58Kg11FL4/preview",
-            tags: ["New SKU", "Vision LLM", "In Depth Analysis"]
-        },
-        {
-            title: "ATM Burglary Detection",
-            descriptions: "Nodeflux ATM Burglary Incident Recognition detects suspicious activity around ATMs, such as tampering or burglary attempts. It is designed to enhance the security of banking systems and prevent financial crimes by alerting authorities in real-time.",
-            features: [
-                "Tamper detection specific to ATM systems",
-                "Real-time alerts for burglary attempts",
-                "Full integration with existing bank security infrastructures"
-            ],
-			videosUrl:"https://drive.google.com/file/d/1ySrj7EaVYubWTQm1zj8_js2MrF0jKbCP/preview",
-            tags: ["New SKU", "Vision LLM", "In Depth Analysis"]
-        },
-        {
-            title: "Vandalism Detection",
-            descriptions: "Vandalism Attempt Recognition by Nodeflux detects attempts to damage property or engage in vandalism in public or private areas. It supports real-time alerts and video evidence collection, helping to maintain order and reduce property damage.",
-            features: [
-                "Early-stage detection of suspicious behavior",
-                "Detailed event logging for forensic analysis",
-                "Scalable to public and private property monitoring"
-            ],
-			videosUrl:"https://drive.google.com/file/d/1M7KcGS9OL9cysCeSQSqScXjouhnjvb0u/preview",
-            tags: ["New SKU", "Vision LLM", "In Depth Analysis"]
-        }
-    ];
+		{
+			title: "Person Shooting Detection",
+			descriptions:
+				"Person Using Firearms Detection by Nodeflux enhances security in high-risk areas by detecting individuals holding or using firearms. This solution enables rapid response by security personnel and is particularly useful for critical infrastructures such as airports, government buildings, or public spaces.",
+			features: [
+				"Immediate Detection of Firearms",
+				"Customizable Alert System for Threat Response",
+				"Real-Time Integration with Security Systems",
+			],
+			videosUrl:
+				"https://drive.google.com/file/d/14HGrcmPyY_x8qPXecOqGzP4I19VDpOUl/preview",
+			tags: ["New SKU", "Object Detection"],
+			thumbnail: "/products-page/person-shooting.webp",
+		},
+		{
+			title: "People Fighting/Riots Detection",
+			descriptions:
+				"Nodeflux People Fighting/Riots Recognition monitors for signs of physical confrontations or riots within crowds. By detecting aggressive behavior or sudden movements, it allows authorities to intervene quickly, preventing escalation and maintaining public safety.",
+			features: [
+				"Real-time analysis of violent or aggressive behavior",
+				"Scalable system for monitoring large crowds",
+				"Custom Alerts for Quick Response",
+			],
+			videosUrl:
+				"https://drive.google.com/file/d/1xb-gvFFhRPJPWj7gRZUrdlr58Kg11FL4/preview",
+			tags: ["New SKU", "Vision LLM", "In Depth Analysis"],
+			thumbnail: "/products-page/people-fighting.webp",
+		},
+		{
+			title: "ATM Burglary Detection",
+			descriptions:
+				"Nodeflux ATM Burglary Incident Recognition detects suspicious activity around ATMs, such as tampering or burglary attempts. It is designed to enhance the security of banking systems and prevent financial crimes by alerting authorities in real-time.",
+			features: [
+				"Tamper detection specific to ATM systems",
+				"Real-time alerts for burglary attempts",
+				"Full integration with existing bank security infrastructures",
+			],
+			videosUrl:
+				"https://drive.google.com/file/d/1ySrj7EaVYubWTQm1zj8_js2MrF0jKbCP/preview",
+			tags: ["New SKU", "Vision LLM", "In Depth Analysis"],
+			thumbnail: "/products-page/atm-burglary.webp",
+		},
+		{
+			title: "Vandalism Detection",
+			descriptions:
+				"Vandalism Attempt Recognition by Nodeflux detects attempts to damage property or engage in vandalism in public or private areas. It supports real-time alerts and video evidence collection, helping to maintain order and reduce property damage.",
+			features: [
+				"Early-stage detection of suspicious behavior",
+				"Detailed event logging for forensic analysis",
+				"Scalable to public and private property monitoring",
+			],
+			videosUrl:
+				"https://drive.google.com/file/d/1M7KcGS9OL9cysCeSQSqScXjouhnjvb0u/preview",
+			tags: ["New SKU", "Vision LLM", "In Depth Analysis"],
+			thumbnail: "/products-page/vandalism-detection.webp",
+		},
+	];
 
 	return (
 		<>
 			<div className="mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
 					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
-						People Oriented Analytics
+						People Anomaly Analytics
 					</h1>
-					<p className="text-center text-sm md:text-base">
-						People Oriented Analytics is a cutting-edge technology that enables
-						businesses to analyze human object detection in real-time.
+					<p className="text-center text-md md:text-lg">
+						Stay one step ahead of potential security threats and disruptive
+						behaviors with Nodeflux VisionAIre Analytics' advanced People
+						Anomaly Analytics. This suite employs sophisticated AI algorithms to
+						detect and alert on unusual or concerning activities.
 					</p>
 				</div>
 				<Tabs
@@ -126,13 +136,15 @@ export default function PeopleAnomaly() {
 								</div>
 								{item.videosUrl && (
 									<div className="order-1 md:order-2">
-										<iframe
-											src={item.videosUrl}
-											className="w-full h-full min-h-[300px] rounded-lg"
-											allow="autoplay"
-											allowFullScreen
-											title={item.title}
-										/>
+										<div className="relative h-full order-1 md:order-2">
+											<HeroVideoDialog
+												className="dark:hidden block"
+												animationStyle="top-in-bottom-out"
+												videoSrc={item.videosUrl}
+												thumbnailAlt={item.title}
+												thumbnailSrc={item.thumbnail}
+											/>
+										</div>
 									</div>
 								)}
 							</div>
