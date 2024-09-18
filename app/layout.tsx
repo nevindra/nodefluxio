@@ -17,8 +17,31 @@ export const metadata: Metadata = {
 		icon: "favicon.ico",
 		apple: "apple-icon.png",
 	},
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: "https://www.nodeflux.io/", // Replace with your actual URL
+		siteName: "Nodeflux",
+		title: "Nodeflux | Computer Vision",
+		description: "Nodeflux - Leading Indonesian Vision AI Company",
+		images: [
+			{
+				url: "/landing-page/visionaire-core.webp",
+				width: 1200,
+				height: 630,
+				alt: "Nodeflux Vision AI",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		site: "@nodefluxio", // Replace with your actual Twitter handle
+		creator: "@nodefluxio", // Replace with your actual Twitter handle
+		title: "Nodeflux | Computer Vision",
+		description: "Leading Indonesian Vision AI Company",
+		images: ["/landing-page/visionaire-core.webp"],
+	},
 };
-
 export default function RootLayout({
 	children,
 }: Readonly<{
