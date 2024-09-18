@@ -82,26 +82,10 @@ export default function Footer() {
 									</li>
 									<li>
 										<Link
-											href="/analytics/face"
-											className="text-base text-muted-foreground hover:text-foreground pl-4"
-										>
-											Face Analytics
-										</Link>
-									</li>
-									<li>
-										<Link
-											href="/analytics/people"
-											className="text-base text-muted-foreground hover:text-foreground pl-4"
-										>
-											People Oriented Analytics
-										</Link>
-									</li>
-									<li>
-										<Link
 											href="/hardware"
 											className="text-base text-muted-foreground hover:text-foreground"
 										>
-											Hardware
+											Platform
 										</Link>
 									</li>
 								</ul>

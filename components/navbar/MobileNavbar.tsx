@@ -44,16 +44,10 @@ export default function MobileNavbar() {
 								Analytics
 							</Link>
 							<Link
-								href="/hardware"
+								href="/platform"
 								className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
 							>
-								Hardware
-							</Link>
-							<Link
-								href="/streaming-compression"
-								className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-							>
-								Streaming Compression
+								Platform
 							</Link>
 						</div>
 					)}
