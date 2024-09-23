@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://www.nodeflux.io/", // Replace with your actual URL
+		url: "https://www.nodeflux.io/",
 		siteName: "Nodeflux",
 		title: "Nodeflux | Computer Vision",
 		description: "Nodeflux - Leading Indonesian Vision AI Company",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		site: "@nodefluxio", // Replace with your actual Twitter handle
-		creator: "@nodefluxio", // Replace with your actual Twitter handle
+		site: "@nodefluxio", 
+		creator: "@nodefluxio", 
 		title: "Nodeflux | Computer Vision",
 		description: "Leading Indonesian Vision AI Company",
 		images: ["/landing-page/visionaire-core.webp"],
