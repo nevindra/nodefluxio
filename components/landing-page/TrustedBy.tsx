@@ -48,32 +48,7 @@ const TrustedBy = () => {
 					Trusted Key Players in{" "}
 					<span className="text-[#e84a2e]">Indonesia</span>
 				</h2>
-				<div className="relative w-full overflow-hidden">
-					<div
-						ref={scrollRef}
-						className="flex whitespace-nowrap"
-						style={{ width: "200%", minWidth: "2000px" }} // Add minWidth here
-					>
-						{[...companies, ...companies].map((company, index) => (
-							<div
-								key={`${company.name}-${index}`}
-								className="inline-block mx-6"
-							>
-								<div className="w-32 h-20 sm:w-40 sm:h-24 relative">
-									{" "}
-									{/* Increased size */}
-									<Image
-										src={company.logo}
-										alt={`${company.name} logo`}
-										fill
-										sizes="(max-width: 640px) 128px, 160px"
-										style={{ objectFit: "contain" }}
-									/>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
+				
 				<div className="flex justify-center px-4 sm:px-0">
 					<Image
 						src={statistics}
