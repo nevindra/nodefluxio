@@ -15,7 +15,7 @@ export default function Environments() {
 				"Seamless Integration with Disaster Management Systems",
 			],
 			videosUrl:
-				"https://drive.google.com/file/d/1cbIu-paO6HPEsLohvtUvngHcckTzxoC7/view?usp=drive_link",
+				"https://drive.google.com/file/d/1cbIu-paO6HPEsLohvtUvngHcckTzxoC7/preview",
 			tags: ["New SKU", "VisionLLM"],
 			thumbnail: "/products-page/pre-flood.webp",
 		},
@@ -29,7 +29,7 @@ export default function Environments() {
 				"Fostering the Growth of Your Application Ecosystem",
 			],
 			videosUrl:
-				"https://drive.google.com/file/d/1oMWV5j4z_O3ZStXL5mdVxZ3fQdLBxi2m/view?usp=drive_link",
+				"https://drive.google.com/file/d/1oMWV5j4z_O3ZStXL5mdVxZ3fQdLBxi2m/preview",
 			thumbnail: "/products-page/wlm.webp",
 			tags: ["New SKU", "Segmentation"],
 		},
@@ -43,7 +43,7 @@ export default function Environments() {
 				"Supports Integration with Fire Response Systems",
 			],
 			videosUrl:
-				"https://drive.google.com/file/d/1LEyd8jbZSczXt0SOI1j_buUlFlON00V1/view?usp=drive_link",
+				"https://drive.google.com/file/d/1LEyd8jbZSczXt0SOI1j_buUlFlON00V1/preview",
 			thumbnail: "/products-page/smoke-fire.webp",
 			tags: ["New SKU", "Object Detection"],
 		},

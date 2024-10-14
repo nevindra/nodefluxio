@@ -1,20 +1,20 @@
 import ParticlesBackground from "@/components/ParticleBackground";
-import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import Script from "next/script";
 
 type HeroData = {
-    title: string;
-    description: string;
-    image: string;
-    features: string[];
+	title: string;
+	description: string;
+	image: string;
+	features: string[];
 };
 
 export default function Hero({ data }: { data: HeroData }) {
-    return (
-        <>
-        <Script
+	return (
+		<>
+			<Script
 				src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"
 				strategy="beforeInteractive"
 			/>
@@ -30,9 +30,7 @@ export default function Hero({ data }: { data: HeroData }) {
 						<h1 className="text-3xl md:text-4xl font-bold mb-4">
 							{data.title}
 						</h1>
-						<p className="mb-6">
-							{data.description}
-						</p>
+						<p className="mb-6">{data.description}</p>
 						<ul className="mb-6">
 							{data.features.map((feature, index) => (
 								<li key={index} className="flex items-center mb-2">
@@ -41,9 +39,11 @@ export default function Hero({ data }: { data: HeroData }) {
 								</li>
 							))}
 						</ul>
-						<Button className="bg-secondary text-primary px-6 py-3 rounded-md">
-							Schedule your consultation
-						</Button>
+						<RainbowButton className="bg-primary">
+							<a href="/contact-us" className="text-lg font-semibold">
+								Schedule Your Consultation
+							</a>
+						</RainbowButton>
 					</div>
 					<div className="w-full md:w-1/2">
 						<Image
@@ -57,6 +57,6 @@ export default function Hero({ data }: { data: HeroData }) {
 					</div>
 				</div>
 			</section>
-        </>
-    );
+		</>
+	);
 }

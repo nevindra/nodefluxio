@@ -4,7 +4,7 @@ import CoreProducts from "@/components/landing-page/CoreProducts";
 import Features from "@/components/landing-page/Features";
 import TrustedBy from "@/components/landing-page/TrustedBy";
 import UseCases from "@/components/landing-page/UseCases";
-import PulsatingButton from "@/components/magicui/pulsating-button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import Image from "next/image";
 
 export default function Home() {
@@ -20,9 +20,9 @@ export default function Home() {
 							<p className="text-lg mb-6">
 							Redefining the Possibilities of Surveillance with Advanced AI Algorithms and Real-time Analytics.
 							</p>
-							<PulsatingButton className="bg-primary">
+							<RainbowButton className="bg-primary">
 								<a href="/contact-us" className="text-lg font-semibold">Schedule your consultation</a>
-							</PulsatingButton>
+							</RainbowButton>
 						</div>
 						<div className="w-full md:w-3/5 lg:w-2/3 max-w-3xl">
 							<Image

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Button } from "../ui/button";
 
 export default function Consolutation() {
@@ -25,15 +24,6 @@ export default function Consolutation() {
 								Schedule your consultation
 							</a>
 						</Button>
-					</div>
-					<div className="w-full md:w-1/4 max-w-md">
-						<Image
-							src="/landing-page/smart-donkey.webp"
-							alt="Smart Donkey"
-							className="w-full h-auto sm:h-92"
-							width={300}
-							height={300}
-						/>
 					</div>
 				</div>
 			</div>
