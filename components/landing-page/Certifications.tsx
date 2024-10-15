@@ -64,7 +64,7 @@ export default function Certifications() {
 						<div
 							className="absolute inset-0 z-0"
 							style={{
-								backgroundImage: "url('/landing-page/international.webp')",
+								backgroundImage: "url('/landing-page/network.webp')",
 								backgroundSize: "cover",
 								backgroundPosition: "center",
 							}}
