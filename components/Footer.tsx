@@ -91,9 +91,6 @@ export default function Footer() {
 								</ul>
 							</div>
 							<div>
-								<h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
-									Company
-								</h3>
 								<ul className="mt-4 space-y-4">
 									<li>
 										<Link
@@ -109,14 +106,6 @@ export default function Footer() {
 											className="text-base text-muted-foreground hover:text-foreground"
 										>
 											About
-										</Link>
-									</li>
-									<li>
-										<Link
-											href="/careers"
-											className="text-base text-muted-foreground hover:text-foreground"
-										>
-											Careers
 										</Link>
 									</li>
 									<li>
