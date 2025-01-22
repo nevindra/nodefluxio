@@ -2,23 +2,23 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-	"Nodeflux | Products",
-	"Discover Nodeflux's state-of-the-art AI video analytics capabilities, offering real-time insights, behavior analysis, object detection, and more for smarter, more effective video surveillance and security management.",
+	"VisionAIre Analytics - Advanced AI Video Analytics Solutions | Nodeflux",
+	"Transform your business with Nodeflux's enterprise AI video analytics. From facial recognition to behavior analysis, our real-time analytics deliver actionable insights for security, retail, and smart cities.",
 	[
-		"AI video analytics",
-		"intelligent surveillance",
-		"real-time video analysis",
-		"behavior detection",
-		"object recognition",
-		"security management",
+		"AI video analytics platform",
+		"facial recognition system",
+		"behavior analytics software",
+		"people counting analytics",
+		"vehicle recognition system",
+		"anomaly detection AI",
+		"real-time video analytics",
+		"enterprise analytics solution",
 		"computer vision analytics",
-		"video intelligence",
-		"smart city solutions",
-		"Nodeflux AI",
-        "Generative AI",
-        "Face Recognition",
-        "People Analytics",
-        "Vehicle Analytics",
+		"smart city analytics",
+		"retail analytics platform",
+		"security analytics system",
+		"crowd analytics software",
+		"traffic analysis AI"
 	],
 );
 

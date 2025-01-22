@@ -7,31 +7,31 @@ import PeopleBehavior from "@/components/products-page/PeopleBehavior";
 import VehicleAnalytics from "@/components/products-page/VehicleAnalytics";
 
 export default function Analytics() {
-	const heroData = {
-		title: "Nodeflux Analytics",
-		description:
-			"Monitor and take action with your video analytics data in real-time to improve your business operations",
-		image: "/products-hero.webp",
-		features: [
-			"Customizable widgets for at-a-glance system status",
-			"Interactive data visualizations for deep insights",
-			"Real-time data streaming for continuous analysis",
-		],
-	};
+  const heroData = {
+    title: "VisionAIre Analytics: Enterprise AI Video Analytics",
+    description:
+      "Transform your operations with enterprise-grade AI video analytics. Our comprehensive suite delivers real-time insights through facial recognition, behavior analysis, and intelligent monitoring for security, retail, and smart cities.",
+    image: "/products-hero.webp",
+    features: [
+      "Real-time AI analytics with sub-second processing",
+      "Enterprise-grade accuracy and scalability",
+      "Multi-domain analytics capabilities",
+    ],
+  };
 
-	return (
-		<main>
-			<Hero data={heroData} />
-			<section className="mx-auto py-5 bg-[#dfdff2]">
-				<div className="container max-w-[85%] mx-auto">
-					<FaceAnalytics />
-					<PeopleAnalytics />
-					<PeopleAnomaly />
-					<PeopleBehavior />
-					<VehicleAnalytics />
-					<Environments />
-				</div>
-			</section>
-		</main>
-	);
+  return (
+    <main>
+      <Hero data={heroData} />
+      <section className="mx-auto py-5 bg-[#dfdff2]">
+        <div className="container max-w-[85%] mx-auto">
+          <FaceAnalytics />
+          <PeopleAnalytics />
+          <PeopleAnomaly />
+          <PeopleBehavior />
+          <VehicleAnalytics />
+          <Environments />
+        </div>
+      </section>
+    </main>
+  );
 }

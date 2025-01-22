@@ -2,19 +2,23 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-	"Nodeflux | Massive Security Surveillance Solutions",
-	"Nodeflux's massive surveillance solutions empower law enforcement and military operations with advanced AI analytics for drones, body-worn cameras, and extensive CCTV networks.",
+	"Advanced Military & Law Enforcement Surveillance System | Nodeflux",
+	"Enterprise-grade surveillance system for military and law enforcement. Featuring AI-powered facial recognition, tactical body cameras, drone integration, and real-time threat detection for mission-critical operations.",
 	[
-		"massive surveillance",
-		"law enforcement technology",
-		"military surveillance",
-		"drone analytics",
-		"bodycam integration",
-		"CCTV networks",
-		"AI-powered security",
+		"military surveillance system",
+		"law enforcement surveillance",
+		"tactical body cameras",
+		"drone surveillance system",
+		"AI facial recognition",
 		"real-time threat detection",
-		"large-scale video analysis",
-		"Nodeflux for public safety",
+		"command center software",
+		"military security solutions",
+		"tactical surveillance",
+		"integrated CCTV system",
+		"security operations center",
+		"mission-critical surveillance",
+		"military-grade analytics",
+		"force protection systems"
 	],
 );
 

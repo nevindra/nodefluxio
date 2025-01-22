@@ -2,19 +2,19 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-	"Nodeflux | Platform",
-	"Discover Nodeflux's VisionAIre Stream Platform, an integrated solution for streamlining video processing and analysis workflows. Centralize inference processing, database management, and encode-decode streaming for powerful AI-driven video analytics.",
+	"VisionAIre Platform - Enterprise Computer Vision Infrastructure | Nodeflux",
+	"Power your enterprise with VisionAIre Platform - a scalable computer vision infrastructure for real-time video processing, AI inference, and analytics. Built for enterprise-grade performance.",
 	[
-		"VisionAIre Stream Platform",
-		"integrated video processing",
-		"AI video analysis workflow",
-		"centralized processing hub",
-		"inference processing",
-		"video database management",
-		"encode-decode streaming",
-		"advanced inference capabilities",
-		"scalable video analytics",
-		"cross-industry AI platform",
+		"enterprise computer vision",
+		"AI infrastructure platform",
+		"video processing engine",
+		"real-time AI inference",
+		"distributed processing architecture",
+		"enterprise video analytics",
+		"computer vision deployment",
+		"AI model management",
+		"video streaming infrastructure",
+		"enterprise AI platform",
 	],
 );
 

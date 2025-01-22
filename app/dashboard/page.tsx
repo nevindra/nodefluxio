@@ -8,53 +8,57 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
+export const metadata = {
+  title: 'VisionAIre Dashboard - Advanced AI Video Analytics Platform | Nodeflux',
+  description: 'Experience real-time video analytics with VisionAIre Dashboard. Monitor multiple streams, analyze AI insights, and make data-driven decisions with our enterprise-grade computer vision platform.',
+};
+
 export default function Dashboard() {
 	const heroData = {
-		title: "VisionAIre Dashboard",
+		title: "VisionAIre Dashboard: Enterprise AI Video Analytics Platform",
 		image: "/landing-page/dashboard-main.webp",
 		description:
-			"A comprehensive, user-friendly interface that provides real-time insights and seamless control over your VisionAIre ecosystem, empowering data-driven decision-making.",
+			"Transform your business operations with our enterprise-grade AI video analytics dashboard. Get real-time insights, advanced analytics, and secure monitoring capabilities all in one powerful platform.",
 		features: [
-			"Customizable widgets for at-a-glance system status",
-			"Interactive data visualizations for deep insights",
-			"Role-based access control for enhanced security",
+			"Real-time AI video analytics with customizable dashboards",
+			"Enterprise-grade security with role-based access control",
+			"Advanced data visualization and analytics reporting",
 		],
 	};
 	const features = [
 		{
-			title: "Monitor All Streams in One Place",
+			title: "Unified Video Stream Management",
 			description:
-				"A centralized dashboard where users can view and manage multiple live streams simultaneously. This dashboard should be responsive for optimal viewing across different devices.",
+				"Manage and analyze multiple video streams in real-time through our enterprise-grade dashboard. Perfect for businesses requiring comprehensive video analytics and monitoring solutions across different locations.",
 			image: "/dashboard/streams.jpeg",
 			capabilities: [
-				"Stream Aggregation: The dashboard should be able to aggregate and display live streams from various sources (e.g., cameras, RTSP feeds).",
-				"Customizable Sorting and Filtering: Users should have the flexibility to sort and filter streams based on criteria like device name, location, stream type, or AI model.",
-				"Real-time Updates: The dashboard should refresh in real time to ensure that users always see the latest stream data.",
+				"Centralized Stream Management: Monitor unlimited video feeds from IP cameras, CCTV, and RTSP sources",
+				"Advanced Filtering System: Organize streams by location, device type, or custom tags for efficient management",
+				"Enterprise-grade Performance: Experience real-time updates with minimal latency across all streams",
 			],
 		},
 		{
-			title: "Single Stream View",
+			title: "Advanced AI-Powered Stream Analytics",
 			description:
-				"A dedicated page for viewing a specific camera's live stream, AI model inference results, and relevant statistics.",
-
+				"Leverage cutting-edge computer vision technology to extract actionable insights from your video streams. Our AI models provide real-time analysis for security, operations, and business intelligence.",
 			image: "/dashboard/single.jpeg",
 			capabilities: [
-				"Live Stream Display: The page should show the live stream from the selected camera in high quality.",
-				"AI Inference Visualization: Inference results from the AI model should be displayed in a clear and visually appealing manner.",
-				"Dynamic Statistics: The page should provide real-time statistics based on the chosen analytics (e.g., object count, vehicle speed, anomaly detection).",
-				"Stream Health Monitoring: The page should indicate the health status of the stream (e.g., connection stability, frame rate).",
+				"High-Definition Stream Analysis: Crystal-clear video monitoring with AI-enhanced visualization",
+				"Real-time AI Processing: Instant object detection, tracking, and behavioral analysis",
+				"Performance Analytics: Comprehensive metrics dashboard for stream health and AI model performance",
+				"Enterprise Security Features: End-to-end encryption and secure video transmission",
 			],
 		},
 		{
-			title: "Event History",
+			title: "Comprehensive Event Intelligence System",
 			description:
-				"A page where users can search and view historical event data from all cameras and AI models.",
+				"Access and analyze historical event data with our powerful search and analytics tools. Perfect for businesses requiring detailed audit trails and data-driven insights.",
 			image: "/dashboard/event.jpeg",
 			capabilities: [
-				"Comprehensive Search: Users should be able to search for events based on various criteria, including time, camera, AI model, event type, and specific attributes (e.g., object class, vehicle license plate).",
-				"Detailed Event Information: When an event is selected, the page should display detailed information such as timestamp, location, image/video evidence, and AI model inference results.",
-				"Data Export: Users should have the option to export event data for further analysis or storage.",
-				"Time-Based Visualization: The page should allow users to visualize event data over time using charts or graphs.",
+				"Enterprise Search Capabilities: Advanced filtering across all cameras and AI models with custom parameters",
+				"Forensic Analysis Tools: Detailed event reconstruction with AI-enhanced metadata",
+				"Business Intelligence Export: Generate custom reports and analytics in multiple formats",
+				"Visual Analytics Dashboard: Interactive timeline and trend analysis for better decision-making",
 			],
 		},
 	];
@@ -63,17 +67,11 @@ export default function Dashboard() {
 			<Hero data={heroData} />
 			<section className="relative flex flex-col max-w-[85%] mx-auto my-4">
 				<div className="flex flex-col items-center justify-center my-4">
-					<h1 className="text-3xl font-bold text-center mb-4">
-						Reimagine the way you monitor and manage your business with
-						Nodeflux.
-					</h1>
+					<h2 className="text-3xl font-bold text-center mb-4">
+						Transform Your Business Operations with AI-Powered Video Analytics
+					</h2>
 					<p className="text-center text-lg mb-6">
-						Nodeflux is a cutting-edge AI-powered solution that empowers
-						businesses to streamline their operations, enhance security, and
-						optimize their digital experiences. With its advanced analytics
-						capabilities, Nodeflux enables you to make data-driven decisions,
-						identify patterns, and gain valuable insights into your business
-						operations.
+						Nodeflux delivers enterprise-grade AI video analytics that revolutionizes how businesses monitor, analyze, and optimize their operations. Our platform combines advanced computer vision technology with intuitive analytics tools, enabling real-time insights and data-driven decision-making across your organization.
 					</p>
 				</div>
 				{features.map((feature, index) => (
@@ -94,15 +92,14 @@ export default function Dashboard() {
 							<Card className="bg-white backdrop-blur-lg w-full lg:w-1/2">
 								<CardHeader>
 									<CardTitle className="text-xl font-semibold text-primary">
-										{feature.title}
+										<h3>{feature.title}</h3>
 									</CardTitle>
 									<CardDescription className="text-justify">
 										{feature.description}
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
-									<p>Capabilities:</p>
-									<br />
+									<h4 className="font-medium mb-2">Key Capabilities:</h4>
 									<ul className="list-disc list-inside space-y-2">
 										{feature.capabilities.map((capability, capIndex) => (
 											<li key={capIndex}>{capability}</li>
