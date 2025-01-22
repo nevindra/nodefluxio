@@ -8,33 +8,39 @@ import "./globals.css";
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = generateMetadata(
-	"Nodeflux",
-	"Nodeflux is an Indonesian artificial intelligence company specializing in vision AI, providing solutions for various industries and government sectors, and recognized internationally for its technological advancements and security certifications.",
-	[
-		"Vision AI",
-		"Computer Vision",
-		"Artificial Intelligence",
-		"Indonesian AI",
-		"AI Solutions",
-	],
+  "Nodeflux",
+  "Nodeflux is an Indonesian artificial intelligence company specializing in vision AI, providing solutions for various industries and government sectors, and recognized internationally for its technological advancements and security certifications.",
+  [
+    "Vision AI",
+    "Computer Vision",
+    "Artificial Intelligence",
+    "Indonesian AI",
+    "AI Solutions",
+  ]
 );
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<meta
-				name="google-site-verification"
-				content="YJevxjbOP3qnYa2wMu3sQaDoy7cxLdH3cdTnDwbcqQI"
-			/>
-			<body className={inter.className}>
-				<NavigationBar />
-				{children}
-				<Footer />
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      {/* Nevin */}
+      <meta
+        name="google-site-verification"
+        content="YJevxjbOP3qnYa2wMu3sQaDoy7cxLdH3cdTnDwbcqQI"
+      />
+      {/* Meidy */}
+      <meta
+        name="google-site-verification"
+        content="8SnxIePEB-VC_C7XKtNeeYOFuxTN3ee62wLS63nAcl4"
+      />
+      <body className={inter.className}>
+        <NavigationBar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
 }
