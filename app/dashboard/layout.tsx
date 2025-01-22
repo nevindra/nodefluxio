@@ -2,26 +2,26 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-	"Nodeflux | Dashboard",
-	"Explore the features of Nodeflux's powerful dashboard, offering real-time insights, customizable analytics, and intuitive controls for managing your AI-powered video surveillance and analytics system.",
-	[
-		"Nodeflux dashboard",
-		"AI video analytics interface",
-		"real-time surveillance monitoring",
-		"customizable analytics dashboard",
-		"video data visualization",
-		"intelligent alert system",
-		"user-friendly analytics controls",
-		"video surveillance management",
-		"data-driven security insights",
-		"AI-powered monitoring platform",
-	],
+  "VisionAIre Dashboard - Security Command Center | Nodeflux",
+  "Advanced security command center for real-time surveillance monitoring. Trusted by Indonesian government & enterprises for smart city and security operations.",
+  [
+    "security command center",
+    "surveillance dashboard",
+    "smart city monitoring",
+    "security operations center",
+    "real-time threat detection",
+    "government security system",
+    "enterprise surveillance",
+    "Indonesian security platform",
+    "video analytics dashboard",
+    "security monitoring system",
+  ]
 );
 
 export default function DashboardLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return <>{children}</>;
+  return <>{children}</>;
 }

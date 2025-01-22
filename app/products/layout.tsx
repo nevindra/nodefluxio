@@ -2,28 +2,28 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-	"Nodeflux | Products",
-	"Explore Nodeflux's comprehensive suite of AI video analytics products, including intelligent dashboards, advanced analytics platforms, and cutting-edge surveillance solutions for enhanced security and operational efficiency.",
-	[
-		"Vision AI",
-        "Video Analytics",
-        "Indonesian Video Analytics",
-        "Surveillance Systems",
-		"Intelligent Surveillance Systems",
-		"Artificial Intelligence",
-		"Indonesian AI",
-		"AI Solutions",
-        "Indonesia Face Recognition",
-        "Generative AI",
-        "AI Platform",
-        "Video Analytics Platform",
-	],
+  "Nodeflux | Enterprise AI Video Analytics Solutions",
+  "Leading Indonesian AI video analytics for government & enterprise security, smart city, and retail. Trusted by institutions for surveillance and analytics.",
+  [
+    "Enterprise Video Analytics",
+    "Government Surveillance Systems",
+    "Smart City Indonesia",
+    "Smart Retail Analytics",
+    "Indonesian AI Company",
+    "Security Video Analytics",
+    "Face Recognition Indonesia",
+    "Video Analytics Platform",
+    "AI Surveillance System",
+    "CCTV Analytics",
+    "Intelligent Video Analytics",
+    "B2G Solutions Indonesia",
+  ]
 );
 
 export default function ProductsLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return <>{children}</>;
+  return <>{children}</>;
 }

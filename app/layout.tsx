@@ -9,8 +9,8 @@ const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   ...generateMetadata(
-    "Nodeflux",
-    "Nodeflux is an Indonesian artificial intelligence company specializing in vision AI, providing solutions for various industries and government sectors, and recognized internationally for its technological advancements and security certifications.",
+    "Nodeflux - Leading Indonesian Vision AI Company",
+    "Nodeflux is an Indonesian artificial intelligence company specializing in vision AI, providing solutions for various industries and government sectors.",
     [
       "Vision AI",
       "Computer Vision",
@@ -40,20 +40,6 @@ export default function RootLayout({
           name="google-site-verification"
           content="8SnxIePEB-VC_C7XKtNeeYOFuxTN3ee62wLS63nAcl4"
         />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Organization",
-            name: "Nodeflux",
-            description: "Indonesian Vision AI Company",
-            url: "https://www.nodeflux.io/",
-            logo: "https://www.nodeflux.io/logo.png",
-            sameAs: [
-              "https://twitter.com/nodefluxio",
-              "https://www.linkedin.com/company/nodeflux",
-            ],
-          })}
-        </script>
       </head>
       <body className={inter.className}>
         <NavigationBar />

@@ -2,26 +2,26 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-	"VisionAIre Platform - Enterprise Computer Vision Infrastructure | Nodeflux",
-	"Power your enterprise with VisionAIre Platform - a scalable computer vision infrastructure for real-time video processing, AI inference, and analytics. Built for enterprise-grade performance.",
-	[
-		"enterprise computer vision",
-		"AI infrastructure platform",
-		"video processing engine",
-		"real-time AI inference",
-		"distributed processing architecture",
-		"enterprise video analytics",
-		"computer vision deployment",
-		"AI model management",
-		"video streaming infrastructure",
-		"enterprise AI platform",
-	],
+  "VisionAIre Platform - Enterprise AI Video Analytics Platform | Nodeflux",
+  "Indonesia's trusted AI video analytics platform for security. Scalable infrastructure for surveillance, smart cities & retail analytics.",
+  [
+    "Indonesian AI platform",
+    "Government surveillance platform",
+    "Smart city infrastructure",
+    "Enterprise security platform",
+    "Video analytics system",
+    "Surveillance infrastructure",
+    "AI security platform",
+    "Government video analytics",
+    "Smart retail analytics",
+    "Indonesian tech solution",
+  ]
 );
 
 export default function PlatformLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return <>{children}</>;
+  return <>{children}</>;
 }

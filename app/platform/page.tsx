@@ -7,46 +7,47 @@ import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 export default function Platform() {
   const heroData = {
-    title: "VisionAIre Platform: Enterprise Computer Vision Infrastructure",
+    title:
+      "VisionAIre Platform: Indonesia's Leading AI Video Analytics Platform",
     image: "/products-hero.webp",
     description:
-      "Deploy enterprise-grade computer vision infrastructure with VisionAIre Platform. Our scalable architecture handles real-time video processing, AI inference, and analytics for mission-critical applications across industries.",
+      "Trusted by Indonesian government agencies and enterprises for mission-critical security and surveillance. Our platform delivers scalable, reliable video analytics for smart cities and security operations.",
     features: [
-      "High-performance distributed processing architecture",
-      "Enterprise-ready API integration framework",
-      "Production-grade AI model deployment system",
+      "Government-grade security compliance",
+      "Nationwide deployment capability",
+      "24/7 mission-critical reliability",
     ],
   };
 
   const features = [
     {
-      title: "Enterprise Processing Infrastructure",
+      title: "Government-Grade Security Infrastructure",
       description:
-        "Enterprise-grade processing infrastructure that unifies AI inference, data management, and video streaming in a distributed architecture. Designed for high availability and scalable performance in production environments.",
+        "Built to meet stringent Indonesian government security standards. Our platform ensures data sovereignty, encryption, and compliance with national regulations while delivering powerful AI video analytics capabilities.",
       link: "/",
     },
     {
-      title: "Multi-Source Video Integration",
+      title: "Smart City Integration Hub",
       description:
-        "Enterprise-ready integration hub supporting HD cameras, IoT devices, drones, and industrial video systems. Features automated device discovery, secure connection management, and redundant failover capabilities.",
+        "Seamlessly integrate with existing city infrastructure, from traffic cameras to emergency response systems. Supports multi-location deployment with centralized management for nationwide smart city initiatives.",
       link: "/",
     },
     {
-      title: "Production AI Deployment System",
+      title: "Advanced Surveillance System",
       description:
-        "Production-grade AI model deployment system with real-time inference capabilities. Supports model versioning, A/B testing, and automated performance monitoring for enterprise AI operations.",
+        "Enterprise-grade surveillance platform with real-time threat detection and incident response capabilities. Designed for large-scale security operations in government facilities and critical infrastructure.",
       link: "/",
     },
     {
-      title: "Enterprise Video Processing Engine",
+      title: "High-Performance Processing",
       description:
-        "High-performance video processing engine with hardware acceleration support. Delivers optimal streaming quality while maintaining efficient resource utilization for enterprise-scale deployments.",
+        "Optimized for Indonesian infrastructure with efficient bandwidth utilization and edge processing capabilities. Ensures reliable operation even in challenging network conditions across the archipelago.",
       link: "/",
     },
     {
-      title: "Distributed Data Architecture",
+      title: "Secure Data Management",
       description:
-        "Enterprise-ready distributed database system designed for high-throughput video data and metadata processing. Features automatic sharding, replication, and disaster recovery capabilities.",
+        "Comprehensive data management system with local storage options and strict access controls. Features automated backup, disaster recovery, and audit logging for complete operational transparency.",
       link: "/",
     },
     {
@@ -62,26 +63,23 @@ export default function Platform() {
       <Hero data={heroData} />
       <section className="py-8 w-[85%] mx-auto mt-4">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-primary">
-          Enterprise Computer Vision Infrastructure
+          Indonesia's Leading AI Video Analytics Platform
         </h2>
         <Stream />
         <Card className="mt-8">
           <CardHeader>
             <CardDescription className="text-sm md:text-base text-black text-center">
-              VisionAIre Platform delivers enterprise-grade computer vision
-              infrastructure designed for mission-critical applications. Our
-              distributed architecture handles high-throughput video processing,
-              real-time AI inference, and advanced analytics at scale. Built
-              with enterprise requirements in mind, the platform provides robust
-              security, seamless integration capabilities, and comprehensive
-              monitoring tools for organizations deploying computer vision in
-              production environments.
+              VisionAIre Platform delivers trusted AI video analytics for
+              Indonesian government agencies and enterprises. Our platform is
+              designed for mission-critical security and surveillance
+              applications, with a focus on scalability, reliability, and
+              government-grade security compliance.
             </CardDescription>
           </CardHeader>
         </Card>
         <div className="mt-8">
           <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
-            Enterprise Platform Features
+            Platform Features
           </h3>
           <HoverEffect items={features} />
         </div>
