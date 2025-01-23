@@ -20,7 +20,7 @@ export default function CoreProducts() {
 		{
 			title: "Dashboard",
 			content:
-				"A comprehensive, user-friendly interface that provides real-time insights and seamless control over your VisionAIre ecosystem, empowering data-driven decision-making.",
+				"A comprehensive, user-friendly interface that provides real-time insights and seamless control over your VisionAIre Nodeflux ecosystem, empowering data-driven decision-making.",
 			image: "/landing-page/dashboard-main.webp",
 			link: "/dashboard",
 			button: "Explore New Dashboard",
@@ -38,7 +38,7 @@ export default function CoreProducts() {
 		{
 			title: "Platform",
 			content:
-				"The robust foundation of the VisionAIre ecosystem, offering unparalleled flexibility and integration capabilities to power your computer vision applications across diverse industries.",
+				"The robust foundation of the VisionAIre Nodeflux ecosystem, offering unparalleled flexibility and integration capabilities to power your computer vision applications across diverse industries.",
 			image: "/landing-page/platform-main.webp",
 			link: "/platform",
 			button: "View Our Platform",

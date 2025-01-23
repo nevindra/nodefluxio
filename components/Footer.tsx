@@ -119,7 +119,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-muted-foreground/10 py-8">
           <p className="text-base text-muted-foreground text-center text-primary">
-            &copy; 2024 Nodeflux Teknology Indonesia. All rights reserved.
+            &copy; 2024 Nodeflux Teknologi Indonesia. All rights reserved.
           </p>
         </div>
       </div>

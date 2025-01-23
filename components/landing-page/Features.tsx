@@ -8,22 +8,22 @@ export default function Features() {
     {
       title: "Flexibility of visual input",
       description:
-        "VisionAIre is capable of utilizing various visual inputs as its stream input.",
+        "VisionAIre Nodefluxis capable of utilizing various visual inputs as its stream input.",
     },
     {
       title: "Versatile deployment methods",
       description:
-        "VisionAIre offers the flexibility to be deployed on any server and accessed conveniently through a web browser.",
+        "VisionAIre Nodeflux offers the flexibility to be deployed on any server and accessed conveniently through a web browser.",
     },
     {
       title: "Customizable dashboards",
       description:
-        "VisionAIre allows for the use of existing dashboards or the creation of new ones to suit specific requirements.",
+        "VisionAIre Nodeflux allows for the use of existing dashboards or the creation of new ones to suit specific requirements.",
     },
     {
       title: "Seamless system integration",
       description:
-        "VisionAIre is designed to integrate seamlessly with existing systems, eliminating any complexities in the process.",
+        "VisionAIre Nodeflux is designed to integrate seamlessly with existing systems, eliminating any complexities in the process.",
     },
   ];
   return (
