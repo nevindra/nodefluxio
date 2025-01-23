@@ -5,6 +5,7 @@ export const metadata: Metadata = generateMetadata(
 	"Advanced Military & Law Enforcement Surveillance System | Nodeflux",
 	"Enterprise-grade surveillance system for military and law enforcement. Featuring AI-powered facial recognition, tactical body cameras, drone integration, and real-time threat detection for mission-critical operations.",
 	[
+		"nodeflux",
 		"military surveillance system",
 		"law enforcement surveillance",
 		"tactical body cameras",

@@ -5,6 +5,7 @@ export const metadata: Metadata = generateMetadata(
   "VisionAIre Dashboard - Security Command Center | Nodeflux",
   "Advanced security command center for real-time surveillance monitoring. Trusted by Indonesian government & enterprises for smart city and security operations.",
   [
+    "nodeflux",
     "security command center",
     "surveillance dashboard",
     "smart city monitoring",

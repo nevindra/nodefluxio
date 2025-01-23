@@ -5,6 +5,7 @@ export const metadata: Metadata = generateMetadata(
   "Nodeflux | Enterprise AI Video Analytics Solutions",
   "Leading Indonesian AI video analytics for government & enterprise security, smart city, and retail. Trusted by institutions for surveillance and analytics.",
   [
+    "nodeflux",
     "Enterprise Video Analytics",
     "Government Surveillance Systems",
     "Smart City Indonesia",

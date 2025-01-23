@@ -32,10 +32,6 @@ export default function RootLayout({
       <head>
         <meta
           name="google-site-verification"
-          content="9Fm4cy1m85VZzqto2HwmE7qEC7O5YiZh1C5HNTijbys"
-        />
-        <meta
-          name="google-site-verification"
           content="YJevxjbOP3qnYa2wMu3sQaDoy7cxLdH3cdTnDwbcqQI"
         />
         <meta
