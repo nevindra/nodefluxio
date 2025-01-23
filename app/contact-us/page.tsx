@@ -85,14 +85,14 @@ export default function ContactUs() {
 
 	return (
 		<main className="flex flex-col items-center justify-between space-y-4 max-w-[85%] mx-auto">
-			<Toaster /> {/* Position the Toaster here */}
+			<Toaster />
 			<div className="mx-auto p-6 w-full my-4">
+				<h1 className="text-2xl md:text-3xl font-semibold text-center mb-6">
+					Contact Us
+				</h1>
 				<Card>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<CardHeader>
-							<CardTitle className="text-xl md:text-2xl text-center">
-								Contact Us
-							</CardTitle>
 							<CardDescription className="text-sm md:text-base text-center text-black">
 								Fill out the form below to get in touch with our team.
 							</CardDescription>
