@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://www.nodeflux.io/sitemap-0.xml</loc></sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://www.nodeflux.io</loc><lastmod>2025-01-23T06:28:47.169Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://www.nodeflux.io/analytics</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/platform</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/solutions/smart-building</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/products</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.nodeflux.io/solutions/smart-city</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/dashboard</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.nodeflux.io/solutions/massive-surveillance</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/solutions/smart-retail</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/contact-us</loc><lastmod>2025-01-23T06:28:47.175Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+</urlset>
