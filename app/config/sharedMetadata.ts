@@ -6,12 +6,16 @@ export function generateMetadata(
 	keywords: string[],
 ): Metadata {
 	return {
+		metadataBase: new URL('https://www.nodeflux.io'),
 		title: {
 			template: "%s",
 			default: title,
 		},
 		description,
 		keywords,
+		alternates: {
+		  canonical: '/',
+		},
 		openGraph: {
 			type: "website",
 			locale: "en_US",
