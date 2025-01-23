@@ -15,7 +15,6 @@ export function generateMetadata(
 		openGraph: {
 			type: "website",
 			locale: "en_US",
-			url: "https://www.nodeflux.io/",
 			siteName: "Nodeflux",
 			title,
 			description,

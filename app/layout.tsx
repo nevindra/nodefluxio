@@ -19,9 +19,6 @@ export const metadata: Metadata = {
       "AI Solutions",
     ]
   ),
-  alternates: {
-    canonical: "https://www.nodeflux.io/",
-  },
 };
 
 export default function RootLayout({
