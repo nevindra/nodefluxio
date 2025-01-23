@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Script from 'next/script';
 import "./globals.css";
 
 const inter = Montserrat({ subsets: ["latin"] });
@@ -37,6 +38,18 @@ export default function RootLayout({
           name="google-site-verification"
           content="8SnxIePEB-VC_C7XKtNeeYOFuxTN3ee62wLS63nAcl4"
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXB0ZPP5V1"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXB0ZPP5V1');
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <NavigationBar />
