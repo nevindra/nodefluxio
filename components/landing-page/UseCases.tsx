@@ -39,7 +39,7 @@ export default function UseCases() {
       description:
         "Elevate your retail operations with our cutting-edge analytics. Gain valuable insights into customer behavior, optimize store layouts, and enhance the shopping experience while improving operational efficiency.",
       image: smartcity,
-      href: "/",
+      href: "/solutions/smart-retail",
       button: "Optimize Your Store",
     },
   ];

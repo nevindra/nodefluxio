@@ -81,7 +81,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/hardware"
+                      href="/platform"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Platform
@@ -93,7 +93,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="/solutions"
+                      href="/solutions/massive-surveillance"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Solutions
