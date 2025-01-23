@@ -8,7 +8,7 @@ export default function Features() {
     {
       title: "Flexibility of visual input",
       description:
-        "VisionAIre Nodefluxis capable of utilizing various visual inputs as its stream input.",
+        "VisionAIre Nodeflux is capable of utilizing various visual inputs as its stream input.",
     },
     {
       title: "Versatile deployment methods",
