@@ -39,9 +39,9 @@ export default function PeopleBehavior() {
 		<>
 			<div className="mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
-					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						People Behavior Analytics
-					</h1>
+					</h2>
 					<p className="text-center text-base md:text-lg">
 						Elevate your understanding of human actions and interactions with
 						Nodeflux VisionAIre Analytics' innovative People Behavior Analytics.

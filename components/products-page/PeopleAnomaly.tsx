@@ -67,9 +67,9 @@ export default function PeopleAnomaly() {
 		<>
 			<div className="mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
-					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						People Anomaly Analytics
-					</h1>
+					</h2>
 					<p className="text-center text-md md:text-lg">
 						Stay one step ahead of potential security threats and disruptive
 						behaviors with Nodeflux VisionAIre Analytics' advanced People

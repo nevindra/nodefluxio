@@ -39,9 +39,9 @@ export default function VehicleAnalytics() {
 		<>
 			<div className="px-4 mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
-					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						Vehicle Analytics
-					</h1>
+					</h2>
 					<p className="text-center text-md md:text-lg">
 						Revolutionize traffic management, parking operations, and
 						vehicle-related security with Nodeflux VisionAIre Analytics'

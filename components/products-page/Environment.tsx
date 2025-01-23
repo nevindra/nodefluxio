@@ -53,9 +53,9 @@ export default function Environments() {
 		<>
 			<div className="container mx-auto px-4 mt-2">
 				<div className="flex flex-col items-center justify-center py-4">
-					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						Environment Analytics
-					</h1>
+					</h2>
 					<p className="text-center text-md md:text-lg">
 						Harness the power of AI to monitor and protect our environment with
 						Nodeflux VisionAIre Analytics' innovative Environment Analytics

@@ -52,9 +52,9 @@ export default function PeopleAnalytics() {
 		<>
 			<div className="mt-6">
 				<div className="flex flex-col items-center justify-center py-4">
-					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
 						People Oriented Analytics
-					</h1>
+					</h2>
 					<p className="text-center text-md md:text-lg">
 						Transform your understanding of human behavior and movement patterns
 						with Nodeflux VisionAIre Analytics' comprehensive People Oriented
