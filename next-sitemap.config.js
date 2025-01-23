@@ -4,28 +4,26 @@ module.exports = {
 	generateRobotsTxt: true,
 	robotsTxtOptions: {
 		policies: [{ userAgent: "*", allow: "/" }],
+		additionalSitemaps: [
+			`${process.env.SITE_URL || "https://www.nodeflux.io"}/sitemap.xml`,
+		],
 	},
-	exclude: [],
+	exclude: ['/company-profile', '/license-check'],
 	generateIndexSitemap: false,
-	additionalPaths: async (config) => {
-		const paths = [
-			{ loc: '/', priority: 1.0, changefreq: 'daily' },
-			{ loc: '/analytics', priority: 0.7, changefreq: 'daily' },
-			{ loc: '/platform', priority: 0.7, changefreq: 'daily' },
-			{ loc: '/solutions/smart-building', priority: 0.7, changefreq: 'daily' },
-			{ loc: '/products', priority: 0.8, changefreq: 'daily' },
-			{ loc: '/solutions/smart-city', priority: 0.7, changefreq: 'daily' },
-			{ loc: '/dashboard', priority: 0.8, changefreq: 'daily' },
-			{ loc: '/solutions/massive-surveillance', priority: 0.7, changefreq: 'daily' },
-			{ loc: '/solutions/smart-retail', priority: 0.7, changefreq: 'daily' },
-			{ loc: '/contact-us', priority: 0.6, changefreq: 'daily' },
-		];
+	transform: async (config, path) => {
+		// Define priorities for auto-discovered routes
+		const priorities = {
+			'/': 1.0,
+			'/dashboard': 0.8,
+			'/products': 0.8,
+			'/contact-us': 0.6,
+		};
 
-		return paths.map((path) => ({
-			loc: path.loc,
-			changefreq: path.changefreq,
-			priority: path.priority,
+		return {
+			loc: path,
+			changefreq: 'daily',
+			priority: priorities[path] || 0.7,
 			lastmod: new Date().toISOString(),
-		}));
+		};
 	},
 };
