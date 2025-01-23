@@ -6,7 +6,7 @@ export function generateMetadata(
 	keywords: string[],
 ): Metadata {
 	return {
-		metadataBase: new URL('https://www.nodeflux.io'),
+		metadataBase: new URL(process.env.SITE_URL || 'https://www.nodeflux.io'),
 		title: {
 			template: "%s",
 			default: title,
@@ -14,7 +14,7 @@ export function generateMetadata(
 		description,
 		keywords,
 		alternates: {
-		  canonical: '/',
+		  canonical: './',
 		},
 		openGraph: {
 			type: "website",
