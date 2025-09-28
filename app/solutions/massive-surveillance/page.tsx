@@ -75,7 +75,7 @@ export default function MassiveSurveillance() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center text-white">
           <div className="w-full md:w-1/2 md:pr-12 mb-8 md:mb-0">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              VisionAIre Massive Surveillance
+              VisionAIre Real Time Surveillance
             </h1>
             <p className="mb-8 text-lg leading-relaxed">
               Advanced surveillance system designed for military and law
@@ -121,7 +121,7 @@ export default function MassiveSurveillance() {
               className="w-full mx-auto rounded-lg shadow-lg"
             />
             <p className="text-xs italic text-center mt-2 text-gray-600">
-              *Example topology for a massive surveillance use case
+              *Example topology for a real time surveillance use case
             </p>
           </div>
           <div className="text-center mb-12">
