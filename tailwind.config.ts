@@ -16,6 +16,9 @@ const config = {
 			lg: "1024px",
 			xl: "1280px",
 			"2xl": "1536px",
+			"3xl": "1920px",
+			"4xl": "2560px",
+			"5xl": "3840px",
 		},
 		container: {
 			center: true,
@@ -25,7 +28,10 @@ const config = {
 				md: "768px",
 				lg: "1024px",
 				xl: "1280px",
-				"2xl": "1536px",
+				"2xl": "1400px",
+				"3xl": "1800px",
+				"4xl": "2400px",
+				"5xl": "3200px",
 			},
 		},
 		extend: {
@@ -140,6 +146,14 @@ const config = {
 						"background-position": "200%",
 					},
 				},
+				"scan-x": {
+					"0%": {
+						left: "0%",
+					},
+					"100%": {
+						left: "100%",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -149,6 +163,15 @@ const config = {
 				"border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
 				shimmer: "shimmer 8s infinite",
 				rainbow: "rainbow var(--speed, 2s) infinite linear",
+				"scan-x": "scan-x 10s linear infinite",
+			},
+			backgroundImage: {
+				"hero-pattern": "radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.05) 1px, transparent 0)",
+				"tech-gradient": "linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 0%, transparent 100%)",
+			},
+			maxWidth: {
+				"8xl": "90rem",
+				"9xl": "100rem",
 			},
 		},
 	},

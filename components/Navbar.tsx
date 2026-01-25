@@ -1,172 +1,179 @@
 "use client";
-import { Menu, X } from "lucide-react";
+
+import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import visionaireLogo from "@/public/nodeflux-primary-purple.png";
 import Image from "next/image";
 import MobileNavbar from "./navbar/MobileNavbar";
 
 export default function NavigationBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const NavLink = [
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [hoveredPath, setHoveredPath] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const NavLinks = [
     {
-      href: "/dashboard",
-      title: "Dashboard",
-      description: "Manage and visualize your data",
+      title: "Solutions",
+      items: [
+        { title: "Public Safety", href: "/solutions/massive-surveillance", desc: "National scale surveillance frameworks" },
+        { title: "Smart Infrastructure", href: "/solutions/smart-city", desc: "Urban orchestration systems" },
+        { title: "Logistics Audit", href: "/solutions/smart-retail", desc: "Industrial audit automation" },
+        { title: "Building Security", href: "/solutions/smart-building", desc: "Deep perimeter defense" },
+      ],
     },
     {
-      href: "/analytics",
-      title: "Analytics",
-      description: "AI Analytics for your business",
-    },
-    {
-      href: "/platform",
       title: "Platform",
-      description: "VisionAIre Platform to manage the system",
+      items: [
+        { title: "Dashboard", href: "/dashboard", desc: "Operational visualization command" },
+        { title: "Analytics", href: "/analytics", desc: "Deep learning insight engine" },
+        { title: "VisionAIre Node", href: "/platform", desc: "Edge computation core" },
+      ],
     },
+    {
+      title: "Technology",
+      href: "/technology"
+    }
   ];
+
   return (
-    <nav className="bg-background sticky top-0 z-50 shadow-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center py-4 ${isScrolled ? "pt-4" : "pt-6"
+        }`}
+    >
+      <div
+        className={`relative transition-all duration-500 overflow-visible px-6 border border-white/5 flex items-center justify-between ${isScrolled
+          ? "w-[95%] lg:w-[85%] h-14 bg-background/60 backdrop-blur-2xl rounded-none shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+          : "w-full h-16 bg-transparent border-transparent"
+          }`}
+      >
+        {/* Logo */}
+        <div className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center space-x-2 group">
+            <div className="relative h-8 w-40 md:h-12 md:w-56 transition-transform duration-500 group-hover:scale-105">
               <Image
                 src={visionaireLogo}
-                alt="Visionaire Logo"
-                width={160}
-                height={100}
+                alt="Nodeflux"
+                fill
+                className="object-contain brightness-0 invert transition-opacity"
               />
-            </Link>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-4 flex items-center space-x-2 md:space-x-4">
-              <NavigationMenu>
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid gap-2 p-4 md:w-[400px] lg:w-[450px] lg:grid-cols-[.75fr_1fr]">
-                        <li className="row-span-3">
-                          <NavigationMenuLink
-                            asChild
-                            className="bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-primary hover:text-black"
-                          >
-                            <a
-                              className="flex h-full w-full select-none flex-col justify-end rounded-md "
-                              href="/products"
-                            >
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Products Overview
-                              </div>
-                              <p className="text-sm leading-tight">
-                                Explore our full range of products and
-                                solutions.
-                              </p>
-                            </a>
-                          </NavigationMenuLink>
-                        </li>
-                        {NavLink.map((item, index) => (
-                          <ListItem
-                            href={item.href}
-                            key={item.href}
-                            title={item.title}
-                            className="bg-secondary hover:bg-black"
-                          >
-                            {item.description}
-                          </ListItem>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                        <ListItem
-                          href="/solutions/massive-surveillance"
-                          title="Massive Surveillance"
-                        >
-                          An AI-powered solution for real time surveillance
-                        </ListItem>
-                        <ListItem
-                          href="/solutions/smart-retail"
-                          title="Retail Analytics"
-                        >
-                          An AI-powered solution for retail analytics
-                        </ListItem>
-                        <ListItem
-                          href="/solutions/smart-building"
-                          title="Smart Building"
-                        >
-                          An AI-powered solution for massive surveillance
-                        </ListItem>
-                        <ListItem
-                          href="/solutions/smart-city"
-                          title="Smart City Solution"
-                        >
-                          An AI-powered solution for massive surveillance
-                        </ListItem>
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-              <Button variant="default">
-                <a href="/contact-us">Contact Us</a>
-              </Button>
             </div>
-          </div>
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
+          </Link>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 h-full">
+          <div className="flex items-center space-x-1" onMouseLeave={() => setHoveredPath(null)}>
+            {NavLinks.map((link) => (
+              <div
+                key={link.title}
+                className="relative group h-full flex items-center py-2"
+                onMouseEnter={() => setHoveredPath(link.title)}
+              >
+                <div
+                  className={`flex items-center space-x-1.5 px-4 py-1.5 rounded-none text-[11px] font-mono tracking-widest uppercase transition-colors duration-300 z-10 ${hoveredPath === link.title ? "text-white" : "text-white/50"
+                    }`}
+                >
+                  {link.href ? (
+                    <Link href={link.href}>{link.title}</Link>
+                  ) : (
+                    <span>{link.title}</span>
+                  )}
+                  {link.items && <ChevronDown className={`w-3 h-3 transition-transform duration-300 group-hover:rotate-180`} />}
+                </div>
+
+                {/* Hover Background Pill */}
+                {hoveredPath === link.title && (
+                  <motion.div
+                    layoutId="nav-hover"
+                    className="absolute inset-x-1 inset-y-2 bg-white/5 rounded-none -z-0"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+
+                {/* Dropdown menu */}
+                {link.items && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="w-[480px] bg-background/95 backdrop-blur-2xl border border-white/5 p-6 grid grid-cols-2 gap-4 shadow-2xl relative overflow-hidden rounded-none">
+                      {/* Technical Detail */}
+                      <div className="absolute top-0 right-0 p-2 opacity-10">
+                        <div className="w-16 h-px bg-white" />
+                      </div>
+
+                      {link.items.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="group/item flex flex-col p-3 hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/5"
+                        >
+                          <span className="text-xs font-medium text-white/80 group-hover/item:text-primary transition-colors">
+                            {item.title}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground font-light mt-1">
+                            {item.desc}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* Action Button & Menu */}
+        <div className="flex items-center space-x-4">
+          <div className="hidden md:block">
+            <Button
+              size="sm"
+              className={`font-medium px-6 rounded-none transition-all duration-500 text-[10px] uppercase tracking-widest ${isScrolled
+                ? "bg-primary text-white hover:bg-primary/90"
+                : "bg-white text-black hover:bg-white/90"
+                }`}
+            >
+              <Link href="/contact-us">Initialize Demo</Link>
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`md:hidden p-2 rounded-none transition-colors ${mobileMenuOpen ? "bg-white/10 text-white" : "text-white/60 hover:text-white"
+              }`}
+          >
+            <AnimatePresence mode="wait">
+              {mobileMenuOpen ? (
+                <motion.div key="close" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                  <X className="h-5 w-5" />
+                </motion.div>
+              ) : (
+                <motion.div key="menu" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                  <Menu className="h-5 w-5" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+        </div>
       </div>
-      {mobileMenuOpen && <MobileNavbar />}
+
+      {/* Mobile Navbar Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <MobileNavbar onClose={() => setMobileMenuOpen(false)} />
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";

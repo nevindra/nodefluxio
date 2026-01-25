@@ -1,126 +1,112 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import visionaire from "@/public/nodeflux-primary-purple.png";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="py-12 md:flex md:items-center md:justify-between">
-          <div className="space-y-8 md:w-1/3">
-            <div>
-              <Link href="/" className="flex-shrink-0">
-                <span className="text-xl font-bold text-primary">
-                  <Image
-                    src={visionaire}
-                    alt="VisionAIre"
-                    width={200}
-                    height={50}
-                    className="h-auto md:w-full"
-                  />
-                </span>
-              </Link>
-              <p className="mt-2 text-base text-muted-foreground">
-                Empowering your business with cutting-edge solutions.
-              </p>
+    <footer className="bg-background border-t border-white/5 py-24">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24">
+          {/* Brand & Mission */}
+          <div className="md:col-span-4 space-y-8">
+            <Link href="/" className="inline-block transition-opacity">
+              <Image
+                src={visionaire}
+                alt="Nodeflux"
+                width={160}
+                height={40}
+                className="h-auto brightness-0 invert"
+              />
+            </Link>
+            <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-xs">
+              Building the foundational computational fabric for autonomous
+              visual intelligence across diversified operational domains.
+            </p>
+            <div className="pt-4 flex space-x-4 opacity-20">
+              <div className="w-1 h-1 bg-white"></div>
+              <div className="w-1 h-1 bg-white"></div>
+              <div className="w-1 h-1 bg-white"></div>
             </div>
-            {/* <div className="flex space-x-6">
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">Facebook</span>
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">Twitter</span>
-                <Twitter className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">Instagram</span>
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <Linkedin className="h-6 w-6" />
-              </a>
-            </div> */}
           </div>
-          <div className="mt-12 md:mt-0 md:w-2/3">
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
-                  Products
-                </h3>
-                <ul className="mt-4 space-y-4">
-                  <li>
+
+          {/* Navigation Grid */}
+          <div className="md:col-span-8 flex flex-col md:flex-row md:justify-end gap-16 lg:gap-24">
+            <div className="space-y-6">
+              <h3 className="text-[10px] font-mono tracking-[0.2em] text-white/40 uppercase">
+                Platform
+              </h3>
+              <ul className="space-y-4">
+                {["Dashboard", "Analytics", "VisionAIre Node"].map((item) => (
+                  <li key={item}>
                     <Link
-                      href="/dashboard"
-                      className="text-base text-muted-foreground hover:text-foreground"
+                      href={`/${item.toLowerCase().replace(" ", "-")}`}
+                      className="text-sm text-muted-foreground hover:text-white transition-colors duration-300 font-light"
                     >
-                      Dashboard
+                      {item}
                     </Link>
                   </li>
-                  <li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="text-[10px] font-mono tracking-[0.2em] text-white/40 uppercase">
+                Solutions
+              </h3>
+              <ul className="space-y-4">
+                {["Public Safety", "Smart Infrastructure", "Logistics Audit", "Site Security"].map((item) => (
+                  <li key={item}>
                     <Link
-                      href="/analytics"
-                      className="text-base text-muted-foreground hover:text-foreground"
+                      href={`/solutions/${item.toLowerCase().replace(" ", "-")}`}
+                      className="text-sm text-muted-foreground hover:text-white transition-colors duration-300 font-light"
                     >
-                      Analytics
+                      {item}
                     </Link>
                   </li>
-                  <li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="text-[10px] font-mono tracking-[0.2em] text-white/40 uppercase">
+                Architecture
+              </h3>
+              <ul className="space-y-4">
+                {["Specifications", "Security Protocol", "Edge Deployment"].map((item) => (
+                  <li key={item}>
                     <Link
-                      href="/platform"
-                      className="text-base text-muted-foreground hover:text-foreground"
+                      href={`/${item.toLowerCase().replace(" ", "-")}`}
+                      className="text-sm text-muted-foreground hover:text-white transition-colors duration-300 font-light"
                     >
-                      Platform
+                      {item}
                     </Link>
                   </li>
-                </ul>
-              </div>
-              <div>
-                <ul className="mt-4 space-y-4">
-                  <li>
-                    <Link
-                      href="/solutions/massive-surveillance"
-                      className="text-base text-muted-foreground hover:text-foreground"
-                    >
-                      Solutions
-                    </Link>
-                  </li>
-                  {/* <li>
-										<Link
-											href="/about"
-											className="text-base text-muted-foreground hover:text-foreground"
-										>
-											About
-										</Link>
-									</li> */}
-                  <li>
-                    <Button variant="default">
-                      <Link href="/contact-us">Contact Us</Link>
-                    </Button>
-                  </li>
-                </ul>
-              </div>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-        <div className="border-t border-muted-foreground/10 py-8">
-          <p className="text-base text-muted-foreground text-center text-primary">
-            &copy; 2024 Nodeflux Teknologi Indonesia. All rights reserved.
-          </p>
+
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center space-x-6">
+            <span className="text-[10px] font-mono text-white/20 tracking-widest uppercase">
+              NODEFLUX TECHNOLOGI INDONESIA © 2026
+            </span>
+            <span className="w-1 h-1 rounded-full bg-white/10 hidden md:inline-block"></span>
+            <Link href="/privacy" className="text-[10px] font-mono text-white/20 hover:text-white transition-colors uppercase tracking-widest">
+              Privacy Protocol
+            </Link>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <div className="text-[9px] font-mono text-white/10 flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-white/10 animate-pulse"></span>
+              <span className="uppercase tracking-[0.2em]">Core Systems Nominal</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

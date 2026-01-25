@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Script from 'next/script';
 import "./globals.css";
+import SmoothScroll from "@/components/providers/SmoothScroll";
+import ScrollProgress from "@/components/ScrollProgress";
+import OperationalGrid from "@/components/OperationalGrid";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -18,6 +21,8 @@ export const metadata: Metadata = {
       "Artificial Intelligence",
       "Indonesian AI",
       "AI Solutions",
+      "Video Analytics",
+      "Face Recognition"
     ]
   ),
 };
@@ -52,9 +57,13 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
-        <NavigationBar />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <OperationalGrid />
+          <ScrollProgress />
+          <NavigationBar />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
