@@ -1,76 +1,99 @@
 "use client";
 
 import { SingleHero } from "@/components/hero/SingleHero";
-import TechnicalMedia from "@/components/landing-page/TechnicalMedia";
 import Consolutation from "@/components/landing-page/Consolutation";
+import TechnicalMedia from "@/components/landing-page/TechnicalMedia";
+import { TacticalTopology } from "@/components/solutions/TacticalTopology";
 import { motion } from "framer-motion";
 import {
-  Shield,
-  Eye,
-  Map,
-  Zap,
+  BarChart3,
+  Bell,
   Cpu,
+  Eye,
+  LayoutGrid,
+  Map,
+  Plus,
   Radio,
+  Shield,
   Target,
-  FileSearch,
-  Users
+  Users,
+  Zap
 } from "lucide-react";
-import Image from "next/image";
-import topologi from "@/public/solutions/massive-surveillance.png";
-import visionaire from "@/public/products-hero.webp";
-import { TacticalTopology } from "@/components/solutions/TacticalTopology";
 
 const useCases = [
   {
-    id: "MS-01",
-    name: "Law Enforcement Response",
-    description: "Equip personnel with smart body cameras that identify threats in real-time and alert headquarters for immediate coordination.",
-    icon: <Radio className="w-5 h-5" />,
-    relevance: ["Face Recognition", "Threat Detection", "Field Coordination"],
-    specs: ["Secure Video Transmission", "Emergency Broadcast", "GPS Unit Tracking"]
+    id: "SC-01",
+    name: "Public Safety",
+    description: "Monitor busy public areas like parks, stations, or streets to ensure everyone stays safe and help arrives quickly when needed.",
+    icon: <Users className="w-5 h-5" />,
+    relevance: ["Crowd Management", "Safety Monitoring", "Incident Alerts"],
+    specs: ["24/7 Monitoring", "Real-time Detection", "Instant Alerts"]
   },
   {
-    id: "MS-02",
-    name: "Strategic Reconnaissance",
-    description: "Smart drones for monitoring borders, restricted zones, or high-risk areas with thermal sensing and automated patrol routes.",
+    id: "SC-02",
+    name: "Urban Monitoring",
+    description: "Keep an eye on city traffic and infrastructure to manage flow and detect unusual events automatically.",
     icon: <Map className="w-5 h-5" />,
-    relevance: ["Area Analytics", "Heat Mapping", "Remote Operations"],
-    specs: ["Autonomous Flight", "Night Vision", "Secure Ground Link"]
+    relevance: ["Traffic Flow", "Area Analytics", "Heat Mapping"],
+    specs: ["Smart Analytics", "Historical Data", "Trend Analysis"]
   },
   {
-    id: "MS-03",
-    name: "Command & Control Center",
-    description: "Centralize all municipal or agency feeds into one interface. Our AI filters thousands of streams to highlight critical incidents.",
-    icon: <Cpu className="w-5 h-5" />,
-    relevance: ["Unusual Activity", "Identity Matching", "Centralized Map"],
-    specs: ["24/7 Monitoring", "Agency-wide Sync", "Secure Data Archival"]
+    id: "SC-03",
+    name: "Emergency Response",
+    description: "Give field responders the information they need with real-time video feeds during critical situations.",
+    icon: <Radio className="w-5 h-5" />,
+    relevance: ["Field Coordination", "Live Updates", "Secure Hosting"],
+    specs: ["Mobile Access", "Direct Messaging", "GPS Tracking"]
   }
 ];
 
 const coreCapabilities = [
   {
-    title: "Regional Coverage",
-    description: "Manage thousands of cameras across entire cities or national infrastructure with zero delay.",
-    id: "CAP-01",
+    title: "Fast Response",
+    description: "Get alerts the moment something happens, allowing your team to respond in seconds, not minutes.",
+    id: "BEN-01",
     icon: <Zap className="w-6 h-6" />
   },
   {
-    title: "Intelligence Alerts",
-    description: "AI monitors every frame for you, sending instant alerts for persons of interest or high-risk behavior.",
-    id: "CAP-02",
+    title: "Automatic Monitoring",
+    description: "Let AI watch the screens for you. It never gets tired and detects incidents automatically round the clock.",
+    id: "BEN-02",
     icon: <Target className="w-6 h-6" />
   },
   {
-    title: "Sovereign Control",
-    description: "Your data stays under your control. All processing occurs on your sovereign network for maximum security.",
-    id: "CAP-03",
-    icon: <Shield className="w-6 h-6" />
+    title: "Easy to Manage",
+    description: "Control all your cameras from one simple dashboard. No complex setup or technical skills required.",
+    id: "BEN-03",
+    icon: <Cpu className="w-6 h-6" />
   },
   {
-    title: "Rapid Investigation",
-    description: "Search days of footage across your entire network in seconds for specific vehicles, faces, or events.",
-    id: "CAP-04",
-    icon: <FileSearch className="w-6 h-6" />
+    title: "Total Privacy",
+    description: "Your data stays yours. Everything is processed locally on your own network for maximum security.",
+    id: "BEN-04",
+    icon: <Shield className="w-6 h-6" />
+  }
+];
+
+const dashboardFeatures = [
+  {
+    title: "Alert Management",
+    description: "Receive instant notifications. Send alerts directly to WhatsApp, Telegram, or integrate with your own security tools.",
+    icon: <Bell className="w-6 h-6" />
+  },
+  {
+    title: "Visual Statistics",
+    description: "Turn video into data. View heatmaps, object counts, and peak time patterns in clear, easy-to-read charts.",
+    icon: <BarChart3 className="w-6 h-6" />
+  },
+  {
+    title: "Multi-Camera Views",
+    description: "Watch all your cameras at once. Customize your layout to focus on the zones that matter most to you.",
+    icon: <LayoutGrid className="w-6 h-6" />
+  },
+  {
+    title: "Total Control",
+    description: "Manage users, set custom automation rules, and access your data anytime from any secure device.",
+    icon: <Plus className="w-6 h-6" />
   }
 ];
 
@@ -79,15 +102,14 @@ export default function MassiveSurveillance() {
     <main className="min-h-screen bg-background text-white">
       {/* Hero Section */}
       <SingleHero
-        title={<>MISSION <br /><span className="text-muted-foreground">CRITICAL.</span></>}
-        description="Smart sensing infrastructure for nationwide monitoring. We provide an integrated foundation for administrative and law enforcement agencies to maintain persistent operational awareness."
-        label="Strategic Intelligence Platform"
-        image={visionaire}
+        title={<>Smart Safety <br /><span className="text-muted-foreground">For Every City.</span></>}
+        description="Simplifying city safety with intelligent video monitoring. Connect all your cameras and respond faster to any incident."
+        label="Integrated Surveillance Solution"
         features={[
-          "Agency-Wide AI Detection",
-          "Tactical Field Alerts",
-          "Unified Command & Control",
-          "Sovereign Data Storage"
+          "Automatic Intelligence Detection",
+          "Real-time Safety Alerts",
+          "Simple Central Dashboard",
+          "Private & Secure Storage"
         ]}
       />
 
@@ -101,10 +123,10 @@ export default function MassiveSurveillance() {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-8">
-            STRATEGIC <span className="text-muted-foreground">FOUNDATION.</span>
+            SAFETY <span className="text-muted-foreground">BENEFITS.</span>
           </h2>
           <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl">
-            Our smart monitoring architecture is built for national scale and security. We empower agencies to monitor vast areas with automated sensing modules that detect and analyze events in real-time.
+            Our technology makes it easier to keep people safe. We use smart AI to help you monitor large areas automatically, so you can focus on what matters most.
           </p>
         </div>
 
@@ -143,7 +165,7 @@ export default function MassiveSurveillance() {
               INSTANT <span className="text-muted-foreground">AWARENESS.</span>
             </h2>
             <p className="text-white/50 font-light leading-relaxed mb-8">
-              Experience the power of autonomous sensing with our live intelligence feeds. Our system processes high-resolution video instantly, delivering threat alerts and actionable data to command centers.
+              See what's happening right now with our live video analysis. Our system checks your camera feeds instantly and lets you know if something needs your attention.
             </p>
             <div className="grid grid-cols-2 gap-8">
               <div>
@@ -166,7 +188,65 @@ export default function MassiveSurveillance() {
         </div>
       </section>
 
-      {/* Tactical Topology Section */}
+      {/* Dashboard Showcase Section */}
+      <section className="container mx-auto px-8 lg:px-24 mt-48">
+        <div className="max-w-4xl mb-16">
+          <div className="flex items-center space-x-2 mb-6">
+            <span className="w-2 h-px bg-white/20"></span>
+            <span className="text-[10px] font-mono tracking-[0.3em] text-white/40 uppercase">
+              Dashboard Overview
+            </span>
+          </div>
+          <h2 className="text-4xl font-medium tracking-tight text-white mb-8">
+            ALL YOUR INSIGHTS <span className="text-muted-foreground">IN ONE PLACE.</span>
+          </h2>
+          <p className="text-white/50 font-light leading-relaxed max-w-2xl">
+            Our intuitive dashboard gives you a complete view of your safety operations. Monitor live feeds, track alerts, and analyze trends with ease.
+          </p>
+        </div>
+
+        <div className="relative aspect-video w-full rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden group">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex flex-col items-center space-y-4">
+              <Eye className="w-12 h-12 text-white/20" />
+              <p className="text-white/20 font-mono text-sm tracking-widest uppercase text-center px-4">
+                [ PREMIUM DASHBOARD MOCKUP PLACEHOLDER ] <br />
+                <span className="text-[10px]">Real-time Analytics • Heatmaps • Object Detection</span>
+              </p>
+            </div>
+          </div>
+          {/* Subtle decoration to make it look "techy" */}
+          <div className="absolute top-0 left-0 w-full p-4 border-b border-white/5 flex items-center justify-between">
+            <div className="flex space-x-2">
+              <div className="w-2 h-2 rounded-full bg-white/10"></div>
+              <div className="w-2 h-2 rounded-full bg-white/10"></div>
+              <div className="w-2 h-2 rounded-full bg-white/10"></div>
+            </div>
+            <div className="text-[10px] font-mono text-white/10 uppercase tracking-widest">System Operational</div>
+          </div>
+          <div className="absolute inset-0 bg-hero-pattern opacity-[0.03] pointer-events-none"></div>
+        </div>
+      </section>
+
+      {/* Dashboard Features Detail Section */}
+      <section className="container mx-auto px-8 lg:px-24 mt-12 mb-48">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5">
+          {dashboardFeatures.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="bg-background p-10 flex flex-col h-full border-r border-white/5 last:border-r-0"
+            >
+              <div className="text-white/40 mb-8">{feature.icon}</div>
+              <h3 className="text-xl font-medium text-white mb-4">{feature.title}</h3>
+              <p className="text-white/40 font-light text-sm leading-relaxed">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
       <section className="container mx-auto px-8 lg:px-24 mt-48 overflow-hidden">
         <div className="max-w-4xl mb-16">
           <div className="flex items-center space-x-2 mb-6">
@@ -176,10 +256,10 @@ export default function MassiveSurveillance() {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-8 uppercase">
-            System <span className="text-muted-foreground">TOPOLOGY.</span>
+            HOW IT <span className="text-muted-foreground">WORKS.</span>
           </h2>
           <p className="text-white/50 font-light leading-relaxed max-w-2xl">
-            A simple look at how VisionAIre connects everything together. From gathering video on the ground to analyzing it with AI and helping you make the right decisions in the control room.
+            Our system connects everything in one simple flow. From gathering video on the ground to analyzing it with AI and helping you make the right decisions in the control room.
           </p>
         </div>
 

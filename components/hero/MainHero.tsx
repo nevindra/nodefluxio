@@ -1,11 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
-import { HeroProps } from "./types";
+import { useEffect, useState } from "react";
 import { HeroBackground } from "./HeroBackground";
+import { HeroProps } from "./types";
 
 const words = [
     "SECURITY.",
@@ -64,26 +64,26 @@ export function MainHero({
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="space-y-6"
                 >
-                    <div className="inline-flex items-center space-x-2 mb-2 text-white/40">
-                        <span className="w-1.5 h-1.5 rounded-none bg-white/40"></span>
+                    <div className="inline-flex items-center space-x-2 mb-2 text-foreground/30">
+                        <span className="w-1 h-1 rounded-none bg-primary/60"></span>
                         <span className="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase">
                             {label}
                         </span>
                     </div>
 
-                    <h1 className="font-medium tracking-tight text-white leading-[0.9] text-5xl md:text-7xl lg:text-8xl min-h-[1.8em] md:min-h-[2.2em] flex flex-col items-center justify-center">
-                        <span className="block">AI-POWERED</span>
+                    <h1 className="font-medium tracking-tight text-foreground leading-[1.05] text-4xl md:text-6xl lg:text-7xl min-h-[1.8em] md:min-h-[2.2em] flex flex-col items-center justify-center">
+                        <span className="block italic">AI-POWERED</span>
                         <span className="text-muted-foreground relative">
                             {displayText}
                             <motion.span
                                 animate={{ opacity: [1, 0] }}
                                 transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                                className="inline-block w-[2px] h-[0.8em] bg-white ml-1 align-middle"
+                                className="inline-block w-[2px] h-[0.7em] bg-primary ml-1 align-middle"
                             />
                         </span>
                     </h1>
 
-                    <p className="text-muted-foreground leading-relaxed font-light text-base md:text-lg max-w-xl mx-auto">
+                    <p className="text-muted-foreground font-light text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
                         {description}
                     </p>
                 </motion.div>
@@ -97,7 +97,7 @@ export function MainHero({
                     <Button
                         size="lg"
                         asChild
-                        className="bg-white hover:bg-white/90 text-black font-medium h-12 px-10 rounded-none transition-all duration-300"
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium h-12 px-10 transition-all duration-300 shadow-lg shadow-primary/20"
                     >
                         <Link href={primaryCtaHref}>{primaryCtaText}</Link>
                     </Button>
@@ -105,7 +105,7 @@ export function MainHero({
                         size="lg"
                         variant="outline"
                         asChild
-                        className="border-white/10 text-white hover:bg-white/5 h-12 px-10 rounded-none transition-all duration-300"
+                        className="border-foreground/10 text-foreground hover:bg-foreground/5 h-12 px-10 transition-all duration-300"
                     >
                         <Link href={secondaryCtaHref}>{secondaryCtaText}</Link>
                     </Button>
@@ -113,8 +113,8 @@ export function MainHero({
             </div>
 
             {/* Aesthetic Border Accents */}
-            <div className="absolute top-8 left-8 w-12 h-12 border-t border-l border-white/10"></div>
-            <div className="absolute bottom-8 right-8 w-12 h-12 border-b border-r border-white/10"></div>
+            <div className="absolute top-8 left-8 w-12 h-12 border-t border-l border-black/5"></div>
+            <div className="absolute bottom-8 right-8 w-12 h-12 border-b border-r border-black/5"></div>
 
             {/* Scroll Indicator */}
             <motion.div
@@ -123,10 +123,7 @@ export function MainHero({
                 transition={{ delay: 1, duration: 1 }}
                 className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4"
             >
-                <span className="text-[10px] font-mono tracking-[0.3em] text-white/20 uppercase">
-                    Scroll to Discover
-                </span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-white/20 to-transparent relative overflow-hidden">
+                <div className="w-[1px] h-12 bg-gradient-to-b from-primary/40 to-transparent relative overflow-hidden">
                     <motion.div
                         animate={{
                             top: ["-100%", "100%"]
@@ -136,7 +133,7 @@ export function MainHero({
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                        className="absolute left-0 w-full h-1/2 bg-white/60"
+                        className="absolute left-0 w-full h-1/2 bg-primary/80"
                     />
                 </div>
             </motion.div>

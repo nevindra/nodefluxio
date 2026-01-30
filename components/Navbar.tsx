@@ -1,9 +1,9 @@
 "use client";
 
-import { Menu, X, ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Menu, X, Zap } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import visionaireLogo from "@/public/nodeflux-primary-purple.png";
@@ -25,6 +25,14 @@ export default function NavigationBar() {
 
   const NavLinks = [
     {
+      title: "Products",
+      items: [
+        { title: "Lenz", href: "/lenz", desc: "Smart video monitoring & analytics" },
+        { title: "VisionAIre", href: "/visionaire", desc: "Enterprise Computer Vision platform" },
+        { title: "Athena", href: "/athena", desc: "Generative AI business assistant" },
+      ],
+    },
+    {
       title: "Solutions",
       items: [
         { title: "Public Safety", href: "/solutions/massive-surveillance", desc: "National scale surveillance frameworks" },
@@ -34,100 +42,93 @@ export default function NavigationBar() {
       ],
     },
     {
-      title: "Platform",
+      title: "Resources",
       items: [
-        { title: "Dashboard", href: "/dashboard", desc: "Operational visualization command" },
-        { title: "Analytics", href: "/analytics", desc: "Deep learning insight engine" },
-        { title: "VisionAIre Node", href: "/platform", desc: "Edge computation core" },
+        { title: "Documentation", href: "/docs", desc: "Technical guides and API reference" },
+        { title: "Blog", href: "/blog", desc: "Insights and updates from our team" },
       ],
     },
-    {
-      title: "Technology",
-      href: "/technology"
-    }
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center py-4 ${isScrolled ? "pt-4" : "pt-6"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center py-4 ${
+        isScrolled ? "px-4 md:px-6" : "px-0"
+      }`}
     >
       <div
-        className={`relative transition-all duration-500 overflow-visible px-6 border border-white/5 flex items-center justify-between ${isScrolled
-          ? "w-[95%] lg:w-[85%] h-14 bg-background/60 backdrop-blur-2xl rounded-none shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-          : "w-full h-16 bg-transparent border-transparent"
-          }`}
+        className={`relative max-w-7xl w-full transition-all duration-500 overflow-visible px-6 flex items-center justify-between border ${
+          isScrolled
+            ? "h-14 bg-white/70 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-black/5"
+            : "h-16 bg-transparent border-transparent"
+        }`}
       >
-        {/* Logo */}
+        {/* Logo Section */}
         <div className="flex items-center shrink-0">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="relative h-8 w-40 md:h-12 md:w-56 transition-transform duration-500 group-hover:scale-105">
+            <div className="relative h-8 w-40 md:h-10 md:w-48 transition-all duration-500 group-hover:scale-[1.02]">
               <Image
                 src={visionaireLogo}
                 alt="Nodeflux"
                 fill
-                className="object-contain brightness-0 invert transition-opacity"
+                className="object-contain"
               />
             </div>
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Center */}
         <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 h-full">
           <div className="flex items-center space-x-1" onMouseLeave={() => setHoveredPath(null)}>
             {NavLinks.map((link) => (
               <div
                 key={link.title}
-                className="relative group h-full flex items-center py-2"
+                className="relative group h-full flex items-center"
                 onMouseEnter={() => setHoveredPath(link.title)}
               >
                 <div
-                  className={`flex items-center space-x-1.5 px-4 py-1.5 rounded-none text-[11px] font-mono tracking-widest uppercase transition-colors duration-300 z-10 ${hoveredPath === link.title ? "text-white" : "text-white/50"
-                    }`}
+                  className={`flex items-center gap-1.5 px-5 py-2 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 z-10 cursor-pointer ${
+                    hoveredPath === link.title ? "text-primary" : "text-foreground/40 hover:text-foreground/70"
+                  }`}
                 >
-                  {link.href ? (
-                    <Link href={link.href}>{link.title}</Link>
-                  ) : (
-                    <span>{link.title}</span>
-                  )}
-                  {link.items && <ChevronDown className={`w-3 h-3 transition-transform duration-300 group-hover:rotate-180`} />}
+                  <span>{link.title}</span>
+                  <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${hoveredPath === link.title ? "rotate-180" : ""}`} />
                 </div>
 
-                {/* Hover Background Pill */}
-                {hoveredPath === link.title && (
-                  <motion.div
-                    layoutId="nav-hover"
-                    className="absolute inset-x-1 inset-y-2 bg-white/5 rounded-none -z-0"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-
-                {/* Dropdown menu */}
-                {link.items && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div className="w-[480px] bg-background/95 backdrop-blur-2xl border border-white/5 p-6 grid grid-cols-2 gap-4 shadow-2xl relative overflow-hidden rounded-none">
-                      {/* Technical Detail */}
-                      <div className="absolute top-0 right-0 p-2 opacity-10">
-                        <div className="w-16 h-px bg-white" />
+                {/* Dropdown menu - Minimalist Glass */}
+                <AnimatePresence>
+                  {hoveredPath === link.title && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 2, scale: 0.99 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 2, scale: 0.99 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute top-full left-0 z-50"
+                    >
+                      <div className="mt-2 w-[420px] bg-white border border-black/5 p-4 grid grid-cols-1 gap-1 shadow-[0_10px_40px_rgba(0,0,0,0.08)] rounded-2xl">
+                        {link.items.map((item) => (
+                          <Link
+                            key={item.title}
+                            href={item.href}
+                            className="group/item flex items-center justify-between p-3 rounded-xl hover:bg-black/[0.02] transition-all duration-300"
+                          >
+                            <div className="flex flex-col">
+                              <span className="text-xs font-bold text-foreground/80 group-hover/item:text-primary transition-colors uppercase tracking-wider">
+                                {item.title}
+                              </span>
+                              <span className="text-[9px] text-black/40 font-medium mt-0.5">
+                                {item.desc}
+                              </span>
+                            </div>
+                            <div className="opacity-0 group-hover/item:opacity-100 transition-opacity">
+                              <Zap className="w-3 h-3 text-primary/40" />
+                            </div>
+                          </Link>
+                        ))}
                       </div>
-
-                      {link.items.map((item) => (
-                        <Link
-                          key={item.title}
-                          href={item.href}
-                          className="group/item flex flex-col p-3 hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/5"
-                        >
-                          <span className="text-xs font-medium text-white/80 group-hover/item:text-primary transition-colors">
-                            {item.title}
-                          </span>
-                          <span className="text-[10px] text-muted-foreground font-light mt-1">
-                            {item.desc}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </div>
@@ -138,10 +139,7 @@ export default function NavigationBar() {
           <div className="hidden md:block">
             <Button
               size="sm"
-              className={`font-medium px-6 rounded-none transition-all duration-500 text-[10px] uppercase tracking-widest ${isScrolled
-                ? "bg-primary text-white hover:bg-primary/90"
-                : "bg-white text-black hover:bg-white/90"
-                }`}
+              className="font-bold px-6 h-9 rounded-xl transition-all duration-500 text-[9px] uppercase tracking-[0.2em] bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10"
             >
               <Link href="/contact-us">Initialize Demo</Link>
             </Button>
@@ -150,8 +148,9 @@ export default function NavigationBar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden p-2 rounded-none transition-colors ${mobileMenuOpen ? "bg-white/10 text-white" : "text-white/60 hover:text-white"
-              }`}
+            className={`md:hidden p-2 rounded-xl transition-all ${
+              mobileMenuOpen ? "bg-black/5 text-foreground" : "text-foreground/40 hover:text-foreground"
+            }`}
           >
             <AnimatePresence mode="wait">
               {mobileMenuOpen ? (
@@ -177,3 +176,4 @@ export default function NavigationBar() {
     </nav>
   );
 }
+

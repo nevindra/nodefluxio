@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Anchor, Layers, MapPin, Plane, Satellite, ShieldCheck } from "lucide-react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plane, Anchor, MapPin, Layers, Satellite, ShieldCheck } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 // Marker data
 const locations = [
@@ -216,7 +216,7 @@ export default function DeploymentMap() {
 
             <div className="container mx-auto px-4 relative z-20">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
-                    <div className="max-w-4xl">
+                    <div className="max-w-8xl">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}

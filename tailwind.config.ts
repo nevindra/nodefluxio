@@ -35,6 +35,9 @@ const config = {
 			},
 		},
 		extend: {
+			fontFamily: {
+				futura: ["futura-pt", "Arial", "sans-serif"],
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
@@ -42,16 +45,16 @@ const config = {
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				primary: {
-					DEFAULT: "#4c12a1",
+					DEFAULT: "hsl(var(--primary))",
 					foreground: "hsl(var(--primary-foreground))",
 				},
 				secondary: {
-					DEFAULT: "#45e5b7",
+					DEFAULT: "hsl(var(--secondary))",
 					foreground: "hsl(var(--secondary-foreground))",
 				},
 				tertiary: {
-					DEFAULT: "#439dff",
-					foreground: "hsl(var(--tertiary-foreground, 0 0% 100%))",
+					DEFAULT: "hsl(var(--primary))",
+					foreground: "hsl(var(--primary-foreground))",
 				},
 				destructive: {
 					DEFAULT: "hsl(var(--destructive))",

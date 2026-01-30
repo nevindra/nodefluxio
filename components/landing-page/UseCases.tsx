@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useState } from "react";
 
 const useCases = [
   {
@@ -12,7 +12,6 @@ const useCases = [
       "Enhance public safety and security with our advanced large-scale surveillance solutions. Monitor vast areas efficiently, detect anomalies in real-time, and respond swiftly to potential threats.",
     image: "/landing-page/command-center.png",
     href: "/solutions/massive-surveillance",
-    id: "01",
   },
   {
     title: "Smart City Solution",
@@ -20,7 +19,6 @@ const useCases = [
       "Revolutionize urban living with our intelligent city management systems. Optimize traffic flow, improve resource allocation, and enhance overall quality of life for citizens through data-driven insights.",
     image: "/landing-page/smart-city.jpg",
     href: "/solutions/smart-city",
-    id: "02",
   },
   {
     title: "Integrated Building Surveillance",
@@ -28,7 +26,6 @@ const useCases = [
       "Secure your premises with our comprehensive building surveillance solutions. Monitor access points, track occupancy, and ensure safety protocols are followed, all through a single integrated platform.",
     image: "/landing-page/smart-city.jpg",
     href: "/solutions/smart-building",
-    id: "03",
   },
   {
     title: "Retail Store Optimization",
@@ -36,146 +33,127 @@ const useCases = [
       "Elevate your retail operations with our cutting-edge analytics. Gain valuable insights into customer behavior, optimize store layouts, and enhance the shopping experience while improving operational efficiency.",
     image: "/landing-page/smart-city.jpg",
     href: "/solutions/smart-retail",
-    id: "04",
   },
 ];
 
 export default function UseCases() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === "left" ? scrollLeft - clientWidth / 2 : scrollLeft + clientWidth / 2;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
-    }
-  };
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 mb-16">
-        <div className="flex items-center gap-4 mb-8">
-          <span className="text-[10px] font-mono tracking-[0.3em] text-white/40 uppercase">Our Solutions</span>
-          <div className="h-px w-32 bg-white/10" />
-        </div>
-
-        <h2 className="text-5xl md:text-6xl font-light tracking-tight text-white mb-20 max-w-4xl leading-[1.1]">
-          Transforming industries with intelligent vision.
-        </h2>
-      </div>
-
-      <div className="relative">
-        {/* Progress & Navigation Controls - Top Right relative to scroll area */}
-        <div className="container mx-auto px-4 flex justify-between items-end mb-12">
-          <div className="flex gap-4">
-            <button
-              onClick={() => scroll("left")}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-300"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-300"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-
-          <div className="hidden md:flex items-center gap-6">
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em] mb-1">Status</span>
-              <span className="text-[10px] font-mono text-primary font-bold tracking-widest">AWAITING_COMMAND</span>
-            </div>
-            <div className="w-px h-8 bg-white/10" />
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em] mb-1">Index</span>
-              <span className="text-[10px] font-mono text-white/60 tracking-widest">01 — 04</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Horizontal Scroll Area - wrapped in container for alignment */}
-        <div className="container mx-auto px-4">
-          <div
-            ref={scrollRef}
-            className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory gap-8 pb-24 -mr-4 pr-4 sm:-mr-[calc((100vw-640px)/2+1rem)] sm:pr-[calc((100vw-640px)/2+1rem)] md:-mr-[calc((100vw-768px)/2+1rem)] md:pr-[calc((100vw-768px)/2+1rem)] lg:-mr-[calc((100vw-1024px)/2+1rem)] lg:pr-[calc((100vw-1024px)/2+1rem)] xl:-mr-[calc((100vw-1280px)/2+1rem)] xl:pr-[calc((100vw-1280px)/2+1rem)] 2xl:-mr-[calc((100vw-1536px)/2+1rem)] 2xl:pr-[calc((100vw-1536px)/2+1rem)]"
+    <section className="py-24 md:py-32 bg-background border-t border-black/[0.03] font-futura">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="max-w-7xl mb-12 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center space-x-3 mb-8"
           >
+            <div className="w-12 h-[2px] bg-primary"></div>
+            <span className="text-xs font-bold tracking-[0.4em] text-primary uppercase">Market Applications</span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl font-bold tracking-[0.05em] mb-6 leading-tight text-foreground uppercase"
+          >
+            Transforming industries with <br className="hidden md:block" />
+            <span className="text-primary">intelligent vision.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-4xl"
+          >
+            Leveraging computer vision to solve complex operational challenges across diverse sectors,
+            from security to urban infrastructure and retail intelligence.
+          </motion.p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+          {/* Tabs Navigation - Scalable Sidebar */}
+          <div className="w-full lg:w-[400px] flex flex-col border-l border-black/[0.08]">
             {useCases.map((useCase, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="min-w-[320px] md:min-w-[450px] lg:min-w-[550px] snap-start group/card"
-            >
-              <Link href={useCase.href} className="block">
-              <div className="mb-12">
-                <h3 className="text-2xl font-medium text-white mb-4 group-hover/card:text-primary transition-colors duration-500">
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`text-left py-6 px-8 relative transition-all duration-300 group rounded-r-lg
+                  ${activeTab === index 
+                    ? "text-primary bg-primary/[0.03]" 
+                    : "text-foreground hover:text-primary hover:bg-black/[0.02]"
+                  }`}
+              >
+                {/* Minimalist Active Indicator */}
+                <div className={`absolute left-0 top-2 bottom-2 w-[3px] bg-primary transition-transform duration-500 origin-top rounded-full
+                  ${activeTab === index ? "scale-y-100" : "scale-y-0"}
+                `} />
+                
+                <span className="text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
                   {useCase.title}
-                </h3>
-                <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-sm line-clamp-2 min-h-[3rem]">
-                  {useCase.description}
-                </p>
-              </div>
+                </span>
+                
+                {activeTab === index && (
+                  <motion.div 
+                    layoutId="active-indicator"
+                    className="absolute right-6 top-1/2 -translate-y-1/2"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_rgba(var(--primary),0.6)]" />
+                  </motion.div>
+                )}
+              </button>
+            ))}
+          </div>
 
-              <div className="relative aspect-[16/11] rounded-[2px] overflow-hidden border border-white/5 bg-white/5 group/img shadow-2xl shadow-black/50">
-                <img
-                  src={useCase.image}
-                  alt={useCase.title}
-                  className="w-full h-full object-cover opacity-60 group-hover/img:opacity-100 transition-all duration-1000 grayscale group-hover/img:grayscale-0 scale-110 group-hover/img:scale-100"
-                />
-
-                {/* Tactical AI Overlays */}
-                <div className="absolute inset-0 p-8 pointer-events-none opacity-40 group-hover/img:opacity-100 transition-all duration-700">
-                  <div className="w-full h-full border border-white/5 relative">
-                    {/* Corner Brackets */}
-                    <div className="absolute top-0 left-0 border-l border-t border-white/40 w-8 h-8" />
-                    <div className="absolute top-0 right-0 border-r border-t border-white/40 w-8 h-8" />
-                    <div className="absolute bottom-0 left-0 border-l border-b border-white/40 w-8 h-8" />
-                    <div className="absolute bottom-0 right-0 border-r border-b border-white/40 w-8 h-8" />
-
-                    {/* Scanning Line Effect */}
-                    <motion.div
-                      animate={{ top: ["0%", "100%", "0%"] }}
-                      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                      className="absolute left-0 right-0 h-px bg-primary/20 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
-                    />
-
-                    <div className="absolute top-6 left-6 font-mono text-[8px] text-white/40 space-y-2 uppercase tracking-widest">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1 h-1 bg-primary" />
-                        <span>System_Sync: Active</span>
-                      </div>
-                      <div>Stream_ID: NF_{useCase.id}</div>
-                    </div>
-
-                    <div className="absolute bottom-6 right-6 font-mono text-[8px] text-white/30 text-right tracking-[0.2em]">
-                      {useCase.id} // SEC_TYPE_A
-                    </div>
-                  </div>
+          {/* Display Area */}
+          <div className="flex-1 min-h-[500px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: 15 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -15 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col h-full"
+              >
+                <div className="mb-12">
+                  <p className="text-base md:text-lg text-foreground font-medium leading-relaxed">
+                    {useCases[activeTab].description}
+                  </p>
                 </div>
 
-                {/* Overlay Mask */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-transparent opacity-80 group-hover/img:opacity-0 transition-opacity duration-700" />
-              </div>
-              </Link>
-            </motion.div>
-          ))}
+                {/* Main Visual */}
+                <div className="relative aspect-[21/9] lg:aspect-[21/9] rounded-xl overflow-hidden bg-black/[0.05] border border-black/[0.1] group/img mb-12 shadow-xl w-full">
+                  <img
+                    src={useCases[activeTab].image}
+                    alt={useCases[activeTab].title}
+                    className="w-full h-full object-cover grayscale opacity-50 group-hover/img:opacity-100 group-hover/img:grayscale-0 transition-all duration-1000 scale-105 group-hover/img:scale-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-transparent opacity-60" />
+                  
+                  {/* Decorative Corner Brackets (Palantir/NOC vibe) */}
+                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/30 rounded-tl-lg" />
+                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/30 rounded-tr-lg" />
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/30 rounded-bl-lg" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/30 rounded-br-lg" />
+                </div>
 
-            {/* Spacer to allow scrolling past the last item */}
-            <div className="min-w-[10vw] sm:min-w-[20vw] flex-shrink-0" />
-          </div>
-        </div>
-
-        {/* Progress Bar (at the bottom of the section) */}
-        <div className="container mx-auto px-4 mt-12 pb-12">
-          <div className="w-full h-[1px] bg-white/5 relative">
-            <motion.div
-              className="absolute top-0 left-0 h-full bg-primary/40"
-              style={{ width: "25%" }}
-            />
+                <Link
+                  href={useCases[activeTab].href}
+                  className="inline-flex items-center gap-6 group/link w-fit"
+                >
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-primary group-hover/link:text-foreground transition-colors">
+                    Access Technical Specifications
+                  </span>
+                  <div className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center group-hover/link:bg-primary group-hover/link:border-primary transition-all duration-500 group-hover/link:shadow-[0_0_15px_rgba(var(--primary),0.3)]">
+                    <ArrowUpRight className="w-6 h-6 text-primary group-hover/link:text-white transition-colors" />
+                  </div>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

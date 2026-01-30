@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export const HeroBackground = ({
     videoSrc,
@@ -40,28 +40,19 @@ export const HeroBackground = ({
             </motion.div>
 
             {/* Universal Technical Overlays */}
-            <div className="absolute inset-0 bg-hero-pattern [background-size:40px_40px] opacity-[0.03]"></div>
+            <div className="absolute inset-0 bg-hero-pattern [background-size:40px_40px] opacity-[0.05] grayscale invert pointer-events-none"></div>
 
             {/* Technical Structural Lines with different parallax speed */}
             <motion.div style={{ y: y2 }} className="absolute inset-0">
-                <div className="absolute top-0 left-1/4 w-px h-full bg-white/5"></div>
+                <div className="absolute top-0 left-1/4 w-px h-full bg-black/5"></div>
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-0 left-0 w-[200%] h-[1px] bg-white/5 origin-top-left rotate-[12deg]"></div>
+                    <div className="absolute top-0 left-0 w-[200%] h-[1px] bg-black/[0.02] origin-top-left rotate-[12deg]"></div>
                 </div>
 
-                {/* Structural Indicators */}
-                <div className="absolute top-1/4 left-0 w-full h-px bg-white/5 font-mono text-[8px] text-white/10 px-4 pt-1 hidden md:block">
-                    COORD_L_Y:0.25
-                </div>
-                <div className="absolute top-3/4 left-0 w-full h-px bg-white/5 font-mono text-[8px] text-white/10 px-4 pt-1 hidden md:block">
-                    COORD_L_Y:0.75
-                </div>
-                <div className="absolute left-1/4 top-0 w-px h-full bg-white/5 font-mono text-[8px] text-white/10 py-4 pl-1 hidden md:block uppercase [writing-mode:vertical-lr]">
-                    X_AXIS_ORD_0.25
-                </div>
-                <div className="absolute bottom-1/4 left-0 w-full h-px bg-white/5 font-mono text-[8px] text-white/10 px-4 pt-1 hidden md:block">
-                    COORD_L_Y:0.75
-                </div>
+                {/* Structural Lines (no text) */}
+                <div className="absolute top-1/4 left-0 w-full h-px bg-black/5 hidden md:block" />
+                <div className="absolute top-3/4 left-0 w-full h-px bg-black/5 hidden md:block" />
+                <div className="absolute left-1/4 top-0 w-px h-full bg-black/5 hidden md:block" />
             </motion.div>
         </div>
     );

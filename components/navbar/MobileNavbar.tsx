@@ -1,9 +1,9 @@
 "use client";
 
-import { ChevronDown, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronDown, X } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
-import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 
@@ -20,6 +20,14 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
 
   const NavLinks = [
     {
+      title: "Products",
+      items: [
+        { title: "Lenz", href: "/lenz" },
+        { title: "VisionAIre", href: "/visionaire" },
+        { title: "Athena", href: "/athena" },
+      ],
+    },
+    {
       title: "Solutions",
       items: [
         { title: "Public Safety", href: "/solutions/massive-surveillance" },
@@ -29,17 +37,12 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
       ],
     },
     {
-      title: "Platform",
+      title: "Resources",
       items: [
-        { title: "Dashboard", href: "/dashboard" },
-        { title: "Analytics", href: "/analytics" },
-        { title: "VisionAIre Node", href: "/platform" },
+        { title: "Documentation", href: "/docs" },
+        { title: "Blog", href: "/blog" },
       ],
     },
-    {
-      title: "Technology",
-      href: "/technology"
-    }
   ];
 
   const containerVariants = {
@@ -68,6 +71,14 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
       exit="exit"
       className="md:hidden fixed inset-0 z-[60] bg-background/95 backdrop-blur-2xl flex flex-col p-8 pt-24"
     >
+      {/* Close Button */}
+      <button 
+        onClick={onClose}
+        className="absolute top-6 right-6 p-3 text-white/50 hover:text-white transition-colors z-[70]"
+      >
+        <X className="w-6 h-6 text-white" />
+      </button>
+
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-5">
         <div className="absolute top-[20%] left-[10%] text-[8px] font-mono whitespace-pre italic">
@@ -78,7 +89,7 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
       <div className="flex-1 space-y-10 overflow-y-auto">
         {NavLinks.map((group) => (
           <motion.div key={group.title} variants={itemVariants} className="space-y-4">
-            {group.items ? (
+            {group.items && (
               <>
                 <button
                   onClick={() => toggleGroup(group.title)}
@@ -105,15 +116,8 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
                   )}
                 </div>
               </>
-            ) : (
-              <Link
-                href={group.href!}
-                onClick={onClose}
-                className="block text-3xl font-light tracking-tight text-white/90 hover:text-primary transition-colors py-2"
-              >
-                {group.title}
-              </Link>
             )}
+
           </motion.div>
         ))}
       </div>

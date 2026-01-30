@@ -16,9 +16,9 @@ export default function LandingSection({ children, className, id }: LandingSecti
         offset: ["start end", "end start"]
     });
 
-    const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0.85, 1, 1, 0.85]);
-    const y = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [150, 0, 0, -150]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
+    const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50]);
 
     return (
         <motion.section

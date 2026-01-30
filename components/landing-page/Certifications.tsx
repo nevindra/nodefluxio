@@ -1,92 +1,114 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import nist from "@/public/landing-page/nist.webp";
-import tkdn from "@/public/landing-page/tkdn.webp";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Certifications() {
-	// TODO: Change the title and add description for each certification
 	return (
-		<section className="py-12">
-			<div className="container mx-auto px-4">
-				<h2 className="text-3xl font-bold text-center mb-12">
-					<span className="text-primary">Local Technology Principal</span>{" "}
-					<br /> with <br />{" "}
-					<span className="text-primary">World Class Quality</span>
-				</h2>
-				<div className="grid md:grid-cols-2 gap-8">
-					<Card
-						className="bg-white backdrop-blur-lg relative overflow-hidden"
-						style={{
-							backgroundColor: "#0000",
-						}}
+		<section className="py-24 md:py-32 bg-background border-t border-black/[0.03] font-futura">
+			<div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+				{/* Section Header */}
+				<div className="max-w-7xl mb-12 md:mb-20">
+					<motion.div
+						initial={{ opacity: 0, x: -20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						viewport={{ once: true }}
+						className="flex items-center space-x-3 mb-8"
 					>
-						<div
-							className="absolute inset-0 z-0"
-							style={{
-								backgroundImage: "url('/landing-page/bendera.webp')",
-								backgroundSize: "cover",
-								backgroundPosition: "center",
-							}}
-						/>
-						<div className="absolute inset-0 bg-white opacity-70 z-10" />
-						<div className="relative z-20">
-							<CardHeader>
-								<div className="mb-4">
-									<Image
-										src={tkdn}
-										alt="TKDN"
-										width={150}
-										height={150}
-										className="fixed-logo"
-									/>
+						<div className="w-12 h-[2px] bg-primary"></div>
+						<span className="text-xs font-bold tracking-[0.4em] text-primary uppercase">Ecosystem & Compliance</span>
+					</motion.div>
+					<motion.h2
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						className="text-2xl md:text-3xl font-bold tracking-[0.05em] mb-6 leading-tight text-foreground uppercase"
+					>
+						Global Standards <br />
+						<span className="text-primary">World-Class Recognition.</span>
+					</motion.h2>
+					<motion.p
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.2 }}
+						className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-4xl"
+					>
+						Built on top-tier global partnerships and verified by the world's most 
+						rigorous biometric testing authorities.
+					</motion.p>
+				</div>
+
+				<div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5 }}
+					>
+						<Card className="glass border-black/5 relative overflow-hidden group shadow-sm rounded-xl h-full">
+							<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+							<CardHeader className="relative z-10 pt-12">
+								<div className="flex items-center gap-6 mb-8">
+									<div className="flex flex-col">
+										<span className="text-2xl font-bold tracking-tighter text-foreground">NVIDIA</span>
+										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Inception Partner</span>
+									</div>
+									<div className="w-px h-8 bg-black/10" />
+									<div className="flex flex-col">
+										<span className="text-2xl font-bold tracking-tighter text-foreground">INTEL</span>
+										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Titan Partner</span>
+									</div>
 								</div>
-								<CardTitle className="text-xl font-semibold text-primary">
-									Nodeflux with High TKDN value (99.04%)
+								<CardTitle className="text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase mb-4">
+									Strategic Global <br />Technology Alliances
 								</CardTitle>
 							</CardHeader>
-							<CardContent className="text-justify">
-								<p className="mb-4 ">
-									Proud to be Indonesian, Nodeflux is Made in Indonesia, By
-									Indonesian, supported by Indonesian investor and consists of
-									all Indonesian talented engineers until today. Nodeflux Brand
-									and Product is also Registered as Indonesian Intellectual
-									Property.
+							<CardContent className="relative z-10 pb-12">
+								<p className="text-foreground/70 text-sm md:text-base font-medium leading-relaxed">
+									As a member of the NVIDIA Inception Program and an Intel Titan Partner, 
+									Nodeflux leverages cutting-edge hardware acceleration and early access 
+									to next-gen AI compute tools to deliver unparalleled performance 
+									from the edge to the cloud.
 								</p>
 							</CardContent>
-						</div>
-					</Card>
-					<Card
-						className="bg-primary backdrop-blur-lg relative overflow-hidden"
-						style={{
-							backgroundColor: "#4c12a1",
-						}}
+						</Card>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.1 }}
 					>
-						<div
-							className="absolute inset-0 z-0"
-							style={{
-								backgroundImage: "url('/landing-page/network.webp')",
-								backgroundSize: "cover",
-								backgroundPosition: "center",
-							}}
-						/>
-						<div className="absolute inset-0 bg-white opacity-75 z-10" />
-						<div className="relative z-20">
-						<CardHeader>
-							<Image src={nist} alt="NIST" width={100} height={100} />
-							<CardTitle className="text-xl font-semibold text-primary">
-								Top 25th from 148 (85th Percentile) in NIST FRVT Leaderboard
-							</CardTitle>
-						</CardHeader>
-						<CardContent className="text-justify">
-							<p>
-								Nodeflux passed NIST’s Face Recognition Vendor Test in 2019.
-								Becoming the 1st from Indonesia. Which only 4 from southeast
-								asia 1 Indonesia, 3 singapore. Nodeflux ranked 25th world's best
-								from ±90 Vision AI company around the world.
-							</p>
-						</CardContent>
-						</div>
-					</Card>
+						<Card className="glass border-black/5 relative overflow-hidden group shadow-sm rounded-xl h-full">
+							<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+							<CardHeader className="relative z-10 pt-12">
+								<div className="mb-8 flex items-center gap-4">
+									<Image 
+										src={nist} 
+										alt="NIST" 
+										width={100} 
+										height={40} 
+										className="opacity-80 grayscale"
+									/>
+									<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Verified Score</span>
+								</div>
+								<CardTitle className="text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase mb-4">
+									Ranked Top 25th <br />Global NIST FRVT
+								</CardTitle>
+							</CardHeader>
+							<CardContent className="relative z-10 pb-12">
+								<p className="text-foreground/70 text-sm md:text-base font-medium leading-relaxed">
+									Selected as the 1st technology principal from Indonesia to pass NIST’s 
+									Face Recognition Vendor Test. Nodeflux ranks in the top 85th percentile 
+									among 140+ global vision AI titans.
+								</p>
+							</CardContent>
+						</Card>
+					</motion.div>
 				</div>
 			</div>
 		</section>
