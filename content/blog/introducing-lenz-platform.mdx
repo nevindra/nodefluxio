@@ -1,0 +1,55 @@
+---
+title: "Introducing Lenz Platform"
+description: "Meet Lenz, our unified video analytics platform designed to transform how enterprises manage and analyze video streams at scale."
+date: "2026-01-15"
+author:
+  name: "Nodeflux Team"
+  avatar: "/images/authors/nodeflux.png"
+category: "Product"
+tags: ["lenz", "platform", "video-analytics", "announcement"]
+coverImage: "/images/blog/lenz-intro.jpg"
+---
+
+We are excited to announce the launch of **Lenz**, our next-generation unified video analytics platform. Lenz represents a significant leap forward in how enterprises manage, monitor, and extract insights from video streams.
+
+## Why We Built Lenz
+
+Modern enterprises face an overwhelming challenge: managing thousands of video streams while extracting meaningful insights in real-time. Traditional approaches fall short when it comes to scalability, performance, and ease of use.
+
+Lenz addresses these challenges head-on with:
+
+- **Unified Stream Management** - Monitor all your video feeds from a single, intuitive dashboard
+- **AI-Powered Analysis** - Leverage cutting-edge computer vision for real-time insights
+- **Enterprise-Grade Scalability** - Handle thousands of concurrent streams without breaking a sweat
+
+## Key Features
+
+### Real-Time Analytics
+
+Lenz processes video streams in real-time, delivering instant insights through our proprietary AI models. Whether you're detecting anomalies, tracking objects, or analyzing crowd behavior, Lenz handles it all.
+
+```typescript
+// Example: Configuring a Lenz analytics stream
+const stream = lenz.createStream({
+  source: "rtsp://camera.example.com/feed",
+  analytics: ["face-detection", "crowd-counting"],
+  alerts: {
+    crowdThreshold: 100,
+    notifyOnAnomaly: true,
+  },
+});
+```
+
+### Seamless Integration
+
+Lenz integrates seamlessly with your existing infrastructure. Our REST API and SDK make it easy to embed video analytics into your applications.
+
+## What's Next
+
+This is just the beginning. We're continuously improving Lenz with new features and capabilities. Stay tuned for upcoming announcements about:
+
+- Enhanced facial recognition capabilities
+- Advanced behavioral analytics
+- Multi-site management features
+
+[Contact us](/contact-us) to learn more about how Lenz can transform your video analytics operations.

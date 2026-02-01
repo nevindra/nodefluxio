@@ -61,13 +61,13 @@ export default function Features() {
             className="flex items-center space-x-3 mb-8"
           >
             <div className="w-12 h-[2px] bg-primary"></div>
-            <span className="text-xs font-bold tracking-[0.4em] text-primary uppercase">Core Technology Fleet</span>
+            <span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">Core Technology Fleet</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold tracking-[0.05em] mb-8 leading-tight text-foreground uppercase"
+            className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-tight text-foreground uppercase"
           >
             Powerful AI Tools <br />
             <span className="text-primary">Engineered for Action.</span>
@@ -77,7 +77,7 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-foreground/80 font-medium leading-relaxed max-w-3xl"
+            className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-3xl"
           >
             We transform complex data into simple, actionable insights. Whether it's
             keeping your premises safe or answering business questions, our tools do the heavy lifting for you.
@@ -99,7 +99,7 @@ export default function Features() {
                 <div className={`transition-all duration-300 ${activeTab === p.id ? "scale-110" : "opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0"}`}>
                   {p.icon}
                 </div>
-                <span className="font-bold uppercase tracking-[0.3em] text-[10px] whitespace-nowrap">{p.title}</span>
+                <span className="font-medium uppercase tracking-[0.3em] text-[10px] whitespace-nowrap">{p.title}</span>
 
                 {activeTab === p.id && (
                   <motion.div
@@ -128,24 +128,24 @@ export default function Features() {
                 >
                   <div className="space-y-8">
                     <div>
-                      <h3 className="text-primary font-bold text-base md:text-lg uppercase tracking-[0.4em] mb-2">{p.subtitle}</h3>
-                      <h4 className="text-xl md:text-2xl font-bold text-foreground tracking-tight uppercase leading-tight mb-4">
+                      <h3 className="text-primary font-medium text-base md:text-lg uppercase tracking-[0.4em] mb-2">{p.subtitle}</h3>
+                      <h4 className="text-xl md:text-2xl font-medium text-foreground tracking-tight uppercase leading-tight mb-4">
                         {p.title}
                       </h4>
-                      <p className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed">
+                      <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
                         {p.description}
                       </p>
                     </div>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                      <button className="flex-1 min-w-[200px] px-8 py-4 bg-foreground text-background text-[10px] font-bold rounded-xl hover:bg-foreground/90 transition-all duration-300 uppercase tracking-[0.2em] group flex items-center justify-center gap-3">
+                      <button className="flex-1 min-w-[200px] px-8 py-4 bg-foreground text-background text-[10px] font-semibold rounded-xl hover:bg-foreground/90 transition-all duration-300 uppercase tracking-[0.2em] group flex items-center justify-center gap-3">
                         View Specifications <span className="text-background/40 group-hover:text-background group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">↗</span>
                       </button>
                     </div>
 
                     {p.id === "lenz" && (
                       <div className="pt-10 border-t border-black/5">
-                        <div className="text-[10px] font-bold text-primary uppercase mb-6 tracking-[0.3em]">Operational Perspectives</div>
+                        <div className="text-[10px] font-medium text-primary uppercase mb-6 tracking-[0.3em]">Operational Perspectives</div>
                         <div className="flex flex-wrap gap-3">
                           {[
                             { id: "alerts", label: "Alert Integration", icon: Bell },
@@ -155,7 +155,7 @@ export default function Features() {
                             <button
                               key={uc.id}
                               onClick={() => setLenzUseCase(lenzUseCase === uc.id ? "streams" : uc.id)}
-                              className={`flex items-center gap-2.5 px-5 py-2.5 text-[9px] font-bold uppercase tracking-[0.15em] border rounded-full transition-all duration-300 ${lenzUseCase === uc.id
+                              className={`flex items-center gap-2.5 px-5 py-2.5 text-[9px] font-medium uppercase tracking-[0.15em] border rounded-full transition-all duration-300 ${lenzUseCase === uc.id
                                 ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
                                 : "bg-black/[0.02] border-black/10 text-foreground/40 hover:border-black/20 hover:text-foreground/60"
                                 }`}

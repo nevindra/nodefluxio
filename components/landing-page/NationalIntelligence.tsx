@@ -166,13 +166,13 @@ const StatCard = memo(({ title, value, suffix, prefix, subtext, detail, icon, in
                     {icon}
                 </div>
                 <div className="flex flex-col items-end">
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-primary uppercase">
+                    <span className="text-[10px] font-medium tracking-[0.2em] text-primary uppercase">
                         {detail}
                     </span>
                     {variant === 'hero' && (
                         <div className="flex items-center gap-1.5 mt-2">
                             <TrendingUp className="w-3 h-3 text-green-600/50" />
-                            <span className="text-[9px] font-mono text-green-600/50 font-bold">LIVE_THROUGHPUT</span>
+                            <span className="text-[9px] font-mono text-green-600/50 font-medium">LIVE_THROUGHPUT</span>
                         </div>
                     )}
                 </div>
@@ -182,8 +182,8 @@ const StatCard = memo(({ title, value, suffix, prefix, subtext, detail, icon, in
                 <div className={`${variant === 'hero' ? 'text-4xl md:text-6xl' : 'text-3xl lg:text-4xl'} font-light font-sans tracking-tighter text-foreground mb-4`}>
                     <Counter value={value} suffix={suffix} prefix={prefix} decimals={decimals} duration={variant === 'hero' ? 2.5 : 2} />
                 </div>
-                <h3 className={`${variant === 'hero' ? 'text-lg' : 'text-sm'} font-bold text-primary mb-2 uppercase tracking-wider`}>{title}</h3>
-                <p className={`text-foreground ${variant === 'hero' ? 'text-sm' : 'text-xs leading-relaxed'} font-medium`}>
+                <h3 className={`${variant === 'hero' ? 'text-lg' : 'text-sm'} font-medium text-primary mb-2 uppercase tracking-wider`}>{title}</h3>
+                <p className={`text-muted-foreground ${variant === 'hero' ? 'text-sm' : 'text-xs leading-relaxed'} font-light`}>
                     {subtext}
                 </p>
             </CardContent>
@@ -341,13 +341,13 @@ export default function NationalIntelligence() {
                         className="flex items-center space-x-3 mb-8"
                     >
                         <div className="w-12 h-[2px] bg-primary"></div>
-                        <span className="text-xs font-bold tracking-[0.4em] text-primary uppercase">National Grid Intelligence</span>
+                        <span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">National Grid Intelligence</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl font-bold tracking-[0.05em] mb-6 leading-tight text-foreground uppercase"
+                        className="text-2xl md:text-3xl font-medium tracking-tight mb-6 leading-tight text-foreground uppercase"
                     >
                         Processing Scale <br />
                         <span className="text-primary">Deployed Nationwide.</span>
@@ -357,7 +357,7 @@ export default function NationalIntelligence() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-4xl"
+                        className="text-base md:text-lg text-muted-foreground font-light leading-relaxed max-w-4xl"
                     >
                         Orchestrating AI deployments across Indonesia's critical infrastructure,
                         handling massive data throughput with sub-second precision at the edge.
@@ -411,7 +411,7 @@ export default function NationalIntelligence() {
                                     </div>
                                     <div className="flex items-center gap-3 bg-white/60 backdrop-blur-md px-3 py-1.5 border border-primary/20">
                                         <ShieldCheck className="w-4 h-4 text-primary" />
-                                        <span className="text-[10px] font-mono font-bold tracking-widest text-primary uppercase">All Systems Active</span>
+                                        <span className="text-[10px] font-mono font-medium tracking-widest text-primary uppercase">All Systems Active</span>
                                     </div>
                                 </div>
 
@@ -553,22 +553,22 @@ export default function NationalIntelligence() {
                     <div className="flex items-center gap-4 border border-black/10 p-6 hover:bg-primary/[0.03] transition-all bg-black/[0.02]">
                         <Globe className="w-5 h-5 text-primary" />
                         <div>
-                            <div className="text-xl font-bold text-foreground leading-none mb-1 uppercase tracking-tight">34 Provinces</div>
-                            <div className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">National Grid</div>
+                            <div className="text-xl font-medium text-foreground leading-none mb-1 uppercase tracking-tight">34 Provinces</div>
+                            <div className="text-[10px] font-medium text-primary uppercase tracking-[0.2em]">National Grid</div>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 border border-black/10 p-6 hover:bg-primary/[0.03] transition-all bg-black/[0.02]">
                         <CheckCircle2 className="w-5 h-5 text-primary" />
                         <div>
-                            <div className="text-xl font-bold text-foreground leading-none mb-1 uppercase tracking-tight">30+ Major Events</div>
-                            <div className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Success Record</div>
+                            <div className="text-xl font-medium text-foreground leading-none mb-1 uppercase tracking-tight">30+ Major Events</div>
+                            <div className="text-[10px] font-medium text-primary uppercase tracking-[0.2em]">Success Record</div>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 border border-black/10 p-6 hover:bg-primary/[0.03] transition-all bg-black/[0.02]">
                         <Users className="w-5 h-5 text-primary" />
                         <div>
-                            <div className="text-xl font-bold text-foreground leading-none mb-1 uppercase tracking-tight">100+ Partners</div>
-                            <div className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Global Network</div>
+                            <div className="text-xl font-medium text-foreground leading-none mb-1 uppercase tracking-tight">100+ Partners</div>
+                            <div className="text-[10px] font-medium text-primary uppercase tracking-[0.2em]">Global Network</div>
                         </div>
                     </div>
                 </div>

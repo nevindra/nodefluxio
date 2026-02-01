@@ -2,13 +2,13 @@ import NavigationBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from 'next/script';
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const inter = Montserrat({ subsets: ["latin"] });
+const jakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   ...generateMetadata(
@@ -55,7 +55,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={inter.className}>
+      <body className={jakartaSans.className}>
         <SmoothScroll>
           <ScrollProgress />
           <NavigationBar />

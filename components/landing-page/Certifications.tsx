@@ -18,13 +18,13 @@ export default function Certifications() {
 						className="flex items-center space-x-3 mb-8"
 					>
 						<div className="w-12 h-[2px] bg-primary"></div>
-						<span className="text-xs font-bold tracking-[0.4em] text-primary uppercase">Ecosystem & Compliance</span>
+						<span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">Ecosystem & Compliance</span>
 					</motion.div>
 					<motion.h2
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						className="text-2xl md:text-3xl font-bold tracking-[0.05em] mb-6 leading-tight text-foreground uppercase"
+						className="text-2xl md:text-3xl font-medium tracking-tight mb-6 leading-tight text-foreground uppercase"
 					>
 						Global Standards <br />
 						<span className="text-primary">World-Class Recognition.</span>
@@ -34,7 +34,7 @@ export default function Certifications() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ delay: 0.2 }}
-						className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-4xl"
+						className="text-base md:text-lg text-muted-foreground font-light leading-relaxed max-w-4xl"
 					>
 						Built on top-tier global partnerships and verified by the world's most
 						rigorous biometric testing authorities.
@@ -53,21 +53,21 @@ export default function Certifications() {
 							<CardHeader className="relative z-10 pt-12">
 								<div className="flex items-center gap-6 mb-8">
 									<div className="flex flex-col">
-										<span className="text-2xl font-bold tracking-tighter text-foreground">NVIDIA</span>
-										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Inception Partner</span>
+										<span className="text-2xl font-medium tracking-tighter text-foreground">NVIDIA</span>
+										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Inception Partner</span>
 									</div>
 									<div className="w-px h-8 bg-black/10" />
 									<div className="flex flex-col">
-										<span className="text-2xl font-bold tracking-tighter text-foreground">INTEL</span>
-										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Titan Partner</span>
+										<span className="text-2xl font-medium tracking-tighter text-foreground">INTEL</span>
+										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Titan Partner</span>
 									</div>
 								</div>
-								<CardTitle className="text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase mb-4">
+								<CardTitle className="text-xl md:text-2xl font-medium tracking-tight text-foreground uppercase mb-4">
 									Strategic Global <br />Technology Alliances
 								</CardTitle>
 							</CardHeader>
 							<CardContent className="relative z-10 pb-12">
-								<p className="text-foreground/70 text-sm md:text-base font-medium leading-relaxed">
+								<p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed">
 									As a member of the NVIDIA Inception Program and an Intel Titan Partner,
 									Nodeflux leverages cutting-edge hardware acceleration and early access
 									to next-gen AI compute tools to deliver unparalleled performance
@@ -94,14 +94,14 @@ export default function Certifications() {
 										height={40}
 										className="opacity-80 grayscale"
 									/>
-									<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Verified Score</span>
+									<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Verified Score</span>
 								</div>
-								<CardTitle className="text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase mb-4">
+								<CardTitle className="text-xl md:text-2xl font-medium tracking-tight text-foreground uppercase mb-4">
 									Ranked Top 25th <br />Global NIST FRVT
 								</CardTitle>
 							</CardHeader>
 							<CardContent className="relative z-10 pb-12">
-								<p className="text-foreground/70 text-sm md:text-base font-medium leading-relaxed">
+								<p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed">
 									Selected as the 1st technology principal from Indonesia to pass NIST’s
 									Face Recognition Vendor Test. Nodeflux ranks in the top 85th percentile
 									among 140+ global vision AI titans.

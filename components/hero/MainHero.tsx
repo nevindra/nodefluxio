@@ -85,7 +85,7 @@ function SystemStat({ icon: Icon, label, value, detail, color = "primary" }: any
             </div>
             <div className="space-y-1">
                 <div className="text-2xl font-light tracking-tight text-foreground">{value}</div>
-                <div className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">{label}</div>
+                <div className="text-[10px] font-medium text-primary uppercase tracking-[0.2em]">{label}</div>
             </div>
             <div className="absolute bottom-0 right-0 w-8 h-8 opacity-[0.03] transition-opacity group-hover:opacity-[0.1]">
                 <Icon className="w-full h-full" />
@@ -290,7 +290,7 @@ export function MainHero({
                                 <Typewriter words={words} />
                             </h1>
 
-                            <p className="text-muted-foreground font-medium text-base md:text-lg max-w-xl leading-relaxed">
+                            <p className="text-muted-foreground font-light text-base md:text-lg max-w-xl leading-relaxed">
                                 {description}
                             </p>
 
