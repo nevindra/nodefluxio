@@ -23,7 +23,7 @@
     --secondary-foreground: 222 47% 11%;
 
     --muted: 214 15% 95%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 16% 35%;
 
     --accent: 264 80% 35%;
     --accent-foreground: 210 40% 98%;
@@ -35,14 +35,19 @@
     --input: 214 32% 85%;
     --ring: 264 80% 35%;
 
-    /* Sharp precision radius */
+    /* Sharp precision radius system */
     --radius: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
 
+    /* Chart colors */
     --chart-1: 264 80% 35%;
     --chart-2: 264 60% 45%;
     --chart-3: 280 65% 60%;
     --chart-4: 250 50% 50%;
     --chart-5: 214 32% 91%;
+
+    --hero-grid-color: 0 0% 0%;
   }
 
   /* Corporate Dark Mode with Purple Accents */
@@ -71,6 +76,8 @@
     --border: 217 33% 25%;
     --input: 217 33% 25%;
     --ring: 264 80% 50%;
+
+    --hero-grid-color: 0 0% 100%;
   }
 }
 

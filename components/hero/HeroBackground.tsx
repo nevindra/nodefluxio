@@ -40,19 +40,19 @@ export const HeroBackground = ({
             </motion.div>
 
             {/* Universal Technical Overlays */}
-            <div className="absolute inset-0 bg-hero-pattern [background-size:40px_40px] opacity-[0.05] grayscale invert pointer-events-none"></div>
+            <div className="absolute inset-0 bg-hero-pattern [background-size:40px_40px] opacity-[0.05] grayscale pointer-events-none"></div>
 
             {/* Technical Structural Lines with different parallax speed */}
             <motion.div style={{ y: y2 }} className="absolute inset-0">
-                <div className="absolute top-0 left-1/4 w-px h-full bg-black/5"></div>
+                <div className="absolute top-0 left-1/4 w-px h-full bg-border/20"></div>
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-0 left-0 w-[200%] h-[1px] bg-black/[0.02] origin-top-left rotate-[12deg]"></div>
+                    <div className="absolute top-0 left-0 w-[200%] h-[1px] bg-border/[0.05] origin-top-left rotate-[12deg]"></div>
                 </div>
 
                 {/* Structural Lines (no text) */}
-                <div className="absolute top-1/4 left-0 w-full h-px bg-black/5 hidden md:block" />
-                <div className="absolute top-3/4 left-0 w-full h-px bg-black/5 hidden md:block" />
-                <div className="absolute left-1/4 top-0 w-px h-full bg-black/5 hidden md:block" />
+                <div className="absolute top-1/4 left-0 w-full h-px bg-border/20 hidden md:block" />
+                <div className="absolute top-3/4 left-0 w-full h-px bg-border/20 hidden md:block" />
+                <div className="absolute left-1/4 top-0 w-px h-full bg-border/20 hidden md:block" />
             </motion.div>
         </div>
     );

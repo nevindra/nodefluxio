@@ -2,27 +2,28 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-    Activity,
-    AlertTriangle,
-    ArrowUpRight,
-    BarChart3,
-    CheckCircle2,
-    ChevronDown,
-    Cpu,
-    Database,
-    Filter,
-    Globe,
-    Grid,
-    Home,
-    MessageSquare,
-    MoreHorizontal,
-    Plus,
-    Search,
-    Send,
-    User,
-    Video,
+  Activity,
+  AlertTriangle,
+  ArrowUpRight,
+  BarChart3,
+  CheckCircle2,
+  ChevronDown,
+  Cpu,
+  Database,
+  Filter,
+  Globe,
+  Grid,
+  Home,
+  MessageSquare,
+  MoreHorizontal,
+  Plus,
+  Search,
+  Send,
+  User,
+  Video,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface LenzDashboardMockupProps {
   useCase?: string;
@@ -72,7 +73,7 @@ export default function LenzDashboardMockup({ useCase = "streams" }: LenzDashboa
             { icon: Activity, label: "Investigation" },
             { icon: Globe, label: "Analytics" },
           ].map((item, i) => (
-            <div 
+            <div
               key={i}
               className={`flex items-center gap-2.5 px-3 py-2 rounded transition-colors group cursor-pointer ${item.active ? 'bg-primary/5 text-primary' : 'hover:bg-black/5 text-black/40'}`}
             >
@@ -99,10 +100,10 @@ export default function LenzDashboardMockup({ useCase = "streams" }: LenzDashboa
             </div>
           </div>
           <div className="flex items-center gap-3">
-             <div className="bg-black/5 border border-black/10 px-2 py-0.5 rounded text-[9px] flex items-center gap-2 text-foreground">
-               <span>Bahasa</span>
-               <ChevronDown className="w-3 h-3 text-black/20" />
-             </div>
+            <div className="bg-black/5 border border-black/10 px-2 py-0.5 rounded text-[9px] flex items-center gap-2 text-foreground">
+              <span>Bahasa</span>
+              <ChevronDown className="w-3 h-3 text-black/20" />
+            </div>
           </div>
         </header>
 
@@ -110,13 +111,13 @@ export default function LenzDashboardMockup({ useCase = "streams" }: LenzDashboa
         <div className="p-3 bg-slate-50/50 border-b border-black/5 flex flex-wrap gap-3 items-center shrink-0">
           <div className="relative group max-w-[200px] w-full">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3 h-3 text-black/20 group-focus-within:text-primary transition-colors" />
-            <input 
+            <input
               readOnly
-              placeholder="Search..." 
+              placeholder="Search..."
               className="bg-white border border-black/10 w-full pl-8 pr-3 py-1 rounded text-[10px] focus:outline-none focus:border-primary/50 transition-colors text-foreground"
             />
           </div>
-          
+
           <div className="flex items-center gap-1.5">
             <div className="h-7 flex items-center gap-1 bg-white border border-black/10 px-2 rounded cursor-pointer hover:bg-slate-50 transition-colors text-[10px] text-foreground">
               <Filter className="w-3 h-3 text-black/40" />
@@ -156,23 +157,28 @@ export default function LenzDashboardMockup({ useCase = "streams" }: LenzDashboa
                 className="grid grid-cols-2 lg:grid-cols-4 gap-4"
               >
                 {streams.map((stream) => (
-                  <motion.div 
+                  <motion.div
                     key={stream.id}
                     whileHover={{ scale: 1.02 }}
                     onClick={() => setActiveStream(stream.id)}
                     className={`relative aspect-video rounded-lg overflow-hidden border transition-all duration-300 group cursor-pointer ${activeStream === stream.id ? 'border-primary ring-1 ring-primary/30 shadow-lg' : 'border-black/5 hover:border-black/10 shadow-sm'}`}
                   >
-                    <img src={stream.image} alt={stream.name} className={`w-full h-full object-cover transition-all duration-700 ${stream.status === 'offline' ? 'grayscale blur-sm blur-opacity-50' : 'group-hover:scale-110 grayscale-[0.2] brightness-90 group-hover:grayscale-0 group-hover:brightness-100'}`} />
+                    <Image
+                      src={stream.image}
+                      alt={stream.name}
+                      fill
+                      className={`object-cover transition-all duration-700 ${stream.status === 'offline' ? 'grayscale blur-sm opacity-50' : 'group-hover:scale-110 grayscale-[0.2] brightness-90 group-hover:grayscale-0 group-hover:brightness-100'}`}
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-                    
+
                     {/* Overlays */}
                     <div className="absolute top-2 left-2 flex items-center gap-2">
-                       <div className={`w-1.5 h-1.5 rounded-full ${stream.status === 'online' ? 'bg-green-500' : 'bg-red-500'} animate-pulse`} />
-                       <span className="text-[10px] font-mono font-bold tracking-tight text-white drop-shadow-md">{stream.name}</span>
+                      <div className={`w-1.5 h-1.5 rounded-full ${stream.status === 'online' ? 'bg-green-500' : 'bg-red-500'} animate-pulse`} />
+                      <span className="text-[10px] font-mono font-bold tracking-tight text-white drop-shadow-md">{stream.name}</span>
                     </div>
-                    
+
                     <div className="absolute top-2 right-2 flex items-center gap-1.5">
-                       <span className="bg-white/80 backdrop-blur-md border border-black/10 px-1 py-0.5 rounded text-[8px] font-mono text-foreground font-bold">{stream.resolution}</span>
+                      <span className="bg-white/80 backdrop-blur-md border border-black/10 px-1 py-0.5 rounded text-[8px] font-mono text-foreground font-bold">{stream.resolution}</span>
                     </div>
 
                     {stream.status === 'offline' && (
@@ -200,7 +206,12 @@ export default function LenzDashboardMockup({ useCase = "streams" }: LenzDashboa
               >
                 <div className="grid grid-cols-2 gap-4">
                   <div className="aspect-video relative rounded-lg overflow-hidden border border-red-500/50 shadow-md">
-                    <img src={streams[0].image} className="w-full h-full object-cover grayscale-[0.1]" />
+                    <Image
+                      src={streams[0].image}
+                      alt="Alert View"
+                      fill
+                      className="object-cover grayscale-[0.1]"
+                    />
                     <div className="absolute inset-0 border-2 border-red-500 animate-pulse" />
                     <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-0.5 rounded text-[8px] font-bold shadow-lg">ALERT: UNKNOWN PERSON</div>
                   </div>
@@ -348,8 +359,8 @@ export default function LenzDashboardMockup({ useCase = "streams" }: LenzDashboa
             </div>
           </div>
           <div className="flex items-center gap-4 uppercase tracking-[0.15em] font-bold">
-             <span>Disk: 84% Available</span>
-             <span className="text-black/20">13:42:11</span>
+            <span>Disk: 84% Available</span>
+            <span className="text-black/20">13:42:11</span>
           </div>
         </footer>
       </div>

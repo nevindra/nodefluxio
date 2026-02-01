@@ -2,273 +2,390 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-    Activity,
     Brain,
-    Cloud,
+    CheckCircle2,
     Database,
+    FileSearch,
     Globe,
+    Loader2,
     MessageSquare,
-    Search,
-    Server,
+    Sparkles,
     Zap
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const WORKFLOW_STEPS = [
-  { id: 'input', label: 'User Query', subtext: 'Received Natural Language Input' },
-  { id: 'athena', label: 'Athena Orchestrator', subtext: 'Decomposing task into sub-goals' },
-  { id: 'dispatch', label: 'Agent Dispatch', subtext: 'Allocating specialized resources' },
-  { id: 'execution', label: 'Deep Execution', subtext: 'Consulting external APIs & Databases' },
-  { id: 'synthesis', label: 'Final Synthesis', subtext: 'Validating and formatting response' }
+const PIPELINE_STAGES = [
+    { id: 'input', label: 'Input', icon: MessageSquare },
+    { id: 'decompose', label: 'Decompose', icon: Brain },
+    { id: 'execute', label: 'Execute', icon: Zap },
+    { id: 'synthesize', label: 'Synthesize', icon: Sparkles },
 ];
 
-const AGENTS = [
-    { id: 'agent-a', name: 'Researcher', icon: Search, color: '#9333ea', target: ['Web Search', 'Vector DB'] },
-    { id: 'agent-b', name: 'Analyst', icon: Activity, color: '#3b82f6', target: ['Analytics API', 'SQL DB'] }
+const TASKS = [
+    { id: 1, name: "SQL Query", icon: Database, color: "primary" },
+    { id: 2, name: "Web Search", icon: Globe, color: "blue-500" },
+    { id: 3, name: "RAG Search", icon: FileSearch, color: "purple-500" },
 ];
 
-const EXTERNAL_RESOURCES = [
-    { name: 'Web Search', icon: Globe },
-    { name: 'Vector DB', icon: Server },
-    { name: 'Analytics API', icon: Cloud },
-    { name: 'SQL DB', icon: Database }
-];
+type Phase = 0 | 1 | 2 | 3 | 4; // input, decompose, execute, synthesize, complete
 
 export default function AgenticAnimation() {
-  const [step, setStep] = useState(0);
+    const [phase, setPhase] = useState<Phase>(0);
+    const [executingTasks, setExecutingTasks] = useState<number[]>([]);
+    const [completedTasks, setCompletedTasks] = useState<number[]>([]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setStep((prev) => (prev + 1) % WORKFLOW_STEPS.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+    useEffect(() => {
+        const timeline = [
+            { delay: 1500, action: () => setPhase(1) }, // decompose
+            { delay: 1500, action: () => { setPhase(2); setExecutingTasks([1, 2, 3]); } }, // execute start
+            { delay: 800, action: () => setCompletedTasks([1]) },
+            { delay: 600, action: () => setCompletedTasks([1, 2]) },
+            { delay: 600, action: () => { setCompletedTasks([1, 2, 3]); setExecutingTasks([]); } },
+            { delay: 800, action: () => setPhase(3) }, // synthesize
+            { delay: 1500, action: () => setPhase(4) }, // complete
+            { delay: 3000, action: () => { // reset
+                setPhase(0);
+                setExecutingTasks([]);
+                setCompletedTasks([]);
+            }},
+        ];
 
-  const currentStatus = WORKFLOW_STEPS[step];
+        let timeouts: NodeJS.Timeout[] = [];
+        let cumulative = 0;
 
-  return (
-    <div className="w-full h-full min-h-[450px] bg-[#05060a] relative overflow-hidden flex items-center justify-center font-sans p-8">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(147,51,234,0.05),transparent_70%)]"></div>
-      <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(white,transparent_80%)]"></div>
+        timeline.forEach(({ delay, action }) => {
+            cumulative += delay;
+            timeouts.push(setTimeout(action, cumulative));
+        });
 
-      <div className="relative w-full max-w-4xl flex items-center justify-between z-10">
-        
-        {/* 1. USER INPUT ZONE */}
-        <div className="flex flex-col items-center gap-4 w-1/4">
-          <div className="text-[10px] uppercase tracking-widest text-white/20 mb-2">Initiation</div>
-          <motion.div
-            animate={{ 
-                scale: step === 0 ? 1.1 : 1,
-                borderColor: step === 0 ? 'rgba(147,51,234,0.5)' : 'rgba(255,255,255,0.05)'
-            }}
-            className="w-16 h-16 rounded-2xl border flex items-center justify-center bg-white/[0.02] backdrop-blur-xl relative"
-          >
-            <MessageSquare className={`w-8 h-8 ${step === 0 ? 'text-primary' : 'text-white/20'}`} />
-            {step === 0 && (
-                <motion.div 
-                    layoutId="ring"
-                    className="absolute -inset-2 border border-primary/20 rounded-2xl animate-pulse"
+        return () => timeouts.forEach(clearTimeout);
+    }, [phase === 0 && completedTasks.length === 0]);
+
+    const getStageStatus = (index: number) => {
+        if (phase > index) return 'completed';
+        if (phase === index) return 'active';
+        return 'pending';
+    };
+
+    return (
+        <div className="w-full h-full min-h-[500px] lg:min-h-[450px] bg-background relative overflow-hidden flex flex-col font-sans">
+            {/* Background */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.03),transparent_70%)]" />
+
+            {/* Progress bar */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-foreground/5">
+                <motion.div
+                    className="h-full bg-gradient-to-r from-primary to-green-500"
+                    animate={{ width: `${(phase / 4) * 100}%` }}
+                    transition={{ duration: 0.5 }}
                 />
-            )}
-          </motion.div>
-          <div className="text-center">
-            <div className="text-[10px] text-white/40 font-mono">USER_INPUT</div>
-          </div>
-        </div>
+            </div>
 
-        {/* CONNECTION FLOW 1 */}
-        <div className="flex-1 h-px relative bg-white/5 mx-4 overflow-hidden">
-            {step === 1 && (
-                <motion.div 
-                    initial={{ x: '-100%' }}
-                    animate={{ x: '100%' }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/50 to-transparent"
-                />
-            )}
-        </div>
+            {/* Main Pipeline */}
+            <div className="flex-1 flex flex-col justify-center px-4 md:px-8 py-8">
 
-        {/* 2. ATHENA (THE BRAIN) */}
-        <div className="flex flex-col items-center gap-4 w-1/4">
-          <div className="text-[10px] uppercase tracking-widest text-primary mb-2">Processing</div>
-          <motion.div
-            animate={{ 
-                scale: step >= 1 ? 1.05 : 1,
-                boxShadow: step >= 1 ? '0 0 30px rgba(147, 51, 234, 0.2)' : '0 0 0px transparent'
-            }}
-            className="w-24 h-24 rounded-full border border-primary/20 flex items-center justify-center bg-white/[0.02] backdrop-blur-3xl relative overflow-hidden"
-          >
-            <Brain className={`w-12 h-12 ${step >= 1 ? 'text-primary' : 'text-white/10'}`} />
-            
-            {/* Thinking particles */}
-            {step >= 1 && (
-                <div className="absolute inset-0">
-                    {[...Array(3)].map((_, i) => (
-                        <motion.div 
-                            key={i}
-                            animate={{ 
-                                rotate: 360,
-                                scale: [1, 1.2, 1],
-                                opacity: [0.3, 0.6, 0.3]
-                            }}
-                            transition={{ duration: 5 + i, repeat: Infinity, ease: 'linear' }}
-                            className="absolute inset-2 border border-primary/10 rounded-full border-dashed"
-                        />
-                    ))}
-                </div>
-            )}
-          </motion.div>
-          <div className="text-center">
-             <div className="text-xs text-white font-bold tracking-widest uppercase">Athena</div>
-          </div>
-        </div>
-
-        {/* CONNECTION FLOW 2 (BRANCHING) */}
-        <div className="flex-1 flex flex-col justify-center items-center h-48 mx-4 relative">
-             <svg className="w-full h-full absolute inset-0 text-white/5 overflow-visible">
-                <path d="M 0 96 L 100 0" stroke="currentColor" fill="none" />
-                <path d="M 0 96 L 100 192" stroke="currentColor" fill="none" />
-                
-                {/* Branch Pulses */}
-                {step >= 2 && step <= 3 && (
-                    <>
-                        <motion.circle r="3" fill="#9333ea"
-                            initial={{ offset: 0 }}
-                            animate={{ offset: 1 }}
-                        >
-                            <animateMotion dur="2s" repeatCount="indefinite" path="M 0 96 L 100 0" />
-                        </motion.circle>
-                        <motion.circle r="3" fill="#3b82f6"
-                            animate={{ offset: 1 }}
-                        >
-                            <animateMotion dur="2.5s" repeatCount="indefinite" path="M 0 96 L 100 192" />
-                        </motion.circle>
-                    </>
-                )}
-             </svg>
-        </div>
-
-        {/* 3. AGENTS & EXTERNAL ZONE */}
-        <div className="w-1/3 flex flex-col gap-12">
-            {AGENTS.map((agent, i) => (
-                <div key={agent.id} className="flex items-center gap-6 relative">
-                    {/* The Agent */}
-                    <motion.div
-                        animate={{ 
-                            opacity: step >= 2 ? 1 : 0.3,
-                            scale: step === 3 ? 1.1 : 1,
-                            borderColor: step >= 2 ? agent.color : 'rgba(255,255,255,0.05)'
-                        }}
-                        className="w-16 h-16 rounded-xl border flex items-center justify-center bg-white/[0.02] backdrop-blur-xl shrink-0 z-10"
-                    >
-                        <agent.icon className="w-8 h-8 text-white" />
-                        
-                        {/* Status tag */}
-                        {step === 3 && (
-                            <motion.div 
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="absolute -top-4 -right-12 px-2 py-0.5 bg-green-500/20 text-green-400 text-[7px] border border-green-500/30 rounded font-mono uppercase"
-                            >
-                                Executing...
-                            </motion.div>
-                        )}
-                    </motion.div>
-
-                    {/* Dotted connections to Resources */}
-                    <div className="flex flex-col gap-2">
-                        {EXTERNAL_RESOURCES.slice(i*2, i*2 + 2).map((res, j) => (
-                            <div key={j} className="flex items-center gap-3">
-                                <motion.div 
-                                    animate={{ 
-                                        opacity: step === 3 ? 1 : 0.3,
-                                        x: step === 3 ? [0, 5, 0] : 0
+                {/* Pipeline Stages */}
+                <div className="w-full max-w-3xl mx-auto flex flex-wrap justify-center md:justify-between gap-4 md:gap-0 relative">
+                    {PIPELINE_STAGES.map((stage, i) => {
+                        const status = getStageStatus(i);
+                        return (
+                            <div key={stage.id} className="flex flex-col items-center gap-2 md:gap-3 relative px-2">
+                                <motion.div
+                                    animate={{
+                                        scale: status === 'active' ? 1.05 : 1,
+                                        backgroundColor: status === 'active'
+                                            ? 'hsl(var(--primary) / 0.1)'
+                                            : status === 'completed'
+                                                ? 'hsl(142 76% 36% / 0.1)'
+                                                : 'hsl(var(--foreground) / 0.03)',
+                                        borderColor: status === 'active'
+                                            ? 'hsl(var(--primary))'
+                                            : status === 'completed'
+                                                ? 'hsl(142 76% 36%)'
+                                                : 'hsl(var(--foreground) / 0.1)'
                                     }}
-                                    className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/5"
+                                    className="w-12 h-12 md:w-14 md:h-14 rounded-xl border flex items-center justify-center relative transition-colors duration-500"
                                 >
-                                    <res.icon className="w-3 h-3 text-white/40" />
-                                    <span className="text-[8px] text-white/60 font-mono whitespace-nowrap">{res.name}</span>
+                                    <stage.icon className={`w-5 h-5 md:w-6 md:h-6 ${
+                                        status === 'active' ? 'text-primary' :
+                                        status === 'completed' ? 'text-green-500' : 'text-foreground/20'
+                                    }`} />
+
+                                    {status === 'completed' && (
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            className="absolute -right-1 -top-1 bg-green-500 rounded-full p-0.5"
+                                        >
+                                            <CheckCircle2 className="w-3 h-3 text-background" />
+                                        </motion.div>
+                                    )}
+
+                                    {/* Loading indicator for active */}
+                                    {status === 'active' && (
+                                        <motion.div
+                                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-foreground/10 rounded-full overflow-hidden"
+                                        >
+                                            <motion.div
+                                                className="h-full bg-primary rounded-full"
+                                                initial={{ x: '-100%' }}
+                                                animate={{ x: '100%' }}
+                                                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                                            />
+                                        </motion.div>
+                                    )}
                                 </motion.div>
-                                
-                                {step === 3 && (
-                                    <motion.div
-                                        animate={{ opacity: [0, 1, 0] }}
-                                        transition={{ duration: 1, repeat: Infinity, delay: j * 0.5 }}
-                                    >
-                                        <Zap className="w-2.5 h-2.5 text-yellow-500/50" />
-                                    </motion.div>
+
+                                <span className={`text-[8px] md:text-[10px] font-bold uppercase tracking-widest ${
+                                    status === 'active' ? 'text-primary' :
+                                    status === 'completed' ? 'text-green-500' : 'text-foreground/20'
+                                }`}>
+                                    {stage.label}
+                                </span>
+
+                                {/* Progress line between stages */}
+                                {i < PIPELINE_STAGES.length - 1 && (
+                                    <div className="hidden md:block absolute left-[calc(100%+8px)] top-6 w-12 lg:w-16 h-px bg-foreground/5 overflow-hidden">
+                                        <motion.div
+                                            className="h-full bg-green-500"
+                                            initial={{ width: 0 }}
+                                            animate={{ width: phase > i ? '100%' : '0%' }}
+                                            transition={{ duration: 0.3 }}
+                                        />
+                                    </div>
                                 )}
                             </div>
-                        ))}
-                    </div>
+                        );
+                    })}
                 </div>
-            ))}
-        </div>
 
-      </div>
+                {/* Content Area */}
+                <div className="mt-8 md:mt-12 min-h-[200px]">
+                    <AnimatePresence mode="wait">
+                        {/* Phase 0: Input */}
+                        {phase === 0 && (
+                            <motion.div
+                                key="input"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="flex justify-center"
+                            >
+                                <div className="max-w-md w-full bg-foreground/[0.02] border border-border/50 rounded-xl p-4">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <MessageSquare className="w-4 h-4 text-primary" />
+                                        <span className="text-[10px] font-mono text-foreground/40 uppercase">Query</span>
+                                    </div>
+                                    <p className="text-sm text-foreground">
+                                        Analyze Q3 sales performance and compare with competitors
+                                        <motion.span
+                                            animate={{ opacity: [1, 0] }}
+                                            transition={{ duration: 0.5, repeat: Infinity }}
+                                            className="inline-block w-0.5 h-4 bg-primary ml-1 align-middle"
+                                        />
+                                    </p>
+                                </div>
+                            </motion.div>
+                        )}
 
-      {/* FOOTER STATUS BAR */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent flex flex-col justify-end p-8">
-        <div className="w-full max-w-4xl mx-auto flex justify-between items-end border-t border-white/5 pt-6">
-            <div className="space-y-1">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={step}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="flex items-center gap-3"
-                    >
-                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                        <span className="text-[10px] font-mono text-primary font-bold uppercase tracking-[0.2em]">{currentStatus.label}</span>
-                    </motion.div>
-                </AnimatePresence>
-                <div className="text-sm text-white/40 font-light translate-x-5">{currentStatus.subtext}</div>
+                        {/* Phase 1: Decompose */}
+                        {phase === 1 && (
+                            <motion.div
+                                key="decompose"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="flex justify-center"
+                            >
+                                <div className="max-w-lg w-full">
+                                    <div className="flex items-center justify-center gap-2 mb-4">
+                                        <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                                        <span className="text-xs font-mono text-foreground/50">Decomposing into sub-tasks...</span>
+                                    </div>
+                                    <div className="flex justify-center gap-3">
+                                        {TASKS.map((task, i) => (
+                                            <motion.div
+                                                key={task.id}
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ delay: i * 0.15 }}
+                                                className="flex items-center gap-2 px-3 py-2 bg-foreground/[0.02] border border-border/50 rounded-lg"
+                                            >
+                                                <task.icon className="w-4 h-4 text-foreground/40" />
+                                                <span className="text-[11px] font-mono text-foreground/60">{task.name}</span>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {/* Phase 2: Execute */}
+                        {phase === 2 && (
+                            <motion.div
+                                key="execute"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="flex justify-center"
+                            >
+                                <div className="max-w-2xl w-full">
+                                    <div className="flex items-center justify-center gap-2 mb-4">
+                                        <Zap className="w-4 h-4 text-primary" />
+                                        <span className="text-xs font-mono text-foreground/50">Executing parallel tasks...</span>
+                                    </div>
+                                    <div className="flex justify-center gap-4">
+                                        {TASKS.map((task) => {
+                                            const isExecuting = executingTasks.includes(task.id) && !completedTasks.includes(task.id);
+                                            const isCompleted = completedTasks.includes(task.id);
+
+                                            return (
+                                                <motion.div
+                                                    key={task.id}
+                                                    animate={{
+                                                        borderColor: isCompleted
+                                                            ? 'hsl(142 76% 36% / 0.5)'
+                                                            : isExecuting
+                                                                ? 'hsl(var(--primary) / 0.5)'
+                                                                : 'hsl(var(--foreground) / 0.1)'
+                                                    }}
+                                                    className={`
+                                                        relative flex flex-col items-center gap-2 p-4 rounded-xl border-2 min-w-[100px]
+                                                        ${isCompleted ? 'bg-green-500/5' : isExecuting ? 'bg-primary/5' : 'bg-foreground/[0.02]'}
+                                                    `}
+                                                >
+                                                    <div className="w-10 h-10 rounded-lg bg-background border border-border/50 flex items-center justify-center">
+                                                        {isCompleted ? (
+                                                            <CheckCircle2 className="w-5 h-5 text-green-500" />
+                                                        ) : isExecuting ? (
+                                                            <Loader2 className="w-5 h-5 text-primary animate-spin" />
+                                                        ) : (
+                                                            <task.icon className="w-5 h-5 text-foreground/30" />
+                                                        )}
+                                                    </div>
+                                                    <span className={`text-[10px] font-mono uppercase tracking-wider ${
+                                                        isCompleted ? 'text-green-500' : isExecuting ? 'text-primary' : 'text-foreground/40'
+                                                    }`}>
+                                                        {task.name}
+                                                    </span>
+
+                                                    {/* Progress bar */}
+                                                    {isExecuting && (
+                                                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary/20 rounded-b-xl overflow-hidden">
+                                                            <motion.div
+                                                                className="h-full bg-primary"
+                                                                initial={{ x: '-100%' }}
+                                                                animate={{ x: '100%' }}
+                                                                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                                                            />
+                                                        </div>
+                                                    )}
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {/* Phase 3: Synthesize */}
+                        {phase === 3 && (
+                            <motion.div
+                                key="synthesize"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="flex justify-center"
+                            >
+                                <div className="max-w-md w-full flex flex-col items-center gap-4">
+                                    <div className="relative">
+                                        <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                                            <Sparkles className="w-8 h-8 text-primary" />
+                                        </div>
+                                        {/* Loading bar */}
+                                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-foreground/10 rounded-full overflow-hidden">
+                                            <motion.div
+                                                className="h-full bg-primary rounded-full"
+                                                initial={{ x: '-100%' }}
+                                                animate={{ x: '100%' }}
+                                                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <span className="text-xs font-mono text-foreground/50 mt-2">Synthesizing results...</span>
+
+                                    {/* Data flowing in */}
+                                    <div className="flex gap-2">
+                                        {[0, 1, 2].map((i) => (
+                                            <motion.div
+                                                key={i}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: [0, 1, 0], y: [20, 0, -20] }}
+                                                transition={{ duration: 1, delay: i * 0.2, repeat: Infinity }}
+                                                className="w-2 h-2 rounded-full bg-green-500"
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {/* Phase 4: Complete */}
+                        {phase === 4 && (
+                            <motion.div
+                                key="complete"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="flex justify-center"
+                            >
+                                <div className="max-w-lg w-full bg-gradient-to-br from-primary/5 to-green-500/5 border border-primary/20 rounded-xl p-5">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="w-6 h-6 rounded-lg bg-green-500/10 flex items-center justify-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                        </div>
+                                        <span className="text-[10px] font-mono text-green-500 uppercase tracking-wider">Analysis Complete</span>
+                                    </div>
+                                    <p className="text-sm text-foreground leading-relaxed">
+                                        Q3 sales reached <span className="text-primary font-semibold">$4.2M</span>, up 18% YoY.
+                                        Market position: <span className="text-green-500 font-semibold">#2</span> in segment.
+                                        Digital growth outpaced industry by 12%.
+                                    </p>
+                                    <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border/30">
+                                        <div className="flex items-center gap-1.5">
+                                            <Database className="w-3 h-3 text-foreground/40" />
+                                            <span className="text-[9px] font-mono text-foreground/40">3 sources</span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <Zap className="w-3 h-3 text-foreground/40" />
+                                            <span className="text-[9px] font-mono text-foreground/40">2.1s</span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <CheckCircle2 className="w-3 h-3 text-green-500" />
+                                            <span className="text-[9px] font-mono text-green-500">Verified</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
 
-            <div className="flex gap-4 items-center">
-                <div className="flex flex-col items-end gap-1">
-                    <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Active Threads</span>
-                    <div className="flex gap-0.5">
-                        {[...Array(6)].map((_, i) => (
-                            <motion.div 
-                                key={i}
-                                animate={{ height: [4, 12, 4], opacity: [0.2, 0.5, 0.2] }}
-                                transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.1 }}
-                                className="w-1 bg-primary/40 rounded-full"
-                            />
-                        ))}
-                    </div>
+            {/* Bottom Status */}
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                    <div className={`w-2 h-2 rounded-full ${phase < 4 ? 'bg-primary animate-pulse' : 'bg-green-500'}`} />
+                    <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-wider">
+                        {phase === 0 && "Receiving input..."}
+                        {phase === 1 && "Decomposing query..."}
+                        {phase === 2 && "Executing tasks..."}
+                        {phase === 3 && "Synthesizing..."}
+                        {phase === 4 && "Complete"}
+                    </span>
                 </div>
-                
-                <div className="h-8 w-px bg-white/5 mx-2" />
-                
-                <div className="flex flex-col items-end">
-                    <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest mb-1">Latency</span>
-                    <span className="text-xl font-light text-white tracking-tighter">1.2<span className="text-[10px] text-white/40 ml-1 font-mono">MS</span></span>
-                </div>
+                <span className="text-[9px] font-mono text-foreground/20">ATHENA // AGENTIC</span>
             </div>
         </div>
-      </div>
-
-      {/* Decorative Floating Elements */}
-      <div className="absolute top-12 left-12 opacity-20 hidden lg:block">
-        <div className="flex flex-col gap-2">
-            {[...Array(3)].map((_, i) => (
-                <div key={i} className="flex gap-2">
-                    <div className="w-12 h-1 bg-white/10" />
-                    <div className="w-4 h-1 bg-primary/20" />
-                </div>
-            ))}
-        </div>
-      </div>
-      
-      <div className="absolute top-0 right-0 p-4 font-mono text-[8px] text-white/10 flex flex-col items-end gap-1 uppercase tracking-tighter">
-            <div>Engine // v2.4.0</div>
-            <div>Mode // MultiAgent_Sync</div>
-            <div>Status // Operational</div>
-      </div>
-    </div>
-  );
+    );
 }

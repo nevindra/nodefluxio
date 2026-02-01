@@ -36,7 +36,7 @@ export default function Certifications() {
 						transition={{ delay: 0.2 }}
 						className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-4xl"
 					>
-						Built on top-tier global partnerships and verified by the world's most 
+						Built on top-tier global partnerships and verified by the world's most
 						rigorous biometric testing authorities.
 					</motion.p>
 				</div>
@@ -68,9 +68,9 @@ export default function Certifications() {
 							</CardHeader>
 							<CardContent className="relative z-10 pb-12">
 								<p className="text-foreground/70 text-sm md:text-base font-medium leading-relaxed">
-									As a member of the NVIDIA Inception Program and an Intel Titan Partner, 
-									Nodeflux leverages cutting-edge hardware acceleration and early access 
-									to next-gen AI compute tools to deliver unparalleled performance 
+									As a member of the NVIDIA Inception Program and an Intel Titan Partner,
+									Nodeflux leverages cutting-edge hardware acceleration and early access
+									to next-gen AI compute tools to deliver unparalleled performance
 									from the edge to the cloud.
 								</p>
 							</CardContent>
@@ -87,11 +87,11 @@ export default function Certifications() {
 							<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 							<CardHeader className="relative z-10 pt-12">
 								<div className="mb-8 flex items-center gap-4">
-									<Image 
-										src={nist} 
-										alt="NIST" 
-										width={100} 
-										height={40} 
+									<Image
+										src={nist}
+										alt="NIST"
+										width={100}
+										height={40}
 										className="opacity-80 grayscale"
 									/>
 									<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Verified Score</span>
@@ -102,8 +102,8 @@ export default function Certifications() {
 							</CardHeader>
 							<CardContent className="relative z-10 pb-12">
 								<p className="text-foreground/70 text-sm md:text-base font-medium leading-relaxed">
-									Selected as the 1st technology principal from Indonesia to pass NIST’s 
-									Face Recognition Vendor Test. Nodeflux ranks in the top 85th percentile 
+									Selected as the 1st technology principal from Indonesia to pass NIST’s
+									Face Recognition Vendor Test. Nodeflux ranks in the top 85th percentile
 									among 140+ global vision AI titans.
 								</p>
 							</CardContent>

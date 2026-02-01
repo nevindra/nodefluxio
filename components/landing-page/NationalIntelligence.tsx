@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState, memo, useMemo } from "react";
 
 // --- Data ---
 const locations = [
@@ -89,7 +89,7 @@ interface CounterProps {
     duration?: number;
 }
 
-function Counter({ value, prefix = "", suffix = "", decimals = 0, duration = 2 }: CounterProps) {
+const Counter = memo(({ value, prefix = "", suffix = "", decimals = 0, duration = 2 }: CounterProps) => {
     const [display, setDisplay] = useState(0);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
@@ -113,7 +113,7 @@ function Counter({ value, prefix = "", suffix = "", decimals = 0, duration = 2 }
             })}{suffix}
         </span>
     );
-}
+});
 
 interface StatCardProps {
     title: string;
@@ -130,7 +130,9 @@ interface StatCardProps {
     variant?: "default" | "hero";
 }
 
-function StatCard({ title, value, suffix, prefix, subtext, detail, icon, index, className = "", decimals = 0, color = "primary", variant = "default" }: StatCardProps) {
+const MotionCard = motion(Card);
+
+const StatCard = memo(({ title, value, suffix, prefix, subtext, detail, icon, index, className = "", decimals = 0, color = "primary", variant = "default" }: StatCardProps) => {
     const colorClass = {
         primary: "group-hover:text-primary",
         secondary: "group-hover:text-secondary",
@@ -143,7 +145,7 @@ function StatCard({ title, value, suffix, prefix, subtext, detail, icon, index, 
         tertiary: "group-hover:bg-tertiary/5"
     };
 
-    const MotionCard = motion(Card);
+
 
     return (
         <MotionCard
@@ -189,7 +191,7 @@ function StatCard({ title, value, suffix, prefix, subtext, detail, icon, index, 
             <div className={`absolute bottom-0 left-0 h-[2px] w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${color === 'primary' ? 'bg-primary' : color === 'secondary' ? 'bg-secondary' : 'bg-tertiary'}`} />
         </MotionCard>
     );
-}
+});
 
 // --- Main Component ---
 
@@ -276,12 +278,12 @@ export default function NationalIntelligence() {
         };
     }, [isLoaded, isMobile]);
 
-    const filteredLocations = locations.filter(loc => loc.type === activeTab);
-    const mapStats = {
+    const filteredLocations = useMemo(() => locations.filter(loc => loc.type === activeTab), [activeTab]);
+    const mapStats = useMemo(() => ({
         Airport: locations.filter(l => l.type === "Airport").length,
         Harbor: locations.filter(l => l.type === "Harbor").length,
         Capital: locations.filter(l => l.type === "Capital").length,
-    };
+    }), []);
 
     return (
         <div className="relative w-full min-h-screen py-16 md:py-24 bg-background overflow-hidden font-futura">
@@ -328,10 +330,10 @@ export default function NationalIntelligence() {
             `}</style>
 
             <div className="absolute inset-0 bg-grid-scanlines opacity-[0.03] pointer-events-none z-10" />
-            
+
             <div className="max-w-7xl relative z-20 mx-auto px-4">
                 {/* Unified Header */}
-                <div className="max-w-7xl mb-12 md:mb-20">
+                <div className="max-w-7xl mb-2 md:mb-4">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -357,15 +359,15 @@ export default function NationalIntelligence() {
                         transition={{ delay: 0.2 }}
                         className="text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-4xl"
                     >
-                        Orchestrating AI deployments across Indonesia's critical infrastructure, 
+                        Orchestrating AI deployments across Indonesia's critical infrastructure,
                         handling massive data throughput with sub-second precision at the edge.
                     </motion.p>
                 </div>
 
                 {/* Map Integration */}
-                <div className="relative group mb-8 md:mb-12">
+                <div className="relative group mb-4 md:mb-8">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 blur transition duration-500"></div>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, scale: 0.98 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -376,7 +378,7 @@ export default function NationalIntelligence() {
                         {!isMobile ? (
                             <>
                                 <div ref={mapContainer} className="absolute inset-0 w-full h-full" />
-                                
+
                                 {!isLoaded && (
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-20">
                                         <div className="flex flex-col items-center gap-4">
@@ -435,9 +437,9 @@ export default function NationalIntelligence() {
                                                         </h3>
                                                     </div>
                                                     <div className="p-2 border border-black/5 rounded-sm">
-                                                        {hoveredLocation.type === "Airport" ? <Plane className="w-5 h-5 text-primary" /> : 
-                                                         hoveredLocation.type === "Harbor" ? <Anchor className="w-5 h-5 text-primary" /> : 
-                                                         <MapPin className="w-5 h-5 text-primary" />}
+                                                        {hoveredLocation.type === "Airport" ? <Plane className="w-5 h-5 text-primary" /> :
+                                                            hoveredLocation.type === "Harbor" ? <Anchor className="w-5 h-5 text-primary" /> :
+                                                                <MapPin className="w-5 h-5 text-primary" />}
                                                     </div>
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4 border-t border-black/5 pt-3">
@@ -481,8 +483,8 @@ export default function NationalIntelligence() {
                                         </div>
                                         <div className="p-3 border border-black/10 rounded-full">
                                             {activeTab === "Airport" ? <Plane className="w-6 h-6 text-primary" /> :
-                                             activeTab === "Harbor" ? <Anchor className="w-6 h-6 text-primary" /> : 
-                                             <MapPin className="w-6 h-6 text-primary" />}
+                                                activeTab === "Harbor" ? <Anchor className="w-6 h-6 text-primary" /> :
+                                                    <MapPin className="w-6 h-6 text-primary" />}
                                         </div>
                                     </div>
 

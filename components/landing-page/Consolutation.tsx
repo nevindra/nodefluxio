@@ -7,25 +7,20 @@ import { ArrowRight } from "lucide-react";
 
 export default function Consolutation() {
 	return (
-		<section className="relative w-full py-24 md:py-32 overflow-hidden bg-background">
-			{/* Background Accents */}
-			<div className="absolute inset-0 z-0 bg-hero-pattern [background-size:40px_40px] opacity-[0.03]"></div>
-			<div className="absolute top-0 left-0 w-full h-px bg-white/5"></div>
-			<div className="absolute bottom-0 left-0 w-full h-px bg-white/5"></div>
-
-			<div className="container relative z-10 mx-auto px-8 lg:px-24 max-w-7xl">
-				<div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
+		<section className="relative w-full py-16 md:py-24 overflow-hidden bg-muted/30">
+			<div className="container relative z-10 mx-auto px-6 lg:px-8 max-w-[1440px]">
+				<div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
 					<div className="max-w-2xl">
 						<motion.div
 							initial={{ opacity: 0, x: -20 }}
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.8 }}
-							className="flex items-center space-x-3 mb-8 text-white/40"
+							className="flex items-center space-x-3 mb-6 text-muted-foreground"
 						>
-							<span className="w-2 h-2 bg-white/40"></span>
-							<span className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase">
-								Initial Engagement Cycle
+							<span className="w-2 h-2 bg-primary rounded-full"></span>
+							<span className="text-xs font-semibold tracking-wider uppercase">
+								Get in Touch
 							</span>
 						</motion.div>
 
@@ -34,9 +29,12 @@ export default function Consolutation() {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.8, delay: 0.1 }}
-							className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-8 leading-[0.9]"
+							className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-6"
 						>
-							SEEKING <span className="text-muted-foreground">SPECIFIC <br className="hidden md:block" /> MISSION PARAMS?</span>
+							Ready to Get Started?{" "}
+							<span className="text-muted-foreground">
+								Let&apos;s Talk.
+							</span>
 						</motion.h2>
 
 						<motion.p
@@ -44,7 +42,7 @@ export default function Consolutation() {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.8, delay: 0.2 }}
-							className="text-white/50 text-lg font-light max-w-lg"
+							className="text-muted-foreground text-base md:text-lg max-w-xl leading-relaxed"
 						>
 							Our technical architects specialize in complex, sovereign-grade infrastructure deployments for nationwide operations.
 						</motion.p>
@@ -55,29 +53,25 @@ export default function Consolutation() {
 						whileInView={{ opacity: 1, scale: 1 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.8, delay: 0.3 }}
-						className="flex flex-col sm:flex-row items-stretch gap-4"
+						className="flex flex-col sm:flex-row items-stretch gap-6"
 					>
 						<Button
 							asChild
 							size="lg"
-							className="bg-white hover:bg-neutral-200 text-black rounded-none px-10 h-16 font-medium text-base transition-all duration-300"
+							className="px-8 font-semibold h-12"
 						>
 							<Link href="/contact-us" className="flex items-center group">
-								Initiate Briefing
+								Request Consultation
 								<ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
 							</Link>
 						</Button>
-						<div className="hidden lg:flex flex-col justify-center items-end px-6 border-l border-white/10">
-							<span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">Protocol: CTR-72</span>
-							<span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">Sovereign Cloud // On-Prem</span>
+						<div className="hidden lg:flex flex-col justify-center items-start pl-6 border-l border-border">
+							<span className="text-sm text-muted-foreground">Sovereign Cloud</span>
+							<span className="text-sm text-muted-foreground">On-Premise Available</span>
 						</div>
 					</motion.div>
 				</div>
 			</div>
-
-			{/* Aesthetic Technical Border Lines */}
-			<div className="absolute top-0 right-1/3 w-px h-12 bg-white/10 hidden lg:block"></div>
-			<div className="absolute bottom-0 right-1/4 w-px h-24 bg-white/10 hidden lg:block"></div>
 		</section>
 	);
 }

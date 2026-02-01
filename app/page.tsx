@@ -6,36 +6,38 @@ import NationalIntelligence from "@/components/landing-page/NationalIntelligence
 import TrustedBy from "@/components/landing-page/TrustedBy";
 import UseCases from "@/components/landing-page/UseCases";
 import LandingSection from "@/components/LandingSection";
+import OperationalGrid from "@/components/OperationalGrid";
 
 export const revalidate = 3600;
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black snap-y snap-mandatory">
-      <div className="snap-start">
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black">
+      <OperationalGrid />
+      <div>
         <MainHero />
       </div>
-      
+
       <LandingSection id="features">
         <Features />
       </LandingSection>
-      
+
       <LandingSection>
         <UseCases />
       </LandingSection>
-      
-      <LandingSection className="snap-start">
+
+      <LandingSection id="national-intelligence">
         <NationalIntelligence />
       </LandingSection>
-      
+
       <LandingSection>
         <TrustedBy />
       </LandingSection>
-      
+
       <LandingSection>
         <Certifications />
       </LandingSection>
-      
+
       <LandingSection>
         <CTA />
       </LandingSection>

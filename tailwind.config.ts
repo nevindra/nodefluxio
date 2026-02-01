@@ -83,6 +83,8 @@ const config = {
 				"color-5": "hsl(var(--color-5))",
 			},
 			borderRadius: {
+				"2xl": "var(--radius-xl)",
+				xl: "var(--radius-lg)",
 				lg: "var(--radius)",
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",
@@ -157,6 +159,14 @@ const config = {
 						left: "100%",
 					},
 				},
+				"scan-y": {
+					"0%": {
+						top: "0%",
+					},
+					"100%": {
+						top: "100%",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -167,9 +177,10 @@ const config = {
 				shimmer: "shimmer 8s infinite",
 				rainbow: "rainbow var(--speed, 2s) infinite linear",
 				"scan-x": "scan-x 10s linear infinite",
+				"scan-y": "scan-y 10s linear infinite",
 			},
 			backgroundImage: {
-				"hero-pattern": "radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.05) 1px, transparent 0)",
+				"hero-pattern": "linear-gradient(to right, hsl(var(--hero-grid-color) / 0.1) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--hero-grid-color) / 0.1) 1px, transparent 1px)",
 				"tech-gradient": "linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 0%, transparent 100%)",
 			},
 			maxWidth: {

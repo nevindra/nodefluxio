@@ -6,6 +6,7 @@ import Link from "next/link";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { navLinks } from "@/lib/navigation-data";
 
 interface MobileNavbarProps {
   onClose: () => void;
@@ -17,33 +18,6 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
   const toggleGroup = (title: string) => {
     setExpandedGroups(prev => ({ ...prev, [title]: !prev[title] }));
   };
-
-  const NavLinks = [
-    {
-      title: "Products",
-      items: [
-        { title: "Lenz", href: "/lenz" },
-        { title: "VisionAIre", href: "/visionaire" },
-        { title: "Athena", href: "/athena" },
-      ],
-    },
-    {
-      title: "Solutions",
-      items: [
-        { title: "Public Safety", href: "/solutions/massive-surveillance" },
-        { title: "Smart Infrastructure", href: "/solutions/smart-city" },
-        { title: "Logistics Audit", href: "/solutions/smart-retail" },
-        { title: "Building Security", href: "/solutions/smart-building" },
-      ],
-    },
-    {
-      title: "Resources",
-      items: [
-        { title: "Documentation", href: "/docs" },
-        { title: "Blog", href: "/blog" },
-      ],
-    },
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -72,11 +46,11 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
       className="md:hidden fixed inset-0 z-[60] bg-background/95 backdrop-blur-2xl flex flex-col p-8 pt-24"
     >
       {/* Close Button */}
-      <button 
+      <button
         onClick={onClose}
-        className="absolute top-6 right-6 p-3 text-white/50 hover:text-white transition-colors z-[70]"
+        className="absolute top-6 right-6 p-3 text-muted-foreground hover:text-foreground transition-colors z-[70]"
       >
-        <X className="w-6 h-6 text-white" />
+        <X className="w-6 h-6" />
       </button>
 
       {/* Background Decorative Element */}
@@ -87,7 +61,7 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
       </div>
 
       <div className="flex-1 space-y-10 overflow-y-auto">
-        {NavLinks.map((group) => (
+        {navLinks.map((group) => (
           <motion.div key={group.title} variants={itemVariants} className="space-y-4">
             {group.items && (
               <>
@@ -107,7 +81,7 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
                           key={item.title}
                           href={item.href}
                           onClick={onClose}
-                          className="block text-3xl font-light tracking-tight text-white/90 hover:text-primary transition-colors"
+                          className="block text-3xl font-light tracking-tight text-foreground/90 hover:text-primary transition-colors"
                         >
                           {item.title}
                         </Link>
@@ -122,19 +96,19 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
         ))}
       </div>
 
-      <motion.div variants={itemVariants} className="pt-8 border-t border-white/5 space-y-8">
+      <motion.div variants={itemVariants} className="pt-8 border-t border-border space-y-8">
         <div className="flex flex-col gap-4">
-          <p className="text-[10px] font-mono text-white/20 tracking-widest uppercase">System Initialization</p>
+          <p className="text-[10px] font-mono text-muted-foreground tracking-widest uppercase">System Initialization</p>
           <Button
             size="lg"
-            className="w-full bg-white hover:bg-white/90 text-black font-semibold rounded-none h-14 text-sm uppercase tracking-widest"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg h-14 text-sm uppercase tracking-widest"
             onClick={onClose}
           >
             <Link href="/contact-us" className="w-full h-full flex items-center justify-center">Request Demo</Link>
           </Button>
         </div>
 
-        <div className="flex justify-between items-center opacity-40">
+        <div className="flex justify-between items-center text-muted-foreground">
           <div className="flex space-x-4">
             {['IN', 'TW', 'FB'].map(sm => (
               <span key={sm} className="text-[10px] font-mono cursor-pointer hover:text-primary transition-colors">{sm}</span>

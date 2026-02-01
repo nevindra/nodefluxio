@@ -1,340 +1,338 @@
 "use client";
 
-import { SingleHero } from "@/components/hero/SingleHero";
-import ProductIntegration from "@/components/landing-page/ProductIntegration";
-import { motion } from "framer-motion";
+import { VisionaireHero } from "@/components/visionaire/VisionaireHero";
+import { AiVideoPlayer } from "@/components/visionaire/AiVideoPlayer";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Car,
   Crosshair,
   Maximize,
   Network,
-  Plus,
   Scan,
   Users,
-  Zap
+  Zap,
+  Activity,
+  ShieldAlert,
+  Fingerprint,
+  TrendingUp,
+  Search,
+  CheckCircle2
 } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
+// --- Data ---
 const analyticModels = [
   {
+    id: "FR-01",
     title: "Face Recognition",
-    id: "ANL-FR-01",
-    description: "Biometric matching engine for sub-second verification across watchlists.",
-    icon: <Scan className="w-5 h-5" />,
-    specs: ["Accuracy 99.8%", "Multi-angle"],
-    video: "/videos/face-recognition.mp4"
+    description: "Know exactly who enters your premises. Our AI identifies faces in real-time, even in crowds, poor lighting, or from different angles.",
+    icon: Scan,
+    video: "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1920&auto=format&fit=crop",
+    features: ["Track multiple faces at once", "Detect fake photos & masks", "Estimate age & gender"],
+    useCases: [
+      {
+        title: "Keyless Entry",
+        desc: "Let employees and residents enter with just their face. No more lost cards or forgotten PINs.",
+        icon: Fingerprint
+      },
+      {
+        title: "Watchlist Alerts",
+        desc: "Get instant notifications when a known person appears on camera. Perfect for security teams.",
+        icon: ShieldAlert
+      },
+      {
+        title: "VIP Recognition",
+        desc: "Know when important guests arrive so your team can provide personalized service immediately.",
+        icon: Search
+      }
+    ]
   },
   {
-    title: "People Analytics",
-    id: "ANL-PA-01",
-    description: "Real-time occupancy tracking, density mapping, and flow analysis.",
-    icon: <Users className="w-5 h-5" />,
-    specs: ["Heatmap", "Queue Monitoring"],
-    video: "/videos/people-analytics.mp4"
+    id: "PA-02",
+    title: "People Counting",
+    description: "See how many people are in any area, where they go, and how long they stay. Make better decisions with real visitor data.",
+    icon: Users,
+    video: "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+    thumbnail: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1920&auto=format&fit=crop",
+    features: ["Visual heatmaps", "Queue monitoring", "Crowd alerts"],
+    useCases: [
+      {
+        title: "Store Analytics",
+        desc: "Find out which areas get the most foot traffic. Optimize product placement and staff schedules.",
+        icon: Activity
+      },
+      {
+        title: "Capacity Management",
+        desc: "Know when areas are getting too crowded. Keep people safe and comfortable.",
+        icon: Network
+      },
+      {
+        title: "Wait Time Display",
+        desc: "Show customers how long the queue is. Reduce complaints and improve satisfaction.",
+        icon: TrendingUp
+      }
+    ]
   },
   {
-    title: "Vehicle Analytics",
-    id: "ANL-VA-01",
-    description: "Categorizing vehicles by type, color, and make for urban planning.",
-    icon: <Crosshair className="w-5 h-5" />,
-    specs: ["80+ Categories", "Speed Estimation"],
-    video: "/videos/vehicle-analytics.mp4"
+    id: "LPR-03",
+    title: "License Plate Reader",
+    description: "Automatically read and record every license plate that passes your cameras. Works day or night, rain or shine.",
+    icon: Car,
+    video: "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+    thumbnail: "https://images.unsplash.com/photo-1542281286-9e0a16bb0a20?q=80&w=1920&auto=format&fit=crop",
+    features: ["Read plates instantly", "Detect vehicle color", "Identify vehicle type"],
+    useCases: [
+      {
+        title: "Ticketless Parking",
+        desc: "Cars enter and exit without tickets or cards. Billing happens automatically based on plate numbers.",
+        icon: Zap
+      },
+      {
+        title: "Gate Automation",
+        desc: "Open gates automatically for authorized vehicles. Block unknown plates until verified.",
+        icon: ShieldAlert
+      },
+      {
+        title: "Fleet Visibility",
+        desc: "Track when your vehicles arrive and depart. Know exactly where your fleet is at all times.",
+        icon: Maximize
+      }
+    ]
   },
   {
-    title: "License Plate Recognition",
-    id: "ANL-LPR-01",
-    description: "High-speed registration plate identification for traffic law enforcement.",
-    icon: <Car className="w-5 h-5" />,
-    specs: ["OCR Optimization", "95%+ Accuracy"],
-    video: "/videos/lpr.mp4"
-  },
-  {
-    title: "And many more...",
-    id: "ANL-CUSTOM",
-    description: "Explore our full catalog of 100+ production-ready computer vision models.",
-    icon: <Plus className="w-5 h-5" />,
-    specs: [],
-    isCustom: true
+    id: "VA-04",
+    title: "Vehicle Detection",
+    description: "Detect and classify every vehicle on camera. Know the make, model, color, and even estimate speed.",
+    icon: Crosshair,
+    video: "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+    thumbnail: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1920&auto=format&fit=crop",
+    features: ["Identify car brands", "Measure speed", "Detect illegal parking"],
+    useCases: [
+      {
+        title: "Traffic Insights",
+        desc: "Understand traffic patterns at your location. Plan better road layouts and parking spaces.",
+        icon: Activity
+      },
+      {
+        title: "No-Go Zone Alerts",
+        desc: "Get alerts when vehicles enter restricted areas like pedestrian zones or loading docks.",
+        icon: ShieldAlert
+      },
+      {
+        title: "Violation Detection",
+        desc: "Catch wrong-way drivers, illegal U-turns, and other dangerous maneuvers automatically.",
+        icon: Network
+      }
+    ]
   }
 ];
 
-import { useState } from "react";
-
 export default function Analytics() {
-  const [selectedModel, setSelectedModel] = useState(analyticModels[0]);
+  const [activeTab, setActiveTab] = useState(analyticModels[0].id);
+  const activeModel = analyticModels.find((m) => m.id === activeTab) || analyticModels[0];
 
   return (
-    <main className="min-h-screen bg-background pb-40">
-      {/* 1st Section: Subpage Hero Variant */}
-      <SingleHero
-        videoSrc="/videos/analytics-hero.mp4"
-        title={<>ALGORITHMIC <br /><span className="text-muted-foreground">PRECISION.</span></>}
-        description="Deploying enterprise-grade computer vision models designed for deterministic operational intelligence and situational awareness."
-        label="Advanced Analytics Engine"
-        secondaryCtaText="Explore Models"
-        secondaryCtaHref="#analytics"
-      />
+    <main className="min-h-screen bg-background text-foreground">
+      {/* 1st Section: Hero with Product Integration */}
+      <VisionaireHero />
 
-      {/* 2nd Section: Product Integration */}
-      <ProductIntegration />
+      {/* 2nd Section: Capabilities Showcase */}
+      <section id="capabilities" className="pt-32 sm:pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-40 bg-muted/20 relative overflow-hidden text-foreground">
 
-      {/* 3rd Section: Analytics and Video Detection */}
-      <section id="analytics" className="py-24 md:py-32 bg-background border-b border-white/5 relative overflow-hidden">
-        <div className="container mx-auto px-8 lg:px-12 max-w-7xl">
-          <div className="max-w-4xl mb-16">
-            <div className="flex items-center space-x-2 mb-6">
-              <span className="w-2 h-px bg-white/20"></span>
-              <span className="text-[10px] font-mono tracking-[0.3em] text-white/40 uppercase">
-                Detection Core
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-8">
-              ADVANCED <span className="text-muted-foreground">ANALYTICS.</span>
+        <div className="max-w-[1400px] mx-auto px-6">
+
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
+            <h2 className="text-4xl md:text-6xl font-medium tracking-tight">
+              WHAT CAN <br /><span className="text-muted-foreground uppercase">It Detect?</span>
             </h2>
-            <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl">
-              Our vision engine processes live video feeds with sub-second latency, 
-              detecting patterns and objects that drive operational intelligence.
+            <p className="text-muted-foreground text-lg font-light leading-relaxed">
+              From faces to license plates, our AI recognizes what matters most to your business.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Column: List (Order Swapped) */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="flex items-center gap-4 mb-4">
-                 <h3 className="text-sm font-mono text-white/40 uppercase tracking-[0.3em]">AI Models</h3>
-                 <div className="h-px flex-1 bg-white/5" />
-              </div>
-              
-              <div className="grid grid-cols-1 gap-4">
-                {analyticModels.map((model, index) => (
-                  <motion.div
-                    key={model.id}
-                    onClick={() => {
-                      setSelectedModel(model);
-                      if (window.innerWidth < 1024) {
-                        document.getElementById('analytics-player')?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className={`group p-6 border rounded-2xl transition-all cursor-pointer relative overflow-hidden ${
-                      selectedModel.id === model.id 
-                      ? "bg-primary/5 border-primary/40 shadow-[0_0_30px_rgba(var(--primary),0.1)]" 
-                      : "bg-white/[0.02] border-white/5 hover:bg-white/[0.04] hover:border-white/20"
-                    }`}
-                  >
-                    <div className="flex items-center gap-6 relative z-10">
-                      <div className={`p-3 rounded-xl transition-colors ${
-                        selectedModel.id === model.id ? "bg-primary/10 text-primary" : "bg-white/5 text-white/20 group-hover:text-white/40"
-                      }`}>
-                        {model.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className={`text-lg font-medium transition-colors ${
-                          selectedModel.id === model.id ? "text-primary" : "text-white group-hover:text-white/80"
-                        }`}>
-                          {model.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground font-light line-clamp-1 mt-1">
-                          {model.description}
-                        </p>
-                      </div>
-                      {selectedModel.id === model.id && (
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+          <div className="flex flex-col gap-12">
 
-            {/* Right Column: Sticky Preview Area */}
-            <div id="analytics-player" className="lg:col-span-7 lg:sticky lg:top-32 space-y-6">
-              {selectedModel.isCustom ? (
-                /* Custom Solutions Message */
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="relative w-full aspect-video bg-[#0c0f16] border border-primary/20 overflow-hidden shadow-2xl rounded-3xl p-12 flex flex-col justify-center items-center text-center group"
+            {/* Top Navigation: Large Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-4 bg-muted/20 p-2 rounded-2xl border border-border/40 w-fit mx-auto">
+              {analyticModels.map((model) => (
+                <button
+                  key={model.id}
+                  onClick={() => setActiveTab(model.id)}
+                  className={cn(
+                    "relative px-8 py-3 rounded-xl transition-all duration-300 text-sm font-medium uppercase tracking-wider",
+                    activeTab === model.id
+                      ? "text-primary shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
                 >
-                   {/* Background Decor */}
-                   <div className="absolute inset-0 bg-[url('/hero/grid.svg')] opacity-[0.03] [background-size:40px_40px]" />
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[100px] rounded-full" />
-                   
-                   <div className="relative z-10 max-w-lg">
-                      <p className="text-lg text-muted-foreground font-light leading-relaxed mb-8">
-                        We don't just provide models; we build tailored AI ecosystems. 
-                        From custom model training to specialized processing pipelines, 
-                        our architecture is designed to handle your most unique operational use cases.
-                      </p>
-                      <div className="flex flex-wrap justify-center gap-3">
-                         {["Custom Algorithm", "End-to-End Integration", "Proprietary Data Support"].map((tag, i) => (
-                           <span key={i} className="text-[10px] font-mono text-primary/60 border border-primary/20 px-3 py-1.5 rounded-full uppercase tracking-widest bg-primary/5">
-                             {tag}
-                           </span>
-                         ))}
-                      </div>
-                   </div>
-                </motion.div>
-              ) : (
-                /* Standard Video Player */
-                <div className="relative w-full aspect-video bg-[#0c0f16] border border-white/10 overflow-hidden shadow-2xl rounded-3xl group">
-                  <div className="absolute inset-0">
-                    <video 
-                      key={selectedModel.video}
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline 
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
-                    >
-                      <source src={selectedModel.video} type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-                  </div>
-
-                  <div className="absolute top-6 left-6 flex flex-col gap-2">
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                        <span className="text-[10px] font-mono text-white tracking-widest uppercase bg-black/40 backdrop-blur-md px-2 py-1 rounded">Live Analysis Feed</span>
-                      </div>
-                  </div>
-
-                  <div className="absolute bottom-6 left-6 right-6">
-                      <div className="p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-xl max-w-fit">
-                         <div className="flex items-center gap-3 text-primary mb-1">
-                            {selectedModel.icon}
-                            <span className="text-sm font-medium uppercase tracking-wider">{selectedModel.title}</span>
-                         </div>
-                         <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{selectedModel.id}</div>
-                      </div>
-                  </div>
-
-                  <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-primary/10 blur-[150px] pointer-events-none rounded-full" />
-                </div>
-              )}
-
-              {/* Active Model Details (Metadata) */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {selectedModel.specs.map((spec, i) => (
-                    <div key={i} className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl flex flex-col gap-2">
-                       <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">
-                         {selectedModel.isCustom ? "Feature" : "Metric"}
-                       </span>
-                       <span className="text-sm font-mono text-white/80 font-medium">{spec}</span>
-                    </div>
-                  ))}
-                  <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl flex flex-col gap-2">
-                     <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">Deploy</span>
-                     <span className="text-sm font-mono text-white/80 font-bold uppercase">
-                        {selectedModel.isCustom ? "Consult" : "Ready"}
-                     </span>
-                  </div>
-              </div>
+                  {activeTab === model.id && (
+                    <motion.div
+                      layoutId="tabBackground"
+                      className="absolute inset-0 bg-background border border-border shadow-md rounded-xl"
+                    />
+                  )}
+                  <span className="relative z-10">{model.title}</span>
+                </button>
+              ))}
             </div>
+
+            {/* Content Body: Feature-First Grid */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeModel.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+              >
+
+                {/* Left: Info & Use Cases */}
+                <div className="space-y-12">
+                  <div className="space-y-6">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary font-mono tracking-widest uppercase">
+                      {activeModel.id}
+                    </span>
+                    <h3 className="text-3xl md:text-4xl font-medium tracking-tight">{activeModel.title}</h3>
+                    <p className="text-muted-foreground text-lg font-light leading-relaxed">
+                      {activeModel.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-4 pt-2">
+                      {activeModel.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm text-foreground/80">
+                          <CheckCircle2 className="w-4 h-4 text-primary" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Use Cases Cards */}
+                  <div className="space-y-6">
+                    <h4 className="text-sm font-mono text-muted-foreground uppercase tracking-[0.2em] border-b border-border pb-4">Perfect For</h4>
+                    <div className="grid grid-cols-1 gap-4">
+                      {activeModel.useCases.map((useCase, idx) => (
+                        <div key={idx} className="group p-6 rounded-2xl border border-border/60 bg-muted/5 hover:bg-muted/10 transition-colors flex gap-6 items-start">
+                          <div className="w-12 h-12 rounded-xl bg-background border border-border/40 flex items-center justify-center text-primary shrink-0 transition-transform group-hover:scale-110">
+                            <useCase.icon className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <h5 className="text-base font-medium mb-1">{useCase.title}</h5>
+                            <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                              {useCase.desc}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Visual Proof (Video) */}
+                <div className="lg:sticky lg:top-24">
+                  <div className="space-y-6">
+                    <div className="relative aspect-video rounded-3xl overflow-hidden border border-border/60 bg-black shadow-2xl">
+                      <AiVideoPlayer
+                        src={activeModel.video}
+                        thumbnail={activeModel.thumbnail}
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <div className="p-6 rounded-2xl bg-muted/20 border border-border/40">
+                      <p className="text-xs font-mono text-muted-foreground/60 leading-relaxed italic">
+                        *See {activeModel.title} in action. This is actual footage from a standard security camera.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </motion.div>
+            </AnimatePresence>
+
           </div>
         </div>
       </section>
 
-      {/* 4th Section: Capabilities (Fast processing, 500+ streams) */}
-      <section className="py-24 md:py-32 bg-background border-b border-white/5 relative overflow-hidden">
-        <div className="container mx-auto px-8 lg:px-12 max-w-7xl">
-          <div className="max-w-4xl mb-24 text-center mx-auto">
-            <div className="flex items-center justify-center space-x-2 mb-6">
-              <span className="w-2 h-px bg-white/20"></span>
-              <span className="text-[10px] font-mono tracking-[0.3em] text-white/40 uppercase">
-                Enterprise Performance
-              </span>
-              <span className="w-2 h-px bg-white/20"></span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-8">
-              SCALABLE <span className="text-muted-foreground">FOUNDATION.</span>
-            </h2>
-            <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-3xl mx-auto">
-              Engineered for the most demanding environments, VisionAIre delivers unmatched 
-              processing power with the reliability of national-grade infrastructure.
-            </p>
-          </div>
+      {/* 4th Section: Beyond the Core & Custom Services */}
+      <section className="py-24 md:py-32 bg-muted/30 relative border-t border-border/40 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Massive Connection",
-                value: "500+",
-                unit: "Streams",
-                description: "Proven experience in managing over 500 simultaneous high-definition streams with consistent performance and zero frame drops.",
-                icon: Network,
-                color: "text-blue-400",
-                bg: "bg-blue-400/5"
-              },
-              {
-                title: "Ultra-Fast Processing",
-                value: "<200",
-                unit: "ms",
-                description: "Optimized inference engines that deliver sub-second response times, essential for mission-critical security and real-time operations.",
-                icon: Zap,
-                color: "text-amber-400",
-                bg: "bg-amber-400/5"
-              },
-              {
-                title: "Elastic Scalability",
-                value: "99.9",
-                unit: "%",
-                description: "A cloud-native architecture that scales horizontally to meet fluctuating demand while maintaining peak availability.",
-                icon: Maximize,
-                color: "text-primary",
-                bg: "bg-primary/5"
-              }
-            ].map((capability, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative group p-8 lg:p-12 bg-white/[0.02] border border-white/5 rounded-3xl hover:bg-white/[0.04] transition-all duration-500 overflow-hidden"
-              >
-                {/* Background Pattern */}
-                <div className={`absolute top-0 right-0 w-32 h-32 ${capability.bg} rounded-bl-full opacity-50 group-hover:scale-110 transition-transform duration-700`} />
-                
-                <div className={`p-3 w-fit rounded-xl ${capability.bg} ${capability.color} mb-8 border border-white/5 group-hover:scale-110 transition-transform`}>
-                  <capability.icon className="w-6 h-6" />
+            {/* Left: More Ready-to-Use Analytics */}
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-1 h-1 bg-primary rounded-full" />
+                  <span className="text-[10px] font-mono text-primary uppercase tracking-widest">More Detections</span>
                 </div>
-
-                <div className="mb-8">
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-5xl font-bold text-white tracking-tighter">{capability.value}</span>
-                    <span className="text-xl font-light text-muted-foreground uppercase tracking-widest">{capability.unit}</span>
-                  </div>
-                  <h4 className="text-lg font-medium text-white uppercase tracking-wider">{capability.title}</h4>
-                </div>
-
-                <p className="text-muted-foreground font-light leading-relaxed">
-                  {capability.description}
+                <h3 className="text-3xl md:text-4xl font-medium tracking-tight">AND THERE&apos;S <br /><span className="text-muted-foreground uppercase tracking-tight">MORE.</span></h3>
+                <p className="text-muted-foreground font-light leading-relaxed max-w-lg">
+                  Beyond faces and vehicles, our AI can detect many other situations that matter to your safety and operations.
                 </p>
+              </div>
 
-                <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em]">Operational Spec</span>
-                  <div className="w-2 h-2 rounded-full bg-emerald-500/50" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { name: "Unauthorized Entry", icon: ShieldAlert },
+                  { name: "Boundary Crossing", icon: Network },
+                  { name: "Suspicious Loitering", icon: Activity },
+                  { name: "Fire & Smoke", icon: Zap },
+                  { name: "Safety Gear Check", icon: CheckCircle2 },
+                  { name: "Object Counting", icon: TrendingUp },
+                  { name: "Fall Detection", icon: Activity },
+                  { name: "Unusual Activity", icon: Crosshair }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-background border border-border/60 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all group cursor-default">
+                    <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-colors">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground/80">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Custom Model Development */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-primary/5 rounded-[2rem] blur-3xl group-hover:bg-primary/10 transition-colors" />
+              <div className="relative p-8 md:p-12 rounded-[2rem] border border-primary/20 bg-background/60 backdrop-blur-md space-y-8 flex flex-col justify-center h-full shadow-2xl">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(var(--primary),0.2)]">
+                  <Zap className="w-8 h-8" />
                 </div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-medium tracking-tight">NEED SOMETHING <br /><span className="text-primary uppercase tracking-tight">SPECIFIC?</span></h3>
+                  <p className="text-muted-foreground font-light leading-relaxed">
+                    Can&apos;t find what you need? Tell us what you want to detect, and we&apos;ll build custom AI trained specifically for your use case.
+                  </p>
+                </div>
 
-          {/* Infrastructure Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
-             {[
-               { label: "Hardware Accel", value: "NVIDIA TensorRT" },
-               { label: "Architecture", value: "Microservices" },
-               { label: "Deployment", value: "Hybrid Cloud" },
-               { label: "Connectivity", value: "RTSP / WebRTC" },
-             ].map((stat, i) => (
-               <div key={i} className="bg-background p-6">
-                 <div className="text-[9px] font-mono text-white/20 uppercase tracking-[0.2em] mb-1">{stat.label}</div>
-                 <div className="text-xs font-mono text-white/60 font-medium">{stat.value}</div>
-               </div>
-             ))}
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center gap-4 text-sm text-foreground/80">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>We collect and label training data from your actual cameras</span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-foreground/80">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>AI optimized for your specific environment and lighting</span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-foreground/80">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>Ongoing improvements as we learn from your data</span>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button className="w-full md:w-auto px-10 py-5 bg-primary text-primary-foreground rounded-2xl text-sm font-semibold hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-[0.98]">
+                    Talk to Our Team <TrendingUp className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

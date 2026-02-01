@@ -82,8 +82,8 @@ export default function UseCases() {
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className={`text-left py-6 px-8 relative transition-all duration-300 group rounded-r-lg
-                  ${activeTab === index 
-                    ? "text-primary bg-primary/[0.03]" 
+                  ${activeTab === index
+                    ? "text-primary bg-primary/[0.03]"
                     : "text-foreground hover:text-primary hover:bg-black/[0.02]"
                   }`}
               >
@@ -91,13 +91,13 @@ export default function UseCases() {
                 <div className={`absolute left-0 top-2 bottom-2 w-[3px] bg-primary transition-transform duration-500 origin-top rounded-full
                   ${activeTab === index ? "scale-y-100" : "scale-y-0"}
                 `} />
-                
+
                 <span className="text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
                   {useCase.title}
                 </span>
-                
+
                 {activeTab === index && (
-                  <motion.div 
+                  <motion.div
                     layoutId="active-indicator"
                     className="absolute right-6 top-1/2 -translate-y-1/2"
                   >
@@ -133,7 +133,7 @@ export default function UseCases() {
                     className="w-full h-full object-cover grayscale opacity-50 group-hover/img:opacity-100 group-hover/img:grayscale-0 transition-all duration-1000 scale-105 group-hover/img:scale-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-transparent opacity-60" />
-                  
+
                   {/* Decorative Corner Brackets (Palantir/NOC vibe) */}
                   <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/30 rounded-tl-lg" />
                   <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/30 rounded-tr-lg" />
