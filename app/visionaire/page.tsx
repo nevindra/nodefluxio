@@ -159,7 +159,7 @@ export default function Analytics() {
     analyticModels.find((m) => m.id === activeTab) || analyticModels[0];
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* 1st Section: Hero with Product Integration */}
       <VisionaireHero />
 

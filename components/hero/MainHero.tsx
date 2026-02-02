@@ -279,56 +279,42 @@ export function MainHero({
   label = "Extending Vision Beyond Imagination",
 }: HeroProps) {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-20 px-4 md:py-0">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 sm:py-20 md:py-0">
       <HeroBackground videoSrc={videoSrc} isLanding={true} />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] mt-12 md:mt-0">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] mt-12 md:mt-0 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Left Column: Context & CTA */}
-          <div className="lg:col-span-6 space-y-10 text-left">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8 md:space-y-10 text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
-              <div className="inline-flex items-center space-x-3 mb-2">
-                <span className="w-12 h-[2px] bg-primary"></span>
-                <span className="text-[10px] md:text-xs font-mono tracking-[0.4em] uppercase text-primary">
+              <div className="inline-flex items-center space-x-2 sm:space-x-3 mb-2">
+                <span className="w-8 sm:w-12 h-[2px] bg-primary"></span>
+                <span className="text-[9px] sm:text-[10px] md:text-xs font-mono tracking-[0.3em] sm:tracking-[0.4em] uppercase text-primary">
                   {label}
                 </span>
               </div>
 
-              <h1 className="font-medium tracking-tight text-foreground leading-[1.1] text-4xl md:text-6xl lg:text-7xl">
+              <h1 className="font-medium tracking-wide text-foreground leading-[1.1] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
                 <span className="block italic opacity-40">AI-POWERED</span>
                 <Typewriter words={words} />
               </h1>
 
-              <p className="text-muted-foreground font-light text-base md:text-lg max-w-xl leading-relaxed">
+              <p className="text-muted-foreground font-light text-sm sm:text-base md:text-lg max-w-xl leading-relaxed">
                 {description}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <div className="pt-4 sm:pt-6">
                 <Button
                   size="lg"
                   asChild
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-14 px-10 transition-all duration-300 shadow-xl shadow-primary/20 rounded-none uppercase tracking-widest text-xs"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-12 sm:h-14 px-6 sm:px-10 transition-all duration-300 shadow-xl shadow-primary/20 rounded-none uppercase tracking-wide sm:tracking-widest text-[10px] sm:text-xs"
                 >
                   <Link href={primaryCtaHref}>{primaryCtaText}</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="border-foreground/10 text-foreground hover:bg-foreground/5 h-14 px-10 transition-all duration-300 rounded-none uppercase tracking-widest text-xs group"
-                >
-                  <Link
-                    href={secondaryCtaHref}
-                    className="flex items-center gap-2"
-                  >
-                    {secondaryCtaText}
-                    <CaretRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
                 </Button>
               </div>
             </motion.div>

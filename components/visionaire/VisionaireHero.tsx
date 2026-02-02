@@ -49,7 +49,7 @@ export function VisionaireHero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter text-foreground"
+                            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium tracking-wide text-foreground"
                         >
                             YOUR CAMERAS, <br className="hidden sm:block" />
                             <span className="text-muted-foreground">NOW INTELLIGENT.</span>

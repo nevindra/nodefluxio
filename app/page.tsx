@@ -12,7 +12,7 @@ export const revalidate = 3600;
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black">
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden">
       <OperationalGrid />
       <div>
         <MainHero />

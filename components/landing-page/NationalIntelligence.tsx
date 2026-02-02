@@ -201,8 +201,6 @@ export default function NationalIntelligence() {
     const [hoveredLocation, setHoveredLocation] = useState<any>(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-    const [activeTab, setActiveTab] = useState<"Airport" | "Harbor" | "Capital">("Airport");
-
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -278,7 +276,6 @@ export default function NationalIntelligence() {
         };
     }, [isLoaded, isMobile]);
 
-    const filteredLocations = useMemo(() => locations.filter(loc => loc.type === activeTab), [activeTab]);
     const mapStats = useMemo(() => ({
         Airport: locations.filter(l => l.type === "Airport").length,
         Harbor: locations.filter(l => l.type === "Harbor").length,
@@ -462,41 +459,53 @@ export default function NationalIntelligence() {
                                 </div>
                             </>
                         ) : (
-                            <div className="flex flex-col h-full p-8">
-                                <div className="flex p-1 bg-black/5 rounded-lg mb-8">
-                                    {(["Airport", "Harbor", "Capital"] as const).map((type) => (
-                                        <button
-                                            key={type}
-                                            onClick={() => setActiveTab(type)}
-                                            className={`flex-1 py-2 rounded-md text-[10px] font-mono uppercase tracking-widest transition-all ${activeTab === type ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" : "text-foreground/40"}`}
-                                        >
-                                            {type}s
-                                        </button>
-                                    ))}
+                            <div className="flex flex-col h-full p-6">
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center gap-2">
+                                        <Broadcast className="w-4 h-4 text-primary animate-pulse" />
+                                        <span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em]">Network Status</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                        <span className="text-[9px] font-mono text-green-600 uppercase">All Active</span>
+                                    </div>
                                 </div>
 
-                                <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-4">
-                                    <div className="flex items-center justify-between mb-4">
-                                        <div className="space-y-1">
-                                            <p className="text-[10px] font-mono text-primary uppercase tracking-[0.3em]">Active Fleet</p>
-                                            <h4 className="text-2xl font-light text-foreground">{mapStats[activeTab]} Units</h4>
+                                <div className="grid grid-cols-3 gap-3 flex-1">
+                                    <div className="flex flex-col items-center justify-center p-4 bg-black/[0.02] border border-black/5 rounded-lg">
+                                        <div className="p-2 border border-primary/20 rounded-full mb-3">
+                                            <Airplane className="w-5 h-5 text-primary" />
                                         </div>
-                                        <div className="p-3 border border-black/10 rounded-full">
-                                            {activeTab === "Airport" ? <Airplane className="w-6 h-6 text-primary" /> :
-                                                activeTab === "Harbor" ? <Anchor className="w-6 h-6 text-primary" /> :
-                                                    <MapPin className="w-6 h-6 text-primary" />}
+                                        <span className="text-2xl font-light text-foreground mb-1">{mapStats.Airport}</span>
+                                        <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">Airports</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-4 bg-black/[0.02] border border-black/5 rounded-lg">
+                                        <div className="p-2 border border-primary/20 rounded-full mb-3">
+                                            <Anchor className="w-5 h-5 text-primary" />
+                                        </div>
+                                        <span className="text-2xl font-light text-foreground mb-1">{mapStats.Harbor}</span>
+                                        <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">Harbors</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-4 bg-black/[0.02] border border-black/5 rounded-lg">
+                                        <div className="p-2 border border-primary/20 rounded-full mb-3">
+                                            <MapPin className="w-5 h-5 text-primary" />
+                                        </div>
+                                        <span className="text-2xl font-light text-foreground mb-1">{mapStats.Capital}</span>
+                                        <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">Capitals</span>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 pt-4 border-t border-black/5">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-[10px] font-mono text-muted-foreground uppercase mb-1">Total Deployment</p>
+                                            <p className="text-xl font-light text-foreground">{locations.length} <span className="text-sm text-muted-foreground">Nodes</span></p>
+                                        </div>
+                                        <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 border border-primary/20 rounded-full">
+                                            <ShieldCheck className="w-4 h-4 text-primary" />
+                                            <span className="text-[9px] font-mono text-primary uppercase tracking-wider">100% Coverage</span>
                                         </div>
                                     </div>
-
-                                    {filteredLocations.slice(0, 5).map((loc) => (
-                                        <div key={loc.id} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
-                                            <div>
-                                                <h5 className="text-sm font-medium text-foreground">{loc.name}</h5>
-                                                <p className="text-[10px] text-foreground/40 font-mono uppercase">{loc.city}</p>
-                                            </div>
-                                            <span className="text-[9px] font-mono text-green-500/80 uppercase">Active</span>
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
                         )}

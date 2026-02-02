@@ -49,7 +49,7 @@ export function AthenaHero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter text-foreground"
+                            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-wide text-foreground"
                         >
                             INTELLIGENCE THAT <br className="hidden md:block" />
                             <span className="text-muted-foreground">UNDERSTANDS.</span>
