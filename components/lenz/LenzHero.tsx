@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { MonitorPlay } from "lucide-react";
+import { MonitorPlay } from "@phosphor-icons/react";
 import { useRef } from "react";
 import Image from "next/image";
 

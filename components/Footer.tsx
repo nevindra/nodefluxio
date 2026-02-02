@@ -3,7 +3,7 @@
 import visionaire from "@/public/nodeflux-primary-purple.png";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Envelope, MapPin, Phone } from "@phosphor-icons/react";
 import { footerNavigation } from "@/lib/navigation-data";
 
 const navigation = footerNavigation;
@@ -47,7 +47,7 @@ export default function Footer() {
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <Mail className="w-4 h-4 text-primary" />
+                  <Envelope className="w-4 h-4 text-primary" />
                 </div>
                 {contactInfo.email}
               </a>

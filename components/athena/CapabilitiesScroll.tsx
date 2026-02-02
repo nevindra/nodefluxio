@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Brain, Database, Network, ArrowRight } from "lucide-react";
+import { Brain, Database, Graph, ArrowRight } from "@phosphor-icons/react";
 import RAGAnimation from "@/components/athena/RAGAnimation";
 import AgenticAnimation from "@/components/athena/AgenticAnimation";
 import KnowledgeGraphAnimation from "@/components/athena/KnowledgeGraphAnimation";
@@ -29,7 +29,7 @@ const capabilities = [
         title: "03 // Knowledge Graph",
         heading: "Contextual Understanding.",
         description: "Connecting the dots between isolated data points. Athena maintains a dynamic graph of relationships between people, assets, and events.",
-        icon: Network,
+        icon: Graph,
         component: <KnowledgeGraphAnimation />,
     },
 ];

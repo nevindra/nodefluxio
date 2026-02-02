@@ -4,13 +4,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   Bell,
   Brain,
-  History,
-  LayoutDashboard,
-  LineChart,
-  Scan
-} from "lucide-react";
+  ChartLineUp,
+  ClockClockwise,
+  Scan,
+  GridFour,
+} from "@phosphor-icons/react";
+import Link from "next/link";
 import { useState } from "react";
 
+import { Button } from "../ui/button";
 import AthenaKnowledgeMockup from "./AthenaKnowledgeMockup";
 import LenzDashboardMockup from "./LenzDashboardMockup";
 import VisionAIreMockup from "./VisionAIreMockup";
@@ -20,29 +22,35 @@ const products = [
     id: "visionaire",
     title: "VisionAIre",
     subtitle: "Enterprise Vision Platform",
-    description: "VisionAIre is a comprehensive AI platform providing a set of production-ready Computer Vision models. Deploy advanced recognition capabilities directly into your applications with ease.",
-    valueProp: "From Face Recognition to License Plate detection, VisionAIre gives you the building blocks to see and understand the physical world through code.",
+    description:
+      "VisionAIre is a comprehensive AI platform providing a set of production-ready Computer Vision models. Deploy advanced recognition capabilities directly into your applications with ease.",
+    valueProp:
+      "From Face Recognition to License Plate detection, VisionAIre gives you the building blocks to see and understand the physical world through code.",
     icon: <Scan className="w-6 h-6" />,
-
+    href: "/visionaire",
   },
   {
     id: "lenz",
     title: "Lenz",
     subtitle: "Smart Video Monitoring System",
-    description: "Lenz is like having an extra set of eyes that never gets tired. It watches your camera feeds 24/7, instantly recognizing people and vehicles while turning video into clear, useful information.",
-    valueProp: "Stop spending hours watching security screens. Lenz alerts you only when something important happens, so you can stay focused on running your business safely.",
-    icon: <LayoutDashboard className="w-6 h-6" />,
-
+    description:
+      "Lenz is like having an extra set of eyes that never gets tired. It watches your camera feeds 24/7, instantly recognizing people and vehicles while turning video into clear, useful information.",
+    valueProp:
+      "Stop spending hours watching security screens. Lenz alerts you only when something important happens, so you can stay focused on running your business safely.",
+    icon: <GridFour className="w-6 h-6" />,
+    href: "/lenz",
   },
   {
     id: "athena",
     title: "Athena",
     subtitle: "AI Assistant for Your Business",
-    description: "Athena is an intelligent assistant that understands your business data. It connects everything together so you can simply ask questions and get clear, helpful answers in plain English.",
-    valueProp: "No more digging through complex reports. Just ask Athena, 'What happened today?' or 'How busy was the lobby?' and get a human-like response in seconds.",
+    description:
+      "Athena is an intelligent assistant that understands your business data. It connects everything together so you can simply ask questions and get clear, helpful answers in plain English.",
+    valueProp:
+      "No more digging through complex reports. Just ask Athena, 'What happened today?' or 'How busy was the lobby?' and get a human-like response in seconds.",
     icon: <Brain className="w-6 h-6" />,
-
-  }
+    href: "/athena",
+  },
 ];
 
 export default function Features() {
@@ -50,7 +58,10 @@ export default function Features() {
   const [lenzUseCase, setLenzUseCase] = useState<string>("streams");
 
   return (
-    <section id="features" className="py-24 md:py-32 bg-background border-b border-black/[0.03] font-futura overflow-hidden">
+    <section
+      id="features"
+      className="py-24 md:py-32 bg-background border-b border-black/[0.03] font-futura overflow-hidden"
+    >
       <div className="max-w-[1440px] relative z-20 mx-auto px-4 md:px-6 lg:px-8">
         {/* Unified Header */}
         <div className="max-w-4xl mb-12 md:mb-20">
@@ -61,13 +72,15 @@ export default function Features() {
             className="flex items-center space-x-3 mb-8"
           >
             <div className="w-12 h-[2px] bg-primary"></div>
-            <span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">Core Technology Fleet</span>
+            <span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">
+              Core Technology Fleet
+            </span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-tight text-foreground uppercase"
+            className="text-2xl md:text-3xl font-medium tracking-tight mb-6 leading-tight text-foreground uppercase"
           >
             Powerful AI Tools <br />
             <span className="text-primary">Engineered for Action.</span>
@@ -77,10 +90,11 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-3xl"
+            className="text-base md:text-lg text-muted-foreground font-light leading-relaxed max-w-4xl"
           >
-            We transform complex data into simple, actionable insights. Whether it's
-            keeping your premises safe or answering business questions, our tools do the heavy lifting for you.
+            We transform complex data into simple, actionable insights. Whether
+            it's keeping your premises safe or answering business questions, our
+            tools do the heavy lifting for you.
           </motion.p>
         </div>
 
@@ -91,15 +105,20 @@ export default function Features() {
               <button
                 key={p.id}
                 onClick={() => setActiveTab(p.id)}
-                className={`flex items-center gap-2.5 py-4 transition-all duration-300 relative group flex-shrink-0 ${activeTab === p.id
-                  ? "text-primary"
-                  : "text-foreground/30 hover:text-foreground/60"
-                  }`}
+                className={`flex items-center gap-2.5 py-4 transition-all duration-300 relative group flex-shrink-0 ${
+                  activeTab === p.id
+                    ? "text-primary"
+                    : "text-foreground/30 hover:text-foreground/60"
+                }`}
               >
-                <div className={`transition-all duration-300 ${activeTab === p.id ? "scale-110" : "opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0"}`}>
+                <div
+                  className={`transition-all duration-300 ${activeTab === p.id ? "scale-110" : "opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0"}`}
+                >
                   {p.icon}
                 </div>
-                <span className="font-medium uppercase tracking-[0.3em] text-[10px] whitespace-nowrap">{p.title}</span>
+                <span className="font-medium uppercase tracking-[0.3em] text-[10px] whitespace-nowrap">
+                  {p.title}
+                </span>
 
                 {activeTab === p.id && (
                   <motion.div
@@ -118,64 +137,96 @@ export default function Features() {
           {/* Info Side */}
           <div className="lg:col-span-4 space-y-10 lg:sticky lg:top-32">
             <AnimatePresence mode="wait">
-              {products.map((p) => p.id === activeTab && (
-                <motion.div
-                  key={p.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <div className="space-y-8">
-                    <div>
-                      <h3 className="text-primary font-medium text-base md:text-lg uppercase tracking-[0.4em] mb-2">{p.subtitle}</h3>
-                      <h4 className="text-xl md:text-2xl font-medium text-foreground tracking-tight uppercase leading-tight mb-4">
-                        {p.title}
-                      </h4>
-                      <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-4 pt-4">
-                      <button className="flex-1 min-w-[200px] px-8 py-4 bg-foreground text-background text-[10px] font-semibold rounded-xl hover:bg-foreground/90 transition-all duration-300 uppercase tracking-[0.2em] group flex items-center justify-center gap-3">
-                        View Specifications <span className="text-background/40 group-hover:text-background group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">↗</span>
-                      </button>
-                    </div>
-
-                    {p.id === "lenz" && (
-                      <div className="pt-10 border-t border-black/5">
-                        <div className="text-[10px] font-medium text-primary uppercase mb-6 tracking-[0.3em]">Operational Perspectives</div>
-                        <div className="flex flex-wrap gap-3">
-                          {[
-                            { id: "alerts", label: "Alert Integration", icon: Bell },
-                            { id: "history", label: "Event History", icon: History },
-                            { id: "stats", label: "Analytics Overlays", icon: LineChart },
-                          ].map((uc) => (
-                            <button
-                              key={uc.id}
-                              onClick={() => setLenzUseCase(lenzUseCase === uc.id ? "streams" : uc.id)}
-                              className={`flex items-center gap-2.5 px-5 py-2.5 text-[9px] font-medium uppercase tracking-[0.15em] border rounded-full transition-all duration-300 ${lenzUseCase === uc.id
-                                ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                                : "bg-black/[0.02] border-black/10 text-foreground/40 hover:border-black/20 hover:text-foreground/60"
-                                }`}
-                            >
-                              <uc.icon className="w-3.5 h-3.5" />
-                              {uc.label}
-                            </button>
-                          ))}
+              {products.map(
+                (p) =>
+                  p.id === activeTab && (
+                    <motion.div
+                      key={p.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="space-y-8">
+                        <div>
+                          <h3 className="text-primary font-medium text-base md:text-lg uppercase tracking-[0.4em] mb-2">
+                            {p.subtitle}
+                          </h3>
+                          <h4 className="text-xl md:text-2xl font-medium text-foreground tracking-tight uppercase leading-tight mb-4">
+                            {p.title}
+                          </h4>
+                          <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+                            {p.description}
+                          </p>
                         </div>
+
+                        <div className="flex flex-wrap gap-4 pt-4">
+                          <Button
+                            asChild
+                            className="flex-1 min-w-[200px] h-12 px-8 text-background text-[10px] font-medium rounded-none hover:bg-primary/90 transition-all duration-300 uppercase tracking-[0.2em] group flex items-center justify-center gap-3"
+                          >
+                            <Link href={p.href}>
+                              View Specifications{" "}
+                              <span className="text-background/40 group-hover:text-background group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
+                                ↗
+                              </span>
+                            </Link>
+                          </Button>
+                        </div>
+
+                        {p.id === "lenz" && (
+                          <div className="pt-10 border-t border-black/5">
+                            <div className="text-[10px] font-medium text-primary uppercase mb-6 tracking-[0.3em]">
+                              Operational Perspectives
+                            </div>
+                            <div className="flex flex-wrap gap-3">
+                              {[
+                                {
+                                  id: "alerts",
+                                  label: "Alert Integration",
+                                  icon: Bell,
+                                },
+                                {
+                                  id: "history",
+                                  label: "Event History",
+                                  icon: ClockClockwise,
+                                },
+                                {
+                                  id: "stats",
+                                  label: "Analytics Overlays",
+                                  icon: ChartLineUp,
+                                },
+                              ].map((uc) => (
+                                <button
+                                  key={uc.id}
+                                  onClick={() =>
+                                    setLenzUseCase(
+                                      lenzUseCase === uc.id ? "streams" : uc.id,
+                                    )
+                                  }
+                                  className={`flex items-center gap-2.5 px-5 py-2.5 text-[9px] font-medium uppercase tracking-[0.15em] border transition-all duration-300 ${
+                                    lenzUseCase === uc.id
+                                      ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
+                                      : "bg-black/[0.02] border-black/10 text-foreground/40 hover:border-black/20 hover:text-foreground/60"
+                                  }`}
+                                >
+                                  <uc.icon className="w-3.5 h-3.5" />
+                                  {uc.label}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+                    </motion.div>
+                  ),
+              )}
             </AnimatePresence>
           </div>
 
           {/* Mockup Side */}
           <div className="lg:col-span-8 relative">
-            <div className="relative aspect-[16/10] bg-slate-50 border border-black/5 overflow-hidden shadow-2xl rounded-2xl lg:-mr-32 group">
+            <div className="relative aspect-[16/10] bg-black/[0.02] border border-black/5 overflow-hidden shadow-xl lg:-mr-32 group">
               <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10" />
               <AnimatePresence mode="wait">
                 <motion.div

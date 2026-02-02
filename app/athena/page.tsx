@@ -4,7 +4,7 @@ import { AthenaHero } from "@/components/athena/AthenaHero";
 import { CapabilitiesScroll } from "@/components/athena/CapabilitiesScroll";
 import { EnterpriseServices } from "@/components/athena/EnterpriseServices";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 import LandingSection from "@/components/LandingSection";
 import OperationalGrid from "@/components/OperationalGrid";
 

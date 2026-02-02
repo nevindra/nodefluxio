@@ -4,16 +4,16 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import {
-    LayoutGrid,
+    GridFour,
     Cpu,
-    History,
+    ClockCounterClockwise,
     Shield,
-    CheckCircle2,
-    Zap,
+    CheckCircle,
+    Lightning,
     Eye,
     Database,
-    Network
-} from "lucide-react";
+    Graph,
+} from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 const showcaseItems = [
@@ -29,7 +29,7 @@ const showcaseItems = [
             "Full-screen single camera mode"
         ],
         image: "/dashboard/streams.jpeg",
-        icon: LayoutGrid,
+        icon: GridFour,
         accent: "cyan"
     },
     {
@@ -59,7 +59,7 @@ const showcaseItems = [
             "Export evidence with one click"
         ],
         image: "/dashboard/event.jpeg",
-        icon: History,
+        icon: ClockCounterClockwise,
         accent: "amber"
     }
 ];
@@ -192,7 +192,7 @@ function ShowcaseItem({
                             transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                             className="flex items-center gap-3 text-foreground/80"
                         >
-                            <CheckCircle2 className={cn("w-5 h-5 shrink-0", colors.text)} />
+                            <CheckCircle className={cn("w-5 h-5 shrink-0", colors.text)} />
                             <span className="text-sm md:text-base">{feature}</span>
                         </motion.div>
                     ))}

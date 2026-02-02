@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Anchor, Layers, MapPin, Plane, Satellite, ShieldCheck } from "lucide-react";
+import { Anchor, Stack, MapPin, Airplane, Broadcast, ShieldCheck } from "@phosphor-icons/react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
@@ -251,7 +251,7 @@ export default function DeploymentMap() {
                     {!isMobile && (
                         <div className="flex flex-wrap gap-4">
                             <div className="flex items-center space-x-2 glass px-4 py-2 hover:bg-white/5 transition-colors">
-                                <Plane className="w-4 h-4 text-primary" />
+                                <Airplane className="w-4 h-4 text-primary" />
                                 <span className="text-xs font-mono uppercase tracking-wider">Airports</span>
                             </div>
                             <div className="flex items-center space-x-2 glass px-4 py-2 hover:bg-white/5 transition-colors">
@@ -299,11 +299,11 @@ export default function DeploymentMap() {
                             {/* HUD Elements */}
                             <div className="absolute top-6 left-6 font-mono text-[9px] text-white/40 select-none z-10 flex flex-col gap-1">
                                 <div className="flex items-center gap-2">
-                                    <Satellite className="w-3 h-3 text-primary animate-pulse" />
+                                    <Broadcast className="w-3 h-3 text-primary animate-pulse" />
                                     <span>SAT_LNK: ACTIVE [IND_01]</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Layers className="w-3 h-3" />
+                                    <Stack className="w-3 h-3" />
                                     <span>GRID_COORD: 118.01 / -2.53</span>
                                 </div>
                             </div>
@@ -345,7 +345,7 @@ export default function DeploymentMap() {
                                                 </div>
                                                 <div className="p-2 glass border-white/10 rounded-sm">
                                                     {hoveredLocation.type === "Airport" ? (
-                                                        <Plane className="w-5 h-5 text-primary" />
+                                                        <Airplane className="w-5 h-5 text-primary" />
                                                     ) : hoveredLocation.type === "Harbor" ? (
                                                         <Anchor className="w-5 h-5 text-primary" />
                                                     ) : (
@@ -404,7 +404,7 @@ export default function DeploymentMap() {
                                     <h4 className="text-3xl font-light text-white">{stats[activeTab]} <span className="text-white/20 text-xl tracking-tighter uppercase ml-2">Units</span></h4>
                                 </div>
                                 <div className="p-3 glass border-white/10 rounded-full">
-                                    {activeTab === "Airport" ? <Plane className="w-6 h-6 text-primary" /> :
+                                    {activeTab === "Airport" ? <Airplane className="w-6 h-6 text-primary" /> :
                                         activeTab === "Harbor" ? <Anchor className="w-6 h-6 text-primary" /> :
                                             <MapPin className="w-6 h-6 text-primary" />}
                                 </div>
@@ -438,7 +438,7 @@ export default function DeploymentMap() {
 
                             <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <Satellite className="w-3 h-3 text-primary" />
+                                    <Broadcast className="w-3 h-3 text-primary" />
                                     <span className="text-[8px] font-mono text-white/40 uppercase">Satellite Synced</span>
                                 </div>
                                 <div className="flex items-center gap-2">

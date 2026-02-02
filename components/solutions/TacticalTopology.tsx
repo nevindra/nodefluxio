@@ -4,17 +4,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Radio,
-  Video,
-  Plane,
+  Broadcast,
+  VideoCamera,
+  Airplane,
   Truck,
-  Server,
+  HardDrives,
   Cpu,
-  LayoutDashboard,
+  SquaresFour,
   Database,
   ArrowRight,
   CheckCircle,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 
 const stages = [
   {
@@ -23,17 +23,17 @@ const stages = [
     nodes: [
       {
         name: "Body Cameras",
-        icon: <Radio className="w-5 h-5" />,
+        icon: <Broadcast className="w-5 h-5" />,
         desc: "Wearable devices for field personnel",
       },
       {
         name: "Fixed Cameras",
-        icon: <Video className="w-5 h-5" />,
+        icon: <VideoCamera className="w-5 h-5" />,
         desc: "Permanent CCTV infrastructure",
       },
       {
         name: "Aerial Systems",
-        icon: <Plane className="w-5 h-5" />,
+        icon: <Airplane className="w-5 h-5" />,
         desc: "Drone and UAV monitoring",
       },
     ],
@@ -60,7 +60,7 @@ const stages = [
       },
       {
         name: "Secure Storage",
-        icon: <Server className="w-5 h-5" />,
+        icon: <HardDrives className="w-5 h-5" />,
         desc: "On-premise data vault",
       },
     ],
@@ -71,7 +71,7 @@ const stages = [
     nodes: [
       {
         name: "Dashboard",
-        icon: <LayoutDashboard className="w-5 h-5" />,
+        icon: <SquaresFour className="w-5 h-5" />,
         desc: "Unified monitoring interface",
       },
       {

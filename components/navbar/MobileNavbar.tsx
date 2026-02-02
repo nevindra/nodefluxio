@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, X } from "lucide-react";
+import { CaretDown, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -70,7 +70,7 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
                   className="flex w-full items-center justify-between text-[10px] font-mono tracking-[0.3em] text-primary uppercase"
                 >
                   <span>{group.title}</span>
-                  <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${expandedGroups[group.title] ? "rotate-180" : ""}`} />
+                  <CaretDown className={`w-3 h-3 transition-transform duration-300 ${expandedGroups[group.title] ? "rotate-180" : ""}`} />
                 </button>
 
                 <div className="space-y-4 pl-2">

@@ -1,21 +1,21 @@
 "use client";
 
+import Consolutation from "@/components/landing-page/Consolutation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from "@/components/ui/card";
-import Consolutation from "@/components/landing-page/Consolutation";
-import Image from "next/image";
+import { getIcon } from "@/lib/icons";
+import { getSolutionBySlug } from "@/lib/solutions-data";
+import { ActivityIcon as Activity } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
-import { Activity } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { getSolutionBySlug } from "@/lib/solutions-data";
-import { getIcon } from "@/lib/icons";
 
 export default function SolutionPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -148,7 +148,10 @@ export default function SolutionPage() {
                     </h4>
                     <ul className="space-y-1">
                       {tactical.analyticsUsed.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm">
+                        <li
+                          key={item}
+                          className="flex items-center gap-2 text-sm"
+                        >
                           <Activity className="w-4 h-4 text-primary" />
                           <span>{item}</span>
                         </li>

@@ -9,17 +9,17 @@ import { HeroProps } from "./types";
 import {
     Activity,
     Database,
-    Search,
+    MagnifyingGlass,
     Terminal,
     Cpu,
     Globe,
     ShieldCheck,
     Eye,
-    ChevronRight,
+    CaretRight,
     Lock,
-    Zap,
+    Lightning,
     Users
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import Image from "next/image";
 
 const words = [
@@ -310,7 +310,7 @@ export function MainHero({
                                 >
                                     <Link href={secondaryCtaHref} className="flex items-center gap-2">
                                         {secondaryCtaText}
-                                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        <CaretRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </Link>
                                 </Button>
                             </div>

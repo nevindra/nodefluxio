@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, ShieldCheck, Zap, Database } from "lucide-react";
+import { Activity, ShieldCheck, Lightning, Database } from "@phosphor-icons/react";
 
 const metrics = [
-    { label: "Query Latency", value: "124ms", icon: Zap, status: "Optimal" },
+    { label: "Query Latency", value: "124ms", icon: Lightning, status: "Optimal" },
     { label: "Knowledge Accuracy", value: "99.8%", icon: ShieldCheck, status: "Verified" },
     { label: "Active Vectors", value: "14.2M", icon: Database, status: "Live" },
     { label: "System Status", value: "Operational", icon: Activity, status: "Healthy" },

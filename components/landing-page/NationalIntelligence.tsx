@@ -5,20 +5,20 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, animate, motion, useInView } from "framer-motion";
 import {
     Anchor,
-    CheckCircle2,
+    CheckCircle,
     Database,
     Globe,
-    Layers,
+    Stack,
     MapPin,
     Monitor,
-    Plane,
-    Satellite,
-    Search,
+    Airplane,
+    Broadcast,
+    MagnifyingGlass,
     ShieldCheck,
-    TrendingUp,
+    TrendUp,
     Users,
-    Zap
-} from "lucide-react";
+    Lightning,
+} from "@phosphor-icons/react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { ReactNode, useEffect, useRef, useState, memo, useMemo } from "react";
@@ -171,7 +171,7 @@ const StatCard = memo(({ title, value, suffix, prefix, subtext, detail, icon, in
                     </span>
                     {variant === 'hero' && (
                         <div className="flex items-center gap-1.5 mt-2">
-                            <TrendingUp className="w-3 h-3 text-green-600/50" />
+                            <TrendUp className="w-3 h-3 text-green-600/50" />
                             <span className="text-[9px] font-mono text-green-600/50 font-medium">LIVE_THROUGHPUT</span>
                         </div>
                     )}
@@ -393,11 +393,11 @@ export default function NationalIntelligence() {
                                 {/* HUD Overlay */}
                                 <div className="absolute top-6 left-6 font-mono text-[9px] text-foreground/40 select-none z-10 flex flex-col gap-1">
                                     <div className="flex items-center gap-2">
-                                        <Satellite className="w-3 h-3 text-primary animate-pulse" />
+                                        <Broadcast className="w-3 h-3 text-primary animate-pulse" />
                                         <span>SAT_LNK: ACTIVE [IND_01]</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <Layers className="w-3 h-3" />
+                                        <Stack className="w-3 h-3" />
                                         <span>GRID_COORD: 118.01 / -2.53</span>
                                     </div>
                                 </div>
@@ -437,7 +437,7 @@ export default function NationalIntelligence() {
                                                         </h3>
                                                     </div>
                                                     <div className="p-2 border border-black/5 rounded-sm">
-                                                        {hoveredLocation.type === "Airport" ? <Plane className="w-5 h-5 text-primary" /> :
+                                                        {hoveredLocation.type === "Airport" ? <Airplane className="w-5 h-5 text-primary" /> :
                                                             hoveredLocation.type === "Harbor" ? <Anchor className="w-5 h-5 text-primary" /> :
                                                                 <MapPin className="w-5 h-5 text-primary" />}
                                                     </div>
@@ -482,7 +482,7 @@ export default function NationalIntelligence() {
                                             <h4 className="text-2xl font-light text-foreground">{mapStats[activeTab]} Units</h4>
                                         </div>
                                         <div className="p-3 border border-black/10 rounded-full">
-                                            {activeTab === "Airport" ? <Plane className="w-6 h-6 text-primary" /> :
+                                            {activeTab === "Airport" ? <Airplane className="w-6 h-6 text-primary" /> :
                                                 activeTab === "Harbor" ? <Anchor className="w-6 h-6 text-primary" /> :
                                                     <MapPin className="w-6 h-6 text-primary" />}
                                         </div>
@@ -522,7 +522,7 @@ export default function NationalIntelligence() {
                         suffix="M+"
                         subtext="Querying a pool of 200M+ biometric records for instant ID."
                         detail="SEARCH"
-                        icon={<Search className="w-6 h-6" />}
+                        icon={<MagnifyingGlass className="w-6 h-6" />}
                         color="primary"
                     />
                     <StatCard
@@ -533,7 +533,7 @@ export default function NationalIntelligence() {
                         suffix=" SEC"
                         subtext="Retrieving precise matches from records in sub-second response."
                         detail="LATENCY"
-                        icon={<Zap className="w-6 h-6" />}
+                        icon={<Lightning className="w-6 h-6" />}
                         color="primary"
                     />
                     <StatCard
@@ -558,7 +558,7 @@ export default function NationalIntelligence() {
                         </div>
                     </div>
                     <div className="flex items-center gap-4 border border-black/10 p-6 hover:bg-primary/[0.03] transition-all bg-black/[0.02]">
-                        <CheckCircle2 className="w-5 h-5 text-primary" />
+                        <CheckCircle className="w-5 h-5 text-primary" />
                         <div>
                             <div className="text-xl font-medium text-foreground leading-none mb-1 uppercase tracking-tight">30+ Major Events</div>
                             <div className="text-[10px] font-medium text-primary uppercase tracking-[0.2em]">Success Record</div>

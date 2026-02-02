@@ -6,19 +6,19 @@ import {
   Brain,
   Database,
   FileText,
-  Layers,
-  Network,
+  Stack,
+  Graph,
   Plus,
-  Search,
-  Settings,
-  Share2,
+  MagnifyingGlass,
+  Gear,
+  ShareNetwork,
   Shield,
-  Zap,
-  CheckCircle2,
-  Loader2,
-  BarChart3,
-  TrendingUp
-} from "lucide-react";
+  Lightning,
+  CheckCircle,
+  CircleNotch,
+  ChartBar,
+  TrendUp,
+} from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
 
 type Stage = "idle" | "thinking" | "retrieving" | "answering";
@@ -79,9 +79,9 @@ export default function AthenaKnowledgeMockup() {
           <h3 className="text-[8px] lg:text-[9px] font-mono text-black/30 uppercase tracking-[0.2em] mb-4">Context engine</h3>
           <div className="space-y-2">
             {[
-              { icon: isBusiness ? BarChart3 : Database, label: isBusiness ? "Business" : "Vector", active: stage === "retrieving" },
-              { icon: Network, label: "Knowledge", active: stage === "thinking" },
-              { icon: Layers, label: "Context", active: stage === "answering" },
+              { icon: isBusiness ? ChartBar : Database, label: isBusiness ? "Business" : "Vector", active: stage === "retrieving" },
+              { icon: Graph, label: "Knowledge", active: stage === "thinking" },
+              { icon: Stack, label: "Context", active: stage === "answering" },
               { icon: FileText, label: "Index", active: false },
             ].map((item, i) => (
               <div
@@ -125,10 +125,10 @@ export default function AthenaKnowledgeMockup() {
           </div>
           <div className="flex gap-1.5 md:gap-2">
             <button className="hidden sm:block p-1 md:p-1.5 bg-slate-50 border border-black/10 rounded-lg text-black/30">
-              <Share2 className="w-3 md:w-3.5 h-3 md:h-3.5" />
+              <ShareNetwork className="w-3 md:w-3.5 h-3 md:h-3.5" />
             </button>
             <button className="p-1 md:p-1.5 bg-slate-50 border border-black/10 rounded-lg text-black/30">
-              <Settings className="w-3 md:w-3.5 h-3 md:h-3.5" />
+              <Gear className="w-3 md:w-3.5 h-3 md:h-3.5" />
             </button>
           </div>
         </header>
@@ -189,7 +189,7 @@ export default function AthenaKnowledgeMockup() {
                           >
                             <div>
                               <div className="flex items-center gap-2 mb-3">
-                                <Loader2 className="w-3 h-3 text-primary animate-spin" />
+                                <CircleNotch className="w-3 h-3 text-primary animate-spin" />
                                 <span className="text-[9px] font-mono text-primary uppercase tracking-[0.2em] font-bold">Chain-of-Thought</span>
                               </div>
                               <div className="space-y-2.5 pl-4 border-l-2 border-primary/10">
@@ -201,7 +201,7 @@ export default function AthenaKnowledgeMockup() {
                                     className={`flex items-center gap-2.5 text-[10px] ${i === currentThought ? 'text-primary font-medium' : 'text-black/40'}`}
                                   >
                                     {i < currentThought ? (
-                                      <CheckCircle2 className="w-3 h-3 text-green-500" />
+                                      <CheckCircle className="w-3 h-3 text-green-500" />
                                     ) : (
                                       <div className={`w-1 h-1 rounded-full ${i === currentThought ? 'bg-primary animate-pulse' : 'bg-black/20'}`} />
                                     )}
@@ -256,11 +256,11 @@ export default function AthenaKnowledgeMockup() {
                           </div>
                           <div className="flex gap-2">
                             <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-black/5 rounded-lg text-[8px] text-primary font-bold uppercase tracking-widest">
-                              {isBusiness ? <TrendingUp className="w-3 h-3" /> : <Shield className="w-3 h-3" />}
+                              {isBusiness ? <TrendUp className="w-3 h-3" /> : <Shield className="w-3 h-3" />}
                               {isBusiness ? "Grounded Data" : "Verified Grounding"}
                             </div>
                             <div className="flex items-center gap-1.5 px-3 py-1 bg-green-500/5 border border-green-500/20 rounded-lg text-[8px] text-green-600 font-bold uppercase tracking-widest">
-                              <Zap className="w-3 h-3" /> Real-time
+                              <Lightning className="w-3 h-3" /> Real-time
                             </div>
                           </div>
                           <button onClick={() => { setQuery(""); setStage("idle"); }} className="text-[9px] font-mono text-black/20 hover:text-black transition-colors uppercase tracking-[0.3em] flex items-center gap-2 pt-2">
@@ -276,7 +276,7 @@ export default function AthenaKnowledgeMockup() {
           </div>
 
           <div className="border border-black/10 rounded-xl p-1.5 flex items-center gap-2 bg-white shadow-sm shrink-0">
-            <Search className="w-3.5 h-3.5 text-black/20 ml-2.5" />
+            <MagnifyingGlass className="w-3.5 h-3.5 text-black/20 ml-2.5" />
             <input readOnly placeholder={query || "Ask Athena..."} className="flex-1 bg-transparent border-none outline-none py-2 text-xs text-foreground placeholder:text-black/10" />
             <button className="h-8 px-5 bg-primary text-white font-bold uppercase tracking-widest text-[9px] rounded-lg">Analyze</button>
           </div>

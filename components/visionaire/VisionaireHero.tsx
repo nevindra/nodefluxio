@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Cpu } from "lucide-react";
+import { Cpu } from "@phosphor-icons/react";
 import { useRef } from "react";
 import ProductIntegration from "@/components/landing-page/ProductIntegration";
 
@@ -139,59 +139,59 @@ function ProductIntegrationEmbed() {
 import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import {
-    Cctv,
+    SecurityCamera,
     FileVideo,
     Database,
-    LayoutDashboard,
-    Webhook,
-    ScanFace,
+    SquaresFour,
+    BellRinging,
+    ScanSmiley,
     Users,
     Car,
     Truck,
-    Video,
-    Radio,
+    VideoCamera,
+    Broadcast,
     MonitorPlay,
-    LucideIcon
-} from "lucide-react";
+    Icon,
+} from "@phosphor-icons/react";
 
 interface AIModel {
     id: string;
     moduleId: string;
-    icon: LucideIcon;
+    icon: Icon;
     label: string;
     description: string;
 }
 
 const aiModels: AIModel[] = [
-    { id: "face", moduleId: "FR-01", icon: ScanFace, label: "Face Recognition", description: "Identify People" },
+    { id: "face", moduleId: "FR-01", icon: ScanSmiley, label: "Face Recognition", description: "Identify People" },
     { id: "people", moduleId: "PA-02", icon: Users, label: "People Counting", description: "Track Visitors" },
     { id: "lpr", moduleId: "LPR-03", icon: Car, label: "Plate Reader", description: "Read Plates" },
     { id: "vehicle", moduleId: "VA-04", icon: Truck, label: "Vehicle Detection", description: "Track Vehicles" }
 ];
 
 const inputs = [
-    { id: "cctv", icon: Cctv, label: "CCTV Cameras", subLabel: "Any brand you have", badge: "Any Brand" },
-    { id: "bodyworn", icon: Radio, label: "Body Cameras", subLabel: "Wearable devices" },
-    { id: "drone", icon: Video, label: "Drones", subLabel: "Aerial footage" },
+    { id: "cctv", icon: SecurityCamera, label: "CCTV Cameras", subLabel: "Any brand you have", badge: "Any Brand" },
+    { id: "bodyworn", icon: Broadcast, label: "Body Cameras", subLabel: "Wearable devices" },
+    { id: "drone", icon: VideoCamera, label: "Drones", subLabel: "Aerial footage" },
     { id: "video", icon: FileVideo, label: "Video Files", subLabel: "Recorded footage" },
 ];
 
 const outputs = [
-    { id: "lenz", icon: LayoutDashboard, label: "Live Dashboard", subLabel: "See everything at once" },
-    { id: "websocket", icon: Webhook, label: "Instant Alerts", subLabel: "Real-time notifications" },
+    { id: "lenz", icon: SquaresFour, label: "Live Dashboard", subLabel: "See everything at once" },
+    { id: "websocket", icon: BellRinging, label: "Instant Alerts", subLabel: "Real-time notifications" },
     { id: "visual", icon: MonitorPlay, label: "Smart Overlay", subLabel: "See what AI detects" },
     { id: "postgres", icon: Database, label: "Event History", subLabel: "Search past events" },
 ];
 
 const NodeCard = ({
-    icon: Icon,
+    icon: IconComponent,
     label,
     subLabel,
     side = "left",
     delay = 0,
     badge
 }: {
-    icon: LucideIcon;
+    icon: Icon;
     label: string;
     subLabel: string;
     side?: "left" | "right";
@@ -211,7 +211,7 @@ const NodeCard = ({
             `}
         >
             <div className="p-1.5 sm:p-2 md:p-2.5 rounded-md md:rounded-lg bg-primary text-primary-foreground shrink-0">
-                <Icon className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </div>
             <div className="flex-1 min-w-0">
                 <div className="text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wide truncate text-primary">

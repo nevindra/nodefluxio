@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkle } from "@phosphor-icons/react";
 import { useRef } from "react";
 import AthenaKnowledgeMockup from "@/components/landing-page/AthenaKnowledgeMockup";
 
@@ -38,7 +38,7 @@ export function AthenaHero() {
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm"
                         >
-                            <Sparkles className="w-3 h-3 text-primary" />
+                            <Sparkle className="w-3 h-3 text-primary" />
                             <span className="text-[10px] font-mono text-primary tracking-[0.2em] uppercase">
                                 Enterprise Knowledge Assistant
                             </span>

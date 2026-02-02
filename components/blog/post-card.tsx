@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Calendar, Clock, User } from "lucide-react";
+import { Calendar, Clock, User } from "@phosphor-icons/react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { PostMeta } from "@/lib/blog";
 import { cn } from "@/lib/utils";

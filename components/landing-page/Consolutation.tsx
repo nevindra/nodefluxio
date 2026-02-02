@@ -3,7 +3,7 @@
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 
 export default function Consolutation() {
 	return (

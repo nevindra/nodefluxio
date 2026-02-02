@@ -3,7 +3,7 @@
 import { LenzHero } from "@/components/lenz/LenzHero";
 import { DashboardShowcase } from "@/components/lenz/DashboardShowcase";
 import { FeaturesHolo } from "@/components/lenz/FeaturesHolo";
-import { TrendingUp } from "lucide-react";
+import { TrendUp } from "@phosphor-icons/react";
 
 export default function LenzPage() {
 	return (

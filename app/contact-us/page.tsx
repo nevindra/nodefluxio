@@ -11,16 +11,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import {
-	Mail,
-	MapPin,
-	Phone,
-	ArrowRight,
-	Clock,
-	ShieldCheck,
-	Briefcase
-} from "lucide-react";
-import { HeroBackground } from "@/components/hero/HeroBackground";
+import { Envelope, MapPin, Phone, ArrowRight } from "@phosphor-icons/react";
+import OperationalGrid from "@/components/OperationalGrid";
 
 const contactFormSchema = z.object({
 	name: z.string().min(4, "Name is required and must be at least 4 characters long"),
@@ -62,7 +54,7 @@ export default function ContactUs() {
 
 			if (response.ok) {
 				toast({
-					title: "MESSAGE SENT",
+					title: "Message Sent",
 					description: "We have received your inquiry and will get back to you shortly.",
 					variant: "default",
 				});
@@ -73,7 +65,7 @@ export default function ContactUs() {
 		} catch (error) {
 			console.error("Error sending message:", error);
 			toast({
-				title: "SENDING ERROR",
+				title: "Sending Error",
 				description: "Please try again later or contact us directly at business@nodeflux.io",
 				variant: "destructive",
 			});
@@ -83,207 +75,209 @@ export default function ContactUs() {
 	};
 
 	return (
-		<main className="min-h-screen bg-background text-white relative">
-			<HeroBackground isLanding={false} />
+		<main className="min-h-screen bg-background text-foreground">
+			<OperationalGrid />
 			<Toaster />
 
-			<section className="relative z-10 pt-32 pb-24 px-8 lg:px-24 max-w-7xl mx-auto">
-				<div className="flex flex-col lg:flex-row gap-24">
-					{/* Left Column: Info */}
-					<div className="flex-1 w-full max-w-xl">
+			{/* Hero Section */}
+			<section className="pt-32 md:pt-40 pb-16 md:pb-24">
+				<div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8 }}
+						className="text-center max-w-3xl mx-auto space-y-6"
+					>
+						<h1 className="text-4xl md:text-6xl font-medium tracking-tight">
+							GET IN <span className="text-muted-foreground">TOUCH</span>
+						</h1>
+						<p className="text-muted-foreground text-lg font-light leading-relaxed">
+							Discuss how our AI-powered solutions can optimize your organizational efficiency, safety, and operational clarity.
+						</p>
+					</motion.div>
+				</div>
+			</section>
+
+			{/* Contact Section */}
+			<section className="pb-24 md:pb-40">
+				<div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+
+						{/* Left: Contact Info */}
 						<motion.div
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8 }}
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.8, delay: 0.2 }}
 							className="space-y-8"
 						>
-							<div className="flex flex-col space-y-4">
-								<div className="inline-flex items-center space-x-3 text-white/60">
-									<span className="w-1.5 h-1.5 bg-white/60"></span>
-									<span className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase">
-										Business Solutions
-									</span>
+							<div className="space-y-6">
+								<div className="flex items-center gap-2">
+									<div className="w-1 h-1 bg-primary rounded-full" />
+									<span className="text-xs font-mono text-primary uppercase tracking-widest">Contact Info</span>
 								</div>
-								<div className="w-full h-px bg-white/10 max-w-xs"></div>
+								<h2 className="text-3xl md:text-4xl font-medium tracking-tight">
+									LET&apos;S START A <br />
+									<span className="text-muted-foreground">CONVERSATION.</span>
+								</h2>
+								<p className="text-muted-foreground font-light leading-relaxed">
+									Have questions about our products or want to discuss your project? We&apos;re here to help.
+								</p>
 							</div>
 
-							<h1 className="font-semibold tracking-tighter text-white leading-[0.85] text-5xl md:text-7xl lg:text-8xl uppercase">
-								GET IN <br />
-								<span className="text-muted-foreground">TOUCH.</span>
-							</h1>
-
-							<p className="text-white/50 leading-relaxed font-light text-base md:text-lg">
-								Discuss how our AI-powered solutions can optimize your organizational efficiency, safety, and operational clarity.
-							</p>
-
-							<div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/5 mt-16">
+							{/* Contact Cards */}
+							<div className="space-y-4">
 								{[
-									{ icon: <Mail className="w-4 h-4" />, label: "Inquiries", value: "business@nodeflux.io" },
-									{ icon: <Phone className="w-4 h-4" />, label: "Support", value: "+62 21 2270 2164" },
-									{ icon: <Clock className="w-4 h-4" />, label: "Response Time", value: "< 24 Hours" },
-									{ icon: <ShieldCheck className="w-4 h-4" />, label: "Privacy", value: "Enterprise Grade" },
+									{
+										icon: Envelope,
+										label: "Email",
+										value: "business@nodeflux.io",
+										href: "mailto:business@nodeflux.io"
+									},
+									{
+										icon: Phone,
+										label: "Phone",
+										value: "+62 21 2270 2164",
+										href: "tel:+622122702164"
+									},
+									{
+										icon: MapPin,
+										label: "Office",
+										value: "Jl. Kemang Timur No.90C, Jakarta Selatan",
+										href: "https://maps.google.com"
+									}
 								].map((item, i) => (
-									<div key={i} className="bg-background/50 backdrop-blur-sm p-6 border-r border-b border-white/5 last:border-r-0">
-										<div className="flex items-center space-x-3 mb-3 text-white/30">
-											{item.icon}
-											<span className="text-[9px] font-mono uppercase tracking-[0.2em]">{item.label}</span>
+									<a
+										key={i}
+										href={item.href}
+										className="group flex items-start gap-4 p-5 rounded-2xl border border-border/60 bg-muted/5 hover:bg-muted/10 hover:border-primary/40 transition-all"
+									>
+										<div className="w-12 h-12 rounded-xl bg-background border border-border/40 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-colors shrink-0">
+											<item.icon className="w-5 h-5" />
 										</div>
-										<div className="text-xs font-mono text-white tracking-wider">{item.value}</div>
-									</div>
+										<div>
+											<span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">{item.label}</span>
+											<p className="text-foreground font-medium mt-1">{item.value}</p>
+										</div>
+									</a>
 								))}
 							</div>
 
-							{/* Office Location Card */}
-							<div className="mt-12 p-8 border border-white/5 bg-white/[0.01] relative overflow-hidden group">
-								<div className="absolute top-0 right-0 p-4 opacity-5">
-									<MapPin className="w-24 h-24" />
-								</div>
-								<h3 className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 mb-6">Main Office</h3>
-								<div className="space-y-2">
-									<p className="text-sm font-light text-white/60">Jl. Kemang Timur No.90C</p>
-									<p className="text-sm font-light text-white/60">Jakarta Selatan, 12730</p>
-									<p className="text-sm font-light text-white/60">Indonesia</p>
-								</div>
-								<div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/10"></div>
+							{/* Response Time */}
+							<div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
+								<p className="text-sm text-muted-foreground">
+									<span className="text-primary font-medium">Response Time:</span> We typically respond within 24 hours on business days.
+								</p>
 							</div>
 						</motion.div>
-					</div>
 
-					{/* Right Column: Contact Form */}
-					<div className="flex-1 w-full relative">
+						{/* Right: Contact Form */}
 						<motion.div
-							initial={{ opacity: 0, scale: 0.98 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 1, ease: "easeOut" }}
-							className="bg-white/[0.02] border border-white/10 p-8 md:p-12 relative overflow-hidden"
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.8, delay: 0.4 }}
 						>
-							{/* Visual Grid Accent */}
-							<div className="absolute inset-0 bg-hero-pattern [background-size:30px_30px] opacity-[0.02] pointer-events-none"></div>
-
-							<div className="relative z-10">
-								<div className="flex justify-between items-center mb-12">
-									<div className="flex items-center space-x-2">
-										<div className="w-2 h-2 bg-emerald-500"></div>
-										<span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">Active Connection</span>
-									</div>
-									<span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">Form Ref: 01-A</span>
+							<div className="p-8 md:p-10 rounded-3xl border border-border/60 bg-card/50 backdrop-blur-sm">
+								<div className="mb-8">
+									<h3 className="text-xl font-medium mb-2">Send us a message</h3>
+									<p className="text-sm text-muted-foreground">Fill out the form below and we&apos;ll get back to you.</p>
 								</div>
 
-								<form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-									<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+								<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+									<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 										<div className="space-y-2">
-											<Label htmlFor="name" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Your Name</Label>
+											<Label htmlFor="name" className="text-sm font-medium">Name</Label>
 											<Input
 												id="name"
-												placeholder="Enter your name"
+												placeholder="Your name"
 												{...register("name")}
-												className="bg-transparent border-white/10 rounded-none focus:border-white/40 transition-all font-mono text-sm placeholder:text-white/10"
+												className="h-12 bg-background border-border rounded-xl focus:border-primary transition-colors"
 											/>
-											{errors.name?.message && <p className="text-red-500/60 text-[10px] font-mono uppercase mt-1">{errors.name.message}</p>}
+											{errors.name?.message && (
+												<p className="text-destructive text-xs">{errors.name.message}</p>
+											)}
 										</div>
 
 										<div className="space-y-2">
-											<Label htmlFor="companyName" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Company / Agency</Label>
+											<Label htmlFor="companyName" className="text-sm font-medium">Company</Label>
 											<Input
 												id="companyName"
-												placeholder="Enter organization"
+												placeholder="Company name"
 												{...register("companyName")}
-												className="bg-transparent border-white/10 rounded-none focus:border-white/40 transition-all font-mono text-sm placeholder:text-white/10"
+												className="h-12 bg-background border-border rounded-xl focus:border-primary transition-colors"
 											/>
-											{errors.companyName?.message && <p className="text-red-500/60 text-[10px] font-mono uppercase mt-1">{errors.companyName.message}</p>}
+											{errors.companyName?.message && (
+												<p className="text-destructive text-xs">{errors.companyName.message}</p>
+											)}
 										</div>
 									</div>
 
-									<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+									<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 										<div className="space-y-2">
-											<Label htmlFor="companyEmail" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Business Email</Label>
+											<Label htmlFor="companyEmail" className="text-sm font-medium">Email</Label>
 											<Input
 												id="companyEmail"
 												type="email"
 												placeholder="name@company.com"
 												{...register("companyEmail")}
-												className="bg-transparent border-white/10 rounded-none focus:border-white/40 transition-all font-mono text-sm placeholder:text-white/10"
+												className="h-12 bg-background border-border rounded-xl focus:border-primary transition-colors"
 											/>
-											{errors.companyEmail?.message && <p className="text-red-500/60 text-[10px] font-mono uppercase mt-1">{errors.companyEmail.message}</p>}
+											{errors.companyEmail?.message && (
+												<p className="text-destructive text-xs">{errors.companyEmail.message}</p>
+											)}
 										</div>
 
 										<div className="space-y-2">
-											<Label htmlFor="phoneNumber" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Phone Number</Label>
+											<Label htmlFor="phoneNumber" className="text-sm font-medium">Phone</Label>
 											<Input
 												id="phoneNumber"
 												type="tel"
-												placeholder="+00 (000) 000-0000"
+												placeholder="+62 xxx xxxx xxxx"
 												{...register("phoneNumber")}
-												className="bg-transparent border-white/10 rounded-none focus:border-white/40 transition-all font-mono text-sm placeholder:text-white/10"
+												className="h-12 bg-background border-border rounded-xl focus:border-primary transition-colors"
 											/>
-											{errors.phoneNumber?.message && <p className="text-red-500/60 text-[10px] font-mono uppercase mt-1">{errors.phoneNumber.message}</p>}
+											{errors.phoneNumber?.message && (
+												<p className="text-destructive text-xs">{errors.phoneNumber.message}</p>
+											)}
 										</div>
 									</div>
 
 									<div className="space-y-2">
-										<Label htmlFor="message" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Message / Project Brief</Label>
+										<Label htmlFor="message" className="text-sm font-medium">Message</Label>
 										<Textarea
 											id="message"
-											placeholder="How can we help?"
-											className="min-h-[150px] bg-transparent border-white/10 rounded-none focus:border-white/40 transition-all font-mono text-sm placeholder:text-white/10 resize-none"
+											placeholder="Tell us about your project or inquiry..."
 											{...register("message")}
+											className="min-h-[140px] bg-background border-border rounded-xl focus:border-primary transition-colors resize-none"
 										/>
-										{errors.message?.message && <p className="text-red-500/60 text-[10px] font-mono uppercase mt-1">{errors.message.message}</p>}
+										{errors.message?.message && (
+											<p className="text-destructive text-xs">{errors.message.message}</p>
+										)}
 									</div>
 
 									<Button
 										type="submit"
 										disabled={isSubmitting}
-										className="w-full h-16 bg-white hover:bg-neutral-200 text-black rounded-none font-medium text-base uppercase tracking-widest transition-all duration-300 relative group"
+										className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl font-medium transition-all shadow-lg shadow-primary/20"
 									>
 										{isSubmitting ? (
-											<div className="flex items-center space-x-3">
-												<span className="w-2 h-2 bg-black animate-pulse"></span>
-												<span>Sending Inquiry...</span>
+											<div className="flex items-center gap-2">
+												<div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+												<span>Sending...</span>
 											</div>
 										) : (
-											<div className="flex items-center space-x-2">
+											<div className="flex items-center gap-2">
 												<span>Send Message</span>
-												<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+												<ArrowRight className="w-4 h-4" />
 											</div>
 										)}
 									</Button>
 								</form>
 							</div>
-
-							{/* Corner Accents */}
-							<div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/20"></div>
-							<div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/20"></div>
 						</motion.div>
 
-						{/* Bottom Form Metadata */}
-						<div className="mt-8 flex justify-between items-center px-4 opacity-20">
-							<div className="flex items-center space-x-6">
-								<div className="flex items-center space-x-2">
-									<Briefcase className="w-3 h-3" />
-									<span className="text-[8px] font-mono uppercase tracking-[0.2em]">Secure Data Channel</span>
-								</div>
-								<div className="flex items-center space-x-2">
-									<ShieldCheck className="w-3 h-3" />
-									<span className="text-[8px] font-mono uppercase tracking-[0.2em]">Enterprise Privacy</span>
-								</div>
-							</div>
-							<span className="text-[8px] font-mono">UTC+07:00</span>
-						</div>
 					</div>
 				</div>
 			</section>
-
-			{/* Decorative Technical Accents */}
-			<div className="absolute bottom-12 left-12 flex items-end space-x-1.5 opacity-40">
-				<div className="w-1.5 h-10 bg-white/60"></div>
-				<div className="w-1.5 h-6 bg-white/30"></div>
-				<div className="w-1.5 h-8 bg-white/40"></div>
-			</div>
-			<div className="absolute top-1/2 right-10 w-24 h-24 pointer-events-none opacity-20 hidden lg:block">
-				<div className="absolute bottom-0 right-0 w-full h-px bg-white"></div>
-				<div className="absolute bottom-0 right-0 w-px h-full bg-white"></div>
-			</div>
 		</main>
 	);
 }

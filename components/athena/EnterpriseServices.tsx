@@ -4,30 +4,30 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
     Brain,
-    Network,
+    Graph,
     FileText,
-    MessageSquare,
-    Sparkles,
-    Search,
-    Zap,
-    Bot,
-    TrendingUp,
-    CheckCircle2,
+    ChatCircle,
+    Sparkle,
+    MagnifyingGlass,
+    Lightning,
+    Robot,
+    TrendUp,
+    CheckCircle,
     BookOpen,
-    Workflow
-} from "lucide-react";
+    GitBranch,
+} from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const llmCapabilities = [
-    { name: "Vector Search", icon: Search, desc: "Semantic similarity" },
+    { name: "Vector Search", icon: MagnifyingGlass, desc: "Semantic similarity" },
     { name: "Document Parsing", icon: FileText, desc: "PDF, Word, Excel" },
-    { name: "Entity Extraction", icon: Sparkles, desc: "Auto-detect entities" },
-    { name: "Graph Reasoning", icon: Network, desc: "Relationship inference" },
-    { name: "Multi-turn Chat", icon: MessageSquare, desc: "Context retention" },
+    { name: "Entity Extraction", icon: Sparkle, desc: "Auto-detect entities" },
+    { name: "Graph Reasoning", icon: Graph, desc: "Relationship inference" },
+    { name: "Multi-turn Chat", icon: ChatCircle, desc: "Context retention" },
     { name: "Custom Prompts", icon: BookOpen, desc: "Domain-specific tuning" },
-    { name: "Agent Workflows", icon: Workflow, desc: "Multi-step automation" },
-    { name: "Model Routing", icon: Bot, desc: "Best model per task" }
+    { name: "Agent Workflows", icon: GitBranch, desc: "Multi-step automation" },
+    { name: "Model Routing", icon: Robot, desc: "Best model per task" }
 ];
 
 export function EnterpriseServices() {
@@ -105,26 +105,26 @@ export function EnterpriseServices() {
 
                             <div className="space-y-4 pt-4">
                                 <div className="flex items-center gap-4 text-sm text-foreground/80">
-                                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                                    <CheckCircle className="w-4 h-4 text-primary shrink-0" />
                                     <span>Internal knowledge search & Q&A</span>
                                 </div>
                                 <div className="flex items-center gap-4 text-sm text-foreground/80">
-                                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                                    <CheckCircle className="w-4 h-4 text-primary shrink-0" />
                                     <span>Document summarization & analysis</span>
                                 </div>
                                 <div className="flex items-center gap-4 text-sm text-foreground/80">
-                                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                                    <CheckCircle className="w-4 h-4 text-primary shrink-0" />
                                     <span>Automated report generation</span>
                                 </div>
                                 <div className="flex items-center gap-4 text-sm text-foreground/80">
-                                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                                    <CheckCircle className="w-4 h-4 text-primary shrink-0" />
                                     <span>Customer support copilot</span>
                                 </div>
                             </div>
 
                             <div className="pt-4">
                                 <button className="w-full md:w-auto px-10 py-5 bg-primary text-primary-foreground rounded-2xl text-sm font-semibold hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-[0.98]">
-                                    Talk to Our Team <TrendingUp className="w-4 h-4" />
+                                    Talk to Our Team <TrendUp className="w-4 h-4" />
                                 </button>
                             </div>
                         </div>

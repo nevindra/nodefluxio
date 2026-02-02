@@ -3,27 +3,27 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Cctv,
+  SecurityCamera,
   FileVideo,
   Database,
-  LayoutDashboard,
-  Webhook,
-  ScanFace,
+  SquaresFour,
+  Webhooks,
+  ScanSmiley,
   Users,
   Car,
   Truck,
-  Video,
-  Radio,
+  VideoCamera,
+  Broadcast,
   MonitorPlay,
-  LucideIcon
-} from "lucide-react";
+  Icon,
+} from "@phosphor-icons/react";
 
 // --- Types ---
 
 interface AIModel {
   id: string;
   moduleId: string;
-  icon: LucideIcon;
+  icon: Icon;
   label: string;
   description: string;
 }
@@ -34,7 +34,7 @@ const aiModels: AIModel[] = [
   {
     id: "face",
     moduleId: "FR-01",
-    icon: ScanFace,
+    icon: ScanSmiley,
     label: "Face Recognition",
     description: "Identify People"
   },
@@ -134,7 +134,7 @@ const NodeCard = ({
   delay = 0,
   badge
 }: {
-  icon: LucideIcon;
+  icon: Icon;
   label: string;
   subLabel: string;
   side?: "left" | "right";
@@ -273,16 +273,16 @@ const CenterCore = () => {
 export default function ProductIntegration() {
   // Input sources (4 types, brand agnostic)
   const inputs = [
-    { id: "cctv", icon: Cctv, label: "CCTV Cameras", subLabel: "Any brand you have", badge: "Any Brand" },
-    { id: "bodyworn", icon: Radio, label: "Body Cameras", subLabel: "Wearable devices" },
-    { id: "drone", icon: Video, label: "Drones", subLabel: "Aerial footage" },
+    { id: "cctv", icon: SecurityCamera, label: "CCTV Cameras", subLabel: "Any brand you have", badge: "Any Brand" },
+    { id: "bodyworn", icon: Broadcast, label: "Body Cameras", subLabel: "Wearable devices" },
+    { id: "drone", icon: VideoCamera, label: "Drones", subLabel: "Aerial footage" },
     { id: "video", icon: FileVideo, label: "Video Files", subLabel: "Recorded footage" },
   ];
 
   // Output destinations (4 types)
   const outputs = [
-    { id: "lenz", icon: LayoutDashboard, label: "Live Dashboard", subLabel: "See everything at once", color: "violet" },
-    { id: "websocket", icon: Webhook, label: "Instant Alerts", subLabel: "Real-time notifications", color: "blue" },
+    { id: "lenz", icon: SquaresFour, label: "Live Dashboard", subLabel: "See everything at once", color: "violet" },
+    { id: "websocket", icon: Webhooks, label: "Instant Alerts", subLabel: "Real-time notifications", color: "blue" },
     { id: "visual", icon: MonitorPlay, label: "Smart Overlay", subLabel: "See what AI detects", color: "emerald" },
     { id: "postgres", icon: Database, label: "Event History", subLabel: "Search past events", color: "amber" },
   ];

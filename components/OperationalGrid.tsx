@@ -10,10 +10,6 @@ export default function OperationalGrid() {
 
     return (
         <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
-            {/* Vignette & Gradients - Bottom layer */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.02)_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
-
             {/* Base Sparse Grid Layer */}
             <motion.div
                 style={{ y: yGrid }}

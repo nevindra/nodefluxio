@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 interface AiVideoPlayerProps {

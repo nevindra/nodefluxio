@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X, Zap } from "lucide-react";
+import { CaretDown, List, X, Lightning } from "@phosphor-icons/react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -63,7 +63,7 @@ export default function NavigationBar() {
                     }`}
                 >
                   <span>{link.title}</span>
-                  <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${hoveredPath === link.title ? "rotate-180" : ""}`} />
+                  <CaretDown className={`w-3 h-3 transition-transform duration-300 ${hoveredPath === link.title ? "rotate-180" : ""}`} />
                 </div>
 
                 {/* Dropdown menu - Minimalist Glass */}
@@ -92,7 +92,7 @@ export default function NavigationBar() {
                               </span>
                             </div>
                             <div className="opacity-0 group-hover/item:opacity-100 transition-opacity">
-                              <Zap className="w-3 h-3 text-primary/40" />
+                              <Lightning className="w-3 h-3 text-primary/40" />
                             </div>
                           </Link>
                         ))}
@@ -125,11 +125,11 @@ export default function NavigationBar() {
             <AnimatePresence mode="wait">
               {mobileMenuOpen ? (
                 <motion.div key="close" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                  <X className="h-5 w-5" />
+                  <X size={20} />
                 </motion.div>
               ) : (
                 <motion.div key="menu" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                  <Menu className="h-5 w-5" />
+                  <List size={20} />
                 </motion.div>
               )}
             </AnimatePresence>

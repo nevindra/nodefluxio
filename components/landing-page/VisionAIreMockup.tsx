@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import {
     Activity,
     Car,
-    ChevronRight,
+    CaretRight,
     Eye,
     Plus,
     Scan,
     ShieldCheck,
-    UserSquare2
-} from "lucide-react";
+    UserSquare,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 
 const models = [
@@ -18,7 +18,7 @@ const models = [
     id: "fr",
     name: "Face Recognition",
     description: "Identify individuals with 99.8% precision",
-    icon: UserSquare2,
+    icon: UserSquare,
     status: "Active",
     color: "text-blue-400",
     bg: "bg-blue-400/10"
@@ -90,7 +90,7 @@ export default function VisionAIreMockup() {
                   <div className="font-bold mb-0.5 truncate text-[11px] text-foreground">{model.name}</div>
                   <div className="text-[9px] text-black/40 truncate">{model.status}</div>
                 </div>
-                <ChevronRight className={`w-3 h-3 mt-1 transition-transform ${selectedModel.id === model.id ? "rotate-90 text-primary" : "text-black/20"}`} />
+                <CaretRight className={`w-3 h-3 mt-1 transition-transform ${selectedModel.id === model.id ? "rotate-90 text-primary" : "text-black/20"}`} />
               </div>
             </motion.button>
           ))}
@@ -122,7 +122,7 @@ export default function VisionAIreMockup() {
                              Match: Roger D. (99.8%)
                            </div>
                            <div className="absolute inset-x-0 top-0 h-[2px] bg-primary/50 animate-scan" />
-                           <UserSquare2 className="w-16 h-16 text-black/10" />
+                           <UserSquare className="w-16 h-16 text-black/10" />
                         </motion.div>
                       </div>
                    </div>

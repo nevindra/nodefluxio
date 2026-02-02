@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import React from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle } from "@phosphor-icons/react";
 import Image from "next/image";
 import { HeroProps } from "./types";
 import { HeroBackground } from "./HeroBackground";
@@ -64,7 +64,7 @@ export function SingleHero({
                                                 key={index}
                                                 className="flex items-center text-sm text-foreground/75 font-mono uppercase tracking-wider"
                                             >
-                                                <CheckCircle2 className="text-primary/20 mr-2 w-4 h-4" />
+                                                <CheckCircle className="text-primary/20 mr-2 w-4 h-4" />
                                                 {feature}
                                             </li>
                                         ))}
