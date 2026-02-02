@@ -344,8 +344,8 @@ export function MainHero({
             </motion.div>
           </div>
 
-          {/* Right Column: HUD & Visualization */}
-          <div className="lg:col-span-6 space-y-8">
+          {/* Right Column: HUD & Visualization - Hidden on mobile */}
+          <div className="hidden lg:block lg:col-span-6 space-y-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

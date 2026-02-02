@@ -224,8 +224,8 @@ export default function Features() {
             </AnimatePresence>
           </div>
 
-          {/* Mockup Side */}
-          <div className="lg:col-span-8 relative">
+          {/* Mockup Side - Hidden on mobile */}
+          <div className="hidden lg:block lg:col-span-8 relative">
             <div className="relative aspect-[16/10] bg-black/[0.02] border border-black/5 overflow-hidden shadow-xl lg:-mr-32 group">
               <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10" />
               <AnimatePresence mode="wait">
