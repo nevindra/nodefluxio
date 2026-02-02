@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeHighlight from "rehype-highlight";
-import { ArrowLeft, Calendar, Clock, User } from "@phosphor-icons/react";
+import { ArrowLeft, Calendar, Clock, User } from "@phosphor-icons/react/dist/ssr";
 import { getPostBySlug, getAllSlugs } from "@/lib/blog";
 import { mdxComponents } from "@/components/blog/mdx-components";
 
