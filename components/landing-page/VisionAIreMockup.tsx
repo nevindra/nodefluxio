@@ -194,7 +194,7 @@ export default function VisionAIreMockup() {
             {[
               { label: "Confidence", value: "99.8%", icon: ShieldCheck },
               { label: "Latency", value: "24ms", icon: Activity },
-              { label: "Total Rec", value: "4.2k/hr", icon: UserSquare2 },
+              { label: "Total Rec", value: "4.2k/hr", icon: UserSquare },
             ].map((stat, i) => (
               <div
                 key={i}

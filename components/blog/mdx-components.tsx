@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { MDXComponents } from "mdx/types";
+import type { MDXComponents } from "mdx/types";
 
 export const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }) => (
@@ -118,7 +118,7 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  img: ({ src, alt, ...props }) => {
+  img: ({ src, alt }) => {
     if (!src) return null;
     return (
       <span className="block my-6">
@@ -128,7 +128,6 @@ export const mdxComponents: MDXComponents = {
           width={800}
           height={450}
           className="rounded-lg"
-          {...props}
         />
       </span>
     );
