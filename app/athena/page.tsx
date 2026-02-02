@@ -6,13 +6,10 @@ import { EnterpriseServices } from "@/components/athena/EnterpriseServices";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@phosphor-icons/react";
 import LandingSection from "@/components/LandingSection";
-import OperationalGrid from "@/components/OperationalGrid";
 
 export default function AthenaPage() {
   return (
     <main className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden">
-      <OperationalGrid />
-
       <div>
         <AthenaHero />
       </div>

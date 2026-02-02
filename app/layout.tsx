@@ -1,5 +1,6 @@
 import NavigationBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import OperationalGrid from "@/components/OperationalGrid";
 import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -57,6 +58,7 @@ export default function RootLayout({
       </head>
       <body className={jakartaSans.className}>
         <SmoothScroll>
+          <OperationalGrid />
           <ScrollProgress />
           <NavigationBar />
           {children}
