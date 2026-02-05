@@ -102,6 +102,7 @@ export function LenzHero() {
                 src="/hero/lenz-hero.webp"
                 alt="Lenz Dashboard - Unified Camera Management"
                 fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
                 className="object-cover"
                 priority
               />

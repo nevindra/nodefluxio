@@ -40,112 +40,120 @@ export const solutions: Solution[] = [
   {
     slug: "massive-surveillance",
     badge: "Public Safety Solution",
-    title: "City-Wide",
-    titleHighlight: "Surveillance",
+    title: "Public Safety",
+    titleHighlight: "Intelligence",
     description:
-      "Monitor thousands of cameras from one screen. Spot incidents instantly. Help your team respond faster when it matters most.",
+      "Equip your officers with AI-powered surveillance. From body cameras to drones, identify threats in real-time and coordinate response across all units.",
     benefits: [
       {
-        title: "24/7 AI Monitoring",
+        title: "Real-Time Identification",
         description:
-          "AI watches every camera around the clock and alerts your team the moment something happens.",
+          "Instantly match faces against watchlists during field operations. Know who you're dealing with before engagement.",
         icon: "zap",
       },
       {
-        title: "One Dashboard",
+        title: "Unified Command View",
         description:
-          "See all your cameras in one place, no matter how many locations you manage.",
+          "Stream live feeds from body cams, drones, and fixed cameras to one command center. See the full picture.",
         icon: "layers",
       },
       {
-        title: "Faster Response",
+        title: "Instant Alerts",
         description:
-          "Get instant alerts on mobile or radio so your team can act immediately.",
+          "Receive notifications via radio, mobile, or command dashboard the moment a threat is detected.",
         icon: "clock",
       },
       {
-        title: "Your Data, Your Control",
+        title: "Secure Infrastructure",
         description:
-          "Everything runs on your own servers. Your data never leaves your infrastructure.",
+          "All data stays on your servers. No external access. Full compliance with government security standards.",
         icon: "server",
       },
     ],
     topologyImage: "/solutions/massive-surveillance.png",
     tacticalSolutions: [
       {
-        title: "Body Camera System",
+        title: "Body Cam & Mobile Stream",
         description:
-          "Smart body cameras for field officers with live AI analysis. Identify persons of interest instantly and stream directly to command center.",
-        analyticsUsed: ["Face Recognition", "People Analytics", "Anomaly Detection"],
+          "Equip field officers with AI-enabled body cameras. Run face recognition on the move and stream footage directly to command for real-time support.",
+        analyticsUsed: [
+          "Face Recognition",
+          "People Analytics",
+          "Crowd Estimation",
+        ],
         operationalBenefits: [
-          "Identify threats in real-time during operations",
-          "Secure evidence recording with encryption",
-          "Live video feed to command center",
+          "Identify persons of interest during patrol or raids",
+          "Stream live video to command center for tactical support",
+          "Secure evidence capture with encrypted storage",
         ],
       },
       {
         title: "Drone Surveillance",
         description:
-          "AI-powered drones for aerial monitoring. Get bird's eye view of large areas, crowds, or hard-to-reach locations.",
-        analyticsUsed: ["People Analytics", "Crowd Estimation", "Anomaly Detection"],
+          "Deploy AI-powered drones for aerial reconnaissance. Cover large areas, monitor crowds, and track movements from above with real-time analysis.",
+        analyticsUsed: [
+          "People Analytics",
+          "Crowd Estimation",
+          "Vehicle Analytics",
+        ],
         operationalBenefits: [
-          "Cover large areas quickly from the air",
-          "Deploy rapidly for emergencies",
-          "Track movement patterns from above",
+          "Rapid deployment for emergency situations",
+          "Monitor large gatherings and crowd movements",
+          "Track suspect vehicles across wide areas",
         ],
       },
       {
-        title: "Command Center Integration",
+        title: "Static Camera Network",
         description:
-          "Connect all your existing CCTV cameras to one AI-powered command center. See everything, miss nothing.",
+          "Connect all fixed CCTV installations to a centralized AI command center. Monitor multiple locations simultaneously with automated threat detection.",
         analyticsUsed: [
           "Face Recognition",
-          "People Analytics",
-          "People Fighting",
-          "Anomaly Detection",
+          "License Plate Recognition",
+          "Fighting Detection",
+          "Fire & Smoke Detection",
         ],
         operationalBenefits: [
-          "Monitor all locations 24/7 from one room",
-          "Coordinate security across multiple sites",
-          "Get automatic alerts for suspicious activity",
+          "24/7 automated monitoring across all installations",
+          "Instant alerts when watchlist individuals appear",
+          "Cross-camera tracking of persons and vehicles",
         ],
       },
     ],
     useCases: [
       {
-        name: "Critical Infrastructure",
+        name: "Police Operations",
         description:
-          "Protect airports, power plants, and government buildings. Detect intruders and suspicious activity before incidents happen.",
+          "Support patrol units with real-time intelligence. Match suspects against databases, coordinate multi-unit responses, and gather evidence automatically.",
+        icon: "shield",
+        capabilities: [
+          "Watchlist face matching during stops",
+          "Live body cam streaming to dispatch",
+          "Automatic event recording and tagging",
+          "Cross-unit coordination via unified dashboard",
+        ],
+      },
+      {
+        name: "Military & Defense",
+        description:
+          "Secure installations and monitor perimeters with AI surveillance. Detect intrusions, track unauthorized vehicles, and maintain situational awareness.",
         icon: "building2",
         capabilities: [
-          "Perimeter breach alerts",
-          "Watchlist face matching",
-          "Suspicious object detection",
-          "Entry point monitoring",
+          "Perimeter breach detection and alerts",
+          "Vehicle tracking and plate recognition",
+          "Drone integration for aerial coverage",
+          "Encrypted data transmission and storage",
         ],
       },
       {
-        name: "Event Security",
+        name: "Intelligence & Investigation",
         description:
-          "Keep large gatherings safe. Monitor crowd size, spot trouble early, and coordinate response across teams.",
-        icon: "users",
-        capabilities: [
-          "Crowd size monitoring",
-          "Unusual activity alerts",
-          "Multi-team coordination",
-          "Mobile command support",
-        ],
-      },
-      {
-        name: "City Operations",
-        description:
-          "Unify all city cameras into one system. Track vehicles, investigate incidents, and respond to emergencies faster.",
+          "Support investigative operations with AI-powered analysis. Search across camera networks, track movements, and build evidence timelines.",
         icon: "globe",
         capabilities: [
-          "Vehicle & plate tracking",
-          "Cross-camera incident linking",
-          "Video search & playback",
-          "Agency data sharing",
+          "Face search across historical footage",
+          "Vehicle movement pattern analysis",
+          "Cross-camera person tracking",
+          "Export evidence with timestamps",
         ],
       },
     ],
@@ -153,111 +161,111 @@ export const solutions: Solution[] = [
   {
     slug: "smart-building",
     badge: "Building Security Solution",
-    title: "Smart Building",
+    title: "Building",
     titleHighlight: "Security",
     description:
-      "Secure your building with AI. Face recognition access, smart parking, and 24/7 monitoring—all in one system that makes security simple.",
+      "Secure any facility with AI-powered access control and monitoring. From corporate offices to government buildings, one system for complete protection.",
     benefits: [
       {
-        title: "Complete Protection",
+        title: "Complete Coverage",
         description:
-          "One system that secures entrances, parking, and common areas together.",
+          "Protect entrances, parking areas, and common spaces with unified AI monitoring across your entire facility.",
         icon: "shield",
       },
       {
-        title: "Automated Security",
+        title: "Automated Surveillance",
         description:
-          "AI handles routine monitoring so your team can focus on what matters.",
+          "AI detects threats and unusual activity automatically. Your security team focuses on response, not monitoring screens.",
         icon: "zap",
       },
       {
         title: "Touchless Access",
         description:
-          "No cards, no keys. People walk in with just their face—fast and secure.",
+          "Face recognition entry for authorized personnel. No cards to manage, no PINs to remember, no security gaps.",
         icon: "users",
       },
       {
-        title: "Clear Insights",
+        title: "Complete Audit Trail",
         description:
-          "See who enters, when, and where. Get reports that help you improve security.",
+          "Every entry, exit, and event logged automatically. Full visibility for compliance and investigation.",
         icon: "database",
       },
     ],
     topologyImage: "/solutions/building-management.webp",
     tacticalSolutions: [
       {
-        title: "Smart Parking",
-        description:
-          "AI manages your parking automatically. Recognize vehicles, guide drivers to empty spots, and handle billing without tickets.",
-        analyticsUsed: ["Vehicle Analytics", "License Plate Recognition"],
-        operationalBenefits: [
-          "Find empty spots faster, reduce congestion",
-          "Track every vehicle entering and exiting",
-          "Automate parking fees and billing",
-        ],
-      },
-      {
         title: "Face Recognition Access",
         description:
-          "Let authorized people in with just their face. No cards to lose, no PINs to forget. Fast, secure, and touchless.",
-        analyticsUsed: [
-          "Face Recognition",
-          "Face Searching and Matching API",
-          "Anomaly Detection",
-        ],
+          "Authorize personnel entry using face recognition. Eliminate cards and credentials while maintaining strict access control with complete logging.",
+        analyticsUsed: ["Face Recognition", "People Analytics"],
         operationalBenefits: [
-          "Walk-through access for registered users",
-          "Instant alerts for unauthorized attempts",
-          "Complete access logs for audits",
+          "Walk-through access for registered personnel",
+          "Instant alerts for unauthorized access attempts",
+          "Complete entry and exit logs for audit",
         ],
       },
       {
-        title: "Visitor Management",
+        title: "Vehicle & Parking Management",
         description:
-          "Greet visitors by name, check them in automatically, and notify hosts instantly. Make every guest feel welcome.",
-        analyticsUsed: ["Face Recognition", "People Analytics"],
+          "Automate parking access with license plate recognition. Track all vehicles entering and exiting your facility with full documentation.",
+        analyticsUsed: ["License Plate Recognition", "Vehicle Analytics"],
         operationalBenefits: [
-          "Personalized welcome for VIP guests",
-          "Self-service check-in for visitors",
-          "Professional first impression",
+          "Automatic gate control for registered vehicles",
+          "Track all vehicle entries and exits",
+          "Manage parking allocation efficiently",
+        ],
+      },
+      {
+        title: "Incident Detection",
+        description:
+          "AI monitors for fights, fire, smoke, and other incidents. Get immediate alerts and recorded evidence when something happens.",
+        analyticsUsed: [
+          "Fighting Detection",
+          "Fire & Smoke Detection",
+          "Crowd Estimation",
+        ],
+        operationalBenefits: [
+          "Automatic detection of physical altercations",
+          "Early fire and smoke warning",
+          "Crowd density monitoring for safety compliance",
         ],
       },
     ],
     useCases: [
       {
-        name: "Corporate Office",
+        name: "Corporate & Private Facilities",
         description:
-          "Secure your office with face recognition access, visitor management, and employee attendance tracking.",
+          "Secure office buildings, factories, and private facilities with AI access control, visitor management, and 24/7 monitoring.",
         icon: "building2",
         capabilities: [
-          "Department-based access",
-          "Pre-register visitors",
-          "Track attendance",
-          "VIP arrival alerts",
+          "Face recognition for employee access",
+          "Visitor registration and tracking",
+          "Meeting room and floor-based permissions",
+          "Integration with HR systems for automatic updates",
         ],
       },
       {
-        name: "Residential Complex",
+        name: "Government Buildings",
         description:
-          "Keep residents safe with face recognition entry, delivery verification, and 24/7 common area monitoring.",
+          "Protect government facilities with high-security AI surveillance. Strict access control, watchlist monitoring, and full compliance logging.",
+        icon: "shield",
+        capabilities: [
+          "Multi-factor authentication with face recognition",
+          "Watchlist alerts for restricted individuals",
+          "Security clearance-based access zones",
+          "Tamper-proof audit logs for compliance",
+        ],
+      },
+      {
+        name: "Mixed-Use & Residential",
+        description:
+          "Manage access for residential complexes with multiple user types. Residents, visitors, delivery personnel, and staff—all handled seamlessly.",
         icon: "users",
         capabilities: [
-          "Resident face registration",
-          "Verify delivery personnel",
-          "Monitor shared spaces",
-          "Emergency notifications",
-        ],
-      },
-      {
-        name: "Mixed-Use Building",
-        description:
-          "Manage retail, office, and residential floors with one system. Different access rules for different areas.",
-        icon: "layers",
-        capabilities: [
-          "Separate tenant access",
-          "Floor-based permissions",
-          "Unified parking system",
-          "Single monitoring dashboard",
+          "Resident face registration and access",
+          "Delivery and visitor verification",
+          "Common area monitoring",
+          "Emergency notification system",
         ],
       },
     ],
@@ -266,73 +274,76 @@ export const solutions: Solution[] = [
     slug: "smart-city",
     badge: "Urban Management Solution",
     title: "Smart City",
-    titleHighlight: "Management",
+    titleHighlight: "Operations",
     description:
-      "Make your city safer and run smoother. Monitor public spaces, manage traffic, and respond to incidents faster—all from one platform.",
+      "Transform how your city operates. AI monitors public spaces, detects incidents as they happen, and gives your teams the data to respond faster and plan smarter.",
     benefits: [
       {
-        title: "Safer Streets",
+        title: "Proactive Safety",
         description:
-          "Detect incidents in public areas and respond before situations escalate.",
+          "Detect fights, fires, and disturbances the moment they start. Your teams get alerts before situations escalate.",
         icon: "shield",
       },
       {
-        title: "Better City Life",
+        title: "Smoother Traffic",
         description:
-          "Reduce traffic jams, manage crowds, and keep public spaces clean and safe.",
+          "Spot accidents instantly, understand congestion patterns, and keep vehicles moving across the city.",
         icon: "users",
       },
       {
-        title: "Smarter Planning",
+        title: "Evidence-Based Decisions",
         description:
-          "Use real data to plan city improvements that actually solve problems.",
+          "Real data on traffic flow, crowd patterns, and incident frequency. Plan infrastructure that addresses actual needs.",
         icon: "database",
       },
       {
-        title: "Save Resources",
+        title: "Unified Monitoring",
         description:
-          "Do more with less. AI helps your team focus where they're needed most.",
+          "One dashboard for all city cameras. AI filters the noise so operators focus on what requires attention.",
         icon: "zap",
       },
     ],
     topologyImage: "/solutions/smart-city.webp",
     tacticalSolutions: [
       {
-        title: "Public Space Safety",
+        title: "Public Area Safety",
         description:
-          "Keep parks, plazas, and public areas safe. AI spots trouble early and alerts responders instantly.",
-        analyticsUsed: ["People Analytics", "Anomaly Detection", "Face Recognition"],
-        operationalBenefits: [
-          "Early warning for incidents",
-          "Faster emergency response",
-          "Data to improve public services",
-        ],
-      },
-      {
-        title: "Crowd Management",
-        description:
-          "Monitor crowd sizes at events and public gatherings. Get alerts when areas get too crowded or fights break out.",
+          "Monitor parks, plazas, and gathering spaces around the clock. AI detects physical altercations, fires, and smoke automatically and alerts responders immediately.",
         analyticsUsed: [
-          "Crowd Estimation",
-          "People Fighting",
-          "Anomaly Detection",
-          "Personal Protective Equipment",
+          "People Analytics",
+          "Fighting Detection",
+          "Fire & Smoke Detection",
         ],
         operationalBenefits: [
-          "Prevent dangerous overcrowding",
-          "Quick response to disturbances",
-          "Enforce public regulations",
+          "Immediate alerts when fights break out",
+          "Early fire and smoke detection",
+          "Incident records for follow-up and analysis",
         ],
       },
       {
-        title: "Traffic Management",
+        title: "Crowd Monitoring",
         description:
-          "Monitor city traffic in real-time. Detect accidents instantly and find ways to reduce congestion.",
-        analyticsUsed: ["Vehicle Analytics", "License Plate Recognition", "Anomaly Detection"],
+          "Track crowd sizes at events, markets, and public gatherings in real-time. Receive warnings when density reaches unsafe levels.",
+        analyticsUsed: ["Crowd Estimation", "People Analytics"],
         operationalBenefits: [
-          "Reduce traffic jams",
-          "Detect accidents immediately",
-          "Plan better road infrastructure",
+          "Capacity alerts before overcrowding occurs",
+          "Live attendance counts for event management",
+          "Historical data for future event planning",
+        ],
+      },
+      {
+        title: "Traffic Monitoring",
+        description:
+          "Watch traffic across major roads and intersections. Detect collisions the moment they happen and analyze flow patterns for infrastructure planning.",
+        analyticsUsed: [
+          "Vehicle Analytics",
+          "License Plate Recognition",
+          "Road Crash Monitoring",
+        ],
+        operationalBenefits: [
+          "Collision alerts within seconds of impact",
+          "Traffic volume data by time and location",
+          "Vehicle tracking for investigations",
         ],
       },
     ],
@@ -340,37 +351,37 @@ export const solutions: Solution[] = [
       {
         name: "Transit Stations",
         description:
-          "Keep bus and train stations safe. Monitor crowds, detect suspicious items, and manage queues during rush hour.",
+          "Manage passenger flow at bus terminals and train stations. Monitor platform crowding, detect unattended items, and keep queues moving during rush hours.",
         icon: "car",
         capabilities: [
-          "Crowd level monitoring",
-          "Abandoned item alerts",
-          "Queue management",
-          "Rush hour insights",
+          "Platform and waiting area crowd levels",
+          "Unattended baggage detection",
+          "Queue length monitoring",
+          "Passenger volume trends by hour",
         ],
       },
       {
-        name: "District Security",
+        name: "Multi-District Operations",
         description:
-          "Connect cameras across neighborhoods. Coordinate security teams and track incidents across the city.",
+          "Unify camera networks across neighborhoods and districts. Track incidents that span multiple areas and coordinate response between teams.",
         icon: "globe",
         capabilities: [
-          "Cross-area coordination",
-          "Link related incidents",
-          "Real-time alerts",
-          "Search past footage",
+          "Cross-district incident tracking",
+          "Person and vehicle search across cameras",
+          "Coordinated alerts to multiple teams",
+          "Centralized footage archive and search",
         ],
       },
       {
-        name: "Traffic Control",
+        name: "Road Network Management",
         description:
-          "Monitor traffic city-wide. Spot accidents fast, optimize signal timing, and clear routes for emergency vehicles.",
+          "Monitor arterial roads and key intersections city-wide. Detect accidents immediately, clear routes for emergency vehicles, and collect data to improve road design.",
         icon: "monitor",
         capabilities: [
-          "Live traffic monitoring",
-          "Instant accident alerts",
-          "Smart signal control",
-          "Emergency vehicle routing",
+          "Real-time traffic density visualization",
+          "Automatic collision detection",
+          "Vehicle count and classification",
+          "Emergency corridor prioritization",
         ],
       },
     ],
@@ -379,106 +390,106 @@ export const solutions: Solution[] = [
     slug: "smart-retail",
     badge: "Retail Solution",
     title: "Smart Retail",
-    titleHighlight: "Operations",
+    titleHighlight: "Analytics",
     description:
-      "Understand your customers, shorten queues, and prevent theft. AI that helps you sell more and lose less.",
+      "Turn your cameras into business intelligence. Understand how customers shop, keep queues short, and stop losses before they happen.",
     benefits: [
       {
-        title: "Know Your Customers",
+        title: "Actionable Traffic Data",
         description:
-          "See where customers go, what they look at, and how long they stay.",
+          "Know exactly where customers walk, where they stop, and which displays get the most attention.",
         icon: "database",
       },
       {
-        title: "Better Experience",
+        title: "Faster Checkout",
         description:
-          "Shorter queues, faster service, and personalized attention for VIPs.",
+          "Get alerts when queues build up. Open registers before customers notice the wait.",
         icon: "users",
       },
       {
-        title: "Smarter Operations",
+        title: "Right Staff, Right Place",
         description:
-          "Staff the right areas at the right times based on real foot traffic.",
+          "Schedule and position staff based on actual foot traffic patterns, not guesswork.",
         icon: "zap",
       },
       {
-        title: "Reduce Losses",
+        title: "Shrinkage Reduction",
         description:
-          "Spot shoplifters and known offenders before they can steal.",
+          "Recognize known offenders when they enter. Alert security before theft happens.",
         icon: "activity",
       },
     ],
     topologyImage: "/solutions/retail-solution.webp",
     tacticalSolutions: [
       {
-        title: "Customer Flow Analysis",
+        title: "Traffic & Heatmap Analysis",
         description:
-          "See how customers move through your store. Find popular spots, dead zones, and the best places for products.",
-        analyticsUsed: ["People Analytics", "Face Recognition"],
-        operationalBenefits: [
-          "Design better store layouts",
-          "Place products where customers look",
-          "Identify peak shopping times",
-        ],
-      },
-      {
-        title: "Queue Management",
-        description:
-          "Know when lines get long before customers complain. Open more registers or redirect staff automatically.",
+          "Visualize customer movement through your store. See which aisles draw traffic, which displays get ignored, and where customers spend the most time.",
         analyticsUsed: ["People Analytics", "Crowd Estimation"],
         operationalBenefits: [
-          "Shorter wait times",
-          "Staff where needed, when needed",
-          "Handle rush hours smoothly",
+          "Redesign layouts based on actual movement data",
+          "Position promotions where customers naturally look",
+          "Compare traffic across stores and time periods",
         ],
       },
       {
-        title: "VIP & Loss Prevention",
+        title: "Queue Detection",
         description:
-          "Recognize VIP customers for special service. Spot known shoplifters and get alerts before they act.",
-        analyticsUsed: ["Face Recognition", "Face Searching and Matching API"],
+          "Monitor checkout areas continuously. When lines start forming, managers get notified to open additional registers or redirect customers.",
+        analyticsUsed: ["People Analytics", "Crowd Estimation"],
         operationalBenefits: [
-          "Welcome VIPs by name",
-          "Alert staff to known offenders",
-          "Reduce theft and shrinkage",
+          "Reduce average wait time at checkout",
+          "Match staffing levels to real-time demand",
+          "Track queue metrics to improve scheduling",
+        ],
+      },
+      {
+        title: "Customer Recognition",
+        description:
+          "Identify VIP customers for personalized service and flag known shoplifters before they can act. One system for hospitality and security.",
+        analyticsUsed: ["Face Recognition"],
+        operationalBenefits: [
+          "Greet loyal customers by name",
+          "Alert staff when flagged individuals enter",
+          "Build customer visit profiles over time",
         ],
       },
     ],
     useCases: [
       {
-        name: "Department Store",
+        name: "Large Format Retail",
         description:
-          "Track customer flow across departments. See which areas attract visitors and which need improvement.",
+          "Understand traffic flow across thousands of square meters. See which departments draw visitors, measure dwell time, and optimize product placement.",
         icon: "building2",
         capabilities: [
-          "Foot traffic heat maps",
-          "Time spent per area",
-          "Department performance",
-          "Visitor-to-buyer rates",
+          "Zone-by-zone visitor counts",
+          "Dwell time by area and display",
+          "Path analysis between departments",
+          "Hourly and daily traffic comparisons",
         ],
       },
       {
-        name: "Luxury Retail",
+        name: "Premium & Boutique Stores",
         description:
-          "Give VIP customers the recognition they deserve. Alert staff when important clients arrive.",
+          "Deliver white-glove service with AI assistance. Know when your best customers arrive so staff can provide immediate, personalized attention.",
         icon: "users",
         capabilities: [
-          "VIP arrival alerts",
-          "Customer purchase history",
-          "Personal shopper notification",
-          "Loyalty member recognition",
+          "VIP arrival alerts to sales staff",
+          "Visit frequency tracking",
+          "Preferred associate matching",
+          "Clienteling integration",
         ],
       },
       {
-        name: "Supermarket",
+        name: "Grocery & Convenience",
         description:
-          "Keep checkout lines short and shelves stocked. Get alerts for suspicious activity before losses happen.",
+          "High volume, tight margins. Keep lines moving, monitor high-theft areas, and staff efficiently based on traffic peaks.",
         icon: "layers",
         capabilities: [
-          "Checkout queue alerts",
-          "Shelf monitoring",
-          "Theft prevention",
-          "Staff scheduling insights",
+          "Real-time queue length alerts",
+          "High-shrinkage zone monitoring",
+          "Peak hour traffic forecasting",
+          "Self-checkout area oversight",
         ],
       },
     ],

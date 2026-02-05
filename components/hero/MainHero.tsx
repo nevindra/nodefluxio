@@ -117,6 +117,7 @@ function BiometricScanner() {
             src="/hero/cctv-capture.png"
             alt="CCTV Subject Capture"
             fill
+            sizes="192px"
             className="object-cover opacity-80"
             priority
           />
@@ -167,6 +168,7 @@ function BiometricScanner() {
             src="/hero/biometric-face.png"
             alt="Target Match"
             fill
+            sizes="128px"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-primary/10" />
@@ -225,7 +227,7 @@ function TerminalLog() {
             Math.random().toString(36).substring(7).toUpperCase(),
           "> Object detected: License Plate [B 1234 ABC]",
           "> Latency: " + (Math.random() * 50 + 10).toFixed(2) + "ms",
-          "> Anomaly detection: Nominal",
+          "> Anomaly detection: Detected",
           "> Syncing national database...",
         ];
         setLogs((prev) => [
@@ -344,16 +346,16 @@ export function MainHero({
               <div className="col-span-2 md:col-span-1">
                 <SystemStat
                   icon={Globe}
-                  label="National Coverage"
-                  value="34 PROV."
+                  label="Years of Experience"
+                  value="> 8"
                   detail="NET_GRID_01"
                 />
               </div>
               <div className="col-span-2 md:col-span-1">
                 <SystemStat
                   icon={Database}
-                  label="Biometric Pool"
-                  value="204.2M+"
+                  label="Streams Implemented"
+                  value=">1000"
                   detail="RECORDS_SCAN"
                 />
               </div>
@@ -376,7 +378,7 @@ export function MainHero({
                         Search Latency
                       </div>
                       <div className="text-xl font-light text-primary tracking-tighter">
-                        &lt; 0.80 SEC
+                        &lt; 0.50 SEC
                       </div>
                     </div>
                     <div className="text-center">

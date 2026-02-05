@@ -48,7 +48,9 @@ export default function TrustedBy() {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <div className="flex w-fit pointer-events-none">
-          <div className={`${styles.animateScroll} flex items-center space-x-12 md:space-x-20 px-4`}>
+          <div
+            className={`${styles.animateScroll} flex items-center space-x-12 md:space-x-20 px-4`}
+          >
             {scrollItems.map((company, idx) => (
               <div
                 key={idx}
@@ -60,6 +62,7 @@ export default function TrustedBy() {
                     src={company.logo}
                     alt={company.name}
                     fill
+                    sizes="(max-width: 768px) 80px, 112px"
                     className="object-contain pointer-events-none"
                     draggable={false}
                     onContextMenu={(e) => e.preventDefault()}

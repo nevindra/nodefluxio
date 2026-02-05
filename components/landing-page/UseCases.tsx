@@ -8,7 +8,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/navigation-data";
 
 // Get solutions from centralized navigation data
-const solutionItems = navLinks.find((group) => group.title === "Solutions")?.items || [];
+const solutionItems =
+  navLinks.find((group) => group.title === "Solutions")?.items || [];
 
 // Solution categories
 const SOLUTION_TYPES = {
@@ -20,19 +21,19 @@ const SOLUTION_TYPES = {
 const useCaseExtras: Record<string, { subtitle: string; image: string }> = {
   "/solutions/massive-surveillance": {
     subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
-    image: "/landing-page/command-center.png",
+    image: "/solutions/card/public-safety.jpg",
   },
   "/solutions/smart-city": {
     subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
-    image: "/landing-page/smart-city.jpg",
+    image: "/solutions/card/smart-city.webp",
   },
   "/solutions/smart-building": {
     subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
-    image: "/landing-page/smart-city.jpg",
+    image: "/solutions/card/smart-building.webp",
   },
   "/solutions/smart-retail": {
     subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
-    image: "/landing-page/smart-city.jpg",
+    image: "/solutions/card/smart-retail.webp",
   },
 };
 
@@ -126,8 +127,7 @@ export default function UseCases() {
               viewport={{ once: true }}
               className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight mb-6 leading-tight text-foreground uppercase"
             >
-              Transforming industries with{" "}
-              <br className="hidden md:block" />
+              Transforming industries with <br className="hidden md:block" />
               <span className="text-primary">intelligent vision.</span>
             </motion.h2>
             <motion.p
@@ -203,6 +203,7 @@ export default function UseCases() {
                     src={useCase.image}
                     alt={useCase.title}
                     fill
+                    sizes="(max-width: 768px) 75vw, (max-width: 1024px) 55vw, (max-width: 1280px) 45vw, 600px"
                     className="object-cover transition-all duration-700 group-hover:scale-105"
                   />
                   {/* Corner Brackets */}

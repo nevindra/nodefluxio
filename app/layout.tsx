@@ -4,7 +4,7 @@ import OperationalGrid from "@/components/OperationalGrid";
 import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Script from 'next/script';
+import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -13,17 +13,26 @@ const jakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   ...generateMetadata(
-    "Nodeflux - Leading Indonesian Vision AI Company",
-    "Nodeflux is an Indonesian artificial intelligence company specializing in vision AI, providing solutions for various industries and government sectors.",
+    "Nodeflux - AI Company for Video Surveillance & Intelligent Agents",
+    "Nodeflux is Indonesia's leading AI company building Video Surveillance Intelligence and LLM-powered AI Agents. Enterprise solutions for smart cities, public safety, and security operations.",
     [
+      "Video Surveillance AI",
+      "LLM Agent",
+      "AI Agent",
+      "Agentic AI",
       "Vision AI",
       "Computer Vision",
-      "Artificial Intelligence",
-      "Indonesian AI",
-      "AI Solutions",
+      "Surveillance Intelligence",
+      "CCTV Analytics",
+      "Smart City AI",
+      "Public Safety AI",
+      "Indonesian AI Company",
+      "Enterprise AI Platform",
       "Video Analytics",
-      "Face Recognition"
-    ]
+      "Face Recognition",
+      "Visionaire",
+      "Lenz",
+    ],
   ),
 };
 

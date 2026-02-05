@@ -50,64 +50,56 @@ export default function LenzDashboardMockup({
       name: "cibiru-sore",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1545147981-19675c05debc?q=80&w=2070&auto=format&fit=crop",
+      image: "/streams/Stream1.webp",
     },
     {
       id: 2,
       name: "FRA Testing",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+      image: "/streams/Stream2.webp",
     },
     {
       id: 3,
       name: "Nodeflux Hall",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069&auto=format&fit=crop",
+      image: "/streams/Stream3.webp",
     },
     {
       id: 4,
       name: "Al Jabar",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1571210862729-78a52d3779a2?q=80&w=2070&auto=format&fit=crop",
+      image: "/streams/Stream4.webp",
     },
     {
       id: 5,
       name: "Simpang Pajeksan",
       status: "offline",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1449156001935-d28605a2d774?q=80&w=2070&auto=format&fit=crop",
+      image: "/streams/Stream6.webp",
     },
     {
       id: 6,
       name: "Flying Tiger Tenant",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop",
+      image: "/streams/Stream7.webp",
     },
     {
       id: 7,
       name: "iqbal",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1974&auto=format&fit=crop",
+      image: "/streams/Stream1.webp",
     },
     {
       id: 8,
       name: "Test",
       status: "online",
       resolution: "240p",
-      image:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+      image: "/streams/Stream2.webp",
     },
   ];
 
@@ -234,6 +226,7 @@ export default function LenzDashboardMockup({
                       src={stream.image}
                       alt={stream.name}
                       fill
+                      sizes="(max-width: 1024px) 25vw, 200px"
                       className={`object-cover transition-all duration-700 ${stream.status === "offline" ? "grayscale blur-sm opacity-50" : "group-hover:scale-110 grayscale-[0.2] brightness-90 group-hover:grayscale-0 group-hover:brightness-100"}`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
@@ -285,6 +278,7 @@ export default function LenzDashboardMockup({
                       src={streams[0].image}
                       alt="Alert View"
                       fill
+                      sizes="50vw"
                       className="object-cover grayscale-[0.1]"
                     />
                     <div className="absolute inset-0 border-2 border-red-500 animate-pulse" />
