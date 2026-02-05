@@ -97,39 +97,32 @@ export function LenzHero() {
             <div className="absolute inset-0 bg-cyan-500/10 blur-[100px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000 -z-10" />
 
             {/* Main Image Container */}
-            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-border/50 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-background/80 backdrop-blur-sm">
-              <div className="relative aspect-[16/9] w-full">
-                <Image
-                  src="/hero/lenz-hero.webp"
-                  alt="Lenz Dashboard - Unified Camera Management"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* Subtle overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
-              </div>
-
-              {/* Stats Bar */}
-              <div className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-xl border-t border-border/30 p-4 md:p-6">
-                <div className="flex items-center justify-between gap-4 md:gap-8 max-w-4xl mx-auto">
-                  <StatItem value="1000+" label="Cameras Supported" />
-                  <div className="hidden sm:block w-px h-8 bg-border/50" />
-                  <StatItem value="24/7" label="Live Monitoring" />
-                  <div className="hidden sm:block w-px h-8 bg-border/50" />
-                  <StatItem value="<100ms" label="Stream Latency" />
-                  <div className="hidden md:block w-px h-8 bg-border/50" />
-                  <StatItem
-                    value="99.9%"
-                    label="Uptime SLA"
-                    className="hidden md:flex"
-                  />
-                </div>
-              </div>
+            <div className="relative aspect-[16/9] w-full">
+              <Image
+                src="/hero/lenz-hero.webp"
+                alt="Lenz Dashboard - Unified Camera Management"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
 
-            {/* Decorative reflection */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-primary/20 blur-xl md:blur-3xl" />
+            {/* Stats Bar */}
+            <div className="mt-2 md:mt-4">
+              <div className="flex items-center justify-between gap-4 md:gap-8 max-w-4xl mx-auto">
+                <StatItem value="1000+" label="Cameras Supported" />
+                <div className="hidden sm:block w-px h-8 bg-border/50" />
+                <StatItem value="24/7" label="Live Monitoring" />
+                <div className="hidden sm:block w-px h-8 bg-border/50" />
+                <StatItem value="<100ms" label="Stream Latency" />
+                <div className="hidden md:block w-px h-8 bg-border/50" />
+                <StatItem
+                  value="99.9%"
+                  label="Uptime SLA"
+                  className="hidden md:flex"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

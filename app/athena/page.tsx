@@ -3,6 +3,7 @@
 import { AthenaHero } from "@/components/athena/AthenaHero";
 import { CapabilitiesScroll } from "@/components/athena/CapabilitiesScroll";
 import { EnterpriseServices } from "@/components/athena/EnterpriseServices";
+import { PracticalUsage } from "@/components/athena/PracticalUsage";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@phosphor-icons/react";
 import LandingSection from "@/components/LandingSection";
@@ -21,7 +22,10 @@ export default function AthenaPage() {
         </div>
       </LandingSection>
 
-      {/* 4. Enterprise Services: Big Data & Governance */}
+      {/* 4. Practical Usage: Real-world Applications */}
+      <PracticalUsage />
+
+      {/* 5. Enterprise Services: Big Data & Governance */}
       <EnterpriseServices />
 
     </main>

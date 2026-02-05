@@ -5,41 +5,44 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { navLinks } from "@/lib/navigation-data";
 
-const useCases = [
-  {
-    title: "Massive Surveillance System",
-    subtitle: "Public Safety & Security",
-    description:
-      "Monitor vast areas efficiently, detect anomalies in real-time, and respond swiftly to potential threats with advanced large-scale surveillance.",
+// Get solutions from centralized navigation data
+const solutionItems = navLinks.find((group) => group.title === "Solutions")?.items || [];
+
+// Solution categories
+const SOLUTION_TYPES = {
+  VIDEO_ANALYTICS: "Video Analytics",
+  AI_ASSISTANT: "AI Assistant", // For future LLM-based solutions
+} as const;
+
+// Additional use case specific data (images, subtitles)
+const useCaseExtras: Record<string, { subtitle: string; image: string }> = {
+  "/solutions/massive-surveillance": {
+    subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
     image: "/landing-page/command-center.png",
-    href: "/solutions/massive-surveillance",
   },
-  {
-    title: "Smart City Solution",
-    subtitle: "Urban Intelligence",
-    description:
-      "Optimize traffic flow, improve resource allocation, and enhance quality of life for citizens through data-driven urban management.",
+  "/solutions/smart-city": {
+    subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
     image: "/landing-page/smart-city.jpg",
-    href: "/solutions/smart-city",
   },
-  {
-    title: "Integrated Building Surveillance",
-    subtitle: "Facility Management",
-    description:
-      "Monitor access points, track occupancy, and ensure safety protocols through a single integrated security platform.",
+  "/solutions/smart-building": {
+    subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
     image: "/landing-page/smart-city.jpg",
-    href: "/solutions/smart-building",
   },
-  {
-    title: "Retail Store Optimization",
-    subtitle: "Business Analytics",
-    description:
-      "Gain insights into customer behavior, optimize store layouts, and enhance the shopping experience with cutting-edge retail analytics.",
+  "/solutions/smart-retail": {
+    subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
     image: "/landing-page/smart-city.jpg",
-    href: "/solutions/smart-retail",
   },
-];
+};
+
+const useCases = solutionItems.map((item) => ({
+  title: item.title,
+  description: item.longDesc || item.desc || "",
+  href: item.href,
+  subtitle: useCaseExtras[item.href]?.subtitle || "",
+  image: useCaseExtras[item.href]?.image || "/landing-page/smart-city.jpg",
+}));
 
 export default function UseCases() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -110,7 +113,7 @@ export default function UseCases() {
           className="flex items-center space-x-3 mb-8"
         >
           <div className="w-12 h-[2px] bg-primary"></div>
-          <span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">
+          <span className="text-[10px] md:text-xs font-medium tracking-[0.3em] md:tracking-[0.4em] text-primary uppercase">
             Market Applications
           </span>
         </motion.div>
@@ -207,16 +210,16 @@ export default function UseCases() {
                   <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
                   {/* Content Overlay with solid dark background */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/95 to-transparent pt-16 pb-6 px-6 md:pt-20 md:pb-8 md:px-8">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent pt-20 pb-6 px-6 md:pt-24 md:pb-8 md:px-8">
                     <div className="flex items-end justify-between gap-4">
                       <div className="flex-1">
-                        <span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] mb-2 block">
+                        <span className="inline-block text-[10px] md:text-[11px] font-medium text-white uppercase tracking-[0.15em] md:tracking-[0.2em] mb-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full">
                           {useCase.subtitle}
                         </span>
-                        <h3 className="text-xl md:text-2xl lg:text-3xl font-medium text-white tracking-tight mb-3">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white tracking-tight mb-4">
                           {useCase.title}
                         </h3>
-                        <p className="text-sm md:text-base text-white/80 font-light leading-relaxed max-w-lg">
+                        <p className="hidden md:block text-base text-white/95 font-normal leading-relaxed max-w-lg">
                           {useCase.description}
                         </p>
                       </div>

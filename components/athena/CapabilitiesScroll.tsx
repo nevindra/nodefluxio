@@ -97,14 +97,6 @@ function CapabilityRow({ capability, index }: { capability: typeof capabilities[
                         {capability.description}
                     </p>
                 </div>
-
-                <div className="pt-4">
-                    <button className="group flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-foreground/60 hover:text-primary transition-colors">
-                        <span className="w-8 h-[1px] bg-foreground/30 group-hover:bg-primary transition-colors" />
-                        Explore Technicals
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </button>
-                </div>
             </motion.div>
 
             {/* Visual Component */}

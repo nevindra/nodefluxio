@@ -36,8 +36,9 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-              Building the foundational computational fabric for autonomous
-              visual intelligence across diversified operational domains.
+              We build AI that sees, understands, and communicates. From vision
+              analytics to intelligent assistants, our technology helps
+              businesses work smarter.
             </p>
 
             {/* Contact Info */}
