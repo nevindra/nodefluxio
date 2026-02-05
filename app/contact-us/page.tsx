@@ -143,14 +143,14 @@ export default function ContactUs() {
                   {
                     icon: Phone,
                     label: "Phone",
-                    value: "+62 21 2270 2164",
-                    href: "tel:+622122702164",
+                    value: "+62 227 181 84",
+                    href: "tel:+622271818",
                   },
                   {
                     icon: MapPin,
                     label: "Office",
-                    value: "Jl. Kemang Timur No.90C, Jakarta Selatan",
-                    href: "https://maps.google.com",
+                    value: "Jl. Kemang Timur No.24, Bangka, Jakarta Selatan 12730",
+                    href: "https://maps.app.goo.gl/5rtXjKs6T5eL4hZv5",
                   },
                 ].map((item, i) => (
                   <a
