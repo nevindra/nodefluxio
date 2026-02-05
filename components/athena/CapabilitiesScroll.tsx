@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { Brain, Database, Graph, ArrowRight } from "@phosphor-icons/react";
 import RAGAnimation from "@/components/athena/RAGAnimation";
 import AgenticAnimation from "@/components/athena/AgenticAnimation";
@@ -48,13 +48,30 @@ export function CapabilitiesScroll() {
 
 function CapabilityRow({ capability, index }: { capability: typeof capabilities[0], index: number }) {
     const ref = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"]
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    // Static values for mobile to prevent scroll-linked animations
+    const staticY = useMotionValue(0);
+    const staticOpacity = useMotionValue(1);
+
+    const yTransform = useTransform(scrollYProgress, [0, 1], [50, -50]);
+    const opacityTransform = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+    // Use static values on mobile
+    const y = isMobile ? staticY : yTransform;
+    const opacity = isMobile ? staticOpacity : opacityTransform;
 
     return (
         <div ref={ref} className={`min-h-[90vh] flex flex-col lg:flex-row items-center gap-12 lg:gap-24 py-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
@@ -92,8 +109,8 @@ function CapabilityRow({ capability, index }: { capability: typeof capabilities[
 
             {/* Visual Component */}
             <motion.div
-                style={{ y: typeof window !== 'undefined' && window.innerWidth < 1024 ? 0 : y, opacity }}
-                className="lg:w-3/5 w-full"
+                style={{ y, opacity }}
+                className="lg:w-3/5 w-full will-change-transform"
             >
                 <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/3] w-full rounded-2xl overflow-hidden border border-border/50 bg-background/50 shadow-2xl">
                     {capability.component}

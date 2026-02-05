@@ -62,7 +62,7 @@ export default function Features() {
       id="features"
       className="py-24 md:py-32 bg-background border-b border-black/[0.03] font-futura overflow-hidden"
     >
-      <div className="max-w-[1440px] relative z-20 mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-[1280px] relative z-20 mx-auto px-4 md:px-6 lg:px-8">
         {/* Unified Header */}
         <div className="max-w-4xl mb-12 md:mb-20">
           <motion.div

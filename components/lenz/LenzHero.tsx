@@ -1,36 +1,54 @@
 "use client";
 
 import { MonitorPlay } from "@phosphor-icons/react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export function LenzHero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(true); // Default to mobile to prevent heavy load on first render
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const { scrollY } = useScroll();
 
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  // Static values for mobile to prevent scroll-linked animations
+  const staticY = useMotionValue(0);
+  const staticOpacity = useMotionValue(1);
+
+  const y1Transform = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2Transform = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacityTransform = useTransform(scrollY, [0, 400], [1, 0]);
+
+  // Use static values on mobile, scroll-linked on desktop
+  const y1 = isMobile ? staticY : y1Transform;
+  const y2 = isMobile ? staticY : y2Transform;
+  const opacity = isMobile ? staticOpacity : opacityTransform;
 
   return (
     <section
       ref={containerRef}
       className="relative pt-20 pb-0 overflow-visible bg-background border-b border-border/10"
     >
-      {/* Background Ambience */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Background Ambience - Hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <motion.div
           style={{ y: y1 }}
-          className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-cyan-500/5 rounded-full blur-[120px]"
+          className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-cyan-500/5 rounded-full blur-[120px] will-change-transform"
         />
         <motion.div
           style={{ y: y2 }}
-          className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px]"
+          className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px] will-change-transform"
         />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-24 md:pt-32 lg:pt-40">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-24 md:pt-32 lg:pt-40">
         <div className="flex flex-col items-center text-center space-y-12 md:space-y-16">
           <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
             {/* Label */}
@@ -82,7 +100,7 @@ export function LenzHero() {
             <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-border/50 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-background/80 backdrop-blur-sm">
               <div className="relative aspect-[16/9] w-full">
                 <Image
-                  src="/dashboard/streams.jpeg"
+                  src="/hero/lenz-hero.webp"
                   alt="Lenz Dashboard - Unified Camera Management"
                   fill
                   className="object-cover"

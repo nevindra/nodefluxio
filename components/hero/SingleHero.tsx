@@ -30,7 +30,7 @@ export function SingleHero({
         <section className="relative w-full min-h-[500px] md:h-[65vh] flex items-center justify-start overflow-hidden bg-background text-left pt-24 pb-12">
             <HeroBackground videoSrc={videoSrc} isLanding={false} />
 
-            <div className="relative z-10 px-4 md:px-6 lg:px-8 mx-auto w-full max-w-[1440px]">
+            <div className="relative z-10 px-4 md:px-6 lg:px-8 mx-auto w-full max-w-[1280px]">
                 <div className="flex flex-col lg:flex-row gap-16 items-start">
                     <div className="flex-1 w-full">
                         <motion.div

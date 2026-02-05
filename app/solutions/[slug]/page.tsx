@@ -29,7 +29,7 @@ export default function SolutionPage() {
     <main>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8 relative max-w-[1440px]">
+        <div className="container mx-auto px-6 lg:px-8 relative max-w-[1280px]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function SolutionPage() {
 
       {/* Benefits Section */}
       <section className="py-20">
-        <div className="container max-w-[1440px] mx-auto">
+        <div className="container max-w-[1280px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
               Why Choose This Solution
@@ -105,7 +105,7 @@ export default function SolutionPage() {
 
       {/* How It Works - Topology Section */}
       <section id="how-it-works" className="py-20">
-        <div className="container max-w-[1440px] mx-auto">
+        <div className="container max-w-[1280px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
               How It Works
@@ -129,7 +129,7 @@ export default function SolutionPage() {
 
       {/* Tactical Solutions Section */}
       <section className="py-20">
-        <div className="container max-w-[1440px] mx-auto">
+        <div className="container max-w-[1280px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {solution.tacticalSolutions.map((tactical) => (
               <Card key={tactical.title} className="h-full">
@@ -183,7 +183,7 @@ export default function SolutionPage() {
 
       {/* Use Cases Section */}
       <section className="py-20">
-        <div className="container max-w-[1440px] mx-auto">
+        <div className="container max-w-[1280px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
               Deployment Scenarios

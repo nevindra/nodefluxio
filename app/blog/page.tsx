@@ -16,7 +16,7 @@ export default function BlogPage() {
     <main>
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8 relative max-w-[1440px]">
+        <div className="container mx-auto px-6 lg:px-8 relative max-w-[1280px]">
           <div className="text-center">
             <span className="inline-block text-sm font-medium text-primary mb-4">
               Blog
@@ -34,7 +34,7 @@ export default function BlogPage() {
 
       {/* Filter & Posts Section */}
       <section className="pb-20">
-        <div className="container mx-auto px-6 lg:px-8 max-w-[1440px]">
+        <div className="container mx-auto px-6 lg:px-8 max-w-[1280px]">
           <BlogList posts={posts} categories={categories} />
         </div>
       </section>

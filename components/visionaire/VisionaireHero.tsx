@@ -1,33 +1,66 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { Cpu } from "@phosphor-icons/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import ProductIntegration from "@/components/landing-page/ProductIntegration";
+import { AnimatePresence } from "framer-motion";
+import {
+    SecurityCamera,
+    FileVideo,
+    Database,
+    SquaresFour,
+    BellRinging,
+    ScanSmiley,
+    Users,
+    Car,
+    Truck,
+    VideoCamera,
+    Broadcast,
+    MonitorPlay,
+    Icon,
+} from "@phosphor-icons/react";
 
 export function VisionaireHero() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     const { scrollY } = useScroll();
 
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-    const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+    // Static values for mobile to prevent scroll-linked animations
+    const staticY = useMotionValue(0);
+    const staticOpacity = useMotionValue(1);
+
+    const y1Transform = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2Transform = useTransform(scrollY, [0, 500], [0, -150]);
+    const opacityTransform = useTransform(scrollY, [0, 400], [1, 0]);
+
+    const y1 = isMobile ? staticY : y1Transform;
+    const y2 = isMobile ? staticY : y2Transform;
+    const opacity = isMobile ? staticOpacity : opacityTransform;
 
     return (
         <section ref={containerRef} className="relative pt-20 pb-0 overflow-visible bg-background border-b border-border/10">
-            {/* Background Ambience */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Background Ambience - Hidden on mobile for performance */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
                 <motion.div
                     style={{ y: y1 }}
-                    className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-blue-500/5 rounded-full blur-[120px]"
+                    className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-blue-500/5 rounded-full blur-[120px] will-change-transform"
                 />
                 <motion.div
                     style={{ y: y2 }}
-                    className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px]"
+                    className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px] will-change-transform"
                 />
             </div>
 
-            <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-24 md:pt-32 lg:pt-40">
+            <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-24 md:pt-32 lg:pt-40">
                 <div className="flex flex-col items-center text-center space-y-12 md:space-y-16">
 
                     <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
@@ -136,24 +169,6 @@ function ProductIntegrationEmbed() {
 
 // --- Embedded Sub-Components (copied from ProductIntegration for self-contained hero) ---
 
-import React, { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
-import {
-    SecurityCamera,
-    FileVideo,
-    Database,
-    SquaresFour,
-    BellRinging,
-    ScanSmiley,
-    Users,
-    Car,
-    Truck,
-    VideoCamera,
-    Broadcast,
-    MonitorPlay,
-    Icon,
-} from "@phosphor-icons/react";
-
 interface AIModel {
     id: string;
     moduleId: string;
@@ -238,6 +253,14 @@ const NodeCard = ({
 
 const CenterCore = () => {
     const [currentModelIndex, setCurrentModelIndex] = useState(0);
+    const [isMobileCore, setIsMobileCore] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobileCore(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -256,10 +279,10 @@ const CenterCore = () => {
             viewport={{ once: true }}
             className="relative z-20 flex flex-col items-center justify-center w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72"
         >
-            {/* Rotating Rings */}
-            <div className="absolute inset-0 border border-primary/20 rounded-full animate-[spin_10s_linear_infinite]" />
-            <div className="absolute inset-2 md:inset-4 border border-primary/20 rounded-full border-dashed animate-[spin_15s_linear_infinite_reverse]" />
-            <div className="absolute inset-4 sm:inset-6 md:inset-12 border border-primary/10 rounded-full animate-pulse" />
+            {/* Rotating Rings - Static on mobile for performance */}
+            <div className={`absolute inset-0 border border-primary/20 rounded-full ${isMobileCore ? '' : 'animate-[spin_10s_linear_infinite]'}`} />
+            <div className={`absolute inset-2 md:inset-4 border border-primary/20 rounded-full border-dashed ${isMobileCore ? '' : 'animate-[spin_15s_linear_infinite_reverse]'}`} />
+            <div className={`absolute inset-4 sm:inset-6 md:inset-12 border border-primary/10 rounded-full ${isMobileCore ? '' : 'animate-pulse'}`} />
 
             {/* Static Center Content */}
             <div className="relative z-10 bg-background/80 backdrop-blur-xl border border-primary/30 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl md:rounded-2xl shadow-[0_0_50px_rgba(var(--primary),0.15)] flex flex-col items-center justify-center text-center min-w-[100px] sm:min-w-[120px] md:min-w-[160px] lg:min-w-[180px]">
@@ -304,9 +327,8 @@ const CenterCore = () => {
                     {aiModels.map((model, index) => (
                         <div
                             key={model.id}
-                            className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-all duration-300 ${
-                                index === currentModelIndex ? "bg-primary scale-125" : "bg-muted-foreground/30"
-                            }`}
+                            className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-all duration-300 ${index === currentModelIndex ? "bg-primary scale-125" : "bg-muted-foreground/30"
+                                }`}
                         />
                     ))}
                 </div>

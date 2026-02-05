@@ -337,7 +337,7 @@ export default function ProductIntegration() {
 
   return (
     <section className="py-16 md:py-24 bg-background border-b border-border overflow-hidden relative">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 relative">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-20 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}

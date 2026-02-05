@@ -8,7 +8,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 export default function Consolutation() {
 	return (
 		<section className="relative w-full py-16 md:py-24 overflow-hidden bg-muted/30">
-			<div className="container relative z-10 mx-auto px-6 lg:px-8 max-w-[1440px]">
+			<div className="container relative z-10 mx-auto px-6 lg:px-8 max-w-[1280px]">
 				<div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
 					<div className="max-w-2xl">
 						<motion.div

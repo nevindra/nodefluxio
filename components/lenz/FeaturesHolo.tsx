@@ -36,7 +36,7 @@ export function FeaturesHolo() {
       ref={ref}
       className="py-24 md:py-32 bg-muted/30 relative border-t border-border/40 overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Left: Core Platform Features */}
           <div className="space-y-12">

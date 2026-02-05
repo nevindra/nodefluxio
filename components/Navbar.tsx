@@ -30,7 +30,7 @@ export default function NavigationBar() {
         }`}
     >
       <div
-        className={`relative max-w-[1440px] w-full transition-all duration-500 overflow-visible px-6 flex items-center justify-between border ${isScrolled
+        className={`relative max-w-[1280px] w-full transition-all duration-500 overflow-visible px-6 flex items-center justify-between border ${isScrolled
           ? "h-14 bg-card/70 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-border/50"
           : "h-16 bg-transparent border-transparent"
           }`}
@@ -38,7 +38,7 @@ export default function NavigationBar() {
         {/* Logo Section */}
         <div className="flex items-center shrink-0">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="relative h-8 w-40 md:h-10 md:w-48 transition-all duration-500 group-hover:scale-[1.02]">
+            <div className="relative h-10 w-44 md:h-12 md:w-56 transition-all duration-500 group-hover:scale-[1.02]">
               <Image
                 src={visionaireLogo}
                 alt="Nodeflux"
@@ -84,10 +84,10 @@ export default function NavigationBar() {
                             className="group/item flex items-center justify-between p-3 rounded-xl hover:bg-muted transition-all duration-300"
                           >
                             <div className="flex flex-col">
-                              <span className="text-xs font-bold text-foreground/80 group-hover/item:text-primary transition-colors uppercase tracking-wider">
+                              <span className="text-sm font-bold text-foreground/80 group-hover/item:text-primary transition-colors uppercase tracking-wider">
                                 {item.title}
                               </span>
-                              <span className="text-[9px] text-muted-foreground font-medium mt-0.5">
+                              <span className="text-xs text-muted-foreground font-medium mt-0.5">
                                 {item.desc}
                               </span>
                             </div>

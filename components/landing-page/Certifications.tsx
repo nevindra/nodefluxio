@@ -54,12 +54,12 @@ export default function Certifications() {
 								<div className="flex items-center gap-6 mb-8">
 									<div className="flex flex-col">
 										<span className="text-2xl font-medium tracking-tighter text-foreground">NVIDIA</span>
-										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Inception Partner</span>
+										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Global Partner</span>
 									</div>
 									<div className="w-px h-8 bg-black/10" />
 									<div className="flex flex-col">
 										<span className="text-2xl font-medium tracking-tighter text-foreground">INTEL</span>
-										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Titan Partner</span>
+										<span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] font-medium">Partner</span>
 									</div>
 								</div>
 								<CardTitle className="text-xl md:text-2xl font-medium tracking-tight text-foreground uppercase mb-4">
@@ -68,7 +68,7 @@ export default function Certifications() {
 							</CardHeader>
 							<CardContent className="relative z-10 pb-12">
 								<p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed">
-									As a member of the NVIDIA Inception Program and an Intel Titan Partner,
+									As a member of the NVIDIA Global Partner Program and an Intel Partner,
 									Nodeflux leverages cutting-edge hardware acceleration and early access
 									to next-gen AI compute tools to deliver unparalleled performance
 									from the edge to the cloud.
@@ -102,9 +102,9 @@ export default function Certifications() {
 							</CardHeader>
 							<CardContent className="relative z-10 pb-12">
 								<p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed">
-									Selected as the 1st technology principal from Indonesia to pass NIST’s
+									Passed as the 1st technology principal from Indonesia to pass NIST’s
 									Face Recognition Vendor Test. Nodeflux ranks in the top 85th percentile
-									among 140+ global vision AI titans.
+									among 140+ global vision companies.
 								</p>
 							</CardContent>
 						</Card>

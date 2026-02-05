@@ -1,33 +1,50 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { Sparkle } from "@phosphor-icons/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import AthenaKnowledgeMockup from "@/components/landing-page/AthenaKnowledgeMockup";
 
 export function AthenaHero() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     const { scrollY } = useScroll();
 
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    // Static values for mobile to prevent scroll-linked animations
+    const staticY = useMotionValue(0);
+    const staticOpacity = useMotionValue(1);
+
+    const y1Transform = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2Transform = useTransform(scrollY, [0, 500], [0, -150]);
+    const opacityTransform = useTransform(scrollY, [0, 300], [1, 0]);
+
+    const y1 = isMobile ? staticY : y1Transform;
+    const y2 = isMobile ? staticY : y2Transform;
+    const opacity = isMobile ? staticOpacity : opacityTransform;
 
     return (
         <section ref={containerRef} className="relative pt-20 pb-0 overflow-visible bg-background border-b border-border/10">
-            {/* Background Ambience */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Background Ambience - Hidden on mobile for performance */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
                 <motion.div
                     style={{ y: y1 }}
-                    className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-primary/5 rounded-full blur-[120px]"
+                    className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-primary/5 rounded-full blur-[120px] will-change-transform"
                 />
                 <motion.div
                     style={{ y: y2 }}
-                    className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] bg-secondary/5 rounded-full blur-[100px]"
+                    className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] bg-secondary/5 rounded-full blur-[100px] will-change-transform"
                 />
             </div>
 
-            <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-32 md:pt-48">
+            <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-32 md:pt-48">
                 <div className="flex flex-col items-center text-center space-y-16">
 
                     <div className="space-y-8 max-w-4xl mx-auto">

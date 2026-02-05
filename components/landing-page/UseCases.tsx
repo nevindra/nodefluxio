@@ -189,7 +189,7 @@ export default function UseCases() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="snap-start flex-shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw] max-w-[800px]"
+            className="snap-start flex-shrink-0 w-[75vw] md:w-[55vw] lg:w-[45vw] xl:w-[40vw] max-w-[600px]"
           >
             <Link href={useCase.href} className="group block">
               {/* Card */}

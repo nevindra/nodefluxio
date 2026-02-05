@@ -28,7 +28,7 @@ const showcaseItems = [
             "Drag-and-drop camera arrangement",
             "Full-screen single camera mode"
         ],
-        image: "/dashboard/streams.jpeg",
+        image: "/dashboard/Home.webp",
         icon: GridFour,
         accent: "cyan"
     },
@@ -43,7 +43,7 @@ const showcaseItems = [
             "Automatic event classification",
             "Smart alert filtering"
         ],
-        image: "/dashboard/single.jpeg",
+        image: "/dashboard/Event_History.webp",
         icon: Cpu,
         accent: "violet"
     },
@@ -58,7 +58,7 @@ const showcaseItems = [
             "Thumbnail preview for quick scan",
             "Export evidence with one click"
         ],
-        image: "/dashboard/event.jpeg",
+        image: "/dashboard/Statistic_FRA.webp",
         icon: ClockCounterClockwise,
         accent: "amber"
     }
@@ -69,7 +69,7 @@ export function DashboardShowcase() {
 
     return (
         <section ref={containerRef} className="relative z-10 pt-32 sm:pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-40 bg-muted/20">
-            <div className="max-w-[1400px] mx-auto px-6">
+            <div className="max-w-[1280px] mx-auto px-6">
 
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
@@ -235,7 +235,7 @@ function ShowcaseItem({
                             src={item.image}
                             alt={item.title}
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="object-contain transition-transform duration-700 group-hover:scale-105"
                         />
                         {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />

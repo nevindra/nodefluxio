@@ -42,9 +42,9 @@ export const navLinks: NavGroup[] = [
   {
     title: "Products",
     items: [
-      { title: "Lenz", href: "/lenz", desc: "Smart video monitoring & analytics" },
-      { title: "VisionAIre", href: "/visionaire", desc: "Complete AI video surveillance platform" },
-      { title: "Athena", href: "/athena", desc: "Generative AI business assistant" },
+      { title: "Lenz", href: "/lenz", desc: "Unified video management system for monitoring thousands of cameras" },
+      { title: "VisionAIre", href: "/visionaire", desc: "Powerful vision AI engine with ready-to-deploy detection models" },
+      { title: "Athena", href: "/athena", desc: "Enterprise AI assistant with RAG-powered knowledge retrieval" },
     ],
   },
   {

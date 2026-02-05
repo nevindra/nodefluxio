@@ -168,7 +168,7 @@ export default function Analytics() {
         id="capabilities"
         className="pt-32 sm:pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-40 bg-muted/20 relative overflow-hidden text-foreground"
       >
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1280px] mx-auto px-6">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
             <h2 className="text-4xl md:text-6xl font-medium tracking-tight">
@@ -298,7 +298,7 @@ export default function Analytics() {
 
       {/* 4th Section: Beyond the Core & Custom Services */}
       <section className="py-24 md:py-32 bg-muted/30 relative border-t border-border/40 overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1280px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             {/* Left: More Ready-to-Use Analytics */}
             <div className="space-y-12">
