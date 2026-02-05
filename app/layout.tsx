@@ -9,7 +9,11 @@ import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const jakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const jakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   ...generateMetadata(

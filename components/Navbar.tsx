@@ -26,14 +26,16 @@ export default function NavigationBar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center py-4 ${isScrolled ? "px-6 md:px-8" : "px-4 md:px-0"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center py-4 ${
+        isScrolled ? "px-6 md:px-8" : "px-4 md:px-0"
+      }`}
     >
       <div
-        className={`relative max-w-[1280px] w-full transition-all duration-500 overflow-visible px-6 flex items-center justify-between border ${isScrolled
-          ? "h-14 bg-card/70 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-border/50"
-          : "h-16 bg-transparent border-transparent"
-          }`}
+        className={`relative max-w-[1280px] w-full transition-all duration-500 overflow-visible px-6 flex items-center justify-between border ${
+          isScrolled
+            ? "h-14 bg-card/70 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-border/50"
+            : "h-16 bg-transparent border-transparent"
+        }`}
       >
         {/* Logo Section */}
         <div className="flex items-center shrink-0">
@@ -43,6 +45,8 @@ export default function NavigationBar() {
                 src={visionaireLogo}
                 alt="Nodeflux"
                 fill
+                priority
+                sizes="(max-width: 768px) 176px, 224px"
                 className="object-contain"
               />
             </div>
@@ -51,7 +55,10 @@ export default function NavigationBar() {
 
         {/* Desktop Navigation - Center */}
         <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 h-full">
-          <div className="flex items-center space-x-1" onMouseLeave={() => setHoveredPath(null)}>
+          <div
+            className="flex items-center space-x-1"
+            onMouseLeave={() => setHoveredPath(null)}
+          >
             {navLinks.map((link) => (
               <div
                 key={link.title}
@@ -59,11 +66,16 @@ export default function NavigationBar() {
                 onMouseEnter={() => setHoveredPath(link.title)}
               >
                 <div
-                  className={`flex items-center gap-1.5 px-5 py-2 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 z-10 cursor-pointer ${hoveredPath === link.title ? "text-primary" : "text-foreground/40 hover:text-foreground/70"
-                    }`}
+                  className={`flex items-center gap-1.5 px-5 py-2 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 z-10 cursor-pointer ${
+                    hoveredPath === link.title
+                      ? "text-primary"
+                      : "text-foreground/40 hover:text-foreground/70"
+                  }`}
                 >
                   <span>{link.title}</span>
-                  <CaretDown className={`w-3 h-3 transition-transform duration-300 ${hoveredPath === link.title ? "rotate-180" : ""}`} />
+                  <CaretDown
+                    className={`w-3 h-3 transition-transform duration-300 ${hoveredPath === link.title ? "rotate-180" : ""}`}
+                  />
                 </div>
 
                 {/* Dropdown menu - Minimalist Glass */}
@@ -119,16 +131,29 @@ export default function NavigationBar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-all ${mobileMenuOpen ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
+            className={`md:hidden p-2 rounded-lg transition-all ${
+              mobileMenuOpen
+                ? "bg-muted text-foreground"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
           >
             <AnimatePresence mode="wait">
               {mobileMenuOpen ? (
-                <motion.div key="close" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                <motion.div
+                  key="close"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                >
                   <X size={20} />
                 </motion.div>
               ) : (
-                <motion.div key="menu" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                <motion.div
+                  key="menu"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                >
                   <List size={20} />
                 </motion.div>
               )}
@@ -146,4 +171,3 @@ export default function NavigationBar() {
     </nav>
   );
 }
-
