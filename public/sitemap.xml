@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.nodeflux.io/contact-us</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-<url><loc>https://www.nodeflux.io/solutions/smart-retail</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.nodeflux.io/solutions/smart-building</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.nodeflux.io/solutions/smart-city</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.nodeflux.io/athena</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.nodeflux.io/lenz</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.nodeflux.io</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
-<url><loc>https://www.nodeflux.io/solutions/massive-surveillance</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.nodeflux.io/visionaire</loc><lastmod>2026-02-01T10:21:29.961Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/athena</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/visionaire</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/lenz</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io/contact-us</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://www.nodeflux.io/blog</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.nodeflux.io</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://www.nodeflux.io/blog/introducing-lenz-platform</loc><lastmod>2026-02-05T13:39:15.169Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

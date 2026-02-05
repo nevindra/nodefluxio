@@ -2,8 +2,6 @@ import { MainHero } from "@/components/hero/MainHero";
 import Certifications from "@/components/landing-page/Certifications";
 import CTA from "@/components/landing-page/CTA";
 import Features from "@/components/landing-page/Features";
-import GlobalPresence from "@/components/landing-page/GlobalPresence";
-import GlobalPresenceGL from "@/components/landing-page/GlobalPresenceGL";
 import NationalIntelligence from "@/components/landing-page/NationalIntelligence";
 import TrustedBy from "@/components/landing-page/TrustedBy";
 import UseCases from "@/components/landing-page/UseCases";
