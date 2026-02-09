@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const companies = [
-  { name: "BIN", logo: "/landing-page/logos/bin.png" },
   { name: "Divtik", logo: "/landing-page/logos/divtik.png" },
   { name: "Brimob", logo: "/landing-page/logos/brimob.png" },
   { name: "Polri", logo: "/landing-page/logos/polri.png" },
@@ -49,7 +48,7 @@ export default function TrustedBy() {
             {companies.map((company, idx) => (
               <div
                 key={`first-${idx}`}
-                className="flex-shrink-0 grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className="flex-shrink-0 grayscale opacity-20"
               >
                 <div className="relative w-20 h-10 md:w-28 md:h-14">
                   <Image
@@ -67,7 +66,7 @@ export default function TrustedBy() {
             {companies.map((company, idx) => (
               <div
                 key={`second-${idx}`}
-                className="flex-shrink-0 grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className="flex-shrink-0 grayscale opacity-20"
               >
                 <div className="relative w-20 h-10 md:w-28 md:h-14">
                   <Image

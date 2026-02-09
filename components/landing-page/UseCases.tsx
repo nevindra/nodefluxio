@@ -19,7 +19,7 @@ const SOLUTION_TYPES = {
 
 // Additional use case specific data (images, subtitles)
 const useCaseExtras: Record<string, { subtitle: string; image: string }> = {
-  "/solutions/massive-surveillance": {
+  "/solutions/public-security": {
     subtitle: SOLUTION_TYPES.VIDEO_ANALYTICS,
     image: "/solutions/card/public-safety.jpg",
   },

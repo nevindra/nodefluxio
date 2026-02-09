@@ -38,7 +38,7 @@ export interface Solution {
 
 export const solutions: Solution[] = [
   {
-    slug: "massive-surveillance",
+    slug: "public-security",
     badge: "Public Safety Solution",
     title: "Public Safety",
     titleHighlight: "Intelligence",

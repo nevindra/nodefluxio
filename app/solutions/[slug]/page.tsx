@@ -16,10 +16,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function SolutionPage() {
   const { slug } = useParams<{ slug: string }>();
   const solution = getSolutionBySlug(slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!solution) {
     notFound();
