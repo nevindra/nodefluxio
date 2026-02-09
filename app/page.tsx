@@ -2,7 +2,7 @@ import { MainHero } from "@/components/hero/MainHero";
 import Certifications from "@/components/landing-page/Certifications";
 import CTA from "@/components/landing-page/CTA";
 import Features from "@/components/landing-page/Features";
-import NationalIntelligence from "@/components/landing-page/NationalIntelligence";
+import GlobalPresenceGL from "@/components/landing-page/GlobalPresenceGL";
 import TrustedBy from "@/components/landing-page/TrustedBy";
 import UseCases from "@/components/landing-page/UseCases";
 import LandingSection from "@/components/LandingSection";
@@ -28,8 +28,8 @@ export default function Home() {
         <UseCases />
       </LandingSection>
 
-      <LandingSection id="national-intelligence">
-        <NationalIntelligence />
+      <LandingSection id="global-presence">
+        <GlobalPresenceGL />
       </LandingSection>
 
       <LandingSection>

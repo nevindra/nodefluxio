@@ -34,7 +34,7 @@ export function LenzHero() {
   return (
     <section
       ref={containerRef}
-      className="relative pt-20 pb-0 overflow-visible bg-background border-b border-border/10"
+      className="relative pt-28 sm:pt-32 pb-0 overflow-visible bg-background border-b border-border/10"
     >
       {/* Background Ambience - Hidden on mobile for performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">

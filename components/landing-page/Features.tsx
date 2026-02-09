@@ -21,9 +21,9 @@ const products = [
   {
     id: "visionaire",
     title: "VisionAIre",
-    subtitle: "Enterprise Vision Platform",
+    subtitle: "Intelligent Camera Analytics",
     description:
-      "VisionAIre is a comprehensive AI platform providing a set of production-ready Computer Vision models. Deploy advanced recognition capabilities directly into your applications with ease.",
+      "Turn your existing cameras into a powerful detection system. VisionAIre automatically recognizes faces, counts visitors, reads license plates, and monitors vehicles — all in real time, with any camera you already have.",
     valueProp:
       "From Face Recognition to License Plate detection, VisionAIre gives you the building blocks to see and understand the physical world through code.",
     icon: <Scan className="w-6 h-6" />,
@@ -32,9 +32,9 @@ const products = [
   {
     id: "lenz",
     title: "Lenz",
-    subtitle: "Smart Video Monitoring System",
+    subtitle: "Unified Video Management",
     description:
-      "Lenz is like having an extra set of eyes that never gets tired. It watches your camera feeds 24/7, instantly recognizing people and vehicles while turning video into clear, useful information.",
+      "Manage all your cameras from a single dashboard. Lenz brings together live feeds, smart alerts, event history, and detailed analytics into one clear view — so your team always knows what is happening across every location.",
     valueProp:
       "Stop spending hours watching security screens. Lenz alerts you only when something important happens, so you can stay focused on running your business safely.",
     icon: <GridFour className="w-6 h-6" />,
@@ -43,9 +43,9 @@ const products = [
   {
     id: "athena",
     title: "Athena",
-    subtitle: "AI Assistant for Your Business",
+    subtitle: "Enterprise Knowledge Assistant",
     description:
-      "Athena is an intelligent assistant that understands your business data. It connects everything together so you can simply ask questions and get clear, helpful answers in plain English.",
+      "Transform your company documents into a smart assistant that anyone can use. Athena reads your files, understands the content, and lets your team find answers in seconds — simply by asking a question in everyday language.",
     valueProp:
       "No more digging through complex reports. Just ask Athena, 'What happened today?' or 'How busy was the lobby?' and get a human-like response in seconds.",
     icon: <Brain className="w-6 h-6" />,
@@ -73,7 +73,7 @@ export default function Features() {
           >
             <div className="w-12 h-[2px] bg-primary"></div>
             <span className="text-xs font-medium tracking-[0.4em] text-primary uppercase">
-              Core Technology Fleet
+              Our Core Platform
             </span>
           </motion.div>
           <motion.h2
@@ -82,8 +82,8 @@ export default function Features() {
             viewport={{ once: true }}
             className="text-2xl md:text-3xl font-medium tracking-tight mb-6 leading-tight text-foreground uppercase"
           >
-            Powerful AI Tools <br />
-            <span className="text-primary">Engineered for Action.</span>
+            Smarter Operations, <br />
+            <span className="text-primary">Simpler Decisions.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -92,9 +92,10 @@ export default function Features() {
             transition={{ delay: 0.2 }}
             className="text-base md:text-lg text-muted-foreground font-light leading-relaxed max-w-4xl"
           >
-            We transform complex data into simple, actionable insights. Whether
-            it's keeping your premises safe or answering business questions, our
-            tools do the heavy lifting for you.
+            Our products work together to help you see what your cameras
+            capture, manage your video operations from one place, and get
+            instant answers from your business data — all without any
+            specialized expertise.
           </motion.p>
         </div>
 
@@ -165,25 +166,20 @@ export default function Features() {
                             asChild
                             className="flex-1 min-w-[200px] h-12 px-8 text-background text-[10px] font-medium rounded-none hover:bg-primary/90 transition-all duration-300 uppercase tracking-[0.2em] group flex items-center justify-center gap-3"
                           >
-                            <Link href={p.href}>
-                              View Specifications{" "}
-                              <span className="text-background/40 group-hover:text-background group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
-                                ↗
-                              </span>
-                            </Link>
+                            <Link href={p.href}>Learn More </Link>
                           </Button>
                         </div>
 
                         {p.id === "lenz" && (
                           <div className="pt-10 border-t border-black/5">
                             <div className="text-[10px] font-medium text-primary uppercase mb-6 tracking-[0.3em]">
-                              Operational Perspectives
+                              Explore Key Features
                             </div>
                             <div className="flex flex-wrap gap-3">
                               {[
                                 {
                                   id: "alerts",
-                                  label: "Alert Integration",
+                                  label: "Smart Alerts",
                                   icon: Bell,
                                 },
                                 {
@@ -193,7 +189,7 @@ export default function Features() {
                                 },
                                 {
                                   id: "stats",
-                                  label: "Analytics Overlays",
+                                  label: "Live Analytics",
                                   icon: ChartLineUp,
                                 },
                               ].map((uc) => (

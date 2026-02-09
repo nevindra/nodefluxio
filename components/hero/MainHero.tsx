@@ -281,10 +281,10 @@ export function MainHero({
   label = "Extending Vision Beyond Imagination",
 }: HeroProps) {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background py-16 sm:py-20 md:py-0">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-0 md:pb-0">
       <HeroBackground videoSrc={videoSrc} isLanding={true} />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1280px] mt-12 md:mt-0 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] md:mt-0 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Left Column: Context & CTA */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 md:space-y-10 text-left">
