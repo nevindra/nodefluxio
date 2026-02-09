@@ -17,7 +17,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const coreFeatures = [
-  { name: "Live Streaming", icon: MonitorPlay, desc: "Manage live camera feeds" },
+  {
+    name: "Live Streaming",
+    icon: MonitorPlay,
+    desc: "Manage live camera feeds",
+  },
   { name: "Smart Alerts", icon: Bell, desc: "AI-triggered notifications" },
   { name: "Multi-User Access", icon: Users, desc: "Role-based permissions" },
   { name: "Site Mapping", icon: MapTrifold, desc: "Visual camera placement" },
@@ -121,11 +125,7 @@ export function FeaturesHolo() {
                 </div>
                 <div className="flex items-center gap-3 md:gap-4 text-xs md:text-sm text-foreground/80">
                   <CheckCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary shrink-0" />
-                  <span>SSO and Active Directory integration</span>
-                </div>
-                <div className="flex items-center gap-3 md:gap-4 text-xs md:text-sm text-foreground/80">
-                  <CheckCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary shrink-0" />
-                  <span>24/7 dedicated support team</span>
+                  <span>Active dedicated support team</span>
                 </div>
               </div>
 

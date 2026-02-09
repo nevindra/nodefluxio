@@ -107,23 +107,6 @@ export function LenzHero() {
                 priority
               />
             </div>
-
-            {/* Stats Bar */}
-            <div className="mt-2 md:mt-4">
-              <div className="flex items-center justify-between gap-4 md:gap-8 max-w-4xl mx-auto">
-                <StatItem value="1000+" label="Cameras Supported" />
-                <div className="hidden sm:block w-px h-8 bg-border/50" />
-                <StatItem value="24/7" label="Live Monitoring" />
-                <div className="hidden sm:block w-px h-8 bg-border/50" />
-                <StatItem value="<100ms" label="Stream Latency" />
-                <div className="hidden md:block w-px h-8 bg-border/50" />
-                <StatItem
-                  value="99.9%"
-                  label="Uptime SLA"
-                  className="hidden md:flex"
-                />
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

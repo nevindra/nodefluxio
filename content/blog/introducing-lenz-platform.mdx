@@ -1,55 +1,82 @@
 ---
-title: "Introducing Lenz Platform"
-description: "Meet Lenz, our unified video analytics platform designed to transform how enterprises manage and analyze video streams at scale."
+title: "Introducing Lenz: AI-Powered Video Management System by Nodeflux"
+description: "Lenz is an enterprise Video Management System (VMS) that unifies 1000+ cameras in one dashboard. AI-powered analysis, real-time alerts, and sub-100ms streaming latency for smart city and security operations."
 date: "2026-01-15"
 author:
   name: "Nodeflux Team"
-  avatar: "/images/authors/nodeflux.png"
+  avatar: "/nodeflux-logo-purple.png"
 category: "Product"
-tags: ["lenz", "platform", "video-analytics", "announcement"]
-coverImage: "/images/blog/lenz-intro.jpg"
+tags:
+  [
+    "lenz",
+    "video-management-system",
+    "vms",
+    "ai-video-analytics",
+    "camera-management",
+    "surveillance-dashboard",
+    "enterprise-vms",
+    "smart-city",
+    "nodeflux",
+  ]
+coverImage: "/hero/lenz-hero.webp"
 ---
 
-We are excited to announce the launch of **Lenz**, our next-generation unified video analytics platform. Lenz represents a significant leap forward in how enterprises manage, monitor, and extract insights from video streams.
+We are excited to introduce **Lenz**, Nodeflux's AI-powered Video Management System (VMS) built for enterprises that need to manage large-scale camera deployments. Lenz brings all your cameras into one dashboard — giving your team a unified command center for live monitoring, AI-driven analysis, and real-time alerting.
 
-## Why We Built Lenz
+## All Cameras, One Dashboard
 
-Modern enterprises face an overwhelming challenge: managing thousands of video streams while extracting meaningful insights in real-time. Traditional approaches fall short when it comes to scalability, performance, and ease of use.
+Organizations today operate hundreds or thousands of cameras across multiple sites, but most video management systems struggle to keep up. Fragmented tools, high latency, and limited analytics capabilities create blind spots in security operations.
 
-Lenz addresses these challenges head-on with:
+Lenz solves this with a unified platform designed for scale:
 
-- **Unified Stream Management** - Monitor all your video feeds from a single, intuitive dashboard
-- **AI-Powered Analysis** - Leverage cutting-edge computer vision for real-time insights
-- **Enterprise-Grade Scalability** - Handle thousands of concurrent streams without breaking a sweat
+- **1000+ cameras** supported in a single deployment
+- **24/7 live monitoring** with continuous streaming
+- **Sub-100ms stream latency** for real-time situational awareness
+- **99.9% uptime SLA** for mission-critical operations
 
-## Key Features
+## What Lenz Does
 
-### Real-Time Analytics
+### Unified Stream View
 
-Lenz processes video streams in real-time, delivering instant insights through our proprietary AI models. Whether you're detecting anomalies, tracking objects, or analyzing crowd behavior, Lenz handles it all.
+Monitor all camera feeds from a single, organized dashboard. Lenz provides custom grid layouts from 1x1 to 8x8, drag-and-drop camera arrangement, and full-screen single camera mode — so operators can see everything at once without switching between tools.
 
-```typescript
-// Example: Configuring a Lenz analytics stream
-const stream = lenz.createStream({
-  source: "rtsp://camera.example.com/feed",
-  analytics: ["face-detection", "crowd-counting"],
-  alerts: {
-    crowdThreshold: 100,
-    notifyOnAnomaly: true,
-  },
-});
-```
+![Lenz Unified Stream View - All cameras in one dashboard](/dashboard/Home.webp)
 
-### Seamless Integration
+### Event History and Detection Logs
 
-Lenz integrates seamlessly with your existing infrastructure. Our REST API and SDK make it easy to embed video analytics into your applications.
+Every AI detection is captured with timestamps, thumbnails, and classification metadata. Operators can browse a chronological event timeline, preview thumbnails for quick identification, and drill into detailed detection records.
 
-## What's Next
+![Lenz Event History - Chronological detection logs with thumbnails](/dashboard/Event_History.webp)
 
-This is just the beginning. We're continuously improving Lenz with new features and capabilities. Stay tuned for upcoming announcements about:
+### Analytics Dashboard
 
-- Enhanced facial recognition capabilities
-- Advanced behavioral analytics
-- Multi-site management features
+Lenz visualizes detection statistics across all analytics modules in real-time. Track patterns from face recognition to vehicle monitoring, analyze trends over time, and export reports with a single click.
 
-[Contact us](/contact-us) to learn more about how Lenz can transform your video analytics operations.
+![Lenz Analytics Dashboard - Real-time detection statistics and trends](/dashboard/Statistic_FRA.webp)
+
+### Alert Management
+
+All security alerts are managed from a centralized dashboard. Lenz supports third-party integrations — including Telegram, Email, and Webhook — so alerts reach the right people through the channels they already use. Every alert is logged with a complete audit trail.
+
+![Lenz Alert Management - Centralized alert dashboard with audit trail](/dashboard/Alert%20Management%20-%20Alert%20History.webp)
+
+## Platform Capabilities
+
+Beyond the core dashboard, Lenz includes a full suite of capabilities for enterprise video operations:
+
+- **Live Streaming** — Manage and view live camera feeds across sites
+- **Smart Alerts** — AI-triggered notifications based on detection events
+- **Multi-User Access** — Role-based permissions for teams and operators
+- **Site Mapping** — Visual camera placement on interactive maps
+- **Tracking** — Monitor and track persons or vehicles across feeds
+- **Auto Retention** — Automated data lifecycle and storage management
+- **Edge Processing** — On-device AI analysis for reduced bandwidth and faster response
+- **Health Monitoring** — Real-time camera status tracking and diagnostics
+
+## Built for Enterprise Deployment
+
+Lenz is designed for organizations that need control over their infrastructure. Deployment options include on-premise and hybrid cloud configurations, with support for SSO and Active Directory integration. Nodeflux provides a dedicated 24/7 support team for enterprise customers.
+
+Whether you are managing a smart city surveillance network, a corporate security operation, or a multi-site facility, Lenz adapts to your scale and requirements.
+
+[Get in touch with our team](/lenz) to see how Lenz can transform your video management operations.
