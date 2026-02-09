@@ -6,7 +6,7 @@ import Link from "next/link";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import visionaireLogo from "@/public/nodeflux-primary-purple.png";
+import visionaireLogo from "@/public/nodeflux.webp";
 import Image from "next/image";
 import MobileNavbar from "./navbar/MobileNavbar";
 import { navLinks } from "@/lib/navigation-data";
@@ -40,13 +40,13 @@ export default function NavigationBar() {
         {/* Logo Section */}
         <div className="flex items-center shrink-0">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="relative h-10 w-44 md:h-12 md:w-56 transition-all duration-500 group-hover:scale-[1.02]">
+            <div className="relative h-6 w-28 md:h-7 md:w-32 transition-all duration-500 group-hover:scale-[1.02]">
               <Image
                 src={visionaireLogo}
                 alt="Nodeflux"
                 fill
                 priority
-                sizes="(max-width: 768px) 176px, 224px"
+                sizes="(max-width: 768px) 112px, 128px"
                 className="object-contain"
               />
             </div>

@@ -37,7 +37,7 @@ const analyticModels = [
       "Know exactly who enters your premises. Our AI identifies faces in real-time, even in crowds, poor lighting, or from different angles.",
     icon: Scan,
     video:
-      "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+      "https://drive.google.com/file/d/1Mm2Jy5vAe8q8GZ-g7szfzl_0wlO1FnHu/preview",
     thumbnail: "/products-page/face-recognition.webp",
     features: [
       "Track multiple faces at once",
@@ -69,7 +69,7 @@ const analyticModels = [
       "See how many people are in any area, where they go, and how long they stay. Make better decisions with real visitor data.",
     icon: Users,
     video:
-      "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+      "https://drive.google.com/file/d/1RAhsNbCADGmuoke4Khn3psRsZsbqqPqF/preview",
     thumbnail: "/products-page/people-analytics.webp",
     features: ["Visual heatmaps", "Queue monitoring", "Crowd alerts"],
     useCases: [
@@ -129,7 +129,7 @@ const analyticModels = [
       "Detect and classify every vehicle on camera. Know the make, model, color, and even estimate speed.",
     icon: Crosshair,
     video:
-      "https://drive.google.com/file/d/1HKvK-kcS2vz6guQSQfDZfnwg8HDAy8D8/preview",
+      "https://drive.google.com/file/d/1Scer-1hqthGfSkhpViWdGNVjHuQpRp9i/preview",
     thumbnail: "/products-page/vehicle-analytics.webp",
     features: [
       "Identify car brands",
@@ -195,7 +195,11 @@ export default function Analytics() {
                 </SelectTrigger>
                 <SelectContent className="rounded-xl">
                   {analyticModels.map((model) => (
-                    <SelectItem key={model.id} value={model.id} className="rounded-lg">
+                    <SelectItem
+                      key={model.id}
+                      value={model.id}
+                      className="rounded-lg"
+                    >
                       {model.title}
                     </SelectItem>
                   ))}
