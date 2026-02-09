@@ -1,5 +1,8 @@
-"use client";
-
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ActivityIcon as Activity } from "@phosphor-icons/react/dist/ssr";
 import Consolutation from "@/components/landing-page/Consolutation";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,22 +12,52 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getIcon } from "@/lib/icons";
-import { getSolutionBySlug } from "@/lib/solutions-data";
-import { ActivityIcon as Activity } from "@phosphor-icons/react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound, useParams } from "next/navigation";
-import { useEffect } from "react";
+import { FadeIn, FadeInView } from "@/components/solutions/MotionDiv";
+import { getIconSSR } from "@/lib/icons-ssr";
+import { getSolutionBySlug, getAllSolutionSlugs } from "@/lib/solutions-data";
+import { productJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
 
-export default function SolutionPage() {
-  const { slug } = useParams<{ slug: string }>();
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return getAllSolutionSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
   const solution = getSolutionBySlug(slug);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
+  if (!solution) {
+    return { title: "Solution Not Found" };
+  }
+
+  const title = `${solution.title} ${solution.titleHighlight} - ${solution.badge} | Nodeflux`;
+  const description = solution.description;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      images: [{ url: solution.topologyImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default async function SolutionPage({ params }: PageProps) {
+  const { slug } = await params;
+  const solution = getSolutionBySlug(slug);
 
   if (!solution) {
     notFound();
@@ -32,14 +65,40 @@ export default function SolutionPage() {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            productJsonLd({
+              name: `${solution.title} ${solution.titleHighlight}`,
+              description: solution.description,
+              url: `/solutions/${slug}`,
+              image: solution.topologyImage,
+              category: "BusinessApplication",
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Solutions", url: "/" },
+              {
+                name: `${solution.title} ${solution.titleHighlight}`,
+                url: `/solutions/${slug}`,
+              },
+            ]),
+          ),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8 relative max-w-[1280px]">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <FadeIn>
             <span className="inline-block text-sm font-medium text-primary mb-4">
               {solution.badge}
             </span>
@@ -54,13 +113,13 @@ export default function SolutionPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>
-                <Link href="/contact">Request Demo</Link>
+                <Link href="/contact-us">Request Demo</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="#how-it-works">See How It Works</Link>
               </Button>
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
@@ -79,15 +138,9 @@ export default function SolutionPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {solution.benefits.map((benefit, index) => {
-              const IconComponent = getIcon(benefit.icon);
+              const IconComponent = getIconSSR(benefit.icon);
               return (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
+                <FadeInView key={benefit.title} delay={index * 0.1}>
                   <Card className="h-full hover:shadow-md transition-shadow">
                     <CardHeader>
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2">
@@ -101,7 +154,7 @@ export default function SolutionPage() {
                       </CardDescription>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </FadeInView>
               );
             })}
           </div>
@@ -200,15 +253,9 @@ export default function SolutionPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {solution.useCases.map((useCase, index) => {
-              const IconComponent = getIcon(useCase.icon);
+              const IconComponent = getIconSSR(useCase.icon);
               return (
-                <motion.div
-                  key={useCase.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
+                <FadeInView key={useCase.name} delay={index * 0.1}>
                   <Card className="h-full hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2">
@@ -233,7 +280,7 @@ export default function SolutionPage() {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </FadeInView>
               );
             })}
           </div>

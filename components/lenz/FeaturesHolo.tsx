@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ActivityIcon as Activity,
   Bell,
@@ -12,9 +10,8 @@ import {
   Shield,
   TrendUp,
   Users,
-} from "@phosphor-icons/react";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+} from "@phosphor-icons/react/dist/ssr";
+import { InViewFade } from "./DashboardShowcaseClient";
 
 const coreFeatures = [
   {
@@ -32,24 +29,13 @@ const coreFeatures = [
 ];
 
 export function FeaturesHolo() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section
-      ref={ref}
-      className="py-12 md:py-32 bg-muted/30 relative border-t border-border/40 overflow-hidden"
-    >
+    <section className="py-12 md:py-32 bg-muted/30 relative border-t border-border/40 overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20">
           {/* Left: Core Platform Features */}
           <div className="space-y-6 md:space-y-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="space-y-3 md:space-y-4"
-            >
+            <InViewFade className="space-y-3 md:space-y-4">
               <div className="flex items-center gap-2">
                 <div className="w-1 h-1 bg-primary rounded-full" />
                 <span className="text-[10px] font-mono text-primary uppercase tracking-widest">
@@ -66,40 +52,31 @@ export function FeaturesHolo() {
                 Lenz is designed to handle enterprise deployments. From a
                 handful of cameras to thousands across multiple sites.
               </p>
-            </motion.div>
+            </InViewFade>
 
             <div className="grid grid-cols-2 gap-2 md:gap-4">
               {coreFeatures.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 + i * 0.05 }}
-                  className="flex items-center gap-2 md:gap-4 p-2.5 md:p-4 rounded-xl md:rounded-2xl bg-background border border-border/60 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all group cursor-default"
-                >
-                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-colors shrink-0">
-                    <item.icon className="w-4 h-4 md:w-5 md:h-5" />
+                <InViewFade key={i} delay={0.1 + i * 0.05}>
+                  <div className="flex items-center gap-2 md:gap-4 p-2.5 md:p-4 rounded-xl md:rounded-2xl bg-background border border-border/60 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all group cursor-default">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-colors shrink-0">
+                      <item.icon className="w-4 h-4 md:w-5 md:h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-xs md:text-sm font-medium text-foreground/80 block truncate">
+                        {item.name}
+                      </span>
+                      <span className="text-[9px] md:text-[10px] font-mono text-muted-foreground uppercase tracking-wider hidden md:block">
+                        {item.desc}
+                      </span>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <span className="text-xs md:text-sm font-medium text-foreground/80 block truncate">
-                      {item.name}
-                    </span>
-                    <span className="text-[9px] md:text-[10px] font-mono text-muted-foreground uppercase tracking-wider hidden md:block">
-                      {item.desc}
-                    </span>
-                  </div>
-                </motion.div>
+                </InViewFade>
               ))}
             </div>
           </div>
 
           {/* Right: Enterprise CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative group"
-          >
+          <InViewFade delay={0.3} className="relative group">
             <div className="absolute inset-0 bg-primary/5 rounded-2xl md:rounded-[2rem] blur-3xl group-hover:bg-primary/10 transition-colors" />
             <div className="relative p-5 md:p-12 rounded-2xl md:rounded-[2rem] border border-primary/20 bg-background/60 backdrop-blur-md space-y-4 md:space-y-8 flex flex-col justify-center h-full shadow-2xl">
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(var(--primary),0.2)]">
@@ -135,7 +112,7 @@ export function FeaturesHolo() {
                 </button>
               </div>
             </div>
-          </motion.div>
+          </InViewFade>
         </div>
       </div>
     </section>

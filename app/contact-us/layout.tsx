@@ -2,8 +2,8 @@ import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-  "Contact Us - Get in Touch with Nodeflux AI Experts | Nodeflux",
-  "Contact Nodeflux for AI Video Analytics, Surveillance Intelligence, and Enterprise LLM Agent solutions. Schedule a demo, request a consultation, or explore partnership opportunities with Indonesia's leading AI company.",
+  "Contact Us - Get in Touch with Nodeflux AI Experts",
+  "Contact Nodeflux for AI Video Analytics, Surveillance Intelligence, and LLM Agent solutions. Schedule a demo or explore partnership opportunities.",
   [
     "Contact Nodeflux",
     "AI Consultation",

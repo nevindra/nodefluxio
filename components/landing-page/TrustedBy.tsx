@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { FadeInView } from "@/components/solutions/MotionDiv";
 import Image from "next/image";
 
 const companies = [
@@ -22,18 +20,13 @@ export default function TrustedBy() {
     <section className="py-16 md:py-24 bg-background border-b border-black/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-10 md:mb-16">
         <div className="flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center space-x-3"
-          >
+          <FadeInView className="flex items-center space-x-3">
             <div className="w-8 h-px bg-black/10" />
             <h2 className="text-[10px] font-mono text-foreground/40 tracking-[0.4em] uppercase">
               Operational Partnerships
             </h2>
             <div className="w-8 h-px bg-black/10" />
-          </motion.div>
+          </FadeInView>
         </div>
       </div>
 

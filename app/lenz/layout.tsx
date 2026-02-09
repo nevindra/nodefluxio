@@ -1,9 +1,10 @@
 import { generateMetadata } from "@/app/config/sharedMetadata";
+import { productJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
   "Lenz - AI-Powered Video Management System | Nodeflux",
-  "Lenz is an enterprise Video Management System (VMS) that unifies 1000+ cameras in one dashboard. AI-powered analysis, real-time alerts, and <100ms streaming latency for smart city and security operations.",
+  "Enterprise Video Management System unifying 1000+ cameras in one dashboard. AI-powered analysis, real-time alerts, and low-latency streaming.",
   [
     "Lenz",
     "Video Management System",
@@ -31,5 +32,35 @@ export default function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            productJsonLd({
+              name: "Lenz",
+              description:
+                "Enterprise Video Management System (VMS) that unifies 1000+ cameras in one dashboard with AI-powered analysis, real-time alerts, and low-latency streaming for smart city and security operations.",
+              url: "/lenz",
+              image: "/landing-page/visionaire-core.webp",
+              category: "BusinessApplication",
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Lenz", url: "/lenz" },
+            ]),
+          ),
+        }}
+      />
+      {children}
+    </>
+  );
 }

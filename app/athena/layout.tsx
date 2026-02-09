@@ -1,9 +1,10 @@
 import { generateMetadata } from "@/app/config/sharedMetadata";
+import { productJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-  "Athena - Enterprise LLM Agent with RAG & Knowledge Graph | Nodeflux",
-  "Athena is an enterprise LLM Agent platform that turns your company documents into a smart assistant. Powered by RAG, Agentic Workflows, and Knowledge Graphs for accurate, grounded answers from your business data.",
+  "Athena - LLM Agent with RAG & Knowledge Graph | Nodeflux",
+  "Enterprise LLM Agent platform turning company documents into a smart assistant. Powered by RAG, Agentic Workflows, and Knowledge Graphs.",
   [
     "Athena",
     "LLM Agent",
@@ -32,5 +33,35 @@ export default function AthenaLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            productJsonLd({
+              name: "Athena",
+              description:
+                "Enterprise LLM Agent platform that turns company documents into a smart assistant, powered by RAG, Agentic Workflows, and Knowledge Graphs for accurate, grounded answers from business data.",
+              url: "/athena",
+              image: "/landing-page/visionaire-core.webp",
+              category: "BusinessApplication",
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Athena", url: "/athena" },
+            ]),
+          ),
+        }}
+      />
+      {children}
+    </>
+  );
 }

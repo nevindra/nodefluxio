@@ -150,9 +150,9 @@ export default function LenzDashboardMockup({
         {/* Top Header */}
         <header className="h-10 bg-white border-b border-black/5 flex items-center justify-between px-4 shrink-0">
           <div className="flex items-center gap-6">
-            <h1 className="font-semibold tracking-tight text-[11px] text-foreground">
+            <span className="font-semibold tracking-tight text-[11px] text-foreground">
               All Streams
-            </h1>
+            </span>
             <div className="hidden md:flex items-center gap-1 text-black/40">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
               <span className="text-[9px] uppercase font-mono">

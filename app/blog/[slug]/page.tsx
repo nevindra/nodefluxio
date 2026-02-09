@@ -4,8 +4,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeHighlight from "rehype-highlight";
-import { ArrowLeft, Calendar, Clock, User } from "@phosphor-icons/react/dist/ssr";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  User,
+} from "@phosphor-icons/react/dist/ssr";
 import { getPostBySlug, getAllSlugs } from "@/lib/blog";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
 import { mdxComponents } from "@/components/blog/mdx-components";
 
 interface PageProps {
@@ -17,7 +23,9 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
@@ -60,6 +68,33 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            articleJsonLd({
+              title: frontmatter.title,
+              description: frontmatter.description,
+              url: `/blog/${slug}`,
+              image: frontmatter.coverImage,
+              datePublished: frontmatter.date,
+              authorName: frontmatter.author.name,
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Blog", url: "/blog" },
+              { name: frontmatter.title, url: `/blog/${slug}` },
+            ]),
+          ),
+        }}
+      />
       {/* Header Section */}
       <section className="relative pt-32 pb-8">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">

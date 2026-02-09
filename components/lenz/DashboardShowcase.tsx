@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import {
   GridFour,
@@ -9,8 +5,15 @@ import {
   Shield,
   CheckCircle,
   Graph,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
+import { FadeInView } from "@/components/solutions/MotionDiv";
+import {
+  SlideInView,
+  ScaleInView,
+  SlideInFeature,
+} from "./DashboardShowcaseClient";
 
 const showcaseItems = [
   {
@@ -79,38 +82,51 @@ const showcaseItems = [
   },
 ];
 
-export function DashboardShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null);
+const accentColors = {
+  cyan: {
+    bg: "bg-cyan-500/10",
+    border: "border-cyan-500/20",
+    text: "text-cyan-500",
+    glow: "bg-cyan-500/20",
+  },
+  violet: {
+    bg: "bg-violet-500/10",
+    border: "border-violet-500/20",
+    text: "text-violet-500",
+    glow: "bg-violet-500/20",
+  },
+  amber: {
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/20",
+    text: "text-amber-500",
+    glow: "bg-amber-500/20",
+  },
+  emerald: {
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-500/20",
+    text: "text-emerald-500",
+    glow: "bg-emerald-500/20",
+  },
+};
 
+export function DashboardShowcase() {
   return (
-    <section
-      ref={containerRef}
-      className="relative z-10 pt-32 sm:pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-40 bg-muted/20"
-    >
+    <section className="relative z-10 pt-32 sm:pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-40 bg-muted/20">
       <div className="max-w-[1280px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <FadeInView>
             <h2 className="text-4xl md:text-6xl font-medium tracking-tight">
               WHAT CAN <br />
               <span className="text-muted-foreground uppercase">Lenz Do?</span>
             </h2>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-muted-foreground text-lg font-light leading-relaxed"
-          >
-            From live monitoring to intelligent analysis, Lenz transforms how
-            you manage video surveillance.
-          </motion.p>
+          </FadeInView>
+          <FadeInView delay={0.1}>
+            <p className="text-muted-foreground text-lg font-light leading-relaxed">
+              From live monitoring to intelligent analysis, Lenz transforms how
+              you manage video surveillance.
+            </p>
+          </FadeInView>
         </div>
 
         {/* Showcase Items */}
@@ -138,52 +154,19 @@ function ShowcaseItem({
   index: number;
   reverse: boolean;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const Icon = item.icon;
-
-  const accentColors = {
-    cyan: {
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-500/20",
-      text: "text-cyan-500",
-      glow: "bg-cyan-500/20",
-    },
-    violet: {
-      bg: "bg-violet-500/10",
-      border: "border-violet-500/20",
-      text: "text-violet-500",
-      glow: "bg-violet-500/20",
-    },
-    amber: {
-      bg: "bg-amber-500/10",
-      border: "border-amber-500/20",
-      text: "text-amber-500",
-      glow: "bg-amber-500/20",
-    },
-    emerald: {
-      bg: "bg-emerald-500/10",
-      border: "border-emerald-500/20",
-      text: "text-emerald-500",
-      glow: "bg-emerald-500/20",
-    },
-  };
-
+  const IconComponent = item.icon;
   const colors = accentColors[item.accent as keyof typeof accentColors];
 
   return (
     <div
-      ref={ref}
       className={cn(
         "grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center",
         reverse && "lg:grid-flow-dense",
       )}
     >
       {/* Text Content */}
-      <motion.div
-        initial={{ opacity: 0, x: reverse ? 50 : -50 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+      <SlideInView
+        direction={reverse ? "right" : "left"}
         className={cn("space-y-8", reverse && "lg:col-start-2")}
       >
         {/* Badge */}
@@ -213,43 +196,37 @@ function ShowcaseItem({
         {/* Features List */}
         <div className="space-y-4 pt-4">
           {item.features.map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="flex items-center gap-3 text-foreground/80"
-            >
-              <CheckCircle className={cn("w-5 h-5 shrink-0", colors.text)} />
-              <span className="text-sm md:text-base">{feature}</span>
-            </motion.div>
+            <SlideInFeature key={i} delay={0.3 + i * 0.1}>
+              <div className="flex items-center gap-3 text-foreground/80">
+                <CheckCircle className={cn("w-5 h-5 shrink-0", colors.text)} />
+                <span className="text-sm md:text-base">{feature}</span>
+              </div>
+            </SlideInFeature>
           ))}
         </div>
 
         {/* Icon Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className={cn(
-            "inline-flex items-center gap-3 px-4 py-3 rounded-xl border bg-background/50 backdrop-blur-sm",
-            colors.border,
-          )}
-        >
-          <div className={cn("p-2 rounded-lg", colors.bg)}>
-            <Icon className={cn("w-5 h-5", colors.text)} />
+        <ScaleInView delay={0.5}>
+          <div
+            className={cn(
+              "inline-flex items-center gap-3 px-4 py-3 rounded-xl border bg-background/50 backdrop-blur-sm",
+              colors.border,
+            )}
+          >
+            <div className={cn("p-2 rounded-lg", colors.bg)}>
+              <IconComponent className={cn("w-5 h-5", colors.text)} />
+            </div>
+            <span className="text-sm font-medium text-foreground/80">
+              {item.title}
+            </span>
           </div>
-          <span className="text-sm font-medium text-foreground/80">
-            {item.title}
-          </span>
-        </motion.div>
-      </motion.div>
+        </ScaleInView>
+      </SlideInView>
 
       {/* Image */}
-      <motion.div
-        initial={{ opacity: 0, x: reverse ? -50 : 50 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
+      <SlideInView
+        direction={reverse ? "left" : "right"}
+        delay={0.2}
         className={cn(
           "relative group",
           reverse && "lg:col-start-1 lg:row-start-1",
@@ -292,7 +269,7 @@ function ShowcaseItem({
             colors.glow,
           )}
         />
-      </motion.div>
+      </SlideInView>
     </div>
   );
 }

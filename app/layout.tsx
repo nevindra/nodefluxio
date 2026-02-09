@@ -8,6 +8,7 @@ import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonLd";
 
 const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -17,8 +18,8 @@ const jakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   ...generateMetadata(
-    "Nodeflux - AI Company for Video Surveillance & Intelligent Agents",
-    "Nodeflux is Indonesia's leading AI company building Video Surveillance Intelligence and LLM-powered AI Agents. Enterprise solutions for smart cities, public safety, and security operations.",
+    "Nodeflux - AI Video Surveillance & Intelligent Agents",
+    "Indonesia's leading AI company for Video Surveillance Intelligence and LLM-powered AI Agents. Solutions for smart cities, public safety, and security.",
     [
       "Video Surveillance AI",
       "LLM Agent",
@@ -70,6 +71,18 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={jakartaSans.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd()),
+          }}
+        />
         <SmoothScroll>
           <OperationalGrid />
           <ScrollProgress />

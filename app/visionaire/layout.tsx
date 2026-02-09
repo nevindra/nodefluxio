@@ -1,9 +1,10 @@
 import { generateMetadata } from "@/app/config/sharedMetadata";
+import { productJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateMetadata(
-  "Visionaire - AI Video Analytics for Face, Vehicle & People Detection | Nodeflux",
-  "Visionaire is an AI-powered video analytics platform with Face Recognition, License Plate Recognition (LPR), People Analytics, and Vehicle Detection. Real-time insights for security, retail, parking, and smart city operations.",
+  "Visionaire - AI Video Analytics Platform | Nodeflux",
+  "AI video analytics with Face Recognition, License Plate Recognition, People Analytics, and Vehicle Detection for security and smart cities.",
   [
     "Visionaire",
     "AI Video Analytics",
@@ -34,5 +35,35 @@ export default function AnalyticsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            productJsonLd({
+              name: "Visionaire",
+              description:
+                "AI-powered video analytics platform with Face Recognition, License Plate Recognition (LPR), People Analytics, and Vehicle Detection for security, retail, parking, and smart city operations.",
+              url: "/visionaire",
+              image: "/landing-page/visionaire-core.webp",
+              category: "BusinessApplication",
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Visionaire", url: "/visionaire" },
+            ]),
+          ),
+        }}
+      />
+      {children}
+    </>
+  );
 }

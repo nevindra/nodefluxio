@@ -6,7 +6,7 @@ import Link from "next/link";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import visionaireLogo from "@/public/nodeflux.webp";
+import visionaireLogo from "@/public/nodeflux-tagline.webp";
 import Image from "next/image";
 import MobileNavbar from "./navbar/MobileNavbar";
 import { navLinks } from "@/lib/navigation-data";
