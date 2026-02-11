@@ -43,7 +43,7 @@ export default function CTA() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                  <span>24/7 Support</span>
+                  <span>Fast Team Support</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
