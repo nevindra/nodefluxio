@@ -250,11 +250,9 @@ function ShowcaseItem({
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-contain transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
           </div>
 
-          {/* Floating Badge */}
           <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border/50">
             <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
               Live Preview

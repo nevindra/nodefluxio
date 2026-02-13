@@ -41,11 +41,15 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `/solutions/${slug}`,
+    },
     openGraph: {
       title,
       description,
+      url: `/solutions/${slug}`,
+      siteName: "Nodeflux",
       type: "website",
-      images: [{ url: solution.topologyImage }],
     },
     twitter: {
       card: "summary_large_image",

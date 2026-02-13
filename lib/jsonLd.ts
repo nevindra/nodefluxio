@@ -1,4 +1,4 @@
-const SITE_URL = process.env.SITE_URL || "https://www.nodeflux.io";
+const SITE_URL = process.env.SITE_URL || "https://www.nodeflux.ai";
 
 export function organizationJsonLd() {
   return {

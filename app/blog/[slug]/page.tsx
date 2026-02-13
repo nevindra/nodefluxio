@@ -39,15 +39,22 @@ export async function generateMetadata({
     title: `${post.frontmatter.title} | Nodeflux Blog`,
     description: post.frontmatter.description,
     keywords: post.frontmatter.tags,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
+      url: `/blog/${slug}`,
+      siteName: "Nodeflux",
       type: "article",
       publishedTime: post.frontmatter.date,
       authors: [post.frontmatter.author.name],
-      images: post.frontmatter.coverImage
-        ? [{ url: post.frontmatter.coverImage }]
-        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
     },
   };
 }

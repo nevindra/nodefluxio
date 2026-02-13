@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://www.nodeflux.io",
+  siteUrl: process.env.SITE_URL || "https://www.nodeflux.ai",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],

@@ -7,6 +7,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import PostHogProvider from "@/components/providers/PostHogProvider";
 import ScrollProgress from "@/components/ScrollProgress";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonLd";
 
@@ -83,13 +84,15 @@ export default function RootLayout({
             __html: JSON.stringify(websiteJsonLd()),
           }}
         />
-        <SmoothScroll>
-          <OperationalGrid />
-          <ScrollProgress />
-          <NavigationBar />
-          {children}
-          <Footer />
-        </SmoothScroll>
+        <PostHogProvider>
+          <SmoothScroll>
+            <OperationalGrid />
+            <ScrollProgress />
+            <NavigationBar />
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </PostHogProvider>
       </body>
     </html>
   );

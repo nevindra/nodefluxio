@@ -83,11 +83,6 @@ export const navLinks: NavGroup[] = [
     title: "Resources",
     items: [
       {
-        title: "Documentation",
-        href: "/docs",
-        desc: "Technical guides and API reference",
-      },
-      {
         title: "Blog",
         href: "/blog",
         desc: "Insights and updates from our team",

@@ -6,7 +6,7 @@ export function generateMetadata(
   keywords: string[],
 ): Metadata {
   return {
-    metadataBase: new URL(process.env.SITE_URL || "https://www.nodeflux.io"),
+    metadataBase: new URL(process.env.SITE_URL || "https://www.nodeflux.ai"),
     title: {
       template: "%s",
       default: title,
