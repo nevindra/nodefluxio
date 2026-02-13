@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -17,7 +18,6 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
-  swcMinify: true,
   experimental: {
     optimizePackageImports: [
       "framer-motion",
