@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { VisionaireHero } from "@/components/visionaire/VisionaireHero";
 import { CapabilitiesShowcase } from "@/components/visionaire/CapabilitiesShowcase";
 import { FadeInView } from "@/components/solutions/MotionDiv";
@@ -140,9 +141,9 @@ export default function Analytics() {
                   </div>
 
                   <div className="pt-2 md:pt-4">
-                    <button className="w-full md:w-auto px-6 md:px-10 py-3 md:py-5 bg-primary text-primary-foreground rounded-xl md:rounded-2xl text-sm font-semibold hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-[0.98]">
+                    <Link href="/contact-us" className="w-full md:w-auto px-6 md:px-10 py-3 md:py-5 bg-primary text-primary-foreground rounded-xl md:rounded-2xl text-sm font-semibold hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-[0.98]">
                       Talk to Our Team <TrendUp className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
