@@ -1,23 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Calendar, Clock, User } from "@phosphor-icons/react";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Calendar, Clock, ArrowRight } from "@phosphor-icons/react";
 import { PostMeta } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
 interface PostCardProps {
   post: PostMeta;
   index?: number;
+  featured?: boolean;
 }
 
-export function PostCard({ post, index = 0 }: PostCardProps) {
+export function PostCard({ post, index = 0, featured = false }: PostCardProps) {
   const { slug, frontmatter, readingTime } = post;
   const formattedDate = new Date(frontmatter.date).toLocaleDateString("en-US", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
   });
 
@@ -26,50 +25,59 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
     >
-      <Link href={`/blog/${slug}`}>
-        <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 group">
-          {frontmatter.coverImage && (
-            <div className="relative aspect-video overflow-hidden">
-              <Image
-                src={frontmatter.coverImage}
-                alt={frontmatter.title}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
+      <Link href={`/blog/${slug}`} className="group block">
+        <article
+          className={cn(
+            "relative rounded-xl border border-border/50 bg-card p-6 transition-all duration-300",
+            "hover:border-primary/30 hover:shadow-md hover:shadow-primary/5",
+            featured && "md:p-8"
           )}
-          <CardHeader className="space-y-2">
-            <span className="inline-block w-fit text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
+        >
+          {/* Category & Meta Row */}
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-xs font-medium text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
               {frontmatter.category}
             </span>
-            <h3 className="text-xl font-semibold leading-tight text-foreground group-hover:text-primary transition-colors">
-              {frontmatter.title}
-            </h3>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground line-clamp-2">
-              {frontmatter.description}
-            </p>
-          </CardContent>
-          <CardFooter className="text-sm text-muted-foreground">
-            <div className="flex items-center gap-4 flex-wrap">
-              <div className="flex items-center gap-1.5">
-                <User className="w-4 h-4" />
-                <span>{frontmatter.author.name}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" />
-                <span>{formattedDate}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" />
-                <span>{readingTime}</span>
-              </div>
+            <span className="text-xs text-muted-foreground/60">·</span>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/60">
+              <Calendar className="w-3 h-3" />
+              <span>{formattedDate}</span>
             </div>
-          </CardFooter>
-        </Card>
+            <span className="text-xs text-muted-foreground/60">·</span>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/60">
+              <Clock className="w-3 h-3" />
+              <span>{readingTime}</span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <h3
+            className={cn(
+              "font-semibold leading-tight text-foreground group-hover:text-primary transition-colors duration-200",
+              featured ? "text-2xl md:text-3xl mb-3" : "text-lg mb-2"
+            )}
+          >
+            {frontmatter.title}
+          </h3>
+
+          {/* Description */}
+          <p
+            className={cn(
+              "text-muted-foreground leading-relaxed",
+              featured ? "text-base line-clamp-3" : "text-sm line-clamp-2"
+            )}
+          >
+            {frontmatter.description}
+          </p>
+
+          {/* Read More */}
+          <div className="flex items-center gap-1.5 mt-4 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <span>Read more</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </div>
+        </article>
       </Link>
     </motion.div>
   );

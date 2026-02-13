@@ -38,6 +38,7 @@ export async function generateMetadata({
   return {
     title: `${post.frontmatter.title} | Nodeflux Blog`,
     description: post.frontmatter.description,
+    keywords: post.frontmatter.tags,
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.description,

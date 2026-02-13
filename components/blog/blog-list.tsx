@@ -20,6 +20,8 @@ export function BlogList({ posts, categories }: BlogListProps) {
       )
     : posts;
 
+  const [featuredPost, ...remainingPosts] = filteredPosts;
+
   return (
     <>
       {/* Category Filter */}
@@ -38,12 +40,22 @@ export function BlogList({ posts, categories }: BlogListProps) {
         </motion.div>
       )}
 
-      {/* Posts Grid */}
+      {/* Posts */}
       {filteredPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post, index) => (
-            <PostCard key={post.slug} post={post} index={index} />
-          ))}
+        <div className="space-y-6">
+          {/* Featured Post */}
+          {featuredPost && (
+            <PostCard post={featuredPost} index={0} featured />
+          )}
+
+          {/* Remaining Posts Grid */}
+          {remainingPosts.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {remainingPosts.map((post, index) => (
+                <PostCard key={post.slug} post={post} index={index + 1} />
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <motion.div

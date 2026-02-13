@@ -34,7 +34,7 @@ export default function BlogPage() {
 
       {/* Filter & Posts Section */}
       <section className="pb-20">
-        <div className="container mx-auto px-6 lg:px-8 max-w-[1280px]">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <BlogList posts={posts} categories={categories} />
         </div>
       </section>
