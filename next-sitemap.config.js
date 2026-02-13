@@ -5,7 +5,7 @@ module.exports = {
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
   },
-  exclude: ["/company-profile", "/license-check"],
+  exclude: ["/company-profile", "/license-check", "**/opengraph-image"],
   generateIndexSitemap: false,
   additionalPaths: async (config) => {
     // Manually add solution routes since they are client-rendered

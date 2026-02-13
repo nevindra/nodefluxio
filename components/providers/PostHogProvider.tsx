@@ -10,7 +10,8 @@ if (
   process.env.NEXT_PUBLIC_POSTHOG_KEY
 ) {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    api_host: "/ingest",
+    ui_host: "https://us.i.posthog.com",
     capture_pageview: false, // We capture manually below
     capture_pageleave: true,
   });
