@@ -2,8 +2,9 @@
 
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
-import { Suspense, useEffect } from "react";
+import { Suspense, useCallback, useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { captureUtmParams, trackScrollDepth } from "@/lib/analytics";
 
 if (
   typeof window !== "undefined" &&
@@ -32,6 +33,40 @@ function PostHogPageView() {
     }
   }, [pathname, searchParams, posthog]);
 
+  // Capture UTM params on first load
+  useEffect(() => {
+    captureUtmParams();
+  }, []);
+
+  return null;
+}
+
+function ScrollDepthTracker() {
+  const pathname = usePathname();
+  const milestonesRef = useRef<Set<number>>(new Set());
+
+  const handleScroll = useCallback(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight <= 0) return;
+
+    const percent = Math.round((scrollTop / docHeight) * 100);
+    const milestones = [25, 50, 75, 100];
+
+    for (const milestone of milestones) {
+      if (percent >= milestone && !milestonesRef.current.has(milestone)) {
+        milestonesRef.current.add(milestone);
+        trackScrollDepth(milestone, pathname);
+      }
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    milestonesRef.current = new Set();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname, handleScroll]);
+
   return null;
 }
 
@@ -45,6 +80,7 @@ export default function PostHogProvider({
       <Suspense fallback={null}>
         <PostHogPageView />
       </Suspense>
+      <ScrollDepthTracker />
       {children}
     </PHProvider>
   );

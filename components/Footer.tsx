@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Envelope, MapPin, Phone } from "@phosphor-icons/react";
 import { footerNavigation } from "@/lib/navigation-data";
+import { trackContactInfoClicked, trackSocialLinkClicked } from "@/lib/analytics";
 
 const navigation = footerNavigation;
 
@@ -48,6 +49,7 @@ export default function Footer() {
             <div className="pt-4 space-y-3">
               <a
                 href={`mailto:${contactInfo.email}`}
+                onClick={() => trackContactInfoClicked("email")}
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -57,6 +59,7 @@ export default function Footer() {
               </a>
               <a
                 href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                onClick={() => trackContactInfoClicked("phone")}
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -66,6 +69,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://maps.app.goo.gl/5rtXjKs6T5eL4hZv5"
+                onClick={() => trackContactInfoClicked("map")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
@@ -161,6 +165,7 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <a
                 href="https://www.linkedin.com/company/nodeflux/"
+                onClick={() => trackSocialLinkClicked("linkedin")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"

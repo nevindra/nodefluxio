@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react";
+import { trackDemoCtaClicked } from "@/lib/analytics";
 
 export default function Consolutation() {
 	return (
@@ -60,7 +61,7 @@ export default function Consolutation() {
 							size="lg"
 							className="px-8 font-semibold h-12"
 						>
-							<Link href="/contact-us" className="flex items-center group">
+							<Link href="/contact-us" className="flex items-center group" onClick={() => trackDemoCtaClicked("consultation", "Request Consultation")}>
 								Request Consultation
 								<ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
 							</Link>

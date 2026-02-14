@@ -9,9 +9,10 @@ import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, Envelope, MapPin, Phone } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { trackContactFormStarted, trackContactFormSubmitted, trackContactFormError, trackContactInfoClicked } from "@/lib/analytics";
 
 const contactFormSchema = z.object({
   name: z
@@ -35,6 +36,7 @@ type FormData = {
 
 export default function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formStartedRef = useRef(false);
   const { toast } = useToast();
 
   const {
@@ -63,11 +65,13 @@ export default function ContactUs() {
           variant: "default",
         });
         reset();
+        trackContactFormSubmitted();
       } else {
         throw new Error("Failed to send message");
       }
     } catch (error) {
       console.error("Error sending message:", error);
+      trackContactFormError(error instanceof Error ? error.message : "Unknown error");
       toast({
         title: "Sending Error",
         description:
@@ -139,12 +143,14 @@ export default function ContactUs() {
                     label: "Email",
                     value: "business@nodeflux.io",
                     href: "mailto:business@nodeflux.io",
+                    trackType: "email" as const,
                   },
                   {
                     icon: Phone,
                     label: "Phone",
                     value: "+62 812 9240 0659",
                     href: "tel:+6281292400659",
+                    trackType: "phone" as const,
                   },
                   {
                     icon: MapPin,
@@ -152,11 +158,13 @@ export default function ContactUs() {
                     value:
                       "Jl. Kemang Timur No.24, Bangka, Jakarta Selatan 12730",
                     href: "https://maps.app.goo.gl/5rtXjKs6T5eL4hZv5",
+                    trackType: "map" as const,
                   },
                 ].map((item, i) => (
                   <a
                     key={i}
                     href={item.href}
+                    onClick={() => trackContactInfoClicked(item.trackType)}
                     className="group flex items-start gap-4 p-5 rounded-2xl border border-border/60 bg-muted/5 hover:bg-muted/10 hover:border-primary/40 transition-all"
                   >
                     <div className="w-12 h-12 rounded-xl bg-background border border-border/40 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-colors shrink-0">
@@ -201,7 +209,16 @@ export default function ContactUs() {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  onFocus={() => {
+                    if (!formStartedRef.current) {
+                      formStartedRef.current = true;
+                      trackContactFormStarted();
+                    }
+                  }}
+                  className="space-y-6"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-sm font-medium">

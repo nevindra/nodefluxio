@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { HeroBackground } from "./HeroBackground";
 import { HeroProps } from "./types";
+import { trackDemoCtaClicked } from "@/lib/analytics";
 
 const words = ["SAFETY.", "SMART CITIES.", "TRAFFIC.", "EFFICIENCY."];
 
@@ -316,7 +317,7 @@ export function MainHero({
                   asChild
                   className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-12 sm:h-14 px-6 sm:px-10 transition-all duration-300 shadow-xl shadow-primary/20 rounded-none uppercase tracking-wide sm:tracking-widest text-[10px] sm:text-xs"
                 >
-                  <Link href={primaryCtaHref}>{primaryCtaText}</Link>
+                  <Link href={primaryCtaHref} onClick={() => trackDemoCtaClicked("hero", primaryCtaText)}>{primaryCtaText}</Link>
                 </Button>
               </div>
             </motion.div>

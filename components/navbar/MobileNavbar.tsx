@@ -7,6 +7,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { navLinks } from "@/lib/navigation-data";
+import { trackDemoCtaClicked } from "@/lib/analytics";
 
 interface MobileNavbarProps {
   onClose: () => void;
@@ -102,9 +103,11 @@ export default function MobileNavbar({ onClose }: MobileNavbarProps) {
           <Button
             size="lg"
             className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg h-14 text-sm uppercase tracking-widest"
-            onClick={onClose}
           >
-            <Link href="/contact-us" className="w-full h-full flex items-center justify-center">Request Demo</Link>
+            <Link href="/contact-us" className="w-full h-full flex items-center justify-center" onClick={() => {
+              trackDemoCtaClicked("mobile_navbar", "Request Demo");
+              onClose();
+            }}>Request Demo</Link>
           </Button>
         </div>
 

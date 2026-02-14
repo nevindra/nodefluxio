@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/navigation-data";
+import { trackUseCaseCarouselInteracted } from "@/lib/analytics";
 
 // Get solutions from centralized navigation data
 const solutionItems =
@@ -94,12 +95,14 @@ export default function UseCases() {
   const scrollLeft = () => {
     if (activeIndex > 0) {
       scrollToIndex(activeIndex - 1);
+      trackUseCaseCarouselInteracted("left", activeIndex - 1);
     }
   };
 
   const scrollRight = () => {
     if (activeIndex < useCases.length - 1) {
       scrollToIndex(activeIndex + 1);
+      trackUseCaseCarouselInteracted("right", activeIndex + 1);
     }
   };
 
@@ -243,7 +246,10 @@ export default function UseCases() {
         {useCases.map((_, index) => (
           <button
             key={index}
-            onClick={() => scrollToIndex(index)}
+            onClick={() => {
+              scrollToIndex(index);
+              trackUseCaseCarouselInteracted("dot", index);
+            }}
             className={`transition-all duration-300 rounded-full ${
               index === activeIndex
                 ? "w-8 h-2 bg-primary"

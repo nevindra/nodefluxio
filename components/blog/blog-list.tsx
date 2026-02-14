@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { PostMeta } from "@/lib/blog";
 import { PostCard, CategoryFilter } from "@/components/blog/post-card";
+import { trackBlogCategoryFiltered } from "@/lib/analytics";
 
 interface BlogListProps {
   posts: PostMeta[];
@@ -35,7 +36,10 @@ export function BlogList({ posts, categories }: BlogListProps) {
           <CategoryFilter
             categories={categories}
             activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
+            onCategoryChange={(category) => {
+              setActiveCategory(category);
+              trackBlogCategoryFiltered(category);
+            }}
           />
         </motion.div>
       )}

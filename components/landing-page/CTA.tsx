@@ -1,6 +1,6 @@
 import { ArrowRight, Phone } from "@phosphor-icons/react/dist/ssr";
 import { FadeInView } from "@/components/solutions/MotionDiv";
-import Link from "next/link";
+import { TrackingLink } from "@/components/tracking/TrackingLink";
 
 export default function CTA() {
   return (
@@ -54,7 +54,7 @@ export default function CTA() {
 
             {/* Right: CTA Cards */}
             <div className="space-y-4">
-              <Link href="/contact-us" className="block group">
+              <TrackingLink href="/contact-us" page="landing_cta" ctaText="Contact Us" className="block group">
                 <div className="p-6 bg-primary hover:bg-primary/90 transition-all duration-300 rounded-lg">
                   <div className="flex items-center justify-between mb-4">
                     <div className="p-2 bg-white/10 rounded-lg">
@@ -69,7 +69,7 @@ export default function CTA() {
                     Schedule a consultation with our sales team
                   </p>
                 </div>
-              </Link>
+              </TrackingLink>
             </div>
           </div>
         </FadeInView>

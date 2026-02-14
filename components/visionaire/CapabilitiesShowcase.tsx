@@ -1,5 +1,6 @@
 "use client";
 
+import { trackCapabilityTabSwitched } from "@/lib/analytics";
 import { AiVideoPlayer } from "@/components/visionaire/AiVideoPlayer";
 import {
   Select,
@@ -163,7 +164,11 @@ export function CapabilitiesShowcase() {
     <div className="flex flex-col gap-6 md:gap-12">
       {/* Mobile: Select dropdown */}
       <div className="md:hidden">
-        <Select value={activeTab} onValueChange={setActiveTab}>
+        <Select value={activeTab} onValueChange={(value) => {
+          setActiveTab(value);
+          const model = analyticModels.find((m) => m.id === value);
+          if (model) trackCapabilityTabSwitched(model.title);
+        }}>
           <SelectTrigger className="w-full h-12 px-4 rounded-xl bg-background border-border/60 text-sm font-medium">
             <SelectValue />
           </SelectTrigger>
@@ -187,7 +192,10 @@ export function CapabilitiesShowcase() {
           {analyticModels.map((model) => (
             <button
               key={model.id}
-              onClick={() => setActiveTab(model.id)}
+              onClick={() => {
+                setActiveTab(model.id);
+                trackCapabilityTabSwitched(model.title);
+              }}
               className={cn(
                 "relative px-8 py-3 rounded-xl transition-all duration-300 text-sm font-medium uppercase tracking-wider whitespace-nowrap",
                 activeTab === model.id

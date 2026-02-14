@@ -16,6 +16,7 @@ import { FadeIn, FadeInView } from "@/components/solutions/MotionDiv";
 import { getIconSSR } from "@/lib/icons-ssr";
 import { getSolutionBySlug, getAllSolutionSlugs } from "@/lib/solutions-data";
 import { productJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
+import { TrackingLink } from "@/components/tracking/TrackingLink";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -117,7 +118,7 @@ export default async function SolutionPage({ params }: PageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>
-                <Link href="/contact-us">Request Demo</Link>
+                <TrackingLink href="/contact-us" page={`solution_${slug}`} ctaText="Request Demo">Request Demo</TrackingLink>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="#how-it-works">See How It Works</Link>

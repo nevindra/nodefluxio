@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useState } from "react";
+import { trackProductTabSwitched, trackProductLearnMoreClicked, trackLenzFeatureToggled } from "@/lib/analytics";
 
 import { Button } from "../ui/button";
 import AthenaKnowledgeMockup from "./AthenaKnowledgeMockup";
@@ -105,7 +106,10 @@ export default function Features() {
             {products.map((p) => (
               <button
                 key={p.id}
-                onClick={() => setActiveTab(p.id)}
+                onClick={() => {
+                  setActiveTab(p.id);
+                  trackProductTabSwitched(p.id);
+                }}
                 className={`flex items-center gap-2.5 py-4 transition-all duration-300 relative group flex-shrink-0 ${
                   activeTab === p.id
                     ? "text-primary"
@@ -166,7 +170,7 @@ export default function Features() {
                             asChild
                             className="flex-1 min-w-[200px] h-12 px-8 text-background text-[10px] font-medium rounded-none hover:bg-primary/90 transition-all duration-300 uppercase tracking-[0.2em] group flex items-center justify-center gap-3"
                           >
-                            <Link href={p.href}>Learn More </Link>
+                            <Link href={p.href} onClick={() => trackProductLearnMoreClicked(p.id)}>Learn More </Link>
                           </Button>
                         </div>
 
@@ -195,11 +199,12 @@ export default function Features() {
                               ].map((uc) => (
                                 <button
                                   key={uc.id}
-                                  onClick={() =>
+                                  onClick={() => {
                                     setLenzUseCase(
                                       lenzUseCase === uc.id ? "streams" : uc.id,
-                                    )
-                                  }
+                                    );
+                                    trackLenzFeatureToggled(uc.label);
+                                  }}
                                   className={`flex items-center gap-2.5 px-5 py-2.5 text-[9px] font-medium uppercase tracking-[0.15em] border transition-all duration-300 ${
                                     lenzUseCase === uc.id
                                       ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"

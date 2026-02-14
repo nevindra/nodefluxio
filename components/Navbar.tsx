@@ -10,6 +10,7 @@ import visionaireLogo from "@/public/nodeflux-tagline.webp";
 import Image from "next/image";
 import MobileNavbar from "./navbar/MobileNavbar";
 import { navLinks } from "@/lib/navigation-data";
+import { trackDemoCtaClicked, trackMobileMenuOpened } from "@/lib/analytics";
 
 export default function NavigationBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -124,13 +125,17 @@ export default function NavigationBar() {
               size="sm"
               className="font-bold px-6 h-9  transition-all duration-500 text-[9px] uppercase tracking-[0.2em] bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/10"
             >
-              <Link href="/contact-us">Initialize Demo</Link>
+              <Link href="/contact-us" onClick={() => trackDemoCtaClicked("navbar", "Initialize Demo")}>Initialize Demo</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              const newState = !mobileMenuOpen;
+              setMobileMenuOpen(newState);
+              if (newState) trackMobileMenuOpened();
+            }}
             className={`md:hidden p-2 rounded-lg transition-all ${
               mobileMenuOpen
                 ? "bg-muted text-foreground"
