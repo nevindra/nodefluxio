@@ -2,6 +2,9 @@ import { LenzHero } from "@/components/lenz/LenzHero";
 import { DashboardShowcase } from "@/components/lenz/DashboardShowcase";
 import { FeaturesHolo } from "@/components/lenz/FeaturesHolo";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export default function LenzPage() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 overflow-x-hidden">

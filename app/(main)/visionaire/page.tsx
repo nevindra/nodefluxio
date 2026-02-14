@@ -13,6 +13,9 @@ import {
   UsersIcon as Users,
 } from "@phosphor-icons/react/dist/ssr";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 const additionalDetections = [
   { name: "Crowd Estimation", icon: Users },
   { name: "PPE Detection", icon: ShieldWarning },
@@ -46,6 +49,18 @@ export default function Analytics() {
               From faces to license plates, our AI recognizes what matters most
               to your business.
             </p>
+          </div>
+
+          {/* SEO: All capabilities as hidden semantic content for crawlers */}
+          <div className="sr-only">
+            <h3>Face Recognition</h3>
+            <p>Know exactly who enters your premises. Our AI identifies faces in real-time, even in crowds, poor lighting, or from different angles. Track multiple faces at once. Recognize faces in any lighting. Estimate age, gender and more attributes.</p>
+            <h3>People Analytics</h3>
+            <p>See how many people are in any area, where they go, and how long they stay. Make better decisions with real visitor data. Visual heatmaps. Queue monitoring. Crowd alerts.</p>
+            <h3>License Plate Recognition</h3>
+            <p>Automatically read and record every license plate that passes your cameras. Works day or night, rain or shine. Read plates instantly. Identify vehicle type. Works in all conditions.</p>
+            <h3>Vehicle Analytics</h3>
+            <p>Detect and classify every vehicle on camera. Know the make, model, color, and even estimate speed. Identify car brands. Measure speed. Detect illegal parking.</p>
           </div>
 
           {/* Interactive tabs - client component */}

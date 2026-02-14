@@ -5,6 +5,6 @@ export const { sanityFetch, SanityLive } = defineLive({
   client: client.withConfig({
     apiVersion: "vX",
   }),
-  serverToken: process.env.SANITY_API_READ_TOKEN,
-  browserToken: process.env.SANITY_API_READ_TOKEN,
+  serverToken: process.env.SANITY_API_READ_TOKEN || false,
+  browserToken: process.env.SANITY_API_READ_TOKEN || false,
 });

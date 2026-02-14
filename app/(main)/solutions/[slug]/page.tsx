@@ -22,6 +22,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllSolutionSlugs().map((slug) => ({ slug }));
 }
@@ -184,6 +186,7 @@ export default async function SolutionPage({ params }: PageProps) {
               src={solution.topologyImage}
               alt={`${solution.title} System Architecture`}
               fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-contain"
             />
           </div>

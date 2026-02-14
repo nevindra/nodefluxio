@@ -43,7 +43,7 @@ export default function DashboardLayout({
               description:
                 "Enterprise Video Management System (VMS) that unifies 1000+ cameras in one dashboard with AI-powered analysis, real-time alerts, and low-latency streaming for smart city and security operations.",
               url: "/lenz",
-              image: "/landing-page/visionaire-core.webp",
+              image: "/hero/lenz-hero.webp",
               category: "BusinessApplication",
             }),
           ),

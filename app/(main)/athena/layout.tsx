@@ -44,7 +44,7 @@ export default function AthenaLayout({
               description:
                 "Enterprise LLM Agent platform that turns company documents into a smart assistant, powered by RAG, Agentic Workflows, and Knowledge Graphs for accurate, grounded answers from business data.",
               url: "/athena",
-              image: "/landing-page/visionaire-core.webp",
+              image: "/athena/opengraph-image",
               category: "BusinessApplication",
             }),
           ),

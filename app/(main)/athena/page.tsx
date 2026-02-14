@@ -4,6 +4,9 @@ import { EnterpriseServices } from "@/components/athena/EnterpriseServices";
 import { PracticalUsage } from "@/components/athena/PracticalUsage";
 import LandingSection from "@/components/LandingSection";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export default function AthenaPage() {
   return (
     <main className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden">
