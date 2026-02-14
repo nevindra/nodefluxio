@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState, memo } from "react";
-import createGlobe from "cobe";
+import { useRef, useState, useEffect, memo } from "react";
+import dynamic from "next/dynamic";
 import { motion, animate, useInView } from "framer-motion";
 import {
   Globe as GlobeIcon,
@@ -12,123 +12,23 @@ import {
   Monitor,
 } from "@phosphor-icons/react";
 
+const GlobeCanvas = dynamic(
+  () => import("@/components/landing-page/GlobeCanvas"),
+  { ssr: false },
+);
+
 // International deployment locations
 const internationalLocations = [
-  { name: "Ho Chi Minh City", country: "Vietnam", lat: 10.8231, lng: 106.6297 },
-  { name: "Dubai", country: "UAE", lat: 25.2048, lng: 55.2708 },
-  { name: "Dhaka", country: "Bangladesh", lat: 23.8103, lng: 90.4125 },
-  { name: "Taipei", country: "Taiwan", lat: 25.033, lng: 121.5654 },
-  { name: "Bucharest", country: "Romania", lat: 44.4268, lng: 26.1025 },
-  { name: "Kuwait City", country: "Kuwait", lat: 29.3759, lng: 47.9774 },
-  { name: "Athens", country: "Greece", lat: 37.9838, lng: 23.7275 },
-];
-
-// Indonesia deployment locations
-const indonesiaLocations = [
-  { name: "Jakarta", lat: -6.2088, lng: 106.8456 },
-  { name: "Surabaya", lat: -7.2575, lng: 112.7508 },
-  { name: "Medan", lat: 3.5833, lng: 98.6667 },
-  { name: "Makassar", lat: -5.1477, lng: 119.4189 },
-  { name: "Bali", lat: -8.65, lng: 115.2167 },
-  { name: "Jayapura", lat: -2.5916, lng: 140.7178 },
-];
-
-// Build cobe markers
-const markers = [
-  // Hub - Jakarta (larger)
-  { location: [-6.2088, 106.8456] as [number, number], size: 0.1 },
-  // Indonesia domestic
-  ...indonesiaLocations
-    .filter((l) => l.name !== "Jakarta")
-    .map((l) => ({
-      location: [l.lat, l.lng] as [number, number],
-      size: 0.05,
-    })),
-  // International (distinct color)
-  ...internationalLocations.map((l) => ({
-    location: [l.lat, l.lng] as [number, number],
-    size: 0.07,
-    color: [0.486, 0.227, 0.929] as [number, number, number],
-  })),
+  { name: "Ho Chi Minh City", country: "Vietnam" },
+  { name: "Dubai", country: "UAE" },
+  { name: "Dhaka", country: "Bangladesh" },
+  { name: "Taipei", country: "Taiwan" },
+  { name: "Bucharest", country: "Romania" },
+  { name: "Kuwait City", country: "Kuwait" },
+  { name: "Athens", country: "Greece" },
 ];
 
 export default function GlobalPresenceGL() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pointerInteracting = useRef<number | null>(null);
-  const pointerInteractionMovement = useRef(0);
-  const phiRef = useRef(1.85);
-
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    pointerInteracting.current = e.clientX - pointerInteractionMovement.current;
-    if (canvasRef.current) canvasRef.current.style.cursor = "grabbing";
-  }, []);
-
-  const onPointerUp = useCallback(() => {
-    pointerInteracting.current = null;
-    if (canvasRef.current) canvasRef.current.style.cursor = "grab";
-  }, []);
-
-  const onPointerOut = useCallback(() => {
-    pointerInteracting.current = null;
-    if (canvasRef.current) canvasRef.current.style.cursor = "grab";
-  }, []);
-
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (pointerInteracting.current !== null) {
-      const delta = e.clientX - pointerInteracting.current;
-      pointerInteractionMovement.current = delta;
-      phiRef.current = delta / 200;
-    }
-  }, []);
-
-  useEffect(() => {
-    let width = 0;
-
-    const onResize = () => {
-      if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
-      }
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-
-    let globe: ReturnType<typeof createGlobe> | undefined;
-
-    if (canvasRef.current) {
-      globe = createGlobe(canvasRef.current, {
-        devicePixelRatio: 2,
-        width: width * 2,
-        height: width * 2,
-        phi: phiRef.current,
-        theta: 0.15,
-        dark: 0,
-        diffuse: 1.2,
-        mapSamples: 24000,
-        mapBrightness: 2,
-        mapBaseBrightness: 0.02,
-        baseColor: [0.91, 0.93, 0.96],
-        markerColor: [0.486, 0.227, 0.929],
-        glowColor: [0.91, 0.93, 0.96],
-        markers,
-        scale: 1.05,
-        opacity: 0.85,
-        onRender: (state) => {
-          if (pointerInteracting.current === null) {
-            phiRef.current += 0.003;
-          }
-          state.phi = phiRef.current;
-          state.width = width * 2;
-          state.height = width * 2;
-        },
-      });
-    }
-
-    return () => {
-      globe?.destroy();
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
   return (
     <div className="relative w-full py-16 md:py-24 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
@@ -169,7 +69,7 @@ export default function GlobalPresenceGL() {
 
         {/* Globe + Consolidated Info */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Globe - desktop only */}
+          {/* Globe - desktop only, lazy loaded client-only */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -177,31 +77,7 @@ export default function GlobalPresenceGL() {
             transition={{ duration: 0.8 }}
             className="relative w-full hidden lg:block"
           >
-            <div className="relative aspect-square max-w-[520px] mx-auto">
-              <canvas
-                ref={canvasRef}
-                onPointerDown={onPointerDown}
-                onPointerUp={onPointerUp}
-                onPointerOut={onPointerOut}
-                onPointerMove={onPointerMove}
-                className="w-full h-full cursor-grab"
-                style={{ contain: "layout paint size" }}
-              />
-              <div className="absolute top-4 right-4 flex flex-col gap-1.5 pointer-events-none">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-                  <span className="text-[10px] font-mono text-foreground/50 uppercase tracking-wider">
-                    International
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-primary/40" />
-                  <span className="text-[10px] font-mono text-foreground/50 uppercase tracking-wider">
-                    Indonesia
-                  </span>
-                </div>
-              </div>
-            </div>
+            <GlobeCanvas />
           </motion.div>
 
           {/* Right Panel - All info consolidated */}

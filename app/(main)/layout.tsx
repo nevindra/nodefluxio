@@ -10,6 +10,7 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import PostHogProvider from "@/components/providers/PostHogProvider";
 import ScrollProgress from "@/components/ScrollProgress";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonLd";
+import { SanityLive } from "@/sanity/lib/live";
 
 const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -93,6 +94,7 @@ export default function RootLayout({
             <Footer />
           </SmoothScroll>
         </PostHogProvider>
+        <SanityLive />
       </body>
     </html>
   );

@@ -14,11 +14,23 @@ const words = ["SAFETY.", "SMART CITIES.", "TRAFFIC.", "EFFICIENCY."];
 
 function Typewriter({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(words[0] ?? "");
   const [isDeleting, setIsDeleting] = useState(false);
   const [speed, setSpeed] = useState(150);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Start the typewriter cycle after initial mount + pause
+    const startTimer = setTimeout(() => {
+      setMounted(true);
+      setIsDeleting(true);
+    }, 2000);
+    return () => clearTimeout(startTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const handleTyping = () => {
       const currentWord = words[index];
       if (isDeleting) {
@@ -39,7 +51,7 @@ function Typewriter({ words }: { words: string[] }) {
 
     const timer = setTimeout(handleTyping, speed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, speed, words]);
+  }, [displayText, isDeleting, index, speed, words, mounted]);
 
   return (
     <span className="text-primary relative group">
@@ -305,6 +317,9 @@ export function MainHero({
               <h1 className="font-medium tracking-wide text-foreground leading-[1.1] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
                 <span className="block italic opacity-40">AI-POWERED</span>
                 <Typewriter words={words} />
+                <span className="sr-only">
+                  {" "}AI for Safety, Smart Cities, Traffic, and Efficiency
+                </span>
               </h1>
 
               <p className="text-muted-foreground font-light text-sm sm:text-base md:text-lg max-w-xl leading-relaxed">

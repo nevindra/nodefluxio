@@ -101,6 +101,46 @@ export function breadcrumbJsonLd(
   };
 }
 
+export function homepageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Nodeflux - AI Video Surveillance & Intelligent Agents",
+    description:
+      "Indonesia's leading AI company for Video Surveillance Intelligence and LLM-powered AI Agents. Solutions for smart cities, public safety, and security.",
+    url: SITE_URL,
+    isPartOf: { "@type": "WebSite", url: SITE_URL },
+    about: {
+      "@type": "Organization",
+      name: "Nodeflux",
+      url: SITE_URL,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "VisionAIre - Intelligent Camera Analytics",
+          url: `${SITE_URL}/visionaire`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Lenz - Unified Video Management",
+          url: `${SITE_URL}/lenz`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Athena - Enterprise Knowledge Assistant",
+          url: `${SITE_URL}/athena`,
+        },
+      ],
+    },
+  };
+}
+
 export function articleJsonLd({
   title,
   description,

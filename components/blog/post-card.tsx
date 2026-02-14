@@ -3,18 +3,18 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "@phosphor-icons/react";
-import { PostMeta } from "@/lib/blog";
 import { cn } from "@/lib/utils";
+import type { SanityPostMeta } from "@/sanity/lib/types";
 
 interface PostCardProps {
-  post: PostMeta;
+  post: SanityPostMeta;
   index?: number;
   featured?: boolean;
 }
 
 export function PostCard({ post, index = 0, featured = false }: PostCardProps) {
-  const { slug, frontmatter, readingTime } = post;
-  const formattedDate = new Date(frontmatter.date).toLocaleDateString("en-US", {
+  const { slug, title, description, date, category, readingTime } = post;
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -38,7 +38,7 @@ export function PostCard({ post, index = 0, featured = false }: PostCardProps) {
           {/* Category & Meta Row */}
           <div className="flex items-center gap-3 mb-3">
             <span className="text-xs font-medium text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
-              {frontmatter.category}
+              {category}
             </span>
             <span className="text-xs text-muted-foreground/60">·</span>
             <div className="flex items-center gap-1 text-xs text-muted-foreground/60">
@@ -59,7 +59,7 @@ export function PostCard({ post, index = 0, featured = false }: PostCardProps) {
               featured ? "text-2xl md:text-3xl mb-3" : "text-lg mb-2"
             )}
           >
-            {frontmatter.title}
+            {title}
           </h3>
 
           {/* Description */}
@@ -69,7 +69,7 @@ export function PostCard({ post, index = 0, featured = false }: PostCardProps) {
               featured ? "text-base line-clamp-3" : "text-sm line-clamp-2"
             )}
           >
-            {frontmatter.description}
+            {description}
           </p>
 
           {/* Read More */}

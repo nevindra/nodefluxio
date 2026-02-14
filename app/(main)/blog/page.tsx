@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { getAllPosts, getAllCategories } from "@/lib/blog";
+import { sanityFetch } from "@/sanity/lib/live";
+import { POSTS_QUERY, CATEGORIES_QUERY } from "@/sanity/lib/queries";
 import { BlogList } from "@/components/blog/blog-list";
 
 export const metadata: Metadata = {
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
     "Stay up to date with the latest news, product updates, and technical insights from the Nodeflux team.",
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
-  const categories = getAllCategories();
+export default async function BlogPage() {
+  const { data: posts } = await sanityFetch({ query: POSTS_QUERY });
+  const { data: categories } = await sanityFetch({ query: CATEGORIES_QUERY });
 
   return (
     <main>

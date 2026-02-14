@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { PostMeta } from "@/lib/blog";
 import { PostCard, CategoryFilter } from "@/components/blog/post-card";
 import { trackBlogCategoryFiltered } from "@/lib/analytics";
+import type { SanityPostMeta } from "@/sanity/lib/types";
 
 interface BlogListProps {
-  posts: PostMeta[];
+  posts: SanityPostMeta[];
   categories: string[];
 }
 
@@ -17,7 +17,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
   const filteredPosts = activeCategory
     ? posts.filter(
         (post) =>
-          post.frontmatter.category.toLowerCase() === activeCategory.toLowerCase()
+          post.category?.toLowerCase() === activeCategory.toLowerCase()
       )
     : posts;
 

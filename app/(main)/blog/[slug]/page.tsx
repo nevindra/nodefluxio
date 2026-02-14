@@ -2,73 +2,81 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import rehypeHighlight from "rehype-highlight";
+import { PortableText } from "next-sanity";
 import {
   ArrowLeft,
   Calendar,
   Clock,
   User,
 } from "@phosphor-icons/react/dist/ssr";
-import { getPostBySlug, getAllSlugs } from "@/lib/blog";
+import { sanityFetch } from "@/sanity/lib/live";
+import { POST_QUERY, POST_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { portableTextComponents } from "@/components/blog/portable-text-components";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
-import { mdxComponents } from "@/components/blog/mdx-components";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const { data: slugs } = await sanityFetch({
+    query: POST_SLUGS_QUERY,
+    perspective: "published",
+    stega: false,
+  });
+  return slugs.map((s: { slug: string }) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const { data: post } = await sanityFetch({
+    query: POST_QUERY,
+    params: { slug },
+    stega: false,
+  });
 
   if (!post) {
-    return {
-      title: "Post Not Found",
-    };
+    return { title: "Post Not Found" };
   }
 
   return {
-    title: `${post.frontmatter.title} | Nodeflux Blog`,
-    description: post.frontmatter.description,
-    keywords: post.frontmatter.tags,
+    title: `${post.title} | Nodeflux Blog`,
+    description: post.description,
+    keywords: post.tags,
     alternates: {
       canonical: `/blog/${slug}`,
     },
     openGraph: {
-      title: post.frontmatter.title,
-      description: post.frontmatter.description,
+      title: post.title,
+      description: post.description,
       url: `/blog/${slug}`,
       siteName: "Nodeflux",
       type: "article",
-      publishedTime: post.frontmatter.date,
-      authors: [post.frontmatter.author.name],
+      publishedTime: post.date,
+      authors: [post.author?.name || "Nodeflux Team"],
     },
     twitter: {
       card: "summary_large_image",
-      title: post.frontmatter.title,
-      description: post.frontmatter.description,
+      title: post.title,
+      description: post.description,
     },
   };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const { data: post } = await sanityFetch({
+    query: POST_QUERY,
+    params: { slug },
+  });
 
   if (!post) {
     notFound();
   }
 
-  const { frontmatter, content, readingTime } = post;
-  const formattedDate = new Date(frontmatter.date).toLocaleDateString("en-US", {
+  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -81,12 +89,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             articleJsonLd({
-              title: frontmatter.title,
-              description: frontmatter.description,
+              title: post.title,
+              description: post.description,
               url: `/blog/${slug}`,
-              image: frontmatter.coverImage,
-              datePublished: frontmatter.date,
-              authorName: frontmatter.author.name,
+              image: post.coverImage,
+              datePublished: post.date,
+              authorName: post.author?.name || "Nodeflux Team",
             }),
           ),
         }}
@@ -98,7 +106,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             breadcrumbJsonLd([
               { name: "Home", url: "/" },
               { name: "Blog", url: "/blog" },
-              { name: frontmatter.title, url: `/blog/${slug}` },
+              { name: post.title, url: `/blog/${slug}` },
             ]),
           ),
         }}
@@ -118,30 +126,30 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Category & Reading Time */}
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
-              {frontmatter.category}
+              {post.category}
             </span>
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
               <Clock className="w-4 h-4" />
-              {readingTime}
+              {post.readingTime}
             </span>
           </div>
 
           {/* Title */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4">
-            {frontmatter.title}
+            {post.title}
           </h1>
 
           {/* Description */}
           <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-            {frontmatter.description}
+            {post.description}
           </p>
 
           {/* Author & Date */}
           <div className="flex items-center gap-4 pb-8 border-b">
-            {frontmatter.author.avatar && (
+            {post.author?.avatar && (
               <Image
-                src={frontmatter.author.avatar}
-                alt={frontmatter.author.name}
+                src={post.author.avatar}
+                alt={post.author.name}
                 width={48}
                 height={48}
                 className="rounded-full"
@@ -150,7 +158,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div>
               <div className="flex items-center gap-1.5 font-medium text-foreground">
                 <User className="w-4 h-4" />
-                {frontmatter.author.name}
+                {post.author?.name || "Nodeflux Team"}
               </div>
               <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Calendar className="w-4 h-4" />
@@ -162,13 +170,13 @@ export default async function BlogPostPage({ params }: PageProps) {
       </section>
 
       {/* Cover Image */}
-      {frontmatter.coverImage && (
+      {post.coverImage && (
         <section className="pb-8">
           <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
             <div className="relative aspect-video rounded-xl overflow-hidden">
               <Image
-                src={frontmatter.coverImage}
-                alt={frontmatter.title}
+                src={post.coverImage}
+                alt={post.title}
                 fill
                 className="object-cover"
                 priority
@@ -182,25 +190,22 @@ export default async function BlogPostPage({ params }: PageProps) {
       <section className="pb-16">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
           <article className="prose prose-lg prose-slate dark:prose-invert max-w-none">
-            <MDXRemote
-              source={content}
-              components={mdxComponents}
-              options={{
-                mdxOptions: {
-                  rehypePlugins: [rehypeHighlight],
-                },
-              }}
-            />
+            {post.body && (
+              <PortableText
+                value={post.body}
+                components={portableTextComponents}
+              />
+            )}
           </article>
         </div>
       </section>
 
       {/* Tags */}
-      {frontmatter.tags && frontmatter.tags.length > 0 && (
+      {post.tags && post.tags.length > 0 && (
         <section className="pb-16">
           <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
             <div className="flex flex-wrap gap-2 pt-8 border-t">
-              {frontmatter.tags.map((tag) => (
+              {post.tags.map((tag: string) => (
                 <span
                   key={tag}
                   className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full"
