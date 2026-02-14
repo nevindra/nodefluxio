@@ -23,7 +23,6 @@ const nextConfig: NextConfig = {
       "framer-motion",
       "@phosphor-icons/react",
       "lucide-react",
-      "gsap",
     ],
   },
   rewrites: async () => {

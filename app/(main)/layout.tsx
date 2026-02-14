@@ -4,7 +4,7 @@ import OperationalGrid from "@/components/OperationalGrid";
 import { generateMetadata } from "@/app/config/sharedMetadata";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Script from "next/script";
+
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import PostHogProvider from "@/components/providers/PostHogProvider";
@@ -59,18 +59,6 @@ export default function RootLayout({
           name="google-site-verification"
           content="8SnxIePEB-VC_C7XKtNeeYOFuxTN3ee62wLS63nAcl4"
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXB0ZPP5V1"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XXB0ZPP5V1');
-          `}
-        </Script>
       </head>
       <body className={jakartaSans.className}>
         <script

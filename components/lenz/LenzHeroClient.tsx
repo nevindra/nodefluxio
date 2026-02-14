@@ -86,8 +86,8 @@ export function LenzHeroImageEntrance({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 40 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
+      initial={{ scale: 0.95, y: 40 }}
+      animate={{ scale: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
       className="w-full max-w-7xl group relative z-20 mb-[-60px] sm:mb-[-80px] md:mb-[-120px] lg:mb-[-160px]"
     >

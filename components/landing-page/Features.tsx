@@ -10,13 +10,15 @@ import {
   GridFour,
 } from "@phosphor-icons/react";
 import Link from "next/link";
-import { useState } from "react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { trackProductTabSwitched, trackProductLearnMoreClicked, trackLenzFeatureToggled } from "@/lib/analytics";
 
 import { Button } from "../ui/button";
-import AthenaKnowledgeMockup from "./AthenaKnowledgeMockup";
-import LenzDashboardMockup from "./LenzDashboardMockup";
-import VisionAIreMockup from "./VisionAIreMockup";
+
+const LenzDashboardMockup = dynamic(() => import("./LenzDashboardMockup"), { ssr: false });
+const VisionAIreMockup = dynamic(() => import("./VisionAIreMockup"), { ssr: false });
+const AthenaKnowledgeMockup = dynamic(() => import("./AthenaKnowledgeMockup"), { ssr: false });
 
 const products = [
   {
@@ -57,6 +59,15 @@ const products = [
 export default function Features() {
   const [activeTab, setActiveTab] = useState("lenz");
   const [lenzUseCase, setLenzUseCase] = useState<string>("streams");
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   return (
     <section
@@ -225,34 +236,36 @@ export default function Features() {
             </AnimatePresence>
           </div>
 
-          {/* Mockup Side - Hidden on mobile */}
-          <div className="hidden lg:block lg:col-span-8 relative">
-            <div className="relative aspect-[16/10] bg-black/[0.02] border border-black/5 overflow-hidden shadow-xl lg:-mr-32 group">
-              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10" />
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-full w-full"
-                >
-                  {activeTab === "lenz" ? (
-                    <LenzDashboardMockup useCase={lenzUseCase} />
-                  ) : activeTab === "visionaire" ? (
-                    <VisionAIreMockup />
-                  ) : (
-                    <AthenaKnowledgeMockup />
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+          {/* Mockup Side - Only rendered on desktop to avoid loading heavy JS on mobile */}
+          {isDesktop && (
+            <div className="lg:col-span-8 relative">
+              <div className="relative aspect-[16/10] bg-black/[0.02] border border-black/5 overflow-hidden shadow-xl lg:-mr-32 group">
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10" />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.02 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-full w-full"
+                  >
+                    {activeTab === "lenz" ? (
+                      <LenzDashboardMockup useCase={lenzUseCase} />
+                    ) : activeTab === "visionaire" ? (
+                      <VisionAIreMockup />
+                    ) : (
+                      <AthenaKnowledgeMockup />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-            {/* Float Decoration */}
-            <div className="absolute -bottom-10 -right-20 w-80 h-80 bg-primary/10 blur-[120px] pointer-events-none rounded-full" />
-            <div className="absolute -top-10 -left-10 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none rounded-full" />
-          </div>
+              {/* Float Decoration */}
+              <div className="absolute -bottom-10 -right-20 w-80 h-80 bg-primary/10 blur-[120px] pointer-events-none rounded-full" />
+              <div className="absolute -top-10 -left-10 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none rounded-full" />
+            </div>
+          )}
         </div>
       </div>
     </section>

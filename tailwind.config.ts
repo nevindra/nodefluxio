@@ -102,10 +102,12 @@ const config = {
         },
         pulse: {
           "0%, 100%": {
-            boxShadow: "0 0 0 0 var(--pulse-color)",
+            transform: "scale(1)",
+            opacity: "1",
           },
           "50%": {
-            boxShadow: "0 0 0 8px var(--pulse-color)",
+            transform: "scale(1.15)",
+            opacity: "0.8",
           },
         },
         rainbow: {
@@ -118,10 +120,10 @@ const config = {
         },
         "scan-x": {
           "0%": {
-            left: "0%",
+            transform: "translateX(0)",
           },
           "100%": {
-            left: "100%",
+            transform: "translateX(100vw)",
           },
         },
         marquee: {

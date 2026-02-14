@@ -1,12 +1,14 @@
 import { MainHero } from "@/components/hero/MainHero";
-import Certifications from "@/components/landing-page/Certifications";
-import CTA from "@/components/landing-page/CTA";
 import Features from "@/components/landing-page/Features";
-import GlobalPresenceGL from "@/components/landing-page/GlobalPresenceGL";
 import TrustedBy from "@/components/landing-page/TrustedBy";
-import UseCases from "@/components/landing-page/UseCases";
 import LandingSection from "@/components/LandingSection";
 import { homepageJsonLd } from "@/lib/jsonLd";
+import nextDynamic from "next/dynamic";
+
+const UseCases = nextDynamic(() => import("@/components/landing-page/UseCases"));
+const GlobalPresenceGL = nextDynamic(() => import("@/components/landing-page/GlobalPresenceGL"));
+const Certifications = nextDynamic(() => import("@/components/landing-page/Certifications"));
+const CTA = nextDynamic(() => import("@/components/landing-page/CTA"));
 
 export const dynamic = "force-static";
 export const revalidate = false;
