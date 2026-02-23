@@ -363,7 +363,7 @@ export function MainHero({
                 <SystemStat
                   icon={Globe}
                   label="Years of Experience"
-                  value="> 8"
+                  value="> 10"
                   detail="NET_GRID_01"
                 />
               </div>
