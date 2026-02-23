@@ -26,6 +26,7 @@ const internationalLocations = [
   { name: "Bucharest", country: "Romania" },
   { name: "Kuwait City", country: "Kuwait" },
   { name: "Athens", country: "Greece" },
+  { name: "Manila", country: "Philippines" },
 ];
 
 export default function GlobalPresenceGL() {
@@ -61,9 +62,9 @@ export default function GlobalPresenceGL() {
             transition={{ delay: 0.2 }}
             className="text-base md:text-lg text-muted-foreground font-light leading-relaxed max-w-4xl"
           >
-            From airports and city infrastructure across 34 provinces to
-            international partnerships — our technology is trusted wherever
-            security and efficiency matter most.
+            Proven at nationwide scale and expanding globally, our technology
+            strengthens security and operational efficiency across critical
+            infrastructure.
           </motion.p>
         </div>
 
@@ -142,7 +143,7 @@ export default function GlobalPresenceGL() {
                     International
                   </h3>
                   <p className="text-[10px] font-mono text-primary uppercase tracking-[0.2em]">
-                    7 Countries across 3 Continents
+                    8 Countries across 3 Continents
                   </p>
                 </div>
               </div>
