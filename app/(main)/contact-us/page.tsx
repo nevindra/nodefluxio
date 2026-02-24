@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, Envelope, MapPin, Phone } from "@phosphor-icons/react";
+import { ArrowRight, Envelope, MapPin, WhatsappLogo } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -146,11 +146,11 @@ export default function ContactUs() {
                     trackType: "email" as const,
                   },
                   {
-                    icon: Phone,
-                    label: "Phone",
+                    icon: WhatsappLogo,
+                    label: "WhatsApp",
                     value: "+62 812 9240 0659",
-                    href: "tel:+6281292400659",
-                    trackType: "phone" as const,
+                    href: "https://wa.me/6281292400659",
+                    trackType: "whatsapp" as const,
                   },
                   {
                     icon: MapPin,
@@ -180,16 +180,6 @@ export default function ContactUs() {
                     </div>
                   </a>
                 ))}
-              </div>
-
-              {/* Response Time */}
-              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
-                <p className="text-sm text-muted-foreground">
-                  <span className="text-primary font-medium">
-                    Response Time:
-                  </span>{" "}
-                  We typically respond within 24 hours on business days.
-                </p>
               </div>
             </motion.div>
 

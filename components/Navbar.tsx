@@ -125,7 +125,7 @@ export default function NavigationBar() {
               size="sm"
               className="font-bold px-6 h-9  transition-all duration-500 text-[9px] uppercase tracking-[0.2em] bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/10"
             >
-              <Link href="/contact-us" onClick={() => trackDemoCtaClicked("navbar", "Initialize Demo")}>Initialize Demo</Link>
+              <Link href="/contact-us" onClick={() => trackDemoCtaClicked("navbar", "Request Demo")}>Request Demo</Link>
             </Button>
           </div>
 

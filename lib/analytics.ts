@@ -53,7 +53,7 @@ export function trackUseCaseCarouselInteracted(
 
 // --- Navigation & UX ---
 
-export function trackContactInfoClicked(type: "email" | "phone" | "map") {
+export function trackContactInfoClicked(type: "email" | "whatsapp" | "map") {
   posthog.capture("contact_info_clicked", { type });
 }
 
