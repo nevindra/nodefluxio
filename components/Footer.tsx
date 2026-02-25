@@ -3,7 +3,7 @@
 import visionaire from "@/public/nodeflux-primary-purple.png";
 import Image from "next/image";
 import Link from "next/link";
-import { Envelope, MapPin, Phone } from "@phosphor-icons/react";
+import { Envelope, MapPin, WhatsappLogo } from "@phosphor-icons/react";
 import { footerNavigation } from "@/lib/navigation-data";
 import { trackContactInfoClicked, trackSocialLinkClicked } from "@/lib/analytics";
 
@@ -58,12 +58,14 @@ export default function Footer() {
                 {contactInfo.email}
               </a>
               <a
-                href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                onClick={() => trackContactInfoClicked("phone")}
+                href="https://wa.me/6281292400659"
+                onClick={() => trackContactInfoClicked("whatsapp")}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <Phone className="w-4 h-4 text-primary" />
+                  <WhatsappLogo className="w-4 h-4 text-primary" />
                 </div>
                 {contactInfo.phone}
               </a>
