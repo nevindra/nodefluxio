@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   GridFour,
   ClockCounterClockwise,
@@ -14,8 +13,22 @@ import {
   ScaleInView,
   SlideInFeature,
 } from "./DashboardShowcaseClient";
+import { ScreenMockup } from "@/components/ui/screen-mockup";
 
-const showcaseItems = [
+type ShowcaseItem = {
+  id: string;
+  badge: string;
+  title: string;
+  headline: string;
+  description: string;
+  features: string[];
+  image: string;
+  video?: string;
+  icon: Icon;
+  accent: "cyan" | "violet" | "amber" | "emerald";
+};
+
+const showcaseItems: ShowcaseItem[] = [
   {
     id: "unified-view",
     badge: "STREAM-01",
@@ -29,6 +42,7 @@ const showcaseItems = [
       "Full-screen single camera mode",
     ],
     image: "/dashboard/Home.webp",
+    video: "https://pub-a8dc42a652814c1f82b6763e8cbfb0ba.r2.dev/videos/Stream%20View.mp4",
     icon: GridFour,
     accent: "cyan",
   },
@@ -45,6 +59,7 @@ const showcaseItems = [
       "Detailed detection metadata",
     ],
     image: "/dashboard/Event_History.webp",
+    video: "https://pub-a8dc42a652814c1f82b6763e8cbfb0ba.r2.dev/videos/Event%20Timeline.mp4",
     icon: ClockCounterClockwise,
     accent: "violet",
   },
@@ -61,6 +76,7 @@ const showcaseItems = [
       "Export reports with one click",
     ],
     image: "/dashboard/Statistic_FRA.webp",
+    video: "https://pub-a8dc42a652814c1f82b6763e8cbfb0ba.r2.dev/videos/Statistics.mp4",
     icon: Graph,
     accent: "amber",
   },
@@ -150,7 +166,7 @@ function ShowcaseItem({
   index,
   reverse,
 }: {
-  item: (typeof showcaseItems)[0];
+  item: ShowcaseItem;
   index: number;
   reverse: boolean;
 }) {
@@ -240,25 +256,12 @@ function ShowcaseItem({
           )}
         />
 
-        {/* Image Container */}
-        <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-border/50 shadow-2xl bg-background/80">
-          <div className="relative aspect-[16/10] w-full">
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
-          </div>
-
-          <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border/50">
-            <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-              Live Preview
-            </span>
-          </div>
-        </div>
+        {/* Screen Mockup */}
+        <ScreenMockup
+          videoSrc={item.video}
+          imageSrc={item.image}
+          alt={item.title}
+        />
 
         {/* Decorative Elements */}
         <div
