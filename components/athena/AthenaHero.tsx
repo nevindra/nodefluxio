@@ -13,7 +13,7 @@ export function AthenaHero() {
       {/* Background Ambience - client-side parallax */}
       <AthenaHeroParallax />
 
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-32 md:pt-48">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-8 md:pt-12 lg:pt-16">
         <div className="flex flex-col items-center text-center space-y-16">
           <div className="space-y-8 max-w-4xl mx-auto">
             {/* Label */}
