@@ -127,7 +127,7 @@ const accentColors = {
 
 export function DashboardShowcase() {
   return (
-    <section className="relative z-10 pt-32 sm:pt-40 md:pt-48 lg:pt-56 pb-24 md:pb-40 bg-muted/20">
+    <section className="relative z-10 pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-24 md:pb-40 bg-muted/20">
       <div className="max-w-[1280px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-24 space-y-4">

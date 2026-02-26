@@ -13,7 +13,7 @@ export function VisionaireHero() {
       {/* Background Ambience - client-side parallax */}
       <VisionaireHeroParallax />
 
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-24 md:pt-32 lg:pt-40">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-8 md:pt-12 lg:pt-16">
         <div className="flex flex-col items-center text-center space-y-12 md:space-y-16">
           <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
             {/* Label */}
