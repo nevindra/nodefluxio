@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.nodeflux.ai
+Host: https://www.nodeflux.ai/
 
 # Sitemaps
 Sitemap: https://www.nodeflux.ai/sitemap.xml

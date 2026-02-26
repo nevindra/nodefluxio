@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
 import { ImageResponse } from "next/og";
 
 export const OG_SIZE = { width: 1200, height: 630 };
@@ -9,23 +12,18 @@ interface OGImageProps {
   badge?: string;
 }
 
+const fontFiles: Record<number, string> = {
+  500: "PlusJakartaSans-Medium.ttf",
+  700: "PlusJakartaSans-Bold.ttf",
+};
+
 async function loadFont(weight: number): Promise<ArrayBuffer> {
-  const css = await fetch(
-    `https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@${weight}`,
-    {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Linux; Android 4.4.2; Build/KTU84M) AppleWebKit/537.36",
-      },
-    },
-  ).then((res) => res.text());
+  const fontFile = fontFiles[weight];
+  if (!fontFile) throw new Error(`Font weight ${weight} not available`);
 
-  const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
-  );
-  if (!resource) throw new Error("Failed to load font");
-
-  return fetch(resource[1]).then((res) => res.arrayBuffer());
+  const fontPath = join(process.cwd(), "public", "fonts", fontFile);
+  const buffer = await readFile(fontPath);
+  return buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
 }
 
 export async function generateOGImage({
