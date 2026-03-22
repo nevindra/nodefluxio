@@ -294,7 +294,7 @@ export function MainHero({
   label = "Extending Vision Beyond Imagination",
 }: HeroProps) {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-0 md:pb-0">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-24 md:pb-12">
       <HeroBackground videoSrc={videoSrc} isLanding={true} />
 
       <div className="relative z-10 mx-auto w-full max-w-[1280px] md:mt-0 px-4 sm:px-6 lg:px-8">
