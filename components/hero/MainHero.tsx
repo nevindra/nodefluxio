@@ -127,7 +127,7 @@ function BiometricScanner() {
         <div className="relative w-48 h-48 rounded-2xl overflow-hidden border border-primary/30 shadow-[0_0_50px_rgba(var(--primary-rgb),0.2)] bg-black/20 transform-gpu">
           {/* Live Face Stream - CCTV View */}
           <Image
-            src="/hero/cctv-capture.png"
+            src="/hero/cctv-capture.webp"
             alt="CCTV Subject Capture"
             fill
             sizes="192px"
@@ -178,7 +178,7 @@ function BiometricScanner() {
         </div>
         <div className="relative aspect-square w-full mb-2 border border-primary/20">
           <Image
-            src="/hero/biometric-face.png"
+            src="/hero/biometric-face.webp"
             alt="Target Match"
             fill
             sizes="128px"
