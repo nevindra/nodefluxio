@@ -73,6 +73,11 @@ export const navLinks: NavGroup[] = [
         href: "/athena",
         desc: "Enterprise AI assistant with RAG-powered knowledge retrieval",
       },
+      {
+        title: "Satellite",
+        href: "/satellite",
+        desc: "Space-edge Vision AI for sovereign orbital intelligence",
+      },
     ],
   },
   {
