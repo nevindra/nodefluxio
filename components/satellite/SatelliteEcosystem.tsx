@@ -47,7 +47,7 @@ export function SatelliteEcosystem() {
         {/* Nodeflux */}
         <div className="flex flex-col items-center text-center flex-1 max-w-[280px]">
           <Image
-            src="/satellite/nodeflux.png"
+            src="/nodeflux.webp"
             alt="Nodeflux"
             width={160}
             height={44}
